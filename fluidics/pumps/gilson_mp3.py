@@ -25,7 +25,7 @@ class APump():
                  parameters = False):
 
         # Define attributes
-        self.com_port = parameters.get("pump_com_port", 3)
+        self.com_port = parameters.get("pump_com_port", "COM3") #Frank 04/05/16
         self.pump_ID = parameters.get("pump_ID", 30)
         self.verbose = parameters.get("verbose", True)
         self.simulate = parameters.get("simulate_pump", True)

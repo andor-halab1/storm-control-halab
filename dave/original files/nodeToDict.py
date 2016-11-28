@@ -7,6 +7,9 @@
 # Hazen 09/14
 #
 
+# Frank 04/02/16
+from xml.etree import ElementTree
+
 ## gf
 #
 # Return a function that can be used to extract the value of a field from an ElementTree node.
@@ -71,21 +74,38 @@ movie_node_conversion = {"delay" : gf("delay", [int]),
 #
 # @return A dictionary describing the movie node.
 #
-# Frank 03/30/16
+# Frank 04/01/16
 #
 def movieNodeToDict(movie_node):
     dict = {}
+    cf_element = ElementTree.Element("check_focus")
+    ElementTree.SubElement(cf_element,"focus_scan")
     flag = 0
+    
     for field in movie_node_conversion.keys():
         value = movie_node_conversion[field](movie_node)
         if value is not None:
             dict[field] = value
-            if field == "check_focus":
-                for node in value:
-                    if node.tag == "focus_scan":
-                        flag = 1
+            
+    name_seg = dict["name"].split('_')
+    name_length = len(name_seg)
+    if (int(name_seg[name_length-1]) % 5) == 0:
+        if "check_focus" in dict.keys():
+            if dict["check_focus"].find("focus_scan"):
+                pass
+            else:
+                ElementTree.SubElement(dict["check_focus"],"focus_scan")
+        else:
+            dict["check_focus"] = cf_element
+
+    if "check_focus" in dict.keys():
+        for node in dict["check_focus"]:
+            if node.tag == "focus_scan":
+                flag = 1
+    
     if flag == 1:
-        dict["length"] = dict["length"]+520
+        dict["length"] = dict["length"] + 520
+    
     return dict
 
 #

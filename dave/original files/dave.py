@@ -765,15 +765,11 @@ class Dave(QtGui.QMainWindow):
             try:
                 model = sequenceViewer.parseSequenceFile(sequence_filename)
 
-            except:
-                try:
-                    generated_xml_file = sequenceGenerator.generate(self, sequence_filename)
-                    model = sequenceViewer.parseSequenceFile(generated_xml_file)
-                except:         
-                    QtGui.QMessageBox.information(self,
+            except: #Frank 03/30/16
+                QtGui.QMessageBox.information(self,
                                                   "Error Loading Sequence",
                                                   traceback.format_exc())
-                    no_error = False
+                no_error = False
             if no_error:
                 self.ui.commandSequenceTreeView.setModel(model)
                 self.ui.commandSequenceTreeView.setTestMode(False)
@@ -868,7 +864,7 @@ if __name__ == "__main__":
         parameters = params.parameters("settings_default.xml")
         
     # Start logger.
-    hdebug.startLogging(parameters.directory + "logs\\", "dave")
+    hdebug.startLogging(parameters.directory + "logs/", "dave")
 
     # Load app.
     window = Dave(parameters)
