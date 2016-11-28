@@ -4,9 +4,19 @@
 #
 # Heuristically programmed ALgorithmic STORM setup control.
 #
-# In its most basic form, this just runs a camera and displays
-# (and records) the resulting data. Every setup must have
-# at least one camera.
+# In its most basic form, this just runs a camera
+# and displays (and records) the resulting data.
+#
+# ACamera:
+#   Control, record and display the data from one (or more)
+#   camera(s).
+#
+#  The camera control class should be a subclass of
+#  camera.genericCamera, which (attempts to) encapsulate
+#  all the stuff related to the controlling and displaying
+#  the data from one or more cameras. Examples and related
+#  classes can all be found in the camera directory.
+#
 #
 # More advanced functionality is provided by various modules.
 # These are loaded dynamically in the __init__ based on
@@ -42,7 +52,6 @@ import camera.control as control
 import camera.filmSettings as filmSettings
 import display.cameraDisplay as cameraDisplay
 import halLib.imagewriters as writers
-import halLib.halModule as halModule
 import qtWidgets.qtAppIcon as qtAppIcon
 import qtWidgets.qtParametersBox as qtParametersBox
 
@@ -138,7 +147,7 @@ class Window(QtGui.QMainWindow):
         # 1. single: single window (the classic look).
         # 2. detached: detached camera window.
         #
-        self.ui_mode = hardware.get("ui_mode")
+        self.ui_mode = hardware.ui_mode        
         if (self.ui_mode == "single"):
             import qtdesigner.hal4000_ui as hal4000Ui
         elif (self.ui_mode == "detached"):
@@ -162,11 +171,11 @@ class Window(QtGui.QMainWindow):
         self.parameters_box = qtParametersBox.QParametersBox(self.ui.settingsScrollArea)
         self.ui.settingsScrollArea.setWidget(self.parameters_box)
         self.ui.settingsScrollArea.setWidgetResizable(True)
+        self.parameters_box.addParameters(self.parameters)
 
         file_types = writers.availableFileFormats(self.ui_mode)
-        self.parameters.getp("film.filetype").setAllowed(file_types)
-        for ftype in file_types:
-            self.ui.filetypeComboBox.addItem(ftype)
+        for type in file_types:
+            self.ui.filetypeComboBox.addItem(type)
 
         self.ui.framesText.setText("")
         self.ui.sizeText.setText("")
@@ -218,7 +227,7 @@ class Window(QtGui.QMainWindow):
         # Load the requested modules.
         #
         add_separator = False
-        for module in hardware.get("modules").getProps():
+        for module in hardware.get("modules").getSubXMLObjects():
             hdebug.logText("Loading: " + module.get("hal_type"))
             a_module = halImport(module.get("module_name"))
             a_class = getattr(a_module, module.get("class_name"))
@@ -243,8 +252,8 @@ class Window(QtGui.QMainWindow):
 
             for to_module in everything:
                 to_module.connectSignals(signals)
-
-        # Finish module initialization
+        
+		# Finish module initialization
         everything = self.modules + [self.camera]
         for module in everything:
             module.moduleInit()
@@ -253,11 +262,6 @@ class Window(QtGui.QMainWindow):
         # More ui stuff
         #
 
-        # Configure extensions combo-box.
-        self.ui.extensionComboBox.clear()
-        for ext in parameters.getp("film.extension").getAllowed():
-            self.ui.extensionComboBox.addItem(ext)
-        
         # handling file drops
         self.ui.centralwidget.__class__.dragEnterEvent = self.dragEnterEvent
         self.ui.centralwidget.__class__.dropEvent = self.dropEvent
@@ -277,12 +281,7 @@ class Window(QtGui.QMainWindow):
         self.ui.modeComboBox.currentIndexChanged.connect(self.handleModeComboBox)
         self.ui.notesEdit.textChanged.connect(self.updateNotes)
         self.ui.recordButton.clicked.connect(self.toggleFilm)
-        self.ui.liveModeCheckBox.stateChanged.connect(self.toggleLiveView)
 
-        # live view mode button
-        self.ui.liveModeCheckBox.setChecked(True) # Turn on live mode at initialization
-        self.ui.liveModeCheckBox.setEnabled(True) # Enable the check box for user control
-        
         # other signals
         self.parameters_box.settingsToggled.connect(self.toggleSettings)
 
@@ -302,8 +301,8 @@ class Window(QtGui.QMainWindow):
         #
         # start the camera
         #
-
         self.camera.cameraInit()
+
 
     ## cleanUp
     #
@@ -427,7 +426,7 @@ class Window(QtGui.QMainWindow):
     #
     @hdebug.debug
     def handleAutoInc(self, flag):
-        self.parameters.set("film.auto_increment", bool(flag))
+        self.parameters.set("film.auto_increment", flag)
 
     ## handleAutoShutters
     #
@@ -437,7 +436,7 @@ class Window(QtGui.QMainWindow):
     #
     @hdebug.debug
     def handleAutoShutters(self, flag):
-        self.parameters.set("film.auto_shutters", bool(flag))
+        self.parameters.set("film.auto_shutters", flag)
 
     ## handleClose
     #
@@ -642,7 +641,10 @@ class Window(QtGui.QMainWindow):
                                                                    str(self.parameters.get("film.directory")),
                                                                    QtGui.QFileDialog.ShowDirsOnly))
         if directory and os.path.exists(directory):
-            self.directory = directory
+            if (directory[-1] != "/"):
+                self.directory = directory + "/"
+            else:
+                self.directory = directory
             self.parameters.set("film.directory", str(self.directory))
             self.ui.directoryText.setText(trimString(self.parameters.get("film.directory"), 31))
         self.updateFilenameLabel("foo")
@@ -698,7 +700,7 @@ class Window(QtGui.QMainWindow):
         # then update shutter data using the shutter file specified by 
         # the parameters file.
         if p.get("illumination", False):
-            if (p.get("illumination.shutters") != p.get("illumination.last_shutters")):
+            if (p.get("illumination.shutter_frames") == -1):
                 self.newShutters(p.get("illumination.shutters"))
             else:
                 self.ui.shuttersText.setText(getFileName(p.get("illumination.shutters")))
@@ -714,9 +716,10 @@ class Window(QtGui.QMainWindow):
             self.ui.autoIncCheckBox.setChecked(True)
         else:
             self.ui.autoIncCheckBox.setChecked(False)
-
+        self.ui.extensionComboBox.clear()
+        for ext in p.get("film.extensions"):
+            self.ui.extensionComboBox.addItem(ext)
         self.ui.extensionComboBox.setCurrentIndex(self.ui.extensionComboBox.findText(extension))
-        
         self.ui.filetypeComboBox.setCurrentIndex(self.ui.filetypeComboBox.findText(filetype))
         if p.get("film.acq_mode") == "run_till_abort":
             self.ui.modeComboBox.setCurrentIndex(0)
@@ -724,7 +727,6 @@ class Window(QtGui.QMainWindow):
             self.ui.modeComboBox.setCurrentIndex(1)
         self.ui.lengthSpinBox.setValue(p.get("film.frames"))
         self.showHideLength()
-        
         if p.get("film.auto_shutters"):
             self.ui.autoShuttersCheckBox.setChecked(True)
         else:
@@ -811,7 +813,6 @@ class Window(QtGui.QMainWindow):
             self.parameters.set("illumination.shutters", self.old_shutters_file)
         if new_shutters:
             self.parameters.set("illumination.shutters", shutters_filename)
-            self.parameters.set("illumination.last_shutters", shutters_filename)
             self.old_shutters_file = shutters_filename
             self.ui.shuttersText.setText(getFileName(self.parameters.get("illumination.shutters")))
             params.setDefaultShutter(shutters_filename)
@@ -867,16 +868,10 @@ class Window(QtGui.QMainWindow):
     #
     @hdebug.debug
     def startFilm(self, film_settings = None):
-        # Disable live mode check box
-        self.ui.liveModeCheckBox.setEnabled(False)
-        
-        # Pause live view mode (if running)
-        if self.ui.liveModeCheckBox.isChecked():
-            self.stopCamera()
-        self.stopLiveView()
-        
+        self.stopCamera()
+
         self.filming = True
-        self.film_name = os.path.join(self.parameters.get("film.directory"), str(self.ui.filenameLabel.text()))
+        self.film_name = self.parameters.get("film.directory") + str(self.ui.filenameLabel.text())
         self.film_name = self.film_name[:-len(self.ui.filetypeComboBox.currentText())]
 
         if film_settings is None:
@@ -886,52 +881,34 @@ class Window(QtGui.QMainWindow):
         else:
             save_film = True
 
+        # Film file prep.
         self.writer = None
         self.ui.recordButton.setText("Stop")
-        try:
-            # Film file prep
-            if save_film:
-                self.writer = writers.createFileWriter(self.ui.filetypeComboBox.currentText(),
-                                                       self.film_name,
-                                                       self.parameters,
-                                                       self.camera.getFeedNamesToSave())
-                self.camera.startFilm(self.writer, film_settings)
-                self.ui.recordButton.setStyleSheet("QPushButton { color: red }")
-            else:
-                self.camera.startFilm(None, film_settings)
-                self.ui.recordButton.setStyleSheet("QPushButton { color: orange }")
-                self.film_name = False
+        if save_film:
+            self.writer = writers.createFileWriter(self.ui.filetypeComboBox.currentText(),
+                                                   self.film_name,
+                                                   self.parameters,
+                                                   self.camera.getFeedNamesToSave())
+            self.camera.startFilm(self.writer, film_settings)
+            self.ui.recordButton.setStyleSheet("QPushButton { color: red }")
+        else:
+            self.camera.startFilm(None, film_settings)
+            self.ui.recordButton.setStyleSheet("QPushButton { color: orange }")
+            self.film_name = False
 
-            # Modules.
-            for module in self.modules:
-                module.startFilm(self.film_name, self.ui.autoShuttersCheckBox.isChecked())
-                
-        except halModule.StartFilmException as error: # Handle any start Film errors
-            error_message = "startFilm() in HAL encountered an error: \n" + str(error)
-            hdebug.logText(error_message)
-
-            # Handle error returning to Dave. The subsequent call to stopFilm() will handle sending this message
-            if self.tcp_requested_movie:
-                message = self.tcp_message
-                message.setError(True, error_message)
+        # Modules.
+        for module in self.modules:
+            module.startFilm(self.film_name, self.ui.autoShuttersCheckBox.isChecked())
 
         # Disable parameters radio buttons.
         self.parameters_box.startFilm()
 
+        # Enable record button so that TCP requested films can be stopped.
+        #if self.tcp_requested_movie:
+        #    self.ui.recordButton.setEnabled(True)
+
         # go...
         self.startCamera()
-
-    ## startLiveView
-    #
-    # Turn on live view mode in hal and the modules
-    #
-    @hdebug.debug
-    def startLiveView(self):
-        is_live_view = self.ui.liveModeCheckBox.isChecked()
-
-        # Start live view mode in all modules
-        for module in self.modules:
-            module.startLiveView(is_live_view)
 
     ## stopCamera
     #
@@ -958,44 +935,38 @@ class Window(QtGui.QMainWindow):
 
         # Stop the camera.
         self.stopCamera()
-        try:
-            self.camera.stopFilm()
+        self.camera.stopFilm()
 
-            # Film file finishing up.
-            if self.writer:
+        # Film file finishing up.
+        if self.writer:
 
-                # Stop modules.
-                for module in self.modules:
-                    module.stopFilm(self.writer)
+            # Stop modules.
+            for module in self.modules:
+                module.stopFilm(self.writer)
 
+            # Close film file.
+            self.writer.closeFile()
 
-                # Close film file.
-                self.writer.closeFile()
+            # Get any changes to the notes made during filming and update log file.
+            self.updateNotes() 
+            self.logfile_fp.write(str(datetime.datetime.now()) + "," + self.film_name + "," + str(self.parameters.get("film.notes")) + "\r\n")
+            self.logfile_fp.flush()
 
-                # Get any changes to the notes made during filming and update log file.
-                self.updateNotes() 
-                self.logfile_fp.write(str(datetime.datetime.now()) + "," + self.film_name + "," + str(self.parameters.get("film.notes")) + "\r\n")
-                self.logfile_fp.flush()
+            if self.ui.autoIncCheckBox.isChecked() and (not self.tcp_requested_movie):
+                self.ui.indexSpinBox.setValue(self.ui.indexSpinBox.value() + 1)
+            self.updateFilenameLabel("foo")
+        else:
+            # Stop modules.
+            for module in self.modules:
+                module.stopFilm(False)
 
-                if self.ui.autoIncCheckBox.isChecked() and (not self.tcp_requested_movie):
-                    self.ui.indexSpinBox.setValue(self.ui.indexSpinBox.value() + 1)
-                self.updateFilenameLabel("foo")
-            else:
-                # Stop modules without writer.
-                for module in self.modules:
-                    module.stopFilm(False)
-
-        except halModule.StopFilmException as error: # Handle any stopFilm exceptions
-            error_message = "stopFilm in hal encountered an error: \n" + str(error)
-            hdebug.logText(error_message)
-            
-            # Handle error returning to Dave. The message will be returned below.
-            if self.tcp_requested_movie:
-                message = self.tcp_message
-                message.setError(True, error_message)
-                        
         # Enable parameters radio buttons.
         self.parameters_box.stopFilm()
+
+        # Restart the camera.
+        self.startCamera()
+        self.ui.recordButton.setText("Record")
+        self.ui.recordButton.setStyleSheet("QPushButton { color: black }")
 
         # Notify tcp/ip client that the movie is finished
         # if the client requested the movie.
@@ -1021,31 +992,6 @@ class Window(QtGui.QMainWindow):
                 self.tcpComplete.emit(message)
 
                 self.ui.lengthSpinBox.setValue(self.current_length)
-
-        # Update record button status.
-        self.ui.recordButton.setText("Record")
-        self.ui.recordButton.setStyleSheet("QPushButton { color: black }")
-
-        # Reenable live mode button
-        self.ui.liveModeCheckBox.setEnabled(True)
-
-        # Restart live view (if it was previously running)
-        if self.ui.liveModeCheckBox.isChecked():
-            self.startCamera() # Restart camera if in live mode
-        self.startLiveView()        
-
-    ## stopLiveView
-    #
-    # Turn off live view mode in hal and the modules
-    #
-    @hdebug.debug
-    def stopLiveView(self):
-        # Get the current state of the live mode check box
-        is_live_view = self.ui.liveModeCheckBox.isChecked()
-        
-        # Stop live view mode in all modules
-        for module in self.modules:
-            module.stopLiveView(is_live_view)
 
     ## toggleFilm
     #
@@ -1077,28 +1023,6 @@ class Window(QtGui.QMainWindow):
             if (reply == QtGui.QMessageBox.Yes):
                 self.startFilm()
 
-
-    ## toggleLiveView
-    #
-    # Turn on/off live mode. This is the only method that can change the internal attribute
-    # 'live_view'
-    #
-    # @ param boolean Dummy parameter.
-    @hdebug.debug
-    def toggleLiveView(self, boolean):        
-        # Get the state of the check box
-        is_live_view = self.ui.liveModeCheckBox.isChecked()
-        
-        if is_live_view:
-            # Start the camera
-            self.startCamera()
-            self.startLiveView() 
-
-        else:
-            # Stop the camera
-            self.stopCamera()
-            self.stopLiveView() 
-
     ## toggleSettings
     #
     # This is called when the user changes the parameters in the parameters GUI.
@@ -1107,28 +1031,15 @@ class Window(QtGui.QMainWindow):
     @hdebug.debug
     def toggleSettings(self):
         self.parameters = self.parameters_box.getCurrentParameters()
-
-        # Stop live view
-        if self.ui.liveModeCheckBox.isChecked():
-            self.stopCamera()
-        self.stopLiveView()
-        
-        # Try setting the parametersc
+        self.stopCamera()
         try:
             self.newParameters()
-
-        # FIXME: This should not catch all errors.
         except:
             hdebug.logText("bad parameters")
             QtGui.QMessageBox.information(self,
                                           "Bad parameters",
                                           traceback.format_exc())
-        self.parameters_box.updateParameters()
-
-        # Restart live view
-        if self.ui.liveModeCheckBox.isChecked():
-            self.startCamera()
-        self.startLiveView()
+        self.startCamera()
 
     ## updateFilenameLabel
     #
@@ -1155,7 +1066,7 @@ class Window(QtGui.QMainWindow):
         name += self.parameters.get("film.filetype")
 
         self.ui.filenameLabel.setText(name)
-        if os.path.exists(os.path.join(self.parameters.get("film.directory"), name)):
+        if os.path.exists(self.parameters.get("film.directory") + name):
             self.will_overwrite = True
             self.ui.filenameLabel.setStyleSheet("QLabel { color: red}")
         else:
@@ -1216,57 +1127,24 @@ if __name__ == "__main__":
     splash.show()
     app.processEvents()
 
-    # Load general settings.
-    general_parameters = params.halParameters("settings_default.xml")
-
-    # Load setup specific settings, just to get access to the
-    # setup name and the film (and logging) directory.
+    # Load settings.
     if (len(sys.argv) == 4):
         setup_name = sys.argv[1]
         hardware = params.hardware(sys.argv[2])
-        setup_parameters_filename = sys.argv[3]
+        parameters = params.halParameters(sys.argv[3])
     else:
-        setup_name = general_parameters.get("setup_name")
+        parameters = params.parameters("settings_default.xml")
+        setup_name = parameters.get("setup_name")
         hardware = params.hardware("xml/" + setup_name + "_hardware.xml")
-        setup_parameters_filename = "xml/" + setup_name + "_default.xml"
-
-    setup_parameters = params.parameters(setup_parameters_filename, True)
-
-    # Update general parameters with specific settings that are needed at startup.
-    general_parameters.set("setup_name", setup_name)
-    general_parameters.set("film.directory",
-                           setup_parameters.get("film.directory",
-                                                general_parameters.get("film.directory")))
-    extension = general_parameters.getp("film.extension")
-    if setup_parameters.has("film.extension"):
-        extension.setAllowed(setup_parameters.getp("film.extension").getAllowed())
-    general_parameters.set("film.logfile",
-                           setup_parameters.get("film.logfile",
-                                                general_parameters.get("film.logfile")))
+        parameters = params.halParameters("xml/" + setup_name + "_default.xml")
+    params.setSetupName(parameters, setup_name)
 
     # Start logger.
-    hdebug.startLogging(general_parameters.get("film.directory") + "logs/", "hal4000")
+    hdebug.startLogging(parameters.get("film.directory") + "logs/", "hal4000")
 
-    # Setup HAL and all the modules.
-    window = Window(hardware, general_parameters)
-
-    # Set the general parameters with the additional values
-    # added by HAL and the modules as the default parameters.
-    params.setDefaultParameters(general_parameters)
-
-    # Re-load setup specific parameters as HAL parameters.
-    setup_parameters = params.halParameters(setup_parameters_filename)
-
-    # Set the specific parameters as the new default.
-    params.setDefaultParameters(setup_parameters)
-    
-    # Add the specific parameters to the parameters box.
-    window.parameters_box.addParameters(setup_parameters)
-
-    # Initialize with these parameters.
+    # Load app.
+    window = Window(hardware, parameters)
     window.toggleSettings()
-
-    # Hide splash screen and start.
     splash.hide()
     window.show()
 

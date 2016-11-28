@@ -99,6 +99,7 @@ class TiffWriter:
         image_offset =  imagej_offset + len(self.imagej_desc)
 
         # number of tags
+		# self.writeTag(ImageDescription, "ascii", len(self.imagej_desc), 0) ORIGINAL tag, Tunc
         self.fp.write(struct.pack("H", num_tags))
 
         if (self.frames == 0):
@@ -111,7 +112,7 @@ class TiffWriter:
         self.writeTag(BitsPerSample, "short", 1, 8 * self.bytes_per_pixel)
         self.writeTag(Compression, "short", 1, 1)
         self.writeTag(PhotometricInterpretation, "short", 1, 1)
-        self.writeTag(ImageDescription, "ascii", len(self.imagej_desc), imagej_offset)
+     	self.writeTag(ImageDescription, "ascii", 1, 0)
         self.writeTag(StripOffsets, "long", 1, image_offset)
         self.writeTag(SamplesPerPixel, "short", 1, 1)
         self.writeTag(RowsPerStrip, "long", 1, y_size)

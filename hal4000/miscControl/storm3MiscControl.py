@@ -16,7 +16,6 @@ import sys
 from PyQt4 import QtCore, QtGui
 
 import miscControl
-import sc_library.parameters as params
 
 # Debugging
 import sc_library.hdebug as hdebug
@@ -43,20 +42,6 @@ class AMiscControl(miscControl.MiscControl):
         self.move_timer = QtCore.QTimer(self)
         self.move_timer.setInterval(50)
         self.smc100 = SMC100.SMC100(port = "COM10")
-
-        # Add parameters
-        misc_params = parameters.addSubSection("misc")
-        misc_params.add("jog_size", 0.01)
-        misc_params.add("epi_position", 17.92)
-        misc_params.add("tirf_position", 20.76)
-
-        misc_params.add("filter_names", params.ParameterString("Filter names",
-                                                               "filter_names",
-                                                               "1,2,3,4,5,6"))
-        misc_params.add("filter_position", params.ParameterRangeInt("Filter position",
-                                                                    "filter_position",
-                                                                    0, 0, 5))
-
 
         # UI setup
         self.ui = miscControlsUi.Ui_Dialog()
@@ -168,9 +153,9 @@ class AMiscControl(miscControl.MiscControl):
     @hdebug.debug
     def handleClearROI(self, bool):
         self.start_x = 0
-        self.stop_x = self.parameters.get("camera1.x_pixels", 512)
+        self.stop_x = self.parameters.get("camera1.x_pixels")
         self.start_y = 0
-        self.stop_y = self.parameters.get("camera1.y_pixels", 512)
+        self.stop_y = self.parameters.get("camera1.y_pixels")
         self.updateROIText()
 
     @hdebug.debug
@@ -265,7 +250,7 @@ class AMiscControl(miscControl.MiscControl):
         self.epi_position = parameters.get("misc.epi_position")
         self.tirf_position = parameters.get("misc.tirf_position")
 
-        names = parameters.get("misc.filter_names").split(",")
+        names = parameters.get("misc.filter_names")
         if (len(names) == 6):
             for i in range(6):
                 self.filters[i].setText(names[i])

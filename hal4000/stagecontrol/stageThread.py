@@ -23,9 +23,6 @@ from PyQt4 import QtCore
 #
 # The motorized stage class must provide the following methods:
 #
-# getSpeed()
-#   Returns what to use for the stage_speed parameter.
-#
 # getStatus()
 #   Returns True if the stage is alive and running, False otherwise.
 #
@@ -45,9 +42,7 @@ from PyQt4 import QtCore
 #   Returns [x, y, z] stage position (in um).
 #
 # setVelocity(vx, vy)
-#   Set maximum stage velocity in x and y. Ideally this would be
-#   in mm/sec but this is not done very consistently and/or is 
-#   not possible for some stages.
+#   Set maximum stage velocity in x and y (in mm/sec).
 #
 # shutDown()
 #   Cleanup prior to the program quitting.
@@ -92,14 +87,7 @@ class QStageThread(QtCore.QThread):
         self.mutex.lock()
         self.motion_buffer = ["drag", x, y]
         self.mutex.unlock()
-
-    ## getSpeed
-    #
-    # @return A params.Parameter object describing the stage speed.
-    #
-    def getSpeed(self):
-        return self.stage.getSpeed()
-    
+        
     ## getStatus
     #
     # @return True/False if we can actually talk to the stage hardware.

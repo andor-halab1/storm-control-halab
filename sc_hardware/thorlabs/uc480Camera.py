@@ -4,14 +4,11 @@
 #
 # Captures pictures from a Thorlabs uc480 (software) series cameras.
 #
-# FIXME:
-#   This only works with the uc480 Version 4.20 (or earlier) software.
-#   It will appear to work, then crash if you try and run it using
-#   ThorCam. If you install ThorCam you'll need to uninstall it
-#   first before installing the uc480 software. This software is
-#   available under the "Archive" tag in the ThorCam Software page.
+# NOTE: For reasons unclear, but perhaps due to a change in
+#       ctypes, this module only works well with (64 bit) Python 
+#       versions that are <= 2.7.8.
 #
-# Hazen 08/16
+# Hazen 02/13
 #
 
 import ctypes

@@ -33,14 +33,14 @@
 | QPD | DLL | Thorlabs | Worked, not used |
 | Servo | DLL | Phidgets | Worked, not used |
 | SLM | Video | Holoeye | Works, in use |
-| Stage | RS-232, HTTP | LUDL | Works, in use |
+| Stage | RS-232 | LUDL | Worked, not used |
 | Stage | RS-232 | Applied Scientific Instrumentation | Worked, not used |
 | Stage | RS-232 | Marzhauser | Works, in use |
 | Stage | RS-232 | Prior | Works, in use |
 | Stage | DLL | Marzhauser | Works, in use |
 | Thum  | File | Practical Design Group | Worked, not used |
 | USB Camera | DLL | Multiple | Worked, not used |
-| USB Camera | DLL | Thorlabs | Works, in use (requires uc480 Version 4.20)|
+| USB Camera | DLL | Thorlabs | Works, in use |
 
 #### Interface Notes ####
 

@@ -23,11 +23,10 @@ class MCLVZControl(object):
     # @param line The analog output line.
     # @param scale (Optional) Conversion from microns to volts (default is 10.0/250.0).
     #
-    def __init__(self, board, line, trigger_source = None, scale = 10.0/250.0):
+    def __init__(self, board, line, scale = 10.0/250.0):
         self.board = board
         self.line = line
         self.scale = scale
-        self.trigger_source = trigger_source
         self.ni_task = nicontrol.AnalogOutput(self.board, self.line)
         self.ni_task.startTask()
 
@@ -36,6 +35,7 @@ class MCLVZControl(object):
     def shutDown(self):
         self.ni_task.stopTask()
         self.ni_task.clearTask()
+        #pass
 
     ## zMoveTo
     #
@@ -54,39 +54,6 @@ class MCLVZControl(object):
             self.ni_task = nicontrol.AnalogOutput(self.board, self.line)
             self.ni_task.startTask()
 
-    ## startHardwareTimedMove
-    #
-    # @ param z positions (in um)
-    #
-    def startHardwareTimedMove(self, z_positions):
-        # Clean up the previous task
-        self.ni_task.stopTask()
-        self.ni_task.clearTask()
-
-        # Create hardware timed task
-        self.ni_task = nicontrol.AnalogWaveformOutput(self.board, self.line)
-
-        # Set waveform
-        voltages = z_positions * self.scale
-        
-        # Convert to a list of channel values and write
-        self.ni_task.setWaveform(voltages, 100, clock = self.trigger_source)
-        # NOTE: the frequency is hardcoded to a maximum allowed value (arbitrary)
-
-        self.ni_task.startTask()
-
-    ## cleanupHardwareTimedMove
-    #
-    #
-    def cleanupHardwareTimedMove(self):
-        # Clean up the previous task
-        self.ni_task.stopTask()
-        self.ni_task.clearTask()
-
-        # Create the original single-write task
-        self.ni_task = nicontrol.AnalogOutput(self.board, self.line)
-        self.ni_task.startTask()
-            
 #
 # Testing
 # 

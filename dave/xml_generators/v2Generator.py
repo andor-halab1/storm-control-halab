@@ -325,6 +325,7 @@ class XMLRecipeParser(QtGui.QWidget):
     def parseXMLRecipe(self):
         # Parse major components of recipe file
         for child in self.main_element:
+            print child
             if child.tag == "command_sequence":
                 self.command_sequences.append(child)
             if child.tag == "item":
@@ -413,7 +414,8 @@ class XMLRecipeParser(QtGui.QWidget):
                                                                                  "*.xml"))
         try:
             out_fp = open(self.xml_sequence_file_path, "w")
-            rough_string = ElementTree.tostring(self.da_primitives_xml, 'utf-8')        
+            rough_string = ElementTree.tostring(self.da_primitives_xml, 'utf-8')
+            #rough_string = ElementTree.tostring(self.flat_sequence, 'utf-8')
             reparsed = minidom.parseString(rough_string)
             out_fp.write(reparsed.toprettyxml(indent="  ", encoding = "ISO-8859-1"))
             out_fp.close()

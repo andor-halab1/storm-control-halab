@@ -98,9 +98,8 @@ def infToXmlObject(filename):
             m = parameters_re.match(line)
             if m:
                 xml.set("parameters_file", m.group(1))
-
-    pos_string = "{0:.2f},{1:.2f},0.00".format(stage_x, stage_y)
-    xml.set("acquisition.stage_position", pos_string)
+                
+    xml.set("acquisition.stage_position", [stage_x, stage_y, 0.0])
     return xml
 
 #

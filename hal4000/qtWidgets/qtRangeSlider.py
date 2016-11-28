@@ -196,7 +196,6 @@ class QRangeSlider(QtGui.QWidget):
     # @param event A PyQt event.
     #
     def resizeEvent(self, event):
-        QtGui.QWidget.resizeEvent(self, event)
         self.updateDisplayValues()
 
     ## setEmitWhileMoving
@@ -275,7 +274,7 @@ class QHRangeSlider(QRangeSlider):
     #
     def __init__(self, slider_range = None, values = None, parent = None):
         QRangeSlider.__init__(self, slider_range, values, parent)
-        if parent is not None:
+        if (not parent):
             self.setGeometry(200, 200, 200, 100)
 
     ## getPos
@@ -339,7 +338,7 @@ class QVRangeSlider(QRangeSlider):
     #
     def __init__(self, slider_range = None, values = None, parent = None):
         QRangeSlider.__init__(self, slider_range, values, parent)
-        if parent is not None:
+        if (not parent):
             self.setGeometry(200, 200, 100, 200)
 
     ## getPos

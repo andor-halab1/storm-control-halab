@@ -42,10 +42,10 @@ class Channel(QtCore.QObject):
         self.shutter_data = []
         self.used_for_film = False
         self.was_on = False
-        self.bad_module = False
 
         # Create variables for communication with the various hardware modules.
         # This will add the attributes in the list to this class.
+        bad_module = False
         for name in ["amplitude_modulation", "analog_modulation", "digital_modulation", "mechanical_shutter"]:
 
             h_module = False
@@ -64,7 +64,7 @@ class Channel(QtCore.QObject):
 
                 # Check if the hardware / control module actual works.
                 if not h_module.getStatus():
-                    self.bad_module = True
+                    bad_module = True
 
             # Add the attribute to the class.
             setattr(self, name, h_module)
@@ -89,7 +89,7 @@ class Channel(QtCore.QObject):
                                                               channel.color,
                                                               channels_box)
 
-        if self.bad_module:
+        if bad_module:
             self.channel_ui.disableChannel()
         else:
             self.channel_ui.onOffChange.connect(self.handleOnOffChange)
@@ -208,10 +208,10 @@ class Channel(QtCore.QObject):
         self.parameters.get("default_power")[self.channel_id] = power
         self.channel_ui.updatePowerText(power_string)
 
-        if self.amplitude_modulation:
-            self.amplitude_modulation.setAmplitude(self.channel_id, new_power)
-
         if (self.channel_ui.isOn()):
+            if self.amplitude_modulation:
+                self.amplitude_modulation.setAmplitude(self.channel_id, new_power)
+
             if self.mechanical_shutter:
                 if (new_power == self.min_amplitude):
                     self.mechanical_shutter.shutterOff(self.channel_id)
@@ -231,14 +231,14 @@ class Channel(QtCore.QObject):
             new_power = int(round(new_power * self.amplitude_range + self.min_amplitude))
 
         # Update channel settings.
-        self.channel_ui.newSettings(parameters.get("on_off_state")[self.channel_id],
+        self.channel_ui.newSettings(parameters.on_off_state[self.channel_id],
                                     new_power)
 
         # Update buttons.
         self.channel_ui.setupButtons(parameters.get("power_buttons")[self.channel_id])
 
         # Update shutter data, if available.
-        if (parameters.get("shutter_frames", -1) != -1):
+        if (parameters.get("shutter_frames") != -1):
             self.shutter_data = parameters.get("shutter_data")[self.channel_id]
 
     ## newShutters
@@ -320,12 +320,10 @@ class Channel(QtCore.QObject):
     # Called at the start of filming.
     #
     def startFilm(self):
-        if not self.bad_module:
-            if self.channel_ui.isEnabled(): # Enabled only if live view
-                self.was_on = self.channel_ui.isOn() # Record state to restore after movie
+        if self.channel_ui.isEnabled():
+            self.was_on = self.channel_ui.isOn()
 
             if self.used_for_film:
-                self.channel_ui.enableChannel() # Turn on channel (if live view turned it off)
                 self.channel_ui.setOnOff(True)
                 self.channel_ui.startFilm()
                 if self.amplitude_modulation:
@@ -337,19 +335,6 @@ class Channel(QtCore.QObject):
                 
         self.filming = True
 
-    ## startLiveView
-    #
-    # Configure illumination for live view
-    #
-    def startLiveView(self, live_view):
-        if not self.bad_module and live_view:
-            # Enable the channel
-            self.channel_ui.enableChannel()
-            self.channel_ui.setOnOff(self.was_on)
-
-        if not live_view:
-            self.channel_ui.disableChannel()
-    
     ## stopFilm
     #
     # Called at the end of filming to reset things.
@@ -363,16 +348,6 @@ class Channel(QtCore.QObject):
         else:
             self.channel_ui.stopFilm()
             self.channel_ui.setOnOff(self.was_on)
-
-    ## stopLiveView
-    #
-    # Cleanup illumination settings at the end of the live view
-    #
-    def stopLiveView(self, live_view):
-        if not self.bad_module and live_view:
-            # record state of the channel
-            self.was_on = self.channel_ui.isOn()
-            self.channel_ui.disableChannel()
 
 #
 # The MIT License

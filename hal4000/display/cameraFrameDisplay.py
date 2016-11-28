@@ -15,7 +15,6 @@ from PyQt4 import QtCore, QtGui
 
 # Debugging
 import sc_library.hdebug as hdebug
-import sc_library.parameters as params
 
 # Camera Helper Modules
 import qtWidgets.qtColorGradient as qtColorGradient
@@ -69,44 +68,15 @@ class CameraFeedDisplay(QtGui.QFrame):
         self.sync_values_by_feedname = None
         self.sync_values_by_params = {}
 
-        #
-        # Add display specific parameters, if they are not already present.
-        # 
-        # Note these parameters are feed specific and not display specific so two
-        # different viewers that are displaying the same feed will be changing
-        # the same parameters.
-        #
-        if not self.parameters.has("colortable"):
-            self.parameters.add("colortable", params.ParameterSetString("Color table",
-                                                                        "colortable",
-                                                                        "idl5.ctbl",
-                                                                        self.color_tables.getColorTableNames()))
-            self.parameters.add("drag_multiplier", params.ParameterFloat("",
-                                                                         "drag_multiplier",
-                                                                         0.16,
-                                                                         is_mutable = False,
-                                                                         is_saved = False))
-            self.parameters.add("scalemax", params.ParameterInt("",
-                                                                "scalemax",
-                                                                2000,
-                                                                is_mutable = False))        
-            self.parameters.add("scalemin", params.ParameterInt("",
-                                                                "scalemin",
-                                                                100,
-                                                                is_mutable = False))
-            self.parameters.add("sync", 0)
-
         # UI setup.
         self.ui = cameraDisplayUi.Ui_Frame()
         self.ui.setupUi(self)
 
         self.ui.cameraScrollArea.setStyleSheet("QScrollArea { background-color: black } ")
-        
-        self.ui.rangeSlider = qtRangeSlider.QVRangeSlider()
+        self.ui.rangeSlider = qtRangeSlider.QVRangeSlider(parent = self.ui.rangeSliderWidget)
         layout = QtGui.QGridLayout(self.ui.rangeSliderWidget)
-        layout.setMargin(1)
         layout.addWidget(self.ui.rangeSlider)
-        self.ui.rangeSliderWidget.setLayout(layout)
+        self.ui.rangeSlider.setGeometry(0, 0, self.ui.rangeSliderWidget.width(), self.ui.rangeSliderWidget.height())
         self.ui.rangeSlider.setRange([0.0, self.max_intensity, 1.0])
         self.ui.rangeSlider.setEmitWhileMoving(True)
 
@@ -119,7 +89,6 @@ class CameraFeedDisplay(QtGui.QFrame):
 
         self.ui.cameraShutterButton.hide()
         self.ui.recordButton.hide()
-
         self.ui.syncLabel.hide()
         self.ui.syncSpinBox.hide()
 
@@ -519,7 +488,7 @@ class CameraFrameDisplay(CameraFeedDisplay):
         self.camera_widget.dragStart.connect(self.handleDragStart)
         self.camera_widget.dragMove.connect(self.handleDragMove)
         self.camera_widget.roiSelection.connect(self.handleROISelection)
-
+        
         self.ui.cameraShutterButton.clicked.connect(self.handleCameraShutter)
 
     ## getRecordButton
@@ -536,7 +505,8 @@ class CameraFrameDisplay(CameraFeedDisplay):
     #
     @hdebug.debug
     def handleCameraShutter(self, boolean):
-        self.cameraShutter.emit(self.feed_controller.getCamera(self.feed_name))
+        if feeds.isCamera(self.feed_name):
+            self.cameraShutter.emit(self.feed_name)
 
     ## handleDisplayCaptured
     #

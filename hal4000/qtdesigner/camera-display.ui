@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>645</width>
-    <height>545</height>
+    <height>546</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -75,7 +75,7 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>569</width>
+           <width>570</width>
            <height>512</height>
           </rect>
          </property>
@@ -86,13 +86,13 @@
        <widget class="QWidget" name="scaleWidget" native="true">
         <property name="minimumSize">
          <size>
-          <width>70</width>
+          <width>65</width>
           <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>70</width>
+          <width>16777215</width>
           <height>16777215</height>
          </size>
         </property>
@@ -132,7 +132,7 @@
              <widget class="QWidget" name="rangeSliderWidget" native="true">
               <property name="minimumSize">
                <size>
-                <width>10</width>
+                <width>9</width>
                 <height>0</height>
                </size>
               </property>
@@ -140,12 +140,6 @@
             </item>
             <item>
              <widget class="QFrame" name="colorFrame">
-              <property name="minimumSize">
-               <size>
-                <width>10</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="maximumSize">
                <size>
                 <width>20</width>

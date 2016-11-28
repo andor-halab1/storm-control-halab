@@ -31,7 +31,6 @@ class FW102C(RS232.RS232):
 
             # see if the filter wheel is connected
             assert not(self.getID() == None)
-            self.setPosition(1)
 
         except Exception as e:
             print "FW102C Error:", type(e), str(e)

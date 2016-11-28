@@ -20,7 +20,7 @@
 #    Finds sum signal, if it is too low, otherwise does nothing.
 #
 # moveStageAbs(pos)
-#    Moves the stage to the position (in um) given by pos
+#    Moves the stage to the position (in um) given by pos.
 #
 # moveStageRel(size)
 #    Moves the stage relative to it current position by size um.
@@ -104,7 +104,6 @@ import sc_library.hdebug as hdebug
 class StageQPDThread(QtCore.QThread):
     controlUpdate = QtCore.pyqtSignal(float, float, float, float, bool)
     foundSum = QtCore.pyqtSignal(float)
-    foundFocus = QtCore.pyqtSignal(bool)
     lockStatusRequest = QtCore.pyqtSignal(bool)
     recenteredPiezo = QtCore.pyqtSignal()
 
@@ -131,7 +130,6 @@ class StageQPDThread(QtCore.QThread):
         self.count = 0
         self.debug = 1
         self.find_sum = False
-        self.find_focus = False # A flag to indicate focus scan mode
         self.locked = 0
         self.max_pos = 0
         self.max_sum = 0
@@ -154,11 +152,6 @@ class StageQPDThread(QtCore.QThread):
         self.sum_thresh = self.sum_min
         self.is_locked_buffer = deque([False]*self.buffer_length)
         self.is_locked = False
-        self.last_locked_pos = False
-        self.scan_range = float('inf') # The range for a focus lock scan
-
-        self.num_checkedout_stages = 0
-        self.was_locked = False
         
         # center the stage
         # self.newZCenter(z_center)
@@ -211,51 +204,6 @@ class StageQPDThread(QtCore.QThread):
             print "QPD/Camera are frozen?"
             return "failed"
 
-    ## getStage
-    #
-    # @return stage The stage class instance
-    #
-    def getStage(self):
-        # First check for outstanding stages. Debug purposes only
-        if self.num_checkedout_stages > 0:
-            print "ERROR: More than one request for a stage!!!"
-
-        # Return stage
-        self.num_checkedout_stages += 1 # Increment checkedout stages
-        self.stage_mutex.lock() # Lock the stage mutex
-        self.was_locked = self.locked # Store the current state of the focuslock
-        self.locked = False # Send flag to run method to stop updating stage
-        return self.stage
-
-    ## releaseStage
-    #
-    # Release a checkedout stage
-    #
-    def releaseStage(self):
-        self.stage_mutex.unlock() # Release the stage mutex
-        self.num_checkedout_stages -= 1
-        self.locked = self.was_locked # Return the focus lock to its previous state
-
-    ## getStageZ
-    #
-    # @return The current z position (in um)
-    #
-    @hdebug.debug
-    def getStageZ(self):
-        return self.stage_z
-
-    ## findFocus
-    #
-    # Start a search for the focus
-    #
-    @hdebug.debug
-    def findFocus(self, scan_range):
-        self.qpd_mutex.lock()
-        self.find_focus = True
-        self.moveStageAbs(self.stage_z - scan_range)
-        self.resetBuffer()
-        self.qpd_mutex.unlock()
-
     ## findSumSignal
     #
     # If sum signal is below a threshold start the sum signal search,
@@ -282,9 +230,6 @@ class StageQPDThread(QtCore.QThread):
     def moveStageAbs(self, new_z):
         self.stage_mutex.lock()
         if new_z != self.stage_z:
-            # Coerce requested value to stage range
-            new_z = max(min(new_z,2*self.z_center),0)
-            # Update stage value
             self.stage_z = new_z
             self.stage.zMoveTo(self.stage_z)
         self.stage_mutex.unlock()
@@ -346,7 +291,6 @@ class StageQPDThread(QtCore.QThread):
     #
     def run(self):
         while(self.running):
-            # get current focus lock measurements
             [power, x_offset, y_offset] = self.qpdScan()
 
             self.qpd_mutex.lock()
@@ -355,22 +299,6 @@ class StageQPDThread(QtCore.QThread):
             if (power > 0):
                 self.offset = x_offset / power
             self.unacknowledged = 0
-
-            # Determine focus lock status and update buffer
-            if self.locked:
-                is_locked_now = ( (abs(self.offset - self.target) < self.offset_thresh) and
-                                  (power > self.sum_thresh) ) 
-                self.is_locked_buffer.popleft()
-                self.is_locked_buffer.append(is_locked_now)
-                self.is_locked = (self.is_locked_buffer.count(True) == self.buffer_length)
-
-                # Record lock position if locked
-                if self.is_locked:
-                    self.last_locked_pos = self.stage_z
-            else:
-                self.is_locked = False
-
-            # Handle movement/requested scans
 
             # scan for sum signal.
             if self.find_sum:
@@ -392,19 +320,6 @@ class StageQPDThread(QtCore.QThread):
                     else:
                         self.moveStageRel(1.0)
 
-            # scan for focus lock position.
-            elif self.find_focus:
-                if is_locked_now: # If focused, stop scan
-                    self.find_focus = False # Reset status
-                    self.foundFocus.emit(is_locked_now)
-                elif self.stage_z >= min((2*self.z_center), self.last_locked_pos + self.scan_range): # Stop the scan if the maximimum scan limit has been exceeded
-                    print "Scan was unsuccessful"
-                    self.moveStageAbs(self.last_locked_pos) # Return to the last locked position
-                    self.find_focus = False
-                    self.foundFocus.emit(False) # Return False
-                else:
-                    self.moveStageRel(0.05) # Otherwise step up 50 nm
-
             # update position, if locked.
             else:
                 if self.locked and (power > self.sum_min):
@@ -415,6 +330,12 @@ class StageQPDThread(QtCore.QThread):
                             self.moveStageRel(self.lock_fn(self.offset - self.target))
                     else:
                         self.moveStageRel(self.lock_fn(self.offset - self.target))
+
+                    # Set buffer and determined lock status
+                    is_locked_now = (abs(self.offset - self.target) < self.offset_thresh) and (power > self.sum_thresh)
+                    self.is_locked_buffer.popleft()
+                    self.is_locked_buffer.append(is_locked_now)
+                    self.is_locked = (self.is_locked_buffer.count(True) == self.buffer_length) # 3/4: Kludge to account for periodic jumps in camera based focus lock
                     
             #self.emit(QtCore.SIGNAL("controlUpdate(float, float, float, float)"), x_offset, y_offset, power, self.stage_z)
             self.controlUpdate.emit(x_offset, y_offset, power, self.stage_z, self.is_locked)
@@ -694,6 +615,185 @@ class StageCamThread(StageQPDThread):
         self.cam_mutex.unlock()
         return data
 
+
+## StageCrispThread
+#
+# Serial communications to MFC2000 and Crisp thread.
+#
+# This is a PyQt thread for MFC2000 and Crisp.
+# It is a subclass of stageQPDThread.
+#
+# MFC2000 is a class that uses MFC2000 firmware to carry out tasks
+#    that you would normally achieve by controlling multiple components.
+# It has the following methods:
+#
+#   recenter()
+#      pass
+#
+#   IoG_Cal()
+#      Log-Amp calibration.
+#
+#   dither()
+#      Dither.
+#
+#   gain_Cal()
+#      Gain calibration.
+#
+#   setCrispOffset()
+#      Set the offset.
+#
+#   getReady()
+#      Get ready.
+#
+#   idle()
+#      Idle.
+#
+#   moveStageAbs()
+#      Moves the stage to the position (in um) given by pos.
+#
+#   moveStageRel()
+#      Moves the stage relative to it current position by distance (in um).
+#
+#   startLock()
+#       Start lock by a simple serial command.
+#
+#   stopLock()
+#       Stop lock by a simple serial command.
+#
+#   shutDown()
+#      Perform whatever cleanup is necessary to stop communications with MFC2000.
+#
+class StageCrispThread(StageQPDThread):
+    @hdebug.debug
+    def __init__(self, qpd, stage, controller, lock_fn, min_sum, z_center, buffer_length, offset_thresh, slow_stage = False, parent = None):
+        StageQPDThread.__init__(self,
+                                qpd,
+                                stage,
+                                lock_fn,
+                                min_sum,
+                                z_center,
+                                buffer_length,
+                                offset_thresh,
+                                slow_stage = slow_stage,
+                                parent = parent)
+
+        self.controller = controller
+        self.controller_mutex = QtCore.QMutex()
+        self.controller_z = self.controller.position()
+        self.controller_offset = self.controller.read_Offset()
+        self.controller_err = self.controller.read_Err()
+
+    def run(self):
+        while(self.running):
+
+            self.controller_mutex.lock()
+            self.controller_z = self.controller.position()
+            self.controller_offset = self.controller.read_Offset()
+            self.controller_err = self.controller.read_Err()
+            self.controller_mutex.unlock()
+            
+            [power, x_offset, y_offset] = self.qpdScan()
+
+            self.qpd_mutex.lock()
+            self.sum = power
+
+            if (power > 0):
+                self.offset = x_offset / power
+            self.unacknowledged = 0
+
+            # scan for sum signal.
+            if self.find_sum:
+                if (power > self.max_sum):
+                    self.max_sum = power
+                    self.max_pos = self.stage_z
+                if (self.max_sum > self.requested_sum) and (power < (0.5 * self.max_sum)):
+                    self.find_sum = False
+                    self.foundSum.emit(self.max_sum)
+                else:
+                    if (self.stage_z >= (2 * self.z_center)):
+                        if (self.max_sum > 0):
+                            pass
+                        else:
+                            pass
+                        self.find_sum = False
+                        self.foundSum.emit(self.max_sum)
+                    else:
+                        pass
+
+            # update position, if locked.
+            else:
+                if self.locked and (power > self.sum_min):
+                    if self.slow_stage:
+                        self.count += 1
+                        if (self.count > 2):
+                            self.count = 0
+                    else:
+                        pass
+
+                    # Set buffer and determined lock status
+                    is_locked_now = (abs(self.offset - self.target) < self.offset_thresh) and (power > self.sum_thresh)
+                    self.is_locked_buffer.popleft()
+                    self.is_locked_buffer.append(is_locked_now)
+                    self.is_locked = (self.is_locked_buffer.count(True) == self.buffer_length) # 3/4: Kludge to account for periodic jumps in camera based focus lock
+                    
+            self.controlUpdate.emit(x_offset, y_offset, power, self.stage_z, self.is_locked)
+            self.qpd_mutex.unlock()
+            self.msleep(50)
+
+    def recenter(self):
+        pass
+
+    def IoG_Cal(self):
+        #self.controller_mutex.lock()
+        self.controller.IoG_Cal()
+        #self.controller_mutex.unlock()
+
+    def dither(self):
+        self.controller_mutex.lock()
+        self.controller.dither()
+        self.controller_mutex.unlock()
+
+    def gain_Cal(self):
+        #self.controller_mutex.lock()
+        self.controller.gain_Cal()
+        #self.controller_mutex.unlock()
+
+    def setCrispOffset(self, delta_os = 0.0):
+        self.controller_mutex.lock()
+        self.controller.set_Offset(self.controller_offset + delta_os)
+        self.controller_mutex.unlock()
+
+    def getReady(self):
+        self.controller_mutex.lock()
+        self.controller.getReady()
+        self.controller_mutex.unlock()
+        
+    def idle(self):
+        #self.controller_mutex.lock()
+        self.controller.idle()
+        #self.controller_mutex.unlock()
+
+    def startLock(self):
+        self.controller_mutex.lock()
+        self.controller.getFocus()
+        self.controller_mutex.unlock()
+
+    def stopLock(self):
+        self.controller_mutex.lock()
+        self.controller.getRelax()
+        self.controller_mutex.unlock()
+
+    def moveStageAbs(self, new_z):
+        self.controller_mutex.lock()
+        if new_z != self.controller_z:
+            self.controller.goAbsolute(new_z)
+        self.controller_mutex.unlock()
+
+    def moveStageRel(self,dz):
+        self.controller_mutex.lock()
+        self.controller.goRelative(dz)
+        self.controller_mutex.unlock()
+        
 #
 # The MIT License
 #

@@ -17,10 +17,10 @@
 import ctypes
 import numpy
 import time
-import sc_library.halExceptions as halExceptions
 
 sdk3 = None
 sdk3_utility = None
+
 
 # Loading the DLL
 
@@ -34,10 +34,7 @@ def loadSDK3DLL(path):
 
 def check(value, fn_name = "??", command = "??"):
     if (value != 0):
-        error_message = "Error", value, "when calling function", fn_name, "with command", command
-        print error_message
-        raise AndorException(error_message) # Raise a hardware error
-        
+        print "Error", value, "when calling function", fn_name, "with command", command
         return False
     else:
         return True
@@ -184,8 +181,10 @@ def setFloat(handle, command, float_value):
     success, min_value, max_value = getFloatRange(handle, command)
     if float_value < min_value:
         float_value = min_value
+        print "Coerced " + str(command) + " to " + str(float_value)
     elif float_value > max_value:
         float_value = max_value
+        print "Coerced " + str(command) + " to " + str(float_value)
 
     return check(sdk3.AT_SetFloat(handle, 
                                   ctypes.c_wchar_p(command), 
@@ -219,9 +218,9 @@ def setString(handle, command, string):
 #
 # Camera exception.
 #
-class AndorException(halExceptions.HardwareException):
+class AndorException(Exception):
     def __init__(self, message):
-        halExceptions.HardwareException.__init__(self, message)
+        Exception.__init__(self, message)
 
 
 ## AndorRawData
@@ -407,7 +406,6 @@ class SDK3Camera:
             return False
 
     def setProperty(self, pname, ptype, pvalue):
-        #print "Setting: " + str(pname) + " " + str(ptype) + ": " + str(pvalue)
         # Handle a few special cases:
         if pname is "ExposureTime":
             setFloat(self.camera_handle, pname, pvalue)
@@ -416,8 +414,7 @@ class SDK3Camera:
             print "WARNING: Setting FrameRate is not supported"
             setFloat(self.camera_handle, pname, pvalue)
             setFloat(self.camera_handle, "ExposureTime", 0) # Force exposure time to lowest possible value
-            raise AndorException("FrameRate is not supported") # Raise a hardware error
-
+            pass
         else:
 
             if self.isEnumerated(pname):

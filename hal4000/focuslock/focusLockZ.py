@@ -24,7 +24,6 @@ from PyQt4 import QtCore, QtGui
 import qtWidgets.qtAppIcon as qtAppIcon
 
 import halLib.halModule as halModule
-import sc_library.parameters as params
 
 # Debugging
 import sc_library.hdebug as hdebug
@@ -56,7 +55,7 @@ class FocusLockZ(QtGui.QDialog, halModule.HalModule):
         else:
             self.have_parent = False
 
-        # General.
+        # general
         self.offset_file = 0
         self.parameters = parameters
         self.jumpsize = 0.0
@@ -68,44 +67,6 @@ class FocusLockZ(QtGui.QDialog, halModule.HalModule):
         self.focus_check_timer.timeout.connect(self.tcpPollFocusStatus)
         self.num_focus_checks = 0
         self.accum_focus_checks = 0
-
-        # Focus lock specific parameters.
-        flock_params = self.parameters.get("focuslock")
-        flock_params.add("qpd_mode", params.ParameterRangeInt("Current mode",
-                                                              "qpd_mode",
-                                                              0, 0, 6,
-                                                              is_mutable = False,
-                                                              is_saved = False))
-        
-        flock_params.add("cal_frames_to_pause", params.ParameterRangeInt("Frames to pause between steps (z-calibration)",
-                                                                         "cal_frames_to_pause", 2, 1, 100))        
-        flock_params.add("cal_deadtime", params.ParameterRangeInt("Frames before to pause at start (z-calibration)",
-                                                                  "cal_deadtime", 20, 1, 100))
-        flock_params.add("cal_range", params.ParameterRangeFloat("Distance +- z to move in nanometers (z-calibration)",
-                                                                 "cal_range", 600, 100, 5000))
-        flock_params.add("cal_step_size", params.ParameterRangeFloat("Step size in z in nanometers (z-calibration)",
-                                                                     "cal_step_size", 10, 1, 100))
-        
-        flock_params.add("olock_bracket_step", params.ParameterRangeFloat("Distance +- z in nanometers (optimal lock)",
-                                                                          "olock_bracket_step", 1000.0, 10.0, 10000.0))
-        flock_params.add("olock_quality_threshold", params.ParameterRangeFloat("Minimum 'quality' signal (optimal lock)",
-                                                                       "olock_quality_threshold", 0.0, 0.0, 1000.0))        
-        flock_params.add("olock_scan_step", params.ParameterRangeFloat("Step size in z in nanometers (optimal lock)",
-                                                                       "olock_scan_step", 100.0, 10.0, 1000.0))
-        flock_params.add("olock_scan_hold", params.ParameterRangeInt("Frames to pause between steps (optimal lock)",
-                                                                     "olock_scan_hold", 10, 1, 100))
-
-        flock_params.add("zscan_focus_lock", params.ParameterSetBoolean("Lock focus between steps (z-scan)",
-                                                                        "zscan_focus_lock", False))        
-        flock_params.add("zscan_frames_to_pause", params.ParameterRangeInt("Frames to pause between steps (z-scan)",
-                                                                           "zscan_frames_to_pause", 100, 1, 100000))
-        flock_params.add("zscan_start", params.ParameterRangeFloat("Piezo starting position in micros (z-scan)",
-                                                                   "zscan_start", 50.0, 0.0, 1000.0))
-        flock_params.add("zscan_step", params.ParameterRangeFloat("Piezo step size in microns (z-scan)",
-                                                                   "zscan_step", 0.1, 0.0, 100.0))
-        flock_params.add("zscan_stop", params.ParameterRangeFloat("Piezo stopping position (z-scan)",
-                                                                  "zscan_stop", 51.0, 0.0, 1000.0))
-
         
     ## cleanup
     #
@@ -286,17 +247,6 @@ class FocusLockZ(QtGui.QDialog, halModule.HalModule):
         self.tcp_message.addResponse("found_sum", lock_sum)
         self.tcpComplete.emit(self.tcp_message)
 
-    ## handleFoundFocus
-    #
-    # Notify external program (via TCP/IP) that the focus has been found.
-    #
-    # @param focus_status The focus status.
-    #
-    @hdebug.debug
-    def handleFoundFocus(self, focus_status):
-        self.tcp_message.addResponse("focus_status", focus_status)
-        self.tcpComplete.emit(self.tcp_message)
-
     ## handleJumpPButton
     #
     # Handles the jump+ button.
@@ -460,14 +410,6 @@ class FocusLockZ(QtGui.QDialog, halModule.HalModule):
         if film_writer:
             film_writer.getParameters().set("acquisition.lock_target", self.lock_display1.getLockTarget())
 
-    ## tcpHandleFindFocus
-    #
-    # Handle find sum requests that come via TCP/IP.
-    #
-    @hdebug.debug
-    def tcpHandleFindFocus(self, scan_range):
-        self.lock_display1.tcpHandleFindFocus(scan_range)
-
     ## tcpHandleFindSum
     #
     # Handle find sum requests that come via TCP/IP.
@@ -517,17 +459,21 @@ class FocusLockZ(QtGui.QDialog, halModule.HalModule):
             self.tcpComplete.emit(self.tcp_message)
 
         else:
+            print "Focus check " + str(self.accum_focus_checks) + ": not in focus"
             self.accum_focus_checks += 1
             if self.accum_focus_checks < self.num_focus_checks:
                 self.focus_check_timer.start(100) # Wait one 100 ms then measure again
             else: # Focus not found after the specified number of checks
                 scan_focus = self.tcp_message.getData("focus_scan")
-                scan_range = self.tcp_message.getData("scan_range")
                 if scan_focus is True:
                     print "Scanning for the focus"
-                    if scan_range is None:
-                        scan_range = float('inf') # Scan the full range by setting the range to infinity
-                    self.tcpHandleFindFocus(scan_range)
+                    # Get minimum sum for FindSum scan
+                    min_sum = self.tcp_message.getData("min_sum")
+                    if min_sum is None: # Not provided. Use default for parameters.
+                        min_sum = self.parameters.get("qpd_sum_min", 50)
+
+                    # Send scan command
+                    self.tcpHandleFindSum(min_sum) # message is returned by handleFoundSum
                     
                 else: # No scan, just return error
                     self.tcp_message.addResponse("focus_status", focus_status)
@@ -607,7 +553,6 @@ class FocusLockZQPD(FocusLockZ):
                                                         self.ui.lockDisplayWidget)
         self.lock_display1.foundOptimal.connect(self.handleFoundOptimal)
         self.lock_display1.foundSum.connect(self.handleFoundSum)
-        self.lock_display1.foundFocus.connect(self.handleFoundFocus)
         self.lock_display1.recenteredPiezo.connect(self.handleRecenteredPiezo)
 
         FocusLockZ.configureUI(self)
@@ -644,7 +589,6 @@ class FocusLockZCam(FocusLockZ):
                                                         self.ui.lockDisplayWidget)
         self.lock_display1.foundOptimal.connect(self.handleFoundOptimal)
         self.lock_display1.foundSum.connect(self.handleFoundSum)
-        self.lock_display1.foundFocus.connect(self.handleFoundFocus)
         self.lock_display1.recenteredPiezo.connect(self.handleRecenteredPiezo)
 
         FocusLockZ.configureUI(self)
@@ -681,7 +625,6 @@ class FocusLockZDualCam(FocusLockZ):
         self.lock_display1.ui.statusBox.setTitle("Lock1 Status")
         self.lock_display1.foundOptimal.connect(self.handleFoundOptimal)
         self.lock_display1.foundSum.connect(self.handleFoundSum)
-        self.lock_display1.foundFocus.connect(self.handleFoundFocus)
         self.lock_display1.recenteredPiezo.connect(self.handleRecenteredPiezo)
 
         # Add Camera2 lock display.
@@ -850,6 +793,91 @@ class FocusLockZDualCam(FocusLockZ):
         self.lock_display1.tcpHandleSetLockTarget(target)
         self.lock_display2.tcpHandleSetLockTarget(-target)
 
+## FocusLockZCrisp
+#
+# FocusLockZ specialized for Crisp style data.
+#
+class FocusLockZCrisp(FocusLockZ):
+
+    ## __init__
+    #
+    # Initialize the UI for a QPD based focus lock.
+    #
+    # @param parameters A parameters object.
+    # @param control_thread A focus lock control thread.
+    # @param ir_laser A IR laser control object.
+    # @param parent The PyQt parent of this object.
+    #
+    @hdebug.debug
+    def __init__(self, parameters, control_thread, ir_laser, parent):
+        FocusLockZ.__init__(self, parameters, parent)
+
+        # Setup UI.
+        import qtdesigner.focuslock_ui as focuslockUi
+
+        self.ui = focuslockUi.Ui_Dialog()
+        self.ui.setupUi(self)
+
+        # Add QPD lock display.
+        self.lock_display1 = lockDisplay.LockDisplayCrisp(parameters.get("focuslock"),
+                                                        control_thread, 
+                                                        ir_laser, 
+                                                        self.ui.lockDisplayWidget)
+        self.lock_display1.foundOptimal.connect(self.handleFoundOptimal)
+        self.lock_display1.foundSum.connect(self.handleFoundSum)
+        self.lock_display1.recenteredPiezo.connect(self.handleRecenteredPiezo)
+
+        FocusLockZ.configureUI(self)
+
+        #additional buttons for Crisp
+        self.lock_display1.ui.calButton1.clicked.connect(self.handleCalButton1)
+        self.lock_display1.ui.calButton2.clicked.connect(self.handleCalButton2)
+        self.lock_display1.ui.calButton3.clicked.connect(self.handleCalButton3)
+        self.lock_display1.ui.calButton4.clicked.connect(self.handleCalButton4)
+        self.lock_display1.ui.calButton5.clicked.connect(self.handleCalButton5)
+
+    ## tcpPollFocusStatus
+    #
+    # Check the focus lock thread to see if it registers as in focus.
+    #
+    # @return A boolean that determines if the system is in focus.
+    #
+    @hdebug.debug
+    def tcpPollFocusStatus(self):
+
+        scan_focus = self.tcp_message.getData("focus_scan")
+        if scan_focus is True:
+            if not self.buttons[2].isChecked():
+                self.buttons[2].setChecked(True)
+                self.handleRadioButtons(True)
+        else:
+            if not self.buttons[1].isChecked():
+                self.buttons[1].setChecked(True)
+                self.handleRadioButtons(True)
+        
+        self.tcp_message.addResponse("focus_status", True)
+        self.tcpComplete.emit(self.tcp_message)
+
+    def handleCalButton1(self):
+        if self.lock_display1.shouldEnableCrispButton():
+            self.lock_display1.current_mode.calibration1()
+
+    def handleCalButton2(self):
+        if self.lock_display1.shouldEnableCrispButton():
+            self.lock_display1.current_mode.calibration2()
+
+    def handleCalButton3(self):
+        if self.lock_display1.shouldEnableCrispButton():
+            self.lock_display1.current_mode.calibration3()
+
+    def handleCalButton4(self):
+        if self.lock_display1.shouldEnableCrispButton():
+            self.lock_display1.current_mode.calibration4()
+
+    def handleCalButton5(self):
+        if self.lock_display1.shouldEnableCrispButton():
+            self.lock_display1.current_mode.calibration5()
+        
 #
 # The MIT License
 #

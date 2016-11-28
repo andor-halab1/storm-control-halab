@@ -32,7 +32,7 @@ class HalTCPControl(TCPServer, halModule.HalModule):
     #
     def __init__(self, hardware, parameters, parent):
         TCPServer.__init__(self,
-                           port = hardware.get("tcp_port"),
+                           port = hardware.tcp_port,
                            server_name = "Hal",
                            parent = parent,
                            verbose = False)

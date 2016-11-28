@@ -2,12 +2,12 @@
 #
 ## @file
 #
-# Wraps the pySerial library for RS232 communication.
+# Wraps the uspp library for RS232 communication.
 #
 # Hazen 3/09
 #
 
-import serial
+import uspp.uspp as uspp
 import time
 
 ## RS232
@@ -15,7 +15,7 @@ import time
 # The basic RS-232 communication object which is used by all the objects
 # that communicate with their associated hardware using RS-232.
 #
-class RS232(object):
+class RS232():
 
     ## __init__
     #
@@ -27,7 +27,7 @@ class RS232(object):
     #
     def __init__(self, port, timeout, baudrate, end_of_line, wait_time):
         try:
-            self.tty = serial.Serial(port, baudrate, timeout = timeout)
+            self.tty = uspp.SerialPort(port, timeout, baudrate)
             self.tty.flush()
             self.end_of_line = end_of_line
             self.wait_time = wait_time

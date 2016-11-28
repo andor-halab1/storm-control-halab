@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<sequence>
+  
+
+  <branch name="Movie Loop">
+    <branch name="568_0">
+      <DAMoveStage>
+        <stage_x type="float">0.0</stage_x>
+        <stage_y type="float">0.0</stage_y>
+      </DAMoveStage>
+      <DACheckFocus>
+        <focus_scan/>
+      </DACheckFocus>
+      <DASetParameters>
+        <parameters type="str">Hastorm_movie_parameter_568</parameters>
+      </DASetParameters>
+      <DATakeMovie>
+        <name type="str">568_0</name>
+        <length type="int">1040</length>
+        <parameters type="str">Hastorm_movie_parameter_568</parameters>
+        <overwrite type="bool">True</overwrite>
+      </DATakeMovie>
+    </branch>
+    <branch name="568_1">
+      <DAMoveStage>
+        <stage_x type="float">-64.0</stage_x>
+        <stage_y type="float">-206.8</stage_y>
+      </DAMoveStage>
+      <DACheckFocus>
+        <focus_scan/>
+      </DACheckFocus>
+      <DASetParameters>
+        <parameters type="str">Hastorm_movie_parameter_568</parameters>
+      </DASetParameters>
+      <DATakeMovie>
+        <name type="str">568_1</name>
+        <length type="int">1040</length>
+        <parameters type="str">Hastorm_movie_parameter_568</parameters>
+        <overwrite type="bool">True</overwrite>
+      </DATakeMovie>
+    </branch>
+    <branch name="568_2">
+      <DAMoveStage>
+        <stage_x type="float">191.0</stage_x>
+        <stage_y type="float">-117.2</stage_y>
+      </DAMoveStage>
+      <DACheckFocus>
+        <focus_scan/>
+      </DACheckFocus>
+      <DASetParameters>
+        <parameters type="str">Hastorm_movie_parameter_568</parameters>
+      </DASetParameters>
+      <DATakeMovie>
+        <name type="str">568_2</name>
+        <length type="int">1040</length>
+        <parameters type="str">Hastorm_movie_parameter_568</parameters>
+        <overwrite type="bool">True</overwrite>
+      </DATakeMovie>
+    </branch>
+    <branch name="568_3">
+      <DAMoveStage>
+        <stage_x type="float">551.0</stage_x>
+        <stage_y type="float">-408.2</stage_y>
+      </DAMoveStage>
+      <DACheckFocus>
+        <focus_scan/>
+      </DACheckFocus>
+      <DASetParameters>
+        <parameters type="str">Hastorm_movie_parameter_568</parameters>
+      </DASetParameters>
+      <DATakeMovie>
+        <name type="str">568_3</name>
+        <length type="int">1040</length>
+        <parameters type="str">Hastorm_movie_parameter_568</parameters>
+        <overwrite type="bool">True</overwrite>
+      </DATakeMovie>
+    </branch>
+    <branch name="568_4">
+      <DAMoveStage>
+        <stage_x type="float">84.4</stage_x>
+        <stage_y type="float">-462.4</stage_y>
+      </DAMoveStage>
+      <DACheckFocus>
+        <focus_scan/>
+      </DACheckFocus>
+      <DASetParameters>
+        <parameters type="str">Hastorm_movie_parameter_568</parameters>
+      </DASetParameters>
+      <DATakeMovie>
+        <name type="str">568_4</name>
+        <length type="int">1040</length>
+        <parameters type="str">Hastorm_movie_parameter_568</parameters>
+        <overwrite type="bool">True</overwrite>
+      </DATakeMovie>
+    </branch>
+  </branch>
+  <branch name="Movie Loop">
+    <branch name="bleach_0">
+      <DAMoveStage>
+        <stage_x type="float">0.0</stage_x>
+        <stage_y type="float">0.0</stage_y>
+      </DAMoveStage>
+      <DACheckFocus/>
+      <DASetParameters>
+        <parameters type="str">Hastorm_movie_parameter_647</parameters>
+      </DASetParameters>
+      <DATakeMovie>
+        <name type="str">bleach_0</name>
+        <length type="int">100</length>
+        <parameters type="str">Hastorm_movie_parameter_647</parameters>
+        <overwrite type="bool">True</overwrite>
+      </DATakeMovie>
+    </branch>
+    <branch name="bleach_1">
+      <DAMoveStage>
+        <stage_x type="float">-64.0</stage_x>
+        <stage_y type="float">-206.8</stage_y>
+      </DAMoveStage>
+      <DACheckFocus/>
+      <DASetParameters>
+        <parameters type="str">Hastorm_movie_parameter_647</parameters>
+      </DASetParameters>
+      <DATakeMovie>
+        <name type="str">bleach_1</name>
+        <length type="int">100</length>
+        <parameters type="str">Hastorm_movie_parameter_647</parameters>
+        <overwrite type="bool">True</overwrite>
+      </DATakeMovie>
+    </branch>
+    <branch name="bleach_2">
+      <DAMoveStage>
+        <stage_x type="float">191.0</stage_x>
+        <stage_y type="float">-117.2</stage_y>
+      </DAMoveStage>
+      <DACheckFocus/>
+      <DASetParameters>
+        <parameters type="str">Hastorm_movie_parameter_647</parameters>
+      </DASetParameters>
+      <DATakeMovie>
+        <name type="str">bleach_2</name>
+        <length type="int">100</length>
+        <parameters type="str">Hastorm_movie_parameter_647</parameters>
+        <overwrite type="bool">True</overwrite>
+      </DATakeMovie>
+    </branch>
+    <branch name="bleach_3">
+      <DAMoveStage>
+        <stage_x type="float">551.0</stage_x>
+        <stage_y type="float">-408.2</stage_y>
+      </DAMoveStage>
+      <DACheckFocus/>
+      <DASetParameters>
+        <parameters type="str">Hastorm_movie_parameter_647</parameters>
+      </DASetParameters>
+      <DATakeMovie>
+        <name type="str">bleach_3</name>
+        <length type="int">100</length>
+        <parameters type="str">Hastorm_movie_parameter_647</parameters>
+        <overwrite type="bool">True</overwrite>
+      </DATakeMovie>
+    </branch>
+    <branch name="bleach_4">
+      <DAMoveStage>
+        <stage_x type="float">84.4</stage_x>
+        <stage_y type="float">-462.4</stage_y>
+      </DAMoveStage>
+      <DACheckFocus/>
+      <DASetParameters>
+        <parameters type="str">Hastorm_movie_parameter_647</parameters>
+      </DASetParameters>
+      <DATakeMovie>
+        <name type="str">bleach_4</name>
+        <length type="int">100</length>
+        <parameters type="str">Hastorm_movie_parameter_647</parameters>
+        <overwrite type="bool">True</overwrite>
+      </DATakeMovie>
+    </branch>
+  </branch>
+</sequence>

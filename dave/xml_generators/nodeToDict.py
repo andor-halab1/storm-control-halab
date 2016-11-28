@@ -71,12 +71,21 @@ movie_node_conversion = {"delay" : gf("delay", [int]),
 #
 # @return A dictionary describing the movie node.
 #
+# Frank 03/30/16
+#
 def movieNodeToDict(movie_node):
     dict = {}
+    flag = 0
     for field in movie_node_conversion.keys():
         value = movie_node_conversion[field](movie_node)
         if value is not None:
             dict[field] = value
+            if field == "check_focus":
+                for node in value:
+                    if node.tag == "focus_scan":
+                        flag = 1
+    if flag == 1:
+        dict["length"] = dict["length"]+520
     return dict
 
 #
