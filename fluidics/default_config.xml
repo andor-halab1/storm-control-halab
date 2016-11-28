@@ -60,6 +60,10 @@
 	  <valve_pos valve_ID = "1" port_ID = "8"></valve_pos>
       <valve_pos valve_ID = "3" port_ID = "5"></valve_pos>
     </valve_cmd>
+	<valve_cmd name = "Set Hyb 5">
+	  <valve_pos valve_ID = "1" port_ID = "8"></valve_pos>
+      <valve_pos valve_ID = "3" port_ID = "6"></valve_pos>
+    </valve_cmd>
   </valve_commands>
 
   <pump_commands>
@@ -94,57 +98,62 @@
      </protocol>-->
      <protocol name = "Hybridize 6">
 	    <valve duration = "1">Set Hyb 6</valve>
-        <pump duration = "750">Normal Flow</pump>
+        <pump duration = "630">Normal Flow</pump>
 		<pump duration = "900">Stop Flow</pump>
      </protocol>
      <protocol name = "Hybridize 7">
 	    <valve duration = "1">Set Hyb 7</valve>
-        <pump duration = "750">Normal Flow</pump>
+        <pump duration = "630">Normal Flow</pump>
 		<pump duration = "900">Stop Flow</pump>
      </protocol>
 	 <protocol name = "Hybridize 8">
 	    <valve duration = "1">Set Hyb 8</valve>
-        <pump duration = "750">Normal Flow</pump>
+        <pump duration = "630">Normal Flow</pump>
 		<pump duration = "900">Stop Flow</pump>
      </protocol>
 	 <protocol name = "Hybridize 9">
 	    <valve duration = "1">Set Hyb 9</valve>
-        <pump duration = "750">Normal Flow</pump>
+        <pump duration = "630">Normal Flow</pump>
 		<pump duration = "900">Stop Flow</pump>
      </protocol>
 	 <protocol name = "Hybridize 10">
 	    <valve duration = "1">Set Hyb 10</valve>
-        <pump duration = "750">Normal Flow</pump>
+        <pump duration = "630">Normal Flow</pump>
 		<pump duration = "900">Stop Flow</pump>
      </protocol>
 	 <protocol name = "Hybridize 11">
 	    <valve duration = "1">Set Hyb 11</valve>
-        <pump duration = "750">Normal Flow</pump>
+        <pump duration = "630">Normal Flow</pump>
 		<pump duration = "900">Stop Flow</pump>
      </protocol>
 	 <protocol name = "Hybridize 12">
 	    <valve duration = "1">Set Hyb 12</valve>
-        <pump duration = "750">Normal Flow</pump>
+        <pump duration = "630">Normal Flow</pump>
 		<pump duration = "900">Stop Flow</pump>
      </protocol>
 	 <protocol name = "Hybridize 13">
 	    <valve duration = "1">Set Hyb 13</valve>
-        <pump duration = "750">Normal Flow</pump>
+        <pump duration = "630">Normal Flow</pump>
 		<pump duration = "900">Stop Flow</pump>
      </protocol>
 	 <protocol name = "Hybridize 14">
 	    <valve duration = "1">Set Hyb 14</valve>
-        <pump duration = "750">Normal Flow</pump>
+        <pump duration = "630">Normal Flow</pump>
 		<pump duration = "900">Stop Flow</pump>
      </protocol>
 	 <protocol name = "Hybridize 15">
 	    <valve duration = "1">Set Hyb 15</valve>
-        <pump duration = "750">Normal Flow</pump>
+        <pump duration = "630">Normal Flow</pump>
 		<pump duration = "900">Stop Flow</pump>
      </protocol>
 	 <protocol name = "Hybridize 16">
 	    <valve duration = "1">Set Hyb 16</valve>
-        <pump duration = "750">Normal Flow</pump>
+        <pump duration = "630">Normal Flow</pump>
+		<pump duration = "900">Stop Flow</pump>
+     </protocol>
+	 <protocol name = "Hybridize 5">
+	    <valve duration = "1">Set Hyb 5</valve>
+        <pump duration = "630">Normal Flow</pump>
 		<pump duration = "900">Stop Flow</pump>
      </protocol>
    </kilroy_protocols>
