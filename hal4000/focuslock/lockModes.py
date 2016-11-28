@@ -8,7 +8,7 @@
 #
 
 from PyQt4 import QtCore
-
+import time
 # Focus quality determination for the optimal lock.
 import numpy
 import scipy.optimize
@@ -758,7 +758,221 @@ class LargeOffsetLock(JumpLockMode):
         if self.locked:
             self.control_thread.stopLock()
             self.control_thread.moveStageRel(self.jumpsize)
+## CalibrationLockMode
+#
+# No lock, the stage is driven through a pre-determined set of 
+# z positions for calibration purposes during filming.
+#
+class CalibrationLockMode(JumpLockMode):
 
+    ## __init__
+    #
+    # @param control_thread A thread object that controls the focus lock.
+    # @param parameters A parameters object.
+    # @param parent (Optional) The PyQt parent of this object.
+    #
+    def __init__(self, control_thread, parameters, parent):
+        JumpLockMode.__init__(self, control_thread, parameters, parent)
+        self.counter = 0
+        self.max_zvals = 0
+        self.name = "Calibrate"
+        self.zva## CalibrationLockMode
+#
+# No lock, the stage is driven through a pre-determined set of 
+# z positions for calibration purposes during filming.
+#
+class CalibrationLockMode(JumpLockMode):
+
+    ## __init__
+    #
+    # @param control_thread A thread object that controls the focus lock.
+    # @param parameters A parameters object.
+    # @param parent (Optional) The PyQt parent of this object.
+    #
+    def __init__(self, control_thread, parameters, parent):
+        JumpLockMode.__init__(self, control_thread, parameters, parent)
+        self.counter = 0
+        self.max_zvals = 0
+        self.name = "Calibrate"
+        self.zvals = []
+
+    ## calibrationSetup
+    #
+    # Configure the variables that will be used to execute the z scan.
+    #
+    # @param z_center The piezo center position of the scan.
+    # @param deadtime The deadtime before the start of the scan.
+    # @param zrange The distance to scan (the scan goes from -zrange to zrange).
+    # @param step_size The distance to step at each step.
+    # @param frames_to_pause The number of frames to pause between steps.
+    #
+    def calibrationSetup(self, z_center, deadtime, zrange, step_size, frames_to_pause):
+        # Are these checks a good idea?
+        if 0:
+            assert deadtime > 0, "calibrationSetup: deadtime is too small" + str(deadtime)
+            assert zrange > 10, "calibrationSetup: range is too small" + str(zrange)
+            assert zrange < 1000, "calibrationSetup: range is too large" + str(zrange)
+            assert step_size > 0.0, "calibrationSetup: negative step size" + str(step_size)
+            assert step_size < 100.0, "calibrationSetup: step size is to large" + str(step_size)
+            assert frames_to_pause > 0, "calibrationSetup: frames_to_pause it too smale" + str(frames_to_pause)
+
+        def addZval(z_val):
+            self.zvals.append(z_val)
+            self.max_zvals += 1
+
+        self.zvals = []
+        self.max_zvals = 0
+        # convert to um
+        zrange = 0.001 * zrange
+        step_size = 0.001 * step_size
+
+        # initial hold
+        for i in range(deadtime-1):
+            addZval(z_center)
+
+        # staircase
+        addZval(-zrange)
+        z = z_center - zrange
+        stop = z_center + zrange - 0.5 * step_size
+        while (z < stop):
+            for i in range(frames_to_pause-1):
+                addZval(0.0)
+            addZval(step_size)
+            z += step_size
+
+        addZval(-zrange)
+
+        # final hold
+        for i in range(deadtime-1):
+            addZval(z_center)
+
+    ## newFrame
+    #
+    # Handles a new frame from the camera. This moves to a new z position
+    # if the scan has not been completed.
+    #
+    # @param frame A frame object.
+    # @param offset The offset signal from the focus lock.
+    # @param power The sum signal from the focus lock.
+    # @param stage_z The z position of the piezo stage.
+    #
+    def newFrame(self, frame, offset, power, stage_z):
+        if self.counter < self.max_zvals:
+            self.control_thread.moveStageRel(self.zvals[self.counter])
+            self.counter += 1
+
+    ## newParameters
+    #
+    # Handles new parameters.
+    #
+    # @param parameters A parameters object.
+    #
+    def newParameters(self, parameters):
+        #self.calibrationSetup(parameters.qpd_zcenter, 
+        self.calibrationSetup(0.0, 
+                              parameters.get("cal_deadtime"), 
+                              parameters.get("cal_range"), 
+                              parameters.get("cal_step_size"), 
+                              parameters.get("cal_frames_to_pause"))
+
+    ## startLock
+    #
+    # Sets the frame counter which is used to index through the list of z positions to zero.
+    #
+    def startLock(self):
+        self.counter = 0
+
+#    def stopLock(self):
+#        self.control_thread.recenter()ls = []
+
+    ## calibrationSetup
+    #
+    # Configure the variables that will be used to execute the z scan.
+    #
+    # @param z_center The piezo center position of the scan.
+    # @param deadtime The deadtime before the start of the scan.
+    # @param zrange The distance to scan (the scan goes from -zrange to zrange).
+    # @param step_size The distance to step at each step.
+    # @param frames_to_pause The number of frames to pause between steps.
+    #
+    def calibrationSetup(self, z_center, deadtime, zrange, step_size, frames_to_pause):
+        # Are these checks a good idea?
+        if 0:
+            assert deadtime > 0, "calibrationSetup: deadtime is too small" + str(deadtime)
+            assert zrange > 10, "calibrationSetup: range is too small" + str(zrange)
+            assert zrange < 1000, "calibrationSetup: range is too large" + str(zrange)
+            assert step_size > 0.0, "calibrationSetup: negative step size" + str(step_size)
+            assert step_size < 100.0, "calibrationSetup: step size is to large" + str(step_size)
+            assert frames_to_pause > 0, "calibrationSetup: frames_to_pause it too smale" + str(frames_to_pause)
+
+        def addZval(z_val):
+            self.zvals.append(z_val)
+            self.max_zvals += 1
+
+        self.zvals = []
+        self.max_zvals = 0
+        # convert to um
+        zrange = 0.001 * zrange
+        step_size = 0.001 * step_size
+
+        # initial hold
+        for i in range(deadtime-1):
+            addZval(z_center)
+
+        # staircase
+        addZval(-zrange)
+        z = z_center - zrange
+        stop = z_center + zrange - 0.5 * step_size
+        while (z < stop):
+            for i in range(frames_to_pause-1):
+                addZval(0.0)
+            addZval(step_size)
+            z += step_size
+
+        addZval(-zrange)
+
+        # final hold
+        for i in range(deadtime-1):
+            addZval(z_center)
+
+    ## newFrame
+    #
+    # Handles a new frame from the camera. This moves to a new z position
+    # if the scan has not been completed.
+    #
+    # @param frame A frame object.
+    # @param offset The offset signal from the focus lock.
+    # @param power The sum signal from the focus lock.
+    # @param stage_z The z position of the piezo stage.
+    #
+    def newFrame(self, frame, offset, power, stage_z):
+        if self.counter < self.max_zvals:
+            self.control_thread.moveStageRel(self.zvals[self.counter])
+            self.counter += 1
+
+    ## newParameters
+    #
+    # Handles new parameters.
+    #
+    # @param parameters A parameters object.
+    #
+    def newParameters(self, parameters):
+        #self.calibrationSetup(parameters.qpd_zcenter, 
+        self.calibrationSetup(0.0, 
+                              parameters.get("cal_deadtime"), 
+                              parameters.get("cal_range"), 
+                              parameters.get("cal_step_size"), 
+                              parameters.get("cal_frames_to_pause"))
+
+    ## startLock
+    #
+    # Sets the frame counter which is used to index through the list of z positions to zero.
+    #
+    def startLock(self):
+        self.counter = 0
+
+#    def stopLock(self):
+#        self.control_thread.recenter()
     ## newFrame
     #
     # Handles a new frame from the camera. If the frame number matches the
@@ -916,6 +1130,219 @@ class ZScanLockModeV2(AlwaysOnLockMode):
         self.control_thread.setTarget(self.start_lock_target)
         AlwaysOnLockMode.stopLock(self)
 
+## CrispOptimalLockMode
+#
+# At the start of filming the stage is moved
+# in a triangle wave. First it goes up to bracket_step, then down
+# to -bracket_step and then finally back to zero. At each point
+# along the way the focus quality & offset are recorded. When the
+# stage returns to zero, the data is fit with a gaussian and the
+# lock target is set to the offset corresponding to the center
+# of the gaussian.
+#
+# This is modified for Crisp system.
+#
+class CrispOptimalLockMode(JumpLockMode):
+
+    ## __init__
+    #
+    # @param control_thread A thread object that controls the focus lock.
+    # @param parameters A parameters object.
+    # @param parent (Optional) The PyQt parent of this object.
+    #
+    def __init__(self, control_thread, parameters, parent):
+        JumpLockMode.__init__(self, control_thread, parameters, parent)
+        self.bracket_step = None
+        self.button_locked = False
+        self.cur_z = None
+        self.counter = 0
+        self.fvalues = None
+        self.lock_target = None
+        self.mode = "None"
+        self.name = "Optimal"
+        self.quality_threshold = 0
+        self.scan_hold = None
+        self.scan_step = None
+        self.scan_step_offset = None
+        self.scan_state = 1
+        self.zvalues = None
+
+    ## getName
+    #
+    # Not sure why this method is in this class.
+    #
+    # @return "Optimal"
+    #
+    def getName(self):
+        return self.name
+
+    ## initScan
+    #
+    # Configures all the variables that will be used during the scan
+    # to find the optimal lock target.
+    #
+    def initScan(self):
+        self.cur_z = 0.0
+        self.mode = "Optimizing"
+        self.scan_state = 1
+        self.counter = 0
+        size_guess = round(self.scan_hold * (self.bracket_step / self.scan_step) * 6)
+        self.fvalues = numpy.zeros(size_guess)
+        self.zvalues = numpy.zeros(size_guess)
+    
+    ## newFrame
+    #
+    # Handles a new frame from the camera. If the mode is optimizing this calculates
+    # the focus quality of the frame and moves the piezo to its next position.
+    #
+    # @param frame A frame object.
+    # @param offset The offset signal from the focus lock.
+    # @param power The sum signal from the focus lock.
+    # @param stage_z The z position of the piezo stage.
+    #
+    def newFrame(self, frame, offset, power, stage_z):
+        if (self.mode == "Optimizing"):
+            if frame:
+                quality = focusQuality.imageGradient(frame)
+                if (quality > self.quality_threshold):
+                    self.zvalues[self.counter] = self.control_thread.controller_offset
+                    self.fvalues[self.counter] = quality
+                    self.counter += 1
+                    if ((self.counter % self.scan_hold) == 0):
+                        print "stage offset:" + str(self.control_thread.controller_offset)
+                        print "image quality:" + str(quality)
+                        print "stage z position:" + str(self.control_thread.controller_z)
+                        print "\n"
+                        
+                        if (self.scan_state == 1): # Scan up
+                            if (self.cur_z >= self.bracket_step):
+                                self.scan_state = 2
+                            else:
+                                self.cur_z += self.scan_step
+                                self.control_thread.setCrispOffset(self.scan_step_offset)
+                        elif (self.scan_state == 2): # Scan back down
+                            if (self.cur_z <= -self.bracket_step):
+                                self.scan_state = 3
+                            else:
+                                self.cur_z -= self.scan_step
+                                self.control_thread.setCrispOffset(-self.scan_step_offset)
+                        else: # Scan back to zero
+                            if (self.cur_z >= 0.0):
+                                self.mode = "None"
+                                n = self.counter - 1
+                                
+                                # Fit offset data to a*x*x + b*x + c.
+                                #m0 = numpy.concatenate((numpy.ones(n),
+                                #                        self.zvalues[0:n],
+                                #                        self.zvalues[0:n] * self.zvalues[0:n]))
+                                #m0 = numpy.reshape(m0, (3, n))
+                                #m1 = numpy.dot(numpy.linalg.inv(numpy.dot(m0, numpy.transpose(m0))), m0)
+                                #v0 = numpy.dot(m1, self.fvalues[0:n])
+                                #optimum = -v0[1]/(2.0 * v0[2])
+
+                                # Fit offset data to a 1D gaussian (lorentzian would be better?)
+                                zvalues = self.zvalues[0:n]
+                                fvalues = self.fvalues[0:n]
+                                '''
+                                fitfunc = lambda p, x: p[0] + p[1] * numpy.exp(- (x - p[2]) * (x - p[2]) * p[3])
+                                errfunc = lambda p: fitfunc(p, zvalues) - fvalues
+                                p0 = [numpy.min(fvalues),
+                                      numpy.max(fvalues) - numpy.min(fvalues),
+                                      zvalues[numpy.argmax(fvalues)],
+                                      9.0] # empirically determined width parameter
+                                p1, success = scipy.optimize.leastsq(errfunc, p0[:])
+                                if success == 1:
+                                    optimum = p1[2]
+                                else:
+                                    print "Fit for optimal lock failed."
+                                    # hope that this is close enough
+                                    optimum = zvalues[numpy.argmax(fvalues)]
+                                '''
+                                optimum = zvalues[numpy.argmax(fvalues)]
+                                print "Optimal Target:", optimum
+                                self.control_thread.setCrispOffset(optimum-self.control_thread.controller_offset)
+                            else:
+                                self.cur_z += self.scan_step
+                                self.control_thread.setCrispOffset(self.scan_step_offset)
+
+    ## newParameters
+    #
+    # Handles new parameters.
+    #
+    # @param parameters A parameters object.
+    #
+    def newParameters(self, parameters):
+        self.quality_threshold = parameters.get("olock_quality_threshold")
+        self.qpd_zcenter = parameters.get("qpd_zcenter")
+        self.bracket_step = 0.001 * parameters.get("olock_bracket_step")
+        self.scan_step = 0.001 * parameters.get("olock_scan_step")
+        self.scan_step_offset = self.scan_step * 1000 * 0.4
+        self.scan_hold = parameters.get("olock_scan_hold")
+        #self.scan_hold = 20
+
+    ## shouldDisplayLockButton
+    #
+    # @return True
+    #
+    def shouldDisplayLockButton(self):
+        return False
+    
+    ## shouldDisplayLockLabel
+    #
+    # @return True/False if a label should be displayed for this mode.
+    #
+    def shouldDisplayLockLabel(self):
+        return self.amLocked()
+    
+    ## startLock
+    #
+    # Call initScan.
+    #
+    def startLock(self):
+        self.initScan()
+        self.control_thread.startLock()
+        self.locked = True
+
+    ## stopLock
+    #
+    # Pass.
+    #
+    def stopLock(self):
+        if self.locked:
+            self.control_thread.stopLock()
+            self.locked = False
+
+## CrispCalibrationLockMode
+#
+# 3-step calibration for Crisp system.
+#
+#
+class CrispCalibrationLockMode(JumpLockMode):
+
+    ## __init__
+    #
+    # @param control_thread A thread object that controls the focus lock.
+    # @param parameters A parameters object.
+    # @param parent (Optional) The PyQt parent of this object.
+    #
+    def __init__(self, control_thread, parameters, parent):
+        JumpLockMode.__init__(self, control_thread, parameters, parent)
+        self.name = "Calibrate"
+
+    def calibration1(self):
+        self.control_thread.IoG_Cal()
+
+    def calibration2(self):
+        self.control_thread.dither()
+
+    def calibration3(self):
+        self.control_thread.gain_Cal()
+
+    def calibration4(self):
+        self.control_thread.setCrispOffset()
+
+    def calibration5(self):
+        self.control_thread.getReady()
 
 #
 # The MIT License

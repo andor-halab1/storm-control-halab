@@ -793,6 +793,91 @@ class FocusLockZDualCam(FocusLockZ):
         self.lock_display1.tcpHandleSetLockTarget(target)
         self.lock_display2.tcpHandleSetLockTarget(-target)
 
+## FocusLockZCrisp
+#
+# FocusLockZ specialized for Crisp style data.
+#
+class FocusLockZCrisp(FocusLockZ):
+
+    ## __init__
+    #
+    # Initialize the UI for a QPD based focus lock.
+    #
+    # @param parameters A parameters object.
+    # @param control_thread A focus lock control thread.
+    # @param ir_laser A IR laser control object.
+    # @param parent The PyQt parent of this object.
+    #
+    @hdebug.debug
+    def __init__(self, parameters, control_thread, ir_laser, parent):
+        FocusLockZ.__init__(self, parameters, parent)
+
+        # Setup UI.
+        import qtdesigner.focuslock_ui as focuslockUi
+
+        self.ui = focuslockUi.Ui_Dialog()
+        self.ui.setupUi(self)
+
+        # Add QPD lock display.
+        self.lock_display1 = lockDisplay.LockDisplayCrisp(parameters.get("focuslock"),
+                                                        control_thread, 
+                                                        ir_laser, 
+                                                        self.ui.lockDisplayWidget)
+        self.lock_display1.foundOptimal.connect(self.handleFoundOptimal)
+        self.lock_display1.foundSum.connect(self.handleFoundSum)
+        self.lock_display1.recenteredPiezo.connect(self.handleRecenteredPiezo)
+
+        FocusLockZ.configureUI(self)
+
+        #additional buttons for Crisp
+        self.lock_display1.ui.calButton1.clicked.connect(self.handleCalButton1)
+        self.lock_display1.ui.calButton2.clicked.connect(self.handleCalButton2)
+        self.lock_display1.ui.calButton3.clicked.connect(self.handleCalButton3)
+        self.lock_display1.ui.calButton4.clicked.connect(self.handleCalButton4)
+        self.lock_display1.ui.calButton5.clicked.connect(self.handleCalButton5)
+
+    ## tcpPollFocusStatus
+    #
+    # Check the focus lock thread to see if it registers as in focus.
+    #
+    # @return A boolean that determines if the system is in focus.
+    #
+    @hdebug.debug
+    def tcpPollFocusStatus(self):
+
+        scan_focus = self.tcp_message.getData("focus_scan")
+        if scan_focus is True:
+            if not self.buttons[2].isChecked():
+                self.buttons[2].setChecked(True)
+                self.handleRadioButtons(True)
+        else:
+            if not self.buttons[1].isChecked():
+                self.buttons[1].setChecked(True)
+                self.handleRadioButtons(True)
+        
+        self.tcp_message.addResponse("focus_status", True)
+        self.tcpComplete.emit(self.tcp_message)
+
+    def handleCalButton1(self):
+        if self.lock_display1.shouldEnableCrispButton():
+            self.lock_display1.current_mode.calibration1()
+
+    def handleCalButton2(self):
+        if self.lock_display1.shouldEnableCrispButton():
+            self.lock_display1.current_mode.calibration2()
+
+    def handleCalButton3(self):
+        if self.lock_display1.shouldEnableCrispButton():
+            self.lock_display1.current_mode.calibration3()
+
+    def handleCalButton4(self):
+        if self.lock_display1.shouldEnableCrispButton():
+            self.lock_display1.current_mode.calibration4()
+
+    def handleCalButton5(self):
+        if self.lock_display1.shouldEnableCrispButton():
+            self.lock_display1.current_mode.calibration5()
+        
 #
 # The MIT License
 #
