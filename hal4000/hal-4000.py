@@ -252,8 +252,8 @@ class Window(QtGui.QMainWindow):
 
             for to_module in everything:
                 to_module.connectSignals(signals)
-
-        # Finish module initialization
+        
+		# Finish module initialization
         everything = self.modules + [self.camera]
         for module in everything:
             module.moduleInit()
