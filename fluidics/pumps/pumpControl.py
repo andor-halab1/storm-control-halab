@@ -15,12 +15,6 @@ import sys
 import time
 from PyQt4 import QtCore, QtGui
 
-# Add current storm-control directory to sys.path
-#import imp
-#imp.load_source("setPath", "C:/STORM_controller/storm-control-master/sc_library/setPath.py")
-#
-#import sc_library.parameters as params
-
 # ----------------------------------------------------------------------------------------
 # PumpControl Class Definition
 # ----------------------------------------------------------------------------------------
@@ -33,7 +27,6 @@ class PumpControl(QtGui.QWidget):
         QtGui.QWidget.__init__(self, parent)
 
         # Define internal attributes
-        
         self.com_port = parameters.get("pump_com_port")
         self.pump_ID = parameters.get("pump_id", 30)
         self.simulate = parameters.get("simulate_pump", True)
@@ -215,15 +208,14 @@ class PumpControl(QtGui.QWidget):
 # Stand Alone Test Class
 # ----------------------------------------------------------------------------------------
 class StandAlone(QtGui.QMainWindow):
-    def __init__(self, parameters = False, parent = None):
+    def __init__(self, parent = None):
         super(StandAlone, self).__init__(parent)
 
         # scroll area widget contents - layout
-        #self.pump = PumpControl(com_port = 5,
-        #                        pump_ID = 30,
-        #                        simulate = False,
-        #                        verbose = False)
-        self.pump = PumpControl(parameters)
+        self.pump = PumpControl(com_port = 4,
+                                pump_ID = 30,
+                                simulate = False,
+                                verbose = False)
 
         # central widget
         self.centralWidget = QtGui.QWidget()
@@ -261,13 +253,6 @@ class StandAlone(QtGui.QMainWindow):
 # ----------------------------------------------------------------------------------------        
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
-    
-    # Load parameters
-    if len(sys.argv) == 2:
-        parameters = params.parameters(sys.argv[1])
-    else:
-        parameters = params.parameters("kilroy_settings_default.xml")
-        
-    window = StandAlone(parameters)
+    window = StandAlone()
     window.show()
     app.exec_()    

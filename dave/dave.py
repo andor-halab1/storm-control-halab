@@ -868,7 +868,7 @@ if __name__ == "__main__":
         parameters = params.parameters("settings_default.xml")
         
     # Start logger.
-    hdebug.startLogging(parameters.directory + "logs\\", "dave")
+    hdebug.startLogging(parameters.directory + "logs/", "dave")
 
     # Load app.
     window = Dave(parameters)

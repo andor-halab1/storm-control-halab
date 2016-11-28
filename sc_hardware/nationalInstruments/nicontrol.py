@@ -727,7 +727,7 @@ class DigitalWaveformOutput(NIDAQTask):
                                                   c_rising,
                                                   c_long(sample_mode),
                                                   c_ulonglong(waveform_len)))
-        
+
 
         # transfer the waveform data to the DAQ board buffer.
         data_len = len(waveform)
@@ -790,41 +790,9 @@ def setDigitalLine(board, line, value):
 
 if __name__ == "__main__":
     print getDAQBoardInfo()
-    print getBoardDevNumber("PCI-6221")
-
+    print getBoardDevNumber("PCIe-6353")
+    
     if 1:
-        waveform1 = [0, 1, 1, 1]
-        waveform2 = [1, 0, 0, 0]
-        #waveform3 = [1, 1, 1, 1]
-        waveform = waveform1 + waveform2
-        frequency = 10.0
-        
-        wv_task = DigitalWaveformOutput("PCI-6221", 1)
-        wv_task.addChannel("PCI-6221", 2)
-        wv_task.setWaveform(waveform, frequency, clock = "ctr0internaloutput")
-        wv_task.startTask()
-        '''
-        do_task = DigitalOutput("PCI-6221", 1)
-        do_task = do_task.output(False)
-        do_task.startTask()
-        '''
-        ct_task = CounterOutput("PCI-6221", 0, frequency, 0.5)
-        ct_task.setCounter(2*len(waveform))
-        ct_task.setTrigger(0)
-        ct_task.startTask()
-        foo = raw_input("Key Return")
-        ct_task.stopTask()
-        ct_task.clearTask()
-        
-        wv_task.stopTask()
-        wv_task.clearTask()
-
-        '''
-        do_task.stopTask()
-        do_task.clearTask()
-        '''
-        
-    if 0:
         waveform1 = [1, 0, 1, 0, 1, 0]
         waveform2 = [0, 1, 0, 1, 0, 1]
         waveform3 = [1, 1, 1, 1, 1, 1]

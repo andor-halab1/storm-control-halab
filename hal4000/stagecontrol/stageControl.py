@@ -327,7 +327,7 @@ class StageControl(QtGui.QDialog, halModule.HalModule):
                     message.setError(True, "Invalid positions")
 
                 message.addResponse("duration", 1) # Minimum stage move time (1s)
-                self.tcpComplete.emit(message)
+                self.tcpComplete.emit(message) 
             else:
                 self.tcp_message = message
                 self.moveAbsolute(x_pos, y_pos)
@@ -336,12 +336,7 @@ class StageControl(QtGui.QDialog, halModule.HalModule):
                 dx = x_pos - self.stage_x
                 dy = y_pos - self.stage_y
                 dd = math.sqrt(dx*dx + dy*dy)
-                if self.stage_speed <= 25: #Frank 03/30/16
-                    temp_speed=25
-                else:
-                    temp_speed=self.stage_speed
-                
-                move_time = int(abs(dx/temp_speed) + abs(dy/temp_speed))*1000 + 1000
+                move_time = int(dd/self.stage_speed) + 1000
 
                 self.move_timer.setInterval(move_time)
                 self.move_timer.start()
@@ -414,7 +409,7 @@ class StageControl(QtGui.QDialog, halModule.HalModule):
                                                                    self.directory,
                                                                    "*.txt"))
         if positions_filename:
-            self.handleClear(True)
+            self.handleClear()
             fp = open(positions_filename, "r")
             while 1:
                 line = fp.readline()

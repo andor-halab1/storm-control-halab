@@ -7,9 +7,6 @@
 # Hazen 02/14
 #
 
-#import imp
-#imp.load_source("setPath", "C:\\STORM_controller\\storm-control-master\\sc_library\\setPath.py")
-
 import sc_hardware.serial.RS232 as RS232
 import time
 
@@ -67,8 +64,8 @@ class Ludl(RS232.RS232):
     # @param y Y position in um.
     #
     def goAbsolute(self, x, y):
-        newx = str(int(round(x * self.um_to_unit)))
-        newy = str(int(round(y * self.um_to_unit)))
+        newx = str(round(x * self.um_to_unit))
+        newy = str(round(y * self.um_to_unit))
         self.sendCommand("Move x=" + newx)
         self.sendCommand("Move y=" + newy)
         self.waitResponse()
@@ -79,8 +76,8 @@ class Ludl(RS232.RS232):
     # @param dy Amount to move in y in um.
     #
     def goRelative(self, dx, dy):
-        newx = str(int(round(dx * self.um_to_unit)))
-        newy = str(int(round(dy * self.um_to_unit)))
+        newx = str(round(dx * self.um_to_unit))
+        newy = str(round(dy * self.um_to_unit))
         self.sendCommand("Movrel x=" + newx)
         self.sendCommand("Movrel y=" + newy)
         self.waitResponse()
@@ -93,7 +90,7 @@ class Ludl(RS232.RS232):
         return self._command("Ver")
 
     ## jog
-    # This function may not be working.
+    #
     # @param x_speed Speed the stage should be moving at in x in um/s.
     # @param y_speed Speed the stage should be moving at in y in um/s.
     #
@@ -128,21 +125,19 @@ class Ludl(RS232.RS232):
 
     ## setVelocity
     #
-    # @param x_vel The maximum stage velocity allowed in x in um.
-    # @param y_vel The maximum stage velocity allowed in y in um.
+    # @param x_vel The maximum stage velocity allowed in x in Ludl units.
+    # @param y_vel The maximum stage velocity allowed in y in Ludl units.
     #
     def setVelocity(self, x_vel, y_vel):
-        vx = str(int(round(x_vel * self.um_to_unit)))
-        vy = str(int(round(y_vel * self.um_to_unit)))
-        self.sendCommand("Speed x=" + str(vx))
-        self.sendCommand("Speed y=" + str(vy))
+        self._command("Speed x=" + str(x_vel))
+        self._command("Speed y=" + str(y_vel))
 
     ## zero
     #
     # Set the current position as the stage zero position.
     #
     def zero(self):
-        self.sendCommand("Here x=0 y=0")
+        self._command("Here x=0 y=0")
 
 
 #
@@ -150,21 +145,15 @@ class Ludl(RS232.RS232):
 # 
 
 if __name__ == "__main__":
-    stage = Ludl("COM4")
-    
+    stage = Ludl("COM1")
+    print stage.position()
     stage.zero()
     time.sleep(0.1)
     print stage.position()
-
-    #r1=stage._command("Speed x=300")
-    #r2=stage._command("Speed y=300")
-    stage.setVelocity(30,30)
+    stage.goRelative(100.0, 100.0)
     time.sleep(0.1)
-
-    stage.goAbsolute(100.0,100.0)
     print stage.position()
-    
-    #stage.shutDown()
+    stage.shutDown()
 
 #
 # The MIT License

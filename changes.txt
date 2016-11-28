@@ -1,1 +1,0 @@
-04 may 2016: TIFFWRITER.PY: Tag errors were attempted to be fixed. ImageDescription field needs null byte termination. Tunc
