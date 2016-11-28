@@ -1,0 +1,98 @@
+
+(1) Install Dependencies:
+ (a) Mingw (only if you need to compile C libraries)
+ (b) Python
+ (c) PyQt
+ (d) pywin32
+ (e) numpy
+ (f) scipy (for the optimal focus lock mode)
+ (g) pywinusb (for the logitech joystick)
+ (h) PyBluez (for bluetooth / android)
+ (i) Pillow (or PIL).
+
+(2-3) Note: You should be able to skip the next two steps if you
+ are running 64 bit windows as the compiled files are now included in
+ the project.
+
+(2) Compile UI elements (in the qtdesigner folder):
+ With PyQt you should get a program installed called pyuic.py. Typically
+ it can be found in PythonXY\lib\site-packages\pyqt4\uic\. You use it
+ like this pyuic.py asdf.ui > asdf.py. You'll need to compile all of the
+ following:
+
+ (a) camera-params.ui > camera_params_ui.py
+ (b) camera-display.ui > camera_display_ui.py
+ (c) focuslock.ui > focuslock_ui.py
+ (d) hal4000.ui > hal4000_ui.py
+ (e) illumination.ui > illumination_ui.py
+ (f) lockdisplay.ui > lockdisplay_ui.py
+ (g) spotcounter.ui > spotcounter_ui.py
+ (h) stage.ui > stage_ui.py
+ (i) progression.ui > progression_ui.py
+
+ If you plan to use the detached camera view, or two cameras you will
+ also need to compile these files:
+ (a) hal4000-detached.ui > hal4000_detached_ui.py
+ (b) camera-detached.ui > camera_detached_ui.py
+ (c) camera-params-detached.ui > camera_params_detached_ui.py
+
+
+(3) Compile C helper libraries:
+ Instructions on how to compile the libraries are in the library headers.
+ (a) sc_hardware/hamamatsu/scmos_image_manipulation.c (for Hamamatsu sCMOS camera).
+ (b) objectFinder/LMMoment.c (for the spot counter).
+ (c) phreshPhotonics/averager.c (only if you are using their QPD).
+ (d) sc_hardware/focusLock/focus_quality.c (for optimal focus lock mode)
+
+
+(4) Add the storm_control directory to your Python path by placing a .pth file in 
+ the python install directory, e.g. C:\Python27\. 
+ An example .pth file is included under hal4000\storm_control.pth.  
+
+ Note: This is no longer necessary if you only run hal, dave or steve as they
+ will automatically configure the Python path. However it can still be
+ convenient as this will let you run many of the other modules independently.
+ 
+ 
+(5) Create data & logs directories:
+ The default directory for saving data is "c:\Data\". You can change
+ this is in settings xml file. You will also need to create a sub-directory
+ of the default directory called "logs", which is where hal (and the other
+ programs) will store their log files. If you don't change the default
+ directory the full path for the log files is "c:\Data\logs\".
+
+
+(6) Verify that the software works:
+ The settings_default.xml file contains some of the options related to
+ program setup and etc. As a first step to verify that the software runs
+ absent any hardware issues do the following:
+
+ (a) Set setup_name to none
+
+ Then, in the folder where the hal-4000.py file is located type 
+ "python hal-4000.py" to run the program. With these settings the software 
+ should start without any warning messages and display a simple pattern in 
+ the camera view area.
+
+ This will use the parameters from the none_default.xml file. Other example
+ parameter files are labeled prism2_default.xml storm3_default.xml, etc..
+
+
+(7) Modifying to work with your hardware:
+ This is the hard part as it is of course hardware dependent. Python classes
+ for control of the hardware that is available in our lab can be found in
+ folders that are named (more or less) by the manufacturer of the hardware.
+ 
+ In addition there are the following folders:
+ (1) camera - Classes for camera control, image display & parameter display.
+ (2) focuslock - Classes for focus lock control.
+ (3) illumination - Classes for illumination & shuttering.
+ (4) stagecontrol - Classes for controlling a motorized XY stage.
+ (5) miscControl - Classes for controlling various miscellaneous hardware
+        such as filter wheels.
+
+ In these folders you will see files/Classes that start with a machine name, 
+ e.g. storm3IlluminationControl or noneIlluminationControl. You will probably
+ need to create your own version of the files specialized to interface with 
+ your specific hardware.
+
