@@ -139,28 +139,6 @@ class Nidaq(illuminationHardware.DaqModulation):
         # frequency so that we are ready at the start of the next frame.
         frequency = (1.01 / seconds_per_frame) * float(oversampling)
 
-        # Setup the counter.
-        if self.counter_board:
-
-            def startCtTask():
-                self.ct_task = nicontrol.CounterOutput(self.counter_board, 
-                                                       self.counter_id,
-                                                       frequency, 
-                                                       0.5)
-                self.ct_task.setCounter(oversampling)
-                self.ct_task.setTrigger(self.counter_trigger)
-                return self.ct_task.startTask()
-
-            iters = 0
-            while (iters < 5) and startCtTask():
-                hdebug.logText("startCtTask failed " + str(iters))
-                self.ct_task.clearTask()
-                time.sleep(0.1)
-                iters += 1
-
-        else:
-            self.ct_task = False
-
         # Setup analog waveforms.
         if (len(self.analog_data) > 0):
 
@@ -194,25 +172,25 @@ class Nidaq(illuminationHardware.DaqModulation):
 
         else:
             self.ao_task = False
-
+        
         # Setup digital waveforms.
         if (len(self.digital_data) > 0):
 
             # Sort by board, channel.
             digital_data = sorted(self.digital_data, key = lambda x: (x[0], x[1]))
-
+	    
             # Set waveforms.
             waveform = []
             for i in range(len(digital_data)):
                 waveform += digital_data[i][2]
-
+            
             def startDoTask():
 
                 # Create channels.
                 self.do_task = nicontrol.DigitalWaveformOutput(digital_data[0][0], digital_data[0][1])
                 for i in range(len(digital_data) - 1):
                     self.do_task.addChannel(digital_data[i+1][0], digital_data[i+1][1])
-
+                
                 # Add waveform
                 self.do_task.setWaveform(waveform, frequency, clock = self.waveform_clock)
 
@@ -225,9 +203,31 @@ class Nidaq(illuminationHardware.DaqModulation):
                 self.do_task.clearTask()
                 time.sleep(0.1)
                 iters += 1
-
+            
         else:
             self.do_task = False
+        
+        # Setup the counter.
+        if self.counter_board:
+
+            def startCtTask():
+                self.ct_task = nicontrol.CounterOutput(self.counter_board, 
+                                                       self.counter_id,
+                                                       frequency, 
+                                                       0.5)
+                self.ct_task.setCounter(oversampling)
+                self.ct_task.setTrigger(self.counter_trigger)
+                return self.ct_task.startTask()
+
+            iters = 0
+            while (iters < 5) and startCtTask():
+                hdebug.logText("startCtTask failed " + str(iters))
+                self.ct_task.clearTask()
+                time.sleep(0.1)
+                iters += 1
+
+        else:
+            self.ct_task = False
 
         # Start tasks
 #        for task in [self.ao_task, self.do_task]:
