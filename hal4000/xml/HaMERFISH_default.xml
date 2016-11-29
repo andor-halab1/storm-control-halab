@@ -90,6 +90,7 @@
   <!-- focus lock settings -->
   <focuslock>
     <qpd_mode type="int">0</qpd_mode>
+	<!-- the center position of the piezo -->
     <qpd_zcenter type="float">50.0</qpd_zcenter>
     <!--  <qpd_scale type="float">1350.0</qpd_scale> -->
     <!--  <qpd_scale type="float">3200.0</qpd_scale> -->
@@ -109,6 +110,7 @@
     <olock_scan_step type="int">10</olock_scan_step>
     <olock_scan_hold type="int">10</olock_scan_hold>
     <olock_quality_threshold type="float">0.0</olock_quality_threshold>
+	<!-- the following two used stageOffsetControl-->
 	<is_locked_buffer_length type="int">3</is_locked_buffer_length>
     <is_locked_offset_thresh type="float">0.1</is_locked_offset_thresh>
   </focuslock>
