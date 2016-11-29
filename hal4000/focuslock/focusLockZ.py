@@ -801,7 +801,7 @@ class FocusLockZCrisp(FocusLockZ):
 
     ## __init__
     #
-    # Initialize the UI for a QPD based focus lock.
+    # Initialize the UI for a Crisp based focus lock.
     #
     # @param parameters A parameters object.
     # @param control_thread A focus lock control thread.
@@ -818,7 +818,7 @@ class FocusLockZCrisp(FocusLockZ):
         self.ui = focuslockUi.Ui_Dialog()
         self.ui.setupUi(self)
 
-        # Add QPD lock display.
+        # Add Crisp lock display.
         self.lock_display1 = lockDisplay.LockDisplayCrisp(parameters.get("focuslock"),
                                                         control_thread, 
                                                         ir_laser, 

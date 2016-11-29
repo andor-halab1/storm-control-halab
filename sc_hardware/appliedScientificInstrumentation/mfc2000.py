@@ -59,15 +59,15 @@ class MFC2000(RS232.RS232):
 
         # self.err is dynamic, but it cannot be set by user
         self.err = self.read_Err()
-        # self.os is static, but can be set by user
+        # self.os is static, but it can be set by user
         self.os = self.read_Offset()
-        # self.gn is static, but can be set by user
+        # self.gn is static, but it can be set by user
         self.gn = self.read_Gain()
-        # self.lr is static, but can be set by user
+        # self.lr is static, but it can be set by user
         self.lr = self.read_LockRange()
         
         # self.z is dynamic, but it cannot be directly set by user. Any change in self.z
-        # will be conducted through changing self.os.
+        # should be conducted through changing self.os.
         self.z = self.position()
         self.verbose()
     
@@ -145,26 +145,29 @@ class MFC2000(RS232.RS232):
             
     # built-in function in MFC2000 controller
     #
+    # This function will set the state to 'G'
+    #
     def IoG_Cal(self):
         self.commWithResp("LK F=72")
-        time.sleep(1)
-        self.state=self.read_State()
-        self.gn = self.read_Gain()
 
     # built-in function in MFC2000 controller
+    #
+    # This fucntion will set the state to dither states.
     #
     def dither(self):
         self.commWithResp("LK F=102")
         
     # built-in function in MFC2000 controller
     #
+    # This fucntion will set the state to 'R'.
+    # It automatically sets a new gain and sets the current offset as focus target.
+    #
     def gain_Cal(self):
         self.commWithResp("LK F=67")
-        time.sleep(1)
-        self.state=self.read_State()
-        self.gn = self.read_Gain()
 
     # built-in function in MFC2000 controller
+    #
+    # This function will either sets zero or a specific offset as focus target.
     #
     def set_Offset(self, ost):
         if ost is None:
@@ -174,6 +177,8 @@ class MFC2000(RS232.RS232):
         self.os = self.read_Offset()
 
     # built-in function in MFC2000 controller
+    #
+    # This fucntion will set lock range.
     #
     def set_LockRange(self, lrt=0.030):
         self.commWithResp("LR Z=" + str(lrt))
@@ -210,8 +215,7 @@ class MFC2000(RS232.RS232):
     # built-in function in MFC2000 controller
     #
     def getRelax(self):
-        self.commWithResp("LK F=85")
-        self.state = self.read_State()
+        self.getReady()
 
     ## getStatus
     #
@@ -302,7 +306,6 @@ class MFC2000(RS232.RS232):
 
 if __name__ == "__main__":
     stage = MFC2000("COM5")
-    '''
     state = stage.read_State()
     print state
     err = stage.read_Err()
@@ -311,19 +314,33 @@ if __name__ == "__main__":
     print os
     gn = stage.read_Gain()
     print gn
-    lr = stage.read_LockRange()
-    print lr
-    z = stage.position()
-    print z
+
+    stage.gain_Cal()
+    time.sleep(2)
+    #stage.set_Offset(None)
+    
+    print "After"
+    state = stage.read_State()
+    print state
+    err = stage.read_Err()
+    print err
+    os = stage.read_Offset()
+    print os
+    gn = stage.read_Gain()
+    print gn
+
+    #stage.getReady()
+    #stage.getFocus()
+    
     '''
     stage.IoG_Cal()
     time.sleep(2)
-    
+
     stage.dither()
     time.sleep(15)
     
-    stage.gain_Cal()
-    time.sleep(2)
+
+    
     print stage.state
     time.sleep(1)
     stage.getReady()
@@ -332,7 +349,7 @@ if __name__ == "__main__":
     time.sleep(5)
     print "relexed"
     stage.getRelax()
-    
+    '''
     
     '''
     #string_pos = info.find('SNR:')
