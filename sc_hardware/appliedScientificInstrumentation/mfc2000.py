@@ -26,7 +26,7 @@ class MFC2000(RS232.RS232):
 
     ## __init__
     #
-    # Connect to the MS2000 stage at the specified port.
+    # Connect to the MFC2000 stage at the specified port.
     #
     # @param port The RS-232 port name (e.g. "COM1").
     # @param wait_time (Optional) How long (in seconds) for a response from the stage.
