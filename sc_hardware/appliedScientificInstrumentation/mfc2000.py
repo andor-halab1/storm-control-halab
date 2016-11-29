@@ -4,9 +4,11 @@
 #
 # RS232 interface to a Applied Scientific Instrumentation MFC2000 Z stage with Crisp.
 #
+# Hazen 06/14
+#
 
 import imp
-imp.load_source("setPath", "C:\\STORM_controller\\storm-control-master\\sc_library\\setPath.py")
+imp.load_source("setPath", "C:\\STORM_controller\\storm-control-halab\\sc_library\\setPath.py")
 
 import sys
 import time
@@ -24,7 +26,7 @@ class MFC2000(RS232.RS232):
 
     ## __init__
     #
-    # Connect to the MFC2000 stage at the specified port.
+    # Connect to the MS2000 stage at the specified port.
     #
     # @param port The RS-232 port name (e.g. "COM1").
     # @param wait_time (Optional) How long (in seconds) for a response from the stage.
@@ -34,7 +36,10 @@ class MFC2000(RS232.RS232):
         self.live = True
         self.unit_to_um = 0.1
         self.um_to_unit = 1.0/self.unit_to_um
-        
+        self.z = 0.0
+        self.err = 0.0
+        self.os = 0.0
+
         # RS232 stuff
         RS232.RS232.__init__(self, port, None, 9600, "\r", wait_time)
         try:
@@ -46,48 +51,16 @@ class MFC2000(RS232.RS232):
         if not self.live:
             print "ASI Z Stage is not connected? Z Stage is not on?"
 
-        self.state = self.read_State()
-        if self.state == 'R':
-            self.idle()
-        elif self.state == 'I':
-            pass
-        else:
-            print "ASI Z stage is not in a correct initial state."
+        self.getReady()
+        #self.verbose()
+        self.state = 'R'
+        #self.zero()
 
-        self.err = self.read_Err()
-        self.os = self.read_Offset()
-        self.lr = self.read_LockRange()
-        self.z = 0.0
-    
-    '''
     # built-in function in MFC2000 controller
     #
     def verbose(self):
         self.commWithResp("VB X=16")
 
-    # built-in function in MFC2000 controller
-    #
-    def gain_Cal(self):
-        self.commWithResp("LK F=67")
-
-    # built-in function in MFC2000 controller
-    #
-    def curve(self):
-        self.commWithResp("LK F=97")
-    '''
-    
-    # built-in function in MFC2000 controller
-    #
-    def read_State(self):
-        if self.live:
-            try:
-                self.state = str(self.commWithResp("LK X?"))[3]
-            except:
-                hdebug.logText("  Warning: Bad state from ASI Z stage.")
-            return self.state
-        else:
-            return 'I'
-        
     # built-in function in MFC2000 controller
     #
     def read_Err(self):
@@ -113,19 +86,7 @@ class MFC2000(RS232.RS232):
             return 0.0
 
     # built-in function in MFC2000 controller
-    #
-    def read_LockRange(self):
-        if self.live:
-            try:
-                self.lr = float(str(self.commWithResp("LR Z?").split(" ")[1])[2:])
-            except:
-                hdebug.logText("  Warning: Bad lock range from ASI Z stage.")
-            return self.lr
-        else:
-            return 0.050
-            
-    # built-in function in MFC2000 controller
-    #
+    #        
     def IoG_Cal(self):
         self.commWithResp("LK F=72")
 
@@ -136,43 +97,44 @@ class MFC2000(RS232.RS232):
 
     # built-in function in MFC2000 controller
     #
-    def set_Offset(self, ost):
-        if ost is None:
-            self.commWithResp("LK F=111")
-        else:
-            self.commWithResp("LK Z=" + str(ost))
+    def gain_Cal(self):
+        self.commWithResp("LK F=67")
 
     # built-in function in MFC2000 controller
     #
-    def set_LockRange(self, lrt=0.030):
-        self.commWithResp("LR Z=" + str(lrt))
+    def set_Offset(self, os):
+        if os is None:
+            self.commWithResp("LK F=111")
+        else:
+            self.commWithResp("LK Z=" + str(os))
 
-    ## idle
-    #
     # built-in function in MFC2000 controller
     #
     def idle(self):
-        if self.state == 'R':
-            self.commWithResp("LK F=79")
-            self.state = 'I'
+        self.commWithResp("LK F=79")
+        self.state = 'I'
+    
+    # built-in function in MFC2000 controller
+    #
+    def curve(self):
+        self.commWithResp("LK F=97")
+
+    ## focus
+    #
+    # built-in function in MFC2000 controller
+    #
+    def getFocus(self):
+        if self.state == 'R' or self.state == 'I':
+            self.commWithResp("LK F=83")
+            self.state = 'F'
 
     ## ready
     #
     # built-in function in MFC2000 controller
     #
     def getReady(self):
-        if self.state == 'I':
-            self.commWithResp("LK F=85")
-            self.state = 'R'
-    
-    ## focus
-    #
-    # built-in function in MFC2000 controller
-    #
-    def getFocus(self):
-        if self.state == 'R':
-            self.commWithResp("LK F=83")
-            self.state = 'F'
+        self.commWithResp("LK F=85")
+        self.state = 'R'
 
     ## relax
     #
@@ -180,7 +142,7 @@ class MFC2000(RS232.RS232):
     #
     def getRelax(self):
         if self.state == 'F':
-            self.commWithResp("LK F=83")
+            self.commWithResp("LK F=85")
             self.state = 'R'
 
     ## getStatus
@@ -212,17 +174,31 @@ class MFC2000(RS232.RS232):
 
     ## jog
     #
+    # @param x_speed Speed to jog the stage in x in um/s.
+    # @param y_speed Speed to jog the stage in y in um/s.
+    #
     def jog(self, x_speed, y_speed):
         pass
+#        if self.live:
+#            vx = x_speed * 0.001
+#            vy = y_speed * 0.001
+#            self.commWithResp("S X=" + str(vx) + " Y=" + str(vy))
 
     ## joystickOnOff
     #
+    # @param on True/False enable/disable the joystick.
+    #
     def joystickOnOff(self, on):
         pass
+        #if self.live:
+        #    if on:
+        #        self.commWithResp("!joy 2")
+        #    else:
+        #        self.commWithResp("!joy 0")
 
     ## position
     #
-    # @return [stage z (um)]
+    # @return [stage x (um), stage y (um), stage z (um)]
     #
     def position(self):
         if self.live:
@@ -261,34 +237,18 @@ class MFC2000(RS232.RS232):
 if __name__ == "__main__":
     stage = MFC2000("COM5")
     os = stage.read_Offset()
-    print os
-    state = stage.read_State()
-    print state
-    err = stage.read_Err()
-    print err
-    z = stage.position()
-    print z
-    lr = stage.read_LockRange()
-    print lr
-    
-    stage.set_Offset(os-50)
-    os = stage.read_Offset()
-    print os
-
-    stage.set_LockRange()
-    lr = stage.read_LockRange()
-    print lr
-    
-    '''
     #string_pos = info.find('SNR:')
     #print info[string_pos+5:string_pos+8]
-    time.sleep(1)
+    print os
     err = stage.read_Err()
     print err
     time.sleep(1)
     err = stage.read_Err()
     print err
-    '''
+    time.sleep(1)
+    err = stage.read_Err()
+    print err
+
     '''
     stage.setVelocity(0.01)
     stage.goRelative(10)
