@@ -4,8 +4,6 @@
 #
 # RS232 interface to a Applied Scientific Instrumentation MFC2000 Z stage with Crisp.
 #
-# Hazen 06/14
-#
 
 import imp
 imp.load_source("setPath", "C:\\STORM_controller\\storm-control-halab\\sc_library\\setPath.py")
@@ -36,10 +34,7 @@ class MFC2000(RS232.RS232):
         self.live = True
         self.unit_to_um = 0.1
         self.um_to_unit = 1.0/self.unit_to_um
-        self.z = 0.0
-        self.err = 0.0
-        self.os = 0.0
-
+        
         # RS232 stuff
         RS232.RS232.__init__(self, port, None, 9600, "\r", wait_time)
         try:
@@ -51,16 +46,55 @@ class MFC2000(RS232.RS232):
         if not self.live:
             print "ASI Z Stage is not connected? Z Stage is not on?"
 
-        self.getReady()
-        #self.verbose()
-        self.state = 'R'
-        #self.zero()
+        # self.state is dynamic, and it can be set by user
+        self.state = self.read_State()
+        if self.state != 'I':
+            self.idle()
+            if self.state != 'I':
+                print "ASI Z stage cannot access the correct initial state."
+            else:
+                print "ASI Z stage is now put into the idle state."
+        else:
+            print "ASI Z stage is already in the idle state."
 
+        # self.err is dynamic, but it cannot be set by user
+        self.err = self.read_Err()
+        # self.os is static, but can be set by user
+        self.os = self.read_Offset()
+        # self.gn is static, but can be set by user
+        self.gn = self.read_Gain()
+        # self.lr is static, but can be set by user
+        self.lr = self.read_LockRange()
+        
+        # self.z is dynamic, but it cannot be directly set by user. Any change in self.z
+        # will be conducted through changing self.os.
+        self.z = self.position()
+        self.verbose()
+    
     # built-in function in MFC2000 controller
     #
     def verbose(self):
         self.commWithResp("VB X=16")
-
+    
+    '''
+    # built-in function in MFC2000 controller
+    #
+    def curve(self):
+        self.commWithResp("LK F=97")
+    '''
+    
+    # built-in function in MFC2000 controller
+    #
+    def read_State(self):
+        if self.live:
+            try:
+                self.state = str(self.commWithResp("LK X?"))[3]
+            except:
+                hdebug.logText("  Warning: Bad state from ASI Z stage.")
+            return self.state
+        else:
+            return 'I'
+        
     # built-in function in MFC2000 controller
     #
     def read_Err(self):
@@ -86,47 +120,74 @@ class MFC2000(RS232.RS232):
             return 0.0
 
     # built-in function in MFC2000 controller
-    #        
+    #
+    def read_Gain(self):
+        if self.live:
+            try:
+                self.lr = float(str(self.commWithResp("LR X?").split(" ")[1])[2:])
+            except:
+                hdebug.logText("  Warning: Bad gain from ASI Z stage.")
+            return self.lr
+        else:
+            return -5000.00
+    
+    # built-in function in MFC2000 controller
+    #
+    def read_LockRange(self):
+        if self.live:
+            try:
+                self.lr = float(str(self.commWithResp("LR Z?").split(" ")[1])[2:])
+            except:
+                hdebug.logText("  Warning: Bad lock range from ASI Z stage.")
+            return self.lr
+        else:
+            return 0.032
+            
+    # built-in function in MFC2000 controller
+    #
     def IoG_Cal(self):
         self.commWithResp("LK F=72")
+        time.sleep(1)
+        self.state=self.read_State()
+        self.gn = self.read_Gain()
 
     # built-in function in MFC2000 controller
     #
     def dither(self):
         self.commWithResp("LK F=102")
-
+        
     # built-in function in MFC2000 controller
     #
     def gain_Cal(self):
         self.commWithResp("LK F=67")
+        time.sleep(1)
+        self.state=self.read_State()
+        self.gn = self.read_Gain()
 
     # built-in function in MFC2000 controller
     #
-    def set_Offset(self, os):
-        if os is None:
+    def set_Offset(self, ost):
+        if ost is None:
             self.commWithResp("LK F=111")
         else:
-            self.commWithResp("LK Z=" + str(os))
+            self.commWithResp("LK Z=" + str(ost))
+        self.os = self.read_Offset()
 
+    # built-in function in MFC2000 controller
+    #
+    def set_LockRange(self, lrt=0.030):
+        self.commWithResp("LR Z=" + str(lrt))
+        self.lr = self.read_LockRange()
+
+    ## idle
+    #
+    # This state can be accessed from any other states, so it serves as a point of origin.
+    #
     # built-in function in MFC2000 controller
     #
     def idle(self):
         self.commWithResp("LK F=79")
-        self.state = 'I'
-    
-    # built-in function in MFC2000 controller
-    #
-    def curve(self):
-        self.commWithResp("LK F=97")
-
-    ## focus
-    #
-    # built-in function in MFC2000 controller
-    #
-    def getFocus(self):
-        if self.state == 'R' or self.state == 'I':
-            self.commWithResp("LK F=83")
-            self.state = 'F'
+        self.state = self.read_State()
 
     ## ready
     #
@@ -134,16 +195,23 @@ class MFC2000(RS232.RS232):
     #
     def getReady(self):
         self.commWithResp("LK F=85")
-        self.state = 'R'
+        self.state = self.read_State()
+    
+    ## focus
+    #
+    # built-in function in MFC2000 controller
+    #
+    def getFocus(self):
+        self.commWithResp("LK F=83")
+        self.state = self.read_State()
 
     ## relax
     #
     # built-in function in MFC2000 controller
     #
     def getRelax(self):
-        if self.state == 'F':
-            self.commWithResp("LK F=85")
-            self.state = 'R'
+        self.commWithResp("LK F=85")
+        self.state = self.read_State()
 
     ## getStatus
     #
@@ -152,53 +220,9 @@ class MFC2000(RS232.RS232):
     def getStatus(self):
         return self.live
 
-    ## goAbsolute
-    #
-    # @param x Stage x position in um.
-    # @param y Stage y position in um.
-    #
-    def goAbsolute(self, z):
-        if self.live:
-            Z = z * self.um_to_unit
-            self.commWithResp("Move Z=" + str(Z))
-
-    ## goRelative
-    #
-    # @param x Amount to move the stage in x in um.
-    # @param y Amount to move the stage in y in um.
-    #
-    def goRelative(self, z):
-        if self.live:
-            Z = z * self.um_to_unit
-            self.commWithResp("Movrel Z=" + str(Z))
-
-    ## jog
-    #
-    # @param x_speed Speed to jog the stage in x in um/s.
-    # @param y_speed Speed to jog the stage in y in um/s.
-    #
-    def jog(self, x_speed, y_speed):
-        pass
-#        if self.live:
-#            vx = x_speed * 0.001
-#            vy = y_speed * 0.001
-#            self.commWithResp("S X=" + str(vx) + " Y=" + str(vy))
-
-    ## joystickOnOff
-    #
-    # @param on True/False enable/disable the joystick.
-    #
-    def joystickOnOff(self, on):
-        pass
-        #if self.live:
-        #    if on:
-        #        self.commWithResp("!joy 2")
-        #    else:
-        #        self.commWithResp("!joy 0")
-
     ## position
     #
-    # @return [stage x (um), stage y (um), stage z (um)]
+    # @return [stage z (um)]
     #
     def position(self):
         if self.live:
@@ -209,6 +233,44 @@ class MFC2000(RS232.RS232):
             return self.z * self.unit_to_um
         else:
             return 0.0
+
+    ## goAbsolute
+    #
+    # @param x Stage x position in um.
+    # @param y Stage y position in um.
+    #
+    def goAbsolute(self, z):
+        pass
+        '''
+        if self.live:
+            Z = z * self.um_to_unit
+            self.commWithResp("Move Z=" + str(Z))
+        self.z = self.position()
+        '''
+
+    ## goRelative
+    #
+    # @param x Amount to move the stage in x in um.
+    # @param y Amount to move the stage in y in um.
+    #
+    def goRelative(self, z):
+        pass
+        '''
+        if self.live:
+            Z = z * self.um_to_unit
+            self.commWithResp("Movrel Z=" + str(Z))
+        self.z = self.position()
+        '''
+
+    ## jog
+    #
+    def jog(self, x_speed, y_speed):
+        pass
+
+    ## joystickOnOff
+    #
+    def joystickOnOff(self, on):
+        pass
 
     ## setVelocity
     #
@@ -225,8 +287,12 @@ class MFC2000(RS232.RS232):
     # Set the current stage position as the stage zero.
     #
     def zero(self):
+        pass
+        '''
         if self.live:
             self.commWithResp("Here Z=0")
+        self.z = self.position()
+        '''
 
 
 
@@ -236,19 +302,48 @@ class MFC2000(RS232.RS232):
 
 if __name__ == "__main__":
     stage = MFC2000("COM5")
+    '''
+    state = stage.read_State()
+    print state
+    err = stage.read_Err()
+    print err
     os = stage.read_Offset()
+    print os
+    gn = stage.read_Gain()
+    print gn
+    lr = stage.read_LockRange()
+    print lr
+    z = stage.position()
+    print z
+    '''
+    stage.IoG_Cal()
+    time.sleep(2)
+    
+    stage.dither()
+    time.sleep(15)
+    
+    stage.gain_Cal()
+    time.sleep(2)
+    print stage.state
+    time.sleep(1)
+    stage.getReady()
+    stage.getFocus()
+    print "focused"
+    time.sleep(5)
+    print "relexed"
+    stage.getRelax()
+    
+    
+    '''
     #string_pos = info.find('SNR:')
     #print info[string_pos+5:string_pos+8]
-    print os
-    err = stage.read_Err()
-    print err
     time.sleep(1)
     err = stage.read_Err()
     print err
     time.sleep(1)
     err = stage.read_Err()
     print err
-
+    '''
     '''
     stage.setVelocity(0.01)
     stage.goRelative(10)
