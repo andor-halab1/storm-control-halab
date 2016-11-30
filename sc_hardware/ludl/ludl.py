@@ -7,8 +7,8 @@
 # Hazen 02/14
 #
 
-#import imp
-#imp.load_source("setPath", "C:\\STORM_controller\\storm-control-master\\sc_library\\setPath.py")
+import imp
+imp.load_source("setPath", "C:\\STORM_controller\\storm-control-halab\\sc_library\\setPath.py")
 
 import sc_hardware.serial.RS232 as RS232
 import time
@@ -150,7 +150,7 @@ class Ludl(RS232.RS232):
 # 
 
 if __name__ == "__main__":
-    stage = Ludl("COM4")
+    stage = Ludl("COM6")
     
     stage.zero()
     time.sleep(0.1)

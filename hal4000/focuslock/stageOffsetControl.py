@@ -723,7 +723,7 @@ class StageCrispThread(QtCore.QThread):
         return temp
 
     ## getFocusStatus()
-    #
+    #tryLock(1000)
     # @return The status of the focus lock
     #
     @hdebug.debug
@@ -805,7 +805,7 @@ class StageCrispThread(QtCore.QThread):
         #self.emit(QtCore.SIGNAL("recenteredPiezo()"))
         self.recenteredPiezo.emit()
 
-    ## resetBuffer
+    ## resetBuffertryLock(1000)
     #
     # Resets the focus lock buffer.
     #
@@ -946,7 +946,7 @@ class StageCrispThread(QtCore.QThread):
         self.resetBuffer()
         self.qpd_mutex.unlock()
         
-        self.controller_mutex.trylock(1000)
+        self.controller_mutex.lock()
         self.controller.set_Offset(self.controller_offset + delta_os)
         self.msleep(5)
         self.controller_mutex.unlock()
@@ -971,7 +971,7 @@ class StageCrispThread(QtCore.QThread):
         self.waitForAcknowledgement()
         self.resetBuffer()
 
-        self.controller_mutex.trylock(100)
+        self.controller_mutex.lock()
         self.controller.getFocus()
         self.msleep(5)
         self.controller_mutex.unlock()
@@ -992,7 +992,7 @@ class StageCrispThread(QtCore.QThread):
         self.waitForAcknowledgement()
         self.resetBuffer()
 
-        self.controller_mutex.trylock(100)
+        self.controller_mutex.lock()
         self.controller.getRelax()
         self.msleep(5)
         self.controller_mutex.unlock()
@@ -1016,33 +1016,33 @@ class StageCrispThread(QtCore.QThread):
 
     # Added for MFC2000 controller
     def IoG_Cal(self):
-        self.controller_mutex.trylock(1000)
+        self.controller_mutex.lock()
         self.controller.IoG_Cal()
-        self.msleep(10)
+        self.msleep(5)
         self.controller_mutex.unlock()
 
     def dither(self):
-        self.controller_mutex.trylock(1000)
+        self.controller_mutex.lock()
         self.controller.dither()
-        self.msleep(10)
+        self.msleep(5)
         self.controller_mutex.unlock()
 
     def gain_Cal(self):
-        self.controller_mutex.trylock(1000)
+        self.controller_mutex.lock()
         self.controller.gain_Cal()
-        self.msleep(10)
+        self.msleep(5)
         self.controller_mutex.unlock()
 
     def getReady(self):
-        self.controller_mutex.trylock(1000)
+        self.controller_mutex.lock()
         self.controller.getReady()
-        self.msleep(10)
+        self.msleep(5)
         self.controller_mutex.unlock()
         
     def idle(self):
-        self.controller_mutex.trylock(1000)
+        self.controller_mutex.lock()
         self.controller.idle()
-        self.msleep(10)
+        self.msleep(5)
         self.controller_mutex.unlock()
 
 
