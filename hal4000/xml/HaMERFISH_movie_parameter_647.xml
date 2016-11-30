@@ -89,12 +89,10 @@
 
   <!-- focus lock settings -->
   <focuslock>
+	<!-- default lock mode -->
     <qpd_mode type="int">0</qpd_mode>
 	<!-- the center position of the piezo -->
     <qpd_zcenter type="float">50.0</qpd_zcenter>
-    <!--  <qpd_scale type="float">1350.0</qpd_scale> -->
-    <!--  <qpd_scale type="float">3200.0</qpd_scale> -->
-    <!--  <qpd_scale type="float">1421.0</qpd_scale> -->
     <qpd_scale type="float">50.0</qpd_scale>
     <qpd_sum_max type="int">1500</qpd_sum_max>
     <cal_deadtime type="int">20</cal_deadtime>

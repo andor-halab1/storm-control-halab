@@ -22,13 +22,13 @@ import focuslock.focusLockZ as focusLockZ
 #
 class AFocusLockZ(focusLockZ.FocusLockZCrisp):
     def __init__(self, hardware, parameters, parent = None):
+        controller = mfc2000.MFC2000("COM5", wait_time = 0.005)
         qpd = noneWidgets.QPD()
         stage = noneWidgets.NanoP()
-        controller = mfc2000.MFC2000("COM5", wait_time = 0.005)
         lock_fn = lambda (x): 0.0 * x
-        control_thread = stageOffsetControl.StageCrispThread(qpd,
+        control_thread = stageOffsetControl.StageCrispThread(controller,
+                                                           qpd,
                                                            stage,
-                                                           controller,
                                                            lock_fn,
                                                            50.0,
                                                            parameters.get("focuslock.qpd_zcenter"),

@@ -619,14 +619,17 @@ class StageCamThread(StageQPDThread):
 ## StageCrispThread
 #
 # This is a PyQt thread for controlling MFC2000, which then controls Crisp and piezo Z stage.
+#
 class StageCrispThread(QtCore.QThread):
     controlUpdate = QtCore.pyqtSignal(float, float, float, float, bool)
+    controllerUpdate = QtCore.pyqtSignal(str, float, float, float, float, float)
     foundSum = QtCore.pyqtSignal(float)
     lockStatusRequest = QtCore.pyqtSignal(bool)
     recenteredPiezo = QtCore.pyqtSignal()
 
     ## __init__
     #
+    # @param controller A MFC2000 control object
     # @param qpd A QPD like object.
     # @param stage A piezo stage control object.
     # @param lock_fn A function to use in the focus feedback correction loop.
@@ -638,7 +641,7 @@ class StageCrispThread(QtCore.QThread):
     # @param parent (Optional) The PyQt parent of this object.
     #
     @hdebug.debug
-    def __init__(self, qpd, stage, lock_fn, min_sum, z_center, buffer_length, offset_thresh, slow_stage = False, parent = None):
+    def __init__(self, controller, qpd, stage, lock_fn, min_sum, z_center, buffer_length, offset_thresh, slow_stage = False, parent = None):
         QtCore.QThread.__init__(self, parent)
         self.qpd = qpd
         self.stage = stage
@@ -663,17 +666,27 @@ class StageCrispThread(QtCore.QThread):
         self.unacknowledged = 1
         self.z_center = z_center
 
-        self.requested_sum = 0self.unacknowledged
+        self.requested_sum = 0
 
         self.buffer_length = buffer_length
         self.offset_thresh = offset_thresh
         self.sum_thresh = self.sum_min
         self.is_locked_buffer = deque([False]*self.buffer_length)
         self.is_locked = False
+
+        # Added for MFC2000 controller
+        self.controller = controller
+        self.controller_mutex = QtCore.QMutex()
+        self.controller_state = self.controller.read_State()
+        self.controller_err = self.controller.read_Err()
+        self.controller_offset = self.controller.read_Offset()
+        self.controller_gain = self.controller.read_Gain()
+        self.controller_lockrange = self.controller.read_LockRange()
+        self.controller_z = self.controller.position()
         
         # center the stage
         # self.newZCenter(z_center)
-self.unacknowledged
+
     ## cleanUp
     #
     # Shutdown the QPD and the piezo stage.
@@ -682,8 +695,9 @@ self.unacknowledged
     def cleanUp(self):
         self.qpd.shutDown()
         self.stage.shutDown()
+        self.controller.shutDown()
 
-    ## getLockTargetself.unacknowledged
+    ## getLockTarget
     #
     # @return The current focus lock target
     #
@@ -693,7 +707,7 @@ self.unacknowledged
             target = self.target
             self.qpd_mutex.unlock()
             return target
-        else:self.unacknowledged
+        else:
             print "QPD/Camera are frozen?"
             return "failed"
 
@@ -703,7 +717,7 @@ self.unacknowledged
     #
     @hdebug.debug
     def getOffset(self):
-        self.qpd_mutex.lock()self.unacknowledged
+        self.qpd_mutex.lock()
         temp = self.offset
         self.qpd_mutex.unlock()
         return temp
@@ -723,7 +737,7 @@ self.unacknowledged
             return "failed"
 
     ## findSumSignal
-    #self.unacknowledged
+    #
     # If sum signal is below a threshold start the sum signal search,
     # otherwise emit the foundSum signal.
     #
@@ -761,7 +775,7 @@ self.unacknowledged
         self.moveStageAbs(new_z)
 
     ## newZCenter
-    #self.unacknowledged
+    #
     # @param z_center The value to use as the zero or center point of the piezo stage.
     #
     def newZCenter(self, z_center):
@@ -793,13 +807,15 @@ self.unacknowledged
 
     ## resetBuffer
     #
-    # Resets the focus lock buffer.self.unacknowledged
+    # Resets the focus lock buffer.
     #
     def resetBuffer(self):
         self.is_locked_buffer = deque([False]*self.buffer_length)
         self.is_locked = False
 
     ## run
+    #
+    # This function is modified to accommodate MFC2000.
     #
     # Get the current power and offsets from the QPD. Scan for
     # sum signal if we are in find.sum mode and emit the
@@ -809,6 +825,22 @@ self.unacknowledged
     #
     def run(self):
         while(self.running):
+
+            self.controller_mutex.lock()
+            self.controller_state = self.controller.read_State()
+            self.controller_err = self.controller.read_Err()
+            self.controller_offset = self.controller.read_Offset()
+            self.controller_gain = self.controller.read_Gain()
+            self.controller_lockrange = self.controller.read_LockRange()
+            self.controller_z = self.controller.position()
+            self.controllerUpdate.emit(self.controller_state,
+                                       self.controller_err,
+                                       self.controller_offset,
+                                       self.controller_gain,
+                                       self.controller_lockrange,
+                                       self.controller_z)
+            self.controller_mutex.unlock()
+            
             [power, x_offset, y_offset] = self.qpdScan()
 
             self.qpd_mutex.lock()
@@ -816,7 +848,7 @@ self.unacknowledged
 
             if (power > 0):
                 self.offset = x_offset / power
-            self.unacknowledged = 0self.unacknowledged
+            self.unacknowledged = 0
 
             # scan for sum signal.
             if self.find_sum:
@@ -826,7 +858,7 @@ self.unacknowledged
                 if (self.max_sum > self.requested_sum) and (power < (0.5 * self.max_sum)):
                     self.moveStageAbs(self.max_pos)
                     self.find_sum = False
-                    self.foundSum.emit(self.max_sum)self.unacknowledged
+                    self.foundSum.emit(self.max_sum)
                 else:
                     if (self.stage_z >= (2 * self.z_center)):
                         if (self.max_sum > 0):
@@ -836,7 +868,7 @@ self.unacknowledged
                         self.find_sum = False
                         self.foundSum.emit(self.max_sum)
                     else:
-                        self.moveStageRel(1.0)self.unacknowledged
+                        self.moveStageRel(1.0)
 
             # update position, if locked.
             else:
@@ -853,12 +885,12 @@ self.unacknowledged
                     is_locked_now = (abs(self.offset - self.target) < self.offset_thresh) and (power > self.sum_thresh)
                     self.is_locked_buffer.popleft()
                     self.is_locked_buffer.append(is_locked_now)
-                    self.is_locked = (self.is_lockedself.unacknowledged_buffer.count(True) == self.buffer_length) # 3/4: Kludge to account for periodic jumps in camera based focus lock
+                    self.is_locked = (self.is_locked_buffer.count(True) == self.buffer_length) # 3/4: Kludge to account for periodic jumps in camera based focus lock
                     
             #self.emit(QtCore.SIGNAL("controlUpdate(float, float, float, float)"), x_offset, y_offset, power, self.stage_z)
             self.controlUpdate.emit(x_offset, y_offset, power, self.stage_z, self.is_locked)
             self.qpd_mutex.unlock()
-            self.msleep(1)
+            self.msleep(5)
 
     ## setBufferLength
     #
@@ -901,6 +933,10 @@ self.unacknowledged
 
     ## setTarget
     #
+    # This function is modified to accommodate MFC2000.
+    #
+    # Offset in MFC2000 actually means target. Sorry for the confusing notations.
+    #
     # @param target The focus lock target.
     #
     @hdebug.debug
@@ -909,8 +945,18 @@ self.unacknowledged
         self.target = target
         self.resetBuffer()
         self.qpd_mutex.unlock()
+        
+        self.controller_mutex.trylock(1000)
+        self.controller.set_Offset(self.controller_offset + delta_os)
+        self.msleep(5)
+        self.controller_mutex.unlock()
 
+    def setCrispOffset(self, delta_os = 0.0):
+        self.setTarget(delta_os)        
+    
     ## startLock
+    #
+    # This function is modified to accommodate MFC2000.
     #
     # Start the focus lock.
     #
@@ -925,7 +971,14 @@ self.unacknowledged
         self.waitForAcknowledgement()
         self.resetBuffer()
 
+        self.controller_mutex.trylock(100)
+        self.controller.getFocus()
+        self.msleep(5)
+        self.controller_mutex.unlock()
+
     ## stopLock
+    #
+    # This function is modified to accommodate MFC2000.
     #
     # Stop the focus lock.
     #
@@ -938,6 +991,11 @@ self.unacknowledged
         self.qpd_mutex.unlock()
         self.waitForAcknowledgement()
         self.resetBuffer()
+
+        self.controller_mutex.trylock(100)
+        self.controller.getRelax()
+        self.msleep(5)
+        self.controller_mutex.unlock()
 
     ## stopThread
     #
@@ -955,6 +1013,39 @@ self.unacknowledged
     def waitForAcknowledgement(self):
         while(self.unacknowledged):
             self.msleep(20)
+
+    # Added for MFC2000 controller
+    def IoG_Cal(self):
+        self.controller_mutex.trylock(1000)
+        self.controller.IoG_Cal()
+        self.msleep(10)
+        self.controller_mutex.unlock()
+
+    def dither(self):
+        self.controller_mutex.trylock(1000)
+        self.controller.dither()
+        self.msleep(10)
+        self.controller_mutex.unlock()
+
+    def gain_Cal(self):
+        self.controller_mutex.trylock(1000)
+        self.controller.gain_Cal()
+        self.msleep(10)
+        self.controller_mutex.unlock()
+
+    def getReady(self):
+        self.controller_mutex.trylock(1000)
+        self.controller.getReady()
+        self.msleep(10)
+        self.controller_mutex.unlock()
+        
+    def idle(self):
+        self.controller_mutex.trylock(1000)
+        self.controller.idle()
+        self.msleep(10)
+        self.controller_mutex.unlock()
+
+
 #
 # The MIT License
 #

@@ -57,6 +57,7 @@ class MFC2000(RS232.RS232):
         else:
             print "ASI Z stage is already in the idle state."
 
+        '''
         # self.err is dynamic, but it cannot be set by user
         self.err = self.read_Err()
         # self.os is static, but it can be set by user
@@ -69,6 +70,8 @@ class MFC2000(RS232.RS232):
         # self.z is dynamic, but it cannot be directly set by user. Any change in self.z
         # should be conducted through changing self.os.
         self.z = self.position()
+        '''
+        
         self.verbose()
     
     # built-in function in MFC2000 controller
@@ -174,7 +177,7 @@ class MFC2000(RS232.RS232):
             self.commWithResp("LK F=111")
         else:
             self.commWithResp("LK Z=" + str(ost))
-        self.os = self.read_Offset()
+        #self.os = self.read_Offset()
 
     # built-in function in MFC2000 controller
     #
@@ -182,7 +185,7 @@ class MFC2000(RS232.RS232):
     #
     def set_LockRange(self, lrt=0.030):
         self.commWithResp("LR Z=" + str(lrt))
-        self.lr = self.read_LockRange()
+        #self.lr = self.read_LockRange()
 
     ## idle
     #
@@ -192,7 +195,7 @@ class MFC2000(RS232.RS232):
     #
     def idle(self):
         self.commWithResp("LK F=79")
-        self.state = self.read_State()
+        #self.state = self.read_State()
 
     ## ready
     #
@@ -200,7 +203,7 @@ class MFC2000(RS232.RS232):
     #
     def getReady(self):
         self.commWithResp("LK F=85")
-        self.state = self.read_State()
+        #self.state = self.read_State()
     
     ## focus
     #
@@ -208,7 +211,7 @@ class MFC2000(RS232.RS232):
     #
     def getFocus(self):
         self.commWithResp("LK F=83")
-        self.state = self.read_State()
+        #self.state = self.read_State()
 
     ## relax
     #
