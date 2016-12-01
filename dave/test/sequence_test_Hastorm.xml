@@ -9,7 +9,7 @@
         <stage_y type="float">95.2</stage_y>
       </DAMoveStage>
       <DASetFocusLockTarget>
-        <lock_target type="float">710.0</lock_target>
+        <lock_target type="float">510.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
         <num_focus_checks>2</num_focus_checks>
@@ -30,7 +30,7 @@
         <stage_y type="float">95.2</stage_y>
       </DAMoveStage>
       <DASetFocusLockTarget>
-        <lock_target type="float">510.0</lock_target>
+        <lock_target type="float">710.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
         <num_focus_checks>2</num_focus_checks>
