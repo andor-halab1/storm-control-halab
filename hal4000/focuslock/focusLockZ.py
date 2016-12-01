@@ -817,7 +817,7 @@ class FocusLockZCrisp(FocusLockZ):
         # Setup UI.
         import qtdesigner.focuslock_ui as focuslockUi
 
-        self.ui = focuslockUi.Ui_Dialog()
+        self.ui = focuslockUi.Ui_Dialog_Crisp()
         self.ui.setupUi(self)
 
         # Add Crisp lock display.

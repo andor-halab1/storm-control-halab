@@ -790,6 +790,8 @@ class LockDisplayCrisp(QtGui.QWidget):
             self.ui.irButton.hide()
             self.ui.irSlider.hide()
 
+        self.toggleCrispButtonEnable(self.shouldEnableCrispButton())
+
         # additional buttons for Crisp calibration
         self.ui.calButton1.clicked.connect(self.handleCalButton1)
         self.ui.calButton2.clicked.connect(self.handleCalButton2)
@@ -840,6 +842,7 @@ class LockDisplayCrisp(QtGui.QWidget):
             self.current_mode.stopLock() # It may be redundant.
             self.current_mode.reset()
             self.current_mode = self.lock_modes[which_mode]
+            self.toggleCrispButtonEnable(self.shouldEnableCrispButton())
             return True
 
     ## controlUpdate
@@ -1157,7 +1160,21 @@ class LockDisplayCrisp(QtGui.QWidget):
     @hdebug.debug
     def handleOffsetSpinBox(self, delta_os):
         self.delta_os = delta_os
-        
+
+    ## toggleCrispButtonEnable
+    #
+    # Show/hide the Crisp Calibrate buttons depending on the show parameter.
+    #
+    # @param show True/False show/hide the lock button.
+    #
+    @hdebug.debug
+    def toggleCrispButtonEnable(self, show):
+        self.ui.calButton1.setEnabled(show)
+        self.ui.calButton2.setEnabled(show)
+        self.ui.calButton3.setEnabled(show)
+        self.ui.calButton4.setEnabled(show)
+        self.ui.calButton5.setEnabled(show)
+
 
 #
 # The MIT License
