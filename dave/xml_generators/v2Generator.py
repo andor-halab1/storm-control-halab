@@ -268,7 +268,13 @@ class XMLRecipeParser(QtGui.QWidget):
                     while True:
                         line = pos_fp.readline()
                         if not line: break
-                        [x, y] = line.split(",")
+                        
+                        # Modified the code to accommodate CRISP offset (target).
+                        # [x, y] = line.split(",")
+                        temp = line.split(",")
+                        x = temp[0]
+                        y = temp[1]
+                        
                         new_value = ElementTree.SubElement(new_loop_variable, "value")
                         new_value.text = "\n"
 
@@ -277,6 +283,11 @@ class XMLRecipeParser(QtGui.QWidget):
 
                         y_child = ElementTree.SubElement(new_value, "stage_y")
                         y_child.text = y
+
+                        if len(temp) >= 3:
+                            offset = temp[2]
+                            offset_child = ElementTree.SubElement(new_value, "CRISP_offset")
+                            offset_child.text = offset
 
                 loop_variables = loop_variable_xml.getroot()
 
