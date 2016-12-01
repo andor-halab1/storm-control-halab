@@ -709,6 +709,10 @@ class LockDisplayCam(LockDisplay):
         LockDisplay.quit(self)
         self.cam_timer.stop()
 
+## LockDisplayCrisp
+#
+# LockDisplay specialized for Crisp style offset data.
+#
 class LockDisplayCrisp(QtGui.QWidget):
     foundOptimal = QtCore.pyqtSignal(float)
     foundSum = QtCore.pyqtSignal(float)
@@ -746,6 +750,13 @@ class LockDisplayCrisp(QtGui.QWidget):
         self.power = 0
         self.stage_z = 0
         self.is_locked = False
+        # general, for MFC2000
+        self.state = 'I'
+        self.err = 0.0
+        self.os = 0.0
+        self.gn = -5000.00
+        self.lr = 0.032
+        self.z2000 = 0.0
         
         # Lock modes
         self.lock_modes = [lockModes.NoLockMode(control_thread,
@@ -777,9 +788,11 @@ class LockDisplayCrisp(QtGui.QWidget):
             self.ui.irButton.hide()
             self.ui.irSlider.hide()
 
-        # start the qpd monitoring thread & stage control thread
+        # start the qpd monitoring thread & stage control thread & MFC2000 control thread
         self.control_thread = control_thread
         self.control_thread.start(QtCore.QThread.NormalPriority)
+        self.control_thread.controlUpdate.connect(self.controlUpdate)
+        self.control_thread.controllerUpdate.connect(self.controllerUpdate)
         self.control_thread.foundSum.connect(self.handleFoundSum)
         self.control_thread.recenteredPiezo.connect(self.handleRecenteredPiezo)
 
@@ -839,13 +852,39 @@ class LockDisplayCrisp(QtGui.QWidget):
         self.stage_z = stage_z
         self.is_locked = is_locked
 
+    ## controllerUpdate
+    #
+    # Handles the controllerUpdate signal from the focus MFC2000 control thread.
+    #
+    # @param state The current state of MFC2000.
+    # @param err The current err of MFC2000.
+    # @param os The current offset (target) of MFC2000.
+    # @param gn The current gain of MFC2000.
+    # @param lr The current lock range of MFC2000.
+    # @param z2000 The current z of MFC2000.
+    #
+    def controllerUpdate(self, state, err, os, gn, lr, z2000):
+        
+        # These are saved so that they can be recorded when we are filming
+        self.state = state
+        self.err = err
+        self.os = os
+        self.gn = gn
+        self.lr = lr
+        self.z2000 = z2000
+
     ## getFocusStatus
+    #
+    # Use information from MFC2000.
     #
     # @return A boolean that determines the focus status, e.g. is the system in focus
     #
     def getFocusStatus(self):
         if self.amLocked():
-            return self.control_thread.getFocusStatus()
+            if (self.state == 'F'):
+                return True
+            else:
+                return False
         else:
             return False # If the focus lock is not locked, return that it is not
 
@@ -858,31 +897,23 @@ class LockDisplayCrisp(QtGui.QWidget):
 
     ## getLockTarget
     #
+    # Use information from MFC2000.
+    #
     # @return The current lock target.
     #
     @hdebug.debug
     def getLockTarget(self):
-        target = self.control_thread.getLockTarget()
-        if (target == None):
-            return "NA"
-        elif (target == "failed"):
-            return "failed"
-        else:
-            return target * self.scale
+        return self.os
 
     ## getLockedStatus
+    #
+    # self.control_thread.getLockedStatus() cannot be found.
     #
     # @return The current status of the focus lock.
     #
     @hdebug.debug
     def getLockedStatus(self):
-        status = self.control_thread.getLockedStatus()
-        if (status == None):
-            return "NA"
-        elif (status == "failed"):
-            return "failed"
-        else:
-            return status
+        self.getFocusStatus()
 
     ## getOffsetPowerStage
     #
@@ -1024,7 +1055,7 @@ class LockDisplayCrisp(QtGui.QWidget):
 
     ## shouldEnableCrispButton
     #
-    # @return True/False depending on whether the calibration mode is selected.
+    # @return True/False depending on whether the calibration mode is selected. This is for MFC2000.
     #
     @hdebug.debug
     def shouldEnableCrispButton(self):
