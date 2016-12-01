@@ -689,7 +689,7 @@ class StageCrispThread(QtCore.QThread):
 
     ## cleanUp
     #
-    # Shutdown the QPD and the piezo stage.
+    # Shutdown the QPD and the piezo stage. Also shutdown the MFC2000 controller.
     #
     @hdebug.debug
     def cleanUp(self):
@@ -956,12 +956,12 @@ class StageCrispThread(QtCore.QThread):
         self.qpd_mutex.unlock()
         
         self.controller_mutex.lock()
-        self.controller.set_Offset(self.controller_offset + target)
+        self.controller.set_Offset(target)
         self.msleep(5)
         self.controller_mutex.unlock()
 
     def setCrispOffset(self, delta_os = 0.0):
-        self.setTarget(delta_os)        
+        self.setTarget(self.controller_offset + delta_os)        
     
     ## startLock
     #

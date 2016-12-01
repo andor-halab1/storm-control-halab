@@ -178,6 +178,8 @@ class FocusLockZ(QtGui.QDialog, halModule.HalModule):
     #
     # @return The signals this module provides.
     #
+    # lockStatus and lockDisplay signals are not used in LockDisplayCrisp.
+    #
     @hdebug.debug
     def getSignals(self):
         return [[self.hal_type, "tcpComplete", self.tcpComplete],
@@ -829,14 +831,9 @@ class FocusLockZCrisp(FocusLockZ):
 
         FocusLockZ.configureUI(self)
 
-        #additional buttons for Crisp
-        self.lock_display1.ui.calButton1.clicked.connect(self.handleCalButton1)
-        self.lock_display1.ui.calButton2.clicked.connect(self.handleCalButton2)
-        self.lock_display1.ui.calButton3.clicked.connect(self.handleCalButton3)
-        self.lock_display1.ui.calButton4.clicked.connect(self.handleCalButton4)
-        self.lock_display1.ui.calButton5.clicked.connect(self.handleCalButton5)
-
     ## tcpPollFocusStatus
+    #
+    # This is modified for MFC2000.
     #
     # Check the focus lock thread to see if it registers as in focus.
     #
@@ -844,39 +841,47 @@ class FocusLockZCrisp(FocusLockZ):
     #
     @hdebug.debug
     def tcpPollFocusStatus(self):
-
-        scan_focus = self.tcp_message.getData("focus_scan")
-        if scan_focus is True:
-            if not self.buttons[2].isChecked():
-                self.buttons[2].setChecked(True)
-                self.handleRadioButtons(True)
-        else:
-            if not self.buttons[1].isChecked():
-                self.buttons[1].setChecked(True)
-                self.handleRadioButtons(True)
+        # To put the system into the CrispAlwaysOnLockMode.
+        if not self.buttons[1].isChecked():
+            self.buttons[1].setChecked(True)
+            self.handleRadioButtons(True)
         
-        self.tcp_message.addResponse("focus_status", True)
-        self.tcpComplete.emit(self.tcp_message)
+        # Try to lock and get the focus status.
+        self.lock_display1.startLock(filename)
+        focus_status = self.lock_display1.getFocusStatus()
+        self.lock_display1.stopLock()
 
-    def handleCalButton1(self):
-        if self.lock_display1.shouldEnableCrispButton():
-            self.lock_display1.current_mode.calibration1()
+        if focus_status: # Return message if focus is found
+            self.tcp_message.addResponse("focus_status", focus_status)
+            self.tcpComplete.emit(self.tcp_message)
 
-    def handleCalButton2(self):
-        if self.lock_display1.shouldEnableCrispButton():
-            self.lock_display1.current_mode.calibration2()
+        else:
+            print "Focus check " + str(self.accum_focus_checks) + ": not in focus"
+            self.accum_focus_checks += 1
+            if self.accum_focus_checks < self.num_focus_checks:
+                self.focus_check_timer.start(100) # Wait one 100 ms then measure again
+            else: # Focus not found after the specified number of checks
+                scan_focus = self.tcp_message.getData("focus_scan")
+                if scan_focus is True:
+                    print "Scanning for the focus"
+                    # Get minimum sum for FindSum scan
+                    min_sum = self.tcp_message.getData("min_sum")
+                    if min_sum is None: # Not provided. Use default for parameters.
+                        min_sum = self.parameters.get("qpd_sum_min", 50)
 
-    def handleCalButton3(self):
-        if self.lock_display1.shouldEnableCrispButton():
-            self.lock_display1.current_mode.calibration3()
+                    # Send scan command
+                    self.tcpHandleFindSum(min_sum) # message is returned by handleFoundSum
 
-    def handleCalButton4(self):
-        if self.lock_display1.shouldEnableCrispButton():
-            self.lock_display1.current_mode.calibration4()
+                    # To put the system into the CrispOptimalLockMode.
+                    # Be careful. Doing this will change the offset (target).
+                    if not self.buttons[2].isChecked():
+                        self.buttons[2].setChecked(True)
+                        self.handleRadioButtons(True)
+                    
+                else: # No scan, just return error
+                    self.tcp_message.addResponse("focus_status", focus_status)
+                    self.tcpComplete.emit(self.tcp_message)
 
-    def handleCalButton5(self):
-        if self.lock_display1.shouldEnableCrispButton():
-            self.lock_display1.current_mode.calibration5()
         
 #
 # The MIT License

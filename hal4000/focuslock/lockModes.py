@@ -1244,8 +1244,8 @@ class CrispCalibrationLockMode(LockMode):
     def calibration3(self):
         self.control_thread.gain_Cal()
 
-    def calibration4(self):
-        self.control_thread.setCrispOffset()
+    def calibration4(self, delta_os = 0.0):
+        self.control_thread.setCrispOffset(delta_os)
 
     def calibration5(self):
         self.control_thread.getReady()
