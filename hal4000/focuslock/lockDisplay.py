@@ -935,10 +935,12 @@ class LockDisplayCrisp(QtGui.QWidget):
 
     ## getOffsetPowerStage
     #
+    # Use information from MFC2000.
+    #
     # @return [offset, power, stage]
     #
     def getOffsetPowerStage(self):
-        return [self.offset, self.power, self.stage_z]
+        return [self.err, self.os, self.z2000]
 
     ## handleAdjustStage
     #

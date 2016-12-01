@@ -5,18 +5,19 @@
   <loop name = "Movie Loop" increment = "name">	
 	<item name = "Movie 1"></item>
   </loop>
-  <!--<loop name = "Movie Loop" increment = "name">	
+  <loop name = "Movie Loop" increment = "name">	
 	<item name = "Movie 2"></item>
-  </loop>-->
+  </loop>
 </command_sequence>
 
 <item name = "Movie 1">
   <movie>
-    <name increment = "Yes">568</name>
-    <length>520</length>
-	<parameters>Hastorm_movie_parameter_568</parameters>
+    <name increment = "Yes">647</name>
+    <length>20</length>
+	<parameters>Hastorm_movie_parameter_647</parameters>
+	<lock_target>510.0</lock_target>
 	<check_focus>
-	  <focus_scan></focus_scan>
+	  <num_focus_checks>2</num_focus_checks>
 	</check_focus>
 	<overwrite>True</overwrite>
     <variable_entry name = "Movie Loop"></variable_entry>
@@ -25,10 +26,12 @@
 
 <item name = "Movie 2">
   <movie>
-    <name increment = "Yes">bleach</name>
+    <name increment = "Yes">568</name>
     <length>20</length>
-	<parameters>Hastorm_movie_parameter_647</parameters>
+	<parameters>Hastorm_movie_parameter_568</parameters>
+	<lock_target>910.0</lock_target>
 	<check_focus>
+		<num_focus_checks>2</num_focus_checks>
 	</check_focus>
 	<overwrite>True</overwrite>
     <variable_entry name = "Movie Loop"></variable_entry>

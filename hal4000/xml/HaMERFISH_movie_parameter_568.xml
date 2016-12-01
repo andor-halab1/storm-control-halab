@@ -6,7 +6,7 @@
 
   <!-- camera settings -->
   <camera1>
-    <emccd_gain type="int">200</emccd_gain>
+    <emccd_gain type="int">150</emccd_gain>
     <x_start type="int">60</x_start>
     <x_end type="int">315</x_end>
     <y_start type="int">40</y_start>
@@ -62,7 +62,7 @@
 
   <!-- illumination settings -->
   <illumination>
-    <shutters type="string">shutters_default_405.xml</shutters>
+    <shutters type="string">shutters_default_568.xml</shutters>
     <default_power channel="0">1.0</default_power>
     <default_power channel="1">1.0</default_power>
     <default_power channel="2">1.0</default_power>

@@ -7,10 +7,10 @@
   <!-- camera settings -->
   <camera1>
     <emccd_gain type="int">200</emccd_gain>
-    <x_start type="int">40</x_start>
-    <x_end type="int">295</x_end>
-    <y_start type="int">60</y_start>
-    <y_end type="int">315</y_end>
+    <x_start type="int">60</x_start>
+    <x_end type="int">315</x_end>
+    <y_start type="int">40</y_start>
+    <y_end type="int">295</y_end>
     <x_bin type="int">1</x_bin>
     <y_bin type="int">1</y_bin>
     <exposure_time type="float">0.03</exposure_time>
@@ -38,7 +38,7 @@
     <flip_horizontal type="int">0</flip_horizontal>
     <flip_vertical type="int">1</flip_vertical>
     <transpose type="int">0</transpose>
-    <max_intensity type="int">10000</max_intensity>
+    <max_intensity type="int">16384</max_intensity>
     <scalemax type="int">2000</scalemax>
     <scalemin type="int">100</scalemin>
     <sync type="int">0</sync>
@@ -89,13 +89,14 @@
 
   <!-- focus lock settings -->
   <focuslock>
+	<!-- default lock mode -->
     <qpd_mode type="int">0</qpd_mode>
+	<!-- the center position of the piezo -->
     <qpd_zcenter type="float">50.0</qpd_zcenter>
-    <!--  <qpd_scale type="float">1350.0</qpd_scale> -->
-    <!--  <qpd_scale type="float">3200.0</qpd_scale> -->
-    <!--  <qpd_scale type="float">1421.0</qpd_scale> -->
-    <qpd_scale type="float">50.0</qpd_scale>
+	<!-- conversion factor used in setting focus target -->
+    <qpd_scale type="float">1.0</qpd_scale>
     <qpd_sum_max type="int">1500</qpd_sum_max>
+	
     <cal_deadtime type="int">20</cal_deadtime>
     <cal_range type="float">600</cal_range>
     <cal_step_size type="float">10</cal_step_size>
@@ -105,10 +106,19 @@
     <zscan_frames_to_pause type="int">100</zscan_frames_to_pause>
     <zscan_stop type="float">51.0</zscan_stop>
     <zscan_focus_lock type="int">0</zscan_focus_lock>
+	
+	<!-- default jump size -->
+	<!-- <lockt_step type="float">0.02</lockt_step> -->
+	
+	<!-- parameter used in CrispOptimalLockMode -->
     <olock_bracket_step type="int">500</olock_bracket_step>
+	<!-- parameter used in CrispOptimalLockMode -->
     <olock_scan_step type="int">10</olock_scan_step>
+	<!-- parameter used in CrispOptimalLockMode -->
     <olock_scan_hold type="int">10</olock_scan_hold>
+	<!-- parameter used in CrispOptimalLockMode -->
     <olock_quality_threshold type="float">0.0</olock_quality_threshold>
+	<!-- the following two used stageOffsetControl-->
 	<is_locked_buffer_length type="int">3</is_locked_buffer_length>
     <is_locked_offset_thresh type="float">0.1</is_locked_offset_thresh>
   </focuslock>

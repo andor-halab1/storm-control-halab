@@ -847,7 +847,7 @@ class FocusLockZCrisp(FocusLockZ):
             self.handleRadioButtons(True)
         
         # Try to lock and get the focus status.
-        self.lock_display1.startLock(filename)
+        self.lock_display1.startLock(None)
         focus_status = self.lock_display1.getFocusStatus()
         self.lock_display1.stopLock()
 
