@@ -757,6 +757,8 @@ class LockDisplayCrisp(QtGui.QWidget):
         self.gn = -5000.00
         self.lr = 0.032
         self.z2000 = 0.0
+        # delta offset vaule
+        self.delta_os = 0.0
         
         # Lock modes
         self.lock_modes = [lockModes.CrispNoLockMode(control_thread,
@@ -787,6 +789,14 @@ class LockDisplayCrisp(QtGui.QWidget):
         else:
             self.ui.irButton.hide()
             self.ui.irSlider.hide()
+
+        # additional buttons for Crisp calibration
+        self.ui.calButton1.clicked.connect(self.handleCalButton1)
+        self.ui.calButton2.clicked.connect(self.handleCalButton2)
+        self.ui.calButton3.clicked.connect(self.handleCalButton3)
+        self.ui.calButton4.clicked.connect(self.handleCalButton4)
+        self.ui.calButton5.clicked.connect(self.handleCalButton5)
+        self.ui.offsetSpinBox.valueChanged.connect(self.handleOffsetSpinBox)
 
         # start the qpd monitoring thread & stage control thread & MFC2000 control thread
         self.control_thread = control_thread
@@ -864,7 +874,6 @@ class LockDisplayCrisp(QtGui.QWidget):
     # @param z2000 The current z of MFC2000.
     #
     def controllerUpdate(self, state, err, os, gn, lr, z2000):
-        
         # These are saved so that they can be recorded when we are filming
         self.state = state
         self.err = err
@@ -872,6 +881,12 @@ class LockDisplayCrisp(QtGui.QWidget):
         self.gn = gn
         self.lr = lr
         self.z2000 = z2000
+
+        # Update UI information display.
+        self.ui.errText.setText("%.1f" % self.err)
+        self.ui.gainText.setText("%.1f" % self.gn)
+        self.ui.offsetText.setText("%.1f" % self.os)
+        self.ui.stateText.setText("%s" % self.state)
 
     ## getFocusStatus
     #
@@ -1113,6 +1128,36 @@ class LockDisplayCrisp(QtGui.QWidget):
     @hdebug.debug
     def tcpHandleSetLockTarget(self, target):
         self.current_mode.setLockTarget(target/self.scale)
+
+    ## additional buttons for Crisp calibration
+    def handleCalButton1(self):
+        if self.shouldEnableCrispButton():
+            self.current_mode.calibration1()
+
+    def handleCalButton2(self):
+        if self.shouldEnableCrispButton():
+            self.current_mode.calibration2()
+
+    def handleCalButton3(self):
+        if self.shouldEnableCrispButton():
+            self.current_mode.calibration3()
+
+    def handleCalButton4(self):
+        if self.shouldEnableCrispButton():
+            self.current_mode.calibration4(self.delta_os)
+
+    def handleCalButton5(self):
+        if self.shouldEnableCrispButton():
+            self.current_mode.calibration5()
+
+    ## handleOffsetSpinBox
+    #
+    # Handles the offset spin box.
+    #
+    @hdebug.debug
+    def handleOffsetSpinBox(self, delta_os):
+        self.delta_os = delta_os
+        
 
 #
 # The MIT License
