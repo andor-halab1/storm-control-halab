@@ -15,7 +15,6 @@
     <name increment = "Yes">647</name>
     <length>20</length>
 	<parameters>Hastorm_movie_parameter_647</parameters>
-	<lock_target>510.0</lock_target>
 	<check_focus>
 	  <num_focus_checks>2</num_focus_checks>
 	</check_focus>

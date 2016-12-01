@@ -61,7 +61,9 @@ movie_node_conversion = {"delay" : gf("delay", [int]),
                          "progression" : gf("progression", [None]),
                          "recenter" : gf("recenter", [boolConv]),
                          "stage_x" : gf("stage_x", [float]),
-                         "stage_y" : gf("stage_y", [float])}
+                         "stage_y" : gf("stage_y", [float]),
+                         # Modified the code to accommodate CRISP offset (target).
+                         "CRISP_offset" : gf("CRISP_offset", [float])}
 
 ## movieNodeToDict
 #
@@ -88,7 +90,7 @@ def movieNodeToDict(movie_node):
     # It is just for MFC2000.
     if flag == 1:
         dict["length"] = dict["length"]+2500
-    
+
     return dict
 
 #

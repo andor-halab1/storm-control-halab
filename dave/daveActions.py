@@ -831,15 +831,21 @@ class DASetFocusLockTarget(DaveAction):
 
     ## createETree
     #
+    # Modified the code to accommodate CRISP offset (target).
+    #
     # @param dictionary A dictionary.
     #
     # @return A ElementTree object or None.
     #
     def createETree(self, dictionary):
         lock_target = dictionary.get("lock_target")
-        if (lock_target is not None):
+        CRISP_offset = dictionary.get("CRISP_offset")
+        if (lock_target is not None) or (CRISP_offset is not None):
             block = ElementTree.Element(str(type(self).__name__))
-            addField(block, "lock_target", lock_target)
+            if lock_target is None:
+                addField(block, "lock_target", CRISP_offset)
+            else:
+                addField(block, "lock_target", lock_target)
             return block
 
     ## getDescriptor
