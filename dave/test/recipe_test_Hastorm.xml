@@ -16,7 +16,7 @@
     <length>20</length>
 	<parameters>Hastorm_movie_parameter_647</parameters>
 	<check_focus>
-	  <num_focus_checks>2</num_focus_checks>
+	  <num_focus_checks>5</num_focus_checks>
 	</check_focus>
 	<overwrite>True</overwrite>
     <variable_entry name = "Movie Loop"></variable_entry>
@@ -30,7 +30,7 @@
 	<parameters>Hastorm_movie_parameter_568</parameters>
 	<lock_target>910.0</lock_target>
 	<check_focus>
-		<num_focus_checks>2</num_focus_checks>
+		<num_focus_checks>5</num_focus_checks>
 	</check_focus>
 	<overwrite>True</overwrite>
     <variable_entry name = "Movie Loop"></variable_entry>

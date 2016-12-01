@@ -12,7 +12,7 @@
         <lock_target type="float">510.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
-        <num_focus_checks>2</num_focus_checks>
+        <num_focus_checks>5</num_focus_checks>
       </DACheckFocus>
       <DASetParameters>
         <parameters type="str">Hastorm_movie_parameter_647</parameters>
@@ -33,7 +33,7 @@
         <lock_target type="float">710.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
-        <num_focus_checks>2</num_focus_checks>
+        <num_focus_checks>5</num_focus_checks>
       </DACheckFocus>
       <DASetParameters>
         <parameters type="str">Hastorm_movie_parameter_647</parameters>
@@ -54,7 +54,7 @@
         <lock_target type="float">910.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
-        <num_focus_checks>2</num_focus_checks>
+        <num_focus_checks>5</num_focus_checks>
       </DACheckFocus>
       <DASetParameters>
         <parameters type="str">Hastorm_movie_parameter_647</parameters>
@@ -75,7 +75,7 @@
         <lock_target type="float">1110.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
-        <num_focus_checks>2</num_focus_checks>
+        <num_focus_checks>5</num_focus_checks>
       </DACheckFocus>
       <DASetParameters>
         <parameters type="str">Hastorm_movie_parameter_647</parameters>
@@ -96,7 +96,7 @@
         <lock_target type="float">1310.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
-        <num_focus_checks>2</num_focus_checks>
+        <num_focus_checks>5</num_focus_checks>
       </DACheckFocus>
       <DASetParameters>
         <parameters type="str">Hastorm_movie_parameter_647</parameters>
@@ -119,7 +119,7 @@
         <lock_target type="float">910.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
-        <num_focus_checks>2</num_focus_checks>
+        <num_focus_checks>5</num_focus_checks>
       </DACheckFocus>
       <DASetParameters>
         <parameters type="str">Hastorm_movie_parameter_568</parameters>
@@ -140,7 +140,7 @@
         <lock_target type="float">910.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
-        <num_focus_checks>2</num_focus_checks>
+        <num_focus_checks>5</num_focus_checks>
       </DACheckFocus>
       <DASetParameters>
         <parameters type="str">Hastorm_movie_parameter_568</parameters>
@@ -161,7 +161,7 @@
         <lock_target type="float">910.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
-        <num_focus_checks>2</num_focus_checks>
+        <num_focus_checks>5</num_focus_checks>
       </DACheckFocus>
       <DASetParameters>
         <parameters type="str">Hastorm_movie_parameter_568</parameters>
@@ -182,7 +182,7 @@
         <lock_target type="float">910.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
-        <num_focus_checks>2</num_focus_checks>
+        <num_focus_checks>5</num_focus_checks>
       </DACheckFocus>
       <DASetParameters>
         <parameters type="str">Hastorm_movie_parameter_568</parameters>
@@ -203,7 +203,7 @@
         <lock_target type="float">910.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
-        <num_focus_checks>2</num_focus_checks>
+        <num_focus_checks>5</num_focus_checks>
       </DACheckFocus>
       <DASetParameters>
         <parameters type="str">Hastorm_movie_parameter_568</parameters>
