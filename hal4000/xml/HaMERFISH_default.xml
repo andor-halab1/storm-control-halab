@@ -93,8 +93,10 @@
     <qpd_mode type="int">0</qpd_mode>
 	<!-- the center position of the piezo -->
     <qpd_zcenter type="float">50.0</qpd_zcenter>
-    <qpd_scale type="float">50.0</qpd_scale>
+	<!-- conversion factor used in setting focus target -->
+    <qpd_scale type="float">1.0</qpd_scale>
     <qpd_sum_max type="int">1500</qpd_sum_max>
+	
     <cal_deadtime type="int">20</cal_deadtime>
     <cal_range type="float">600</cal_range>
     <cal_step_size type="float">10</cal_step_size>
@@ -104,9 +106,17 @@
     <zscan_frames_to_pause type="int">100</zscan_frames_to_pause>
     <zscan_stop type="float">51.0</zscan_stop>
     <zscan_focus_lock type="int">0</zscan_focus_lock>
+	
+	<!-- default jump size -->
+	<!-- <lockt_step type="float">0.02</lockt_step> -->
+	
+    <!-- parameter used in CrispOptimalLockMode -->
     <olock_bracket_step type="int">500</olock_bracket_step>
+	<!-- parameter used in CrispOptimalLockMode -->
     <olock_scan_step type="int">10</olock_scan_step>
+	<!-- parameter used in CrispOptimalLockMode -->
     <olock_scan_hold type="int">10</olock_scan_hold>
+	<!-- parameter used in CrispOptimalLockMode -->
     <olock_quality_threshold type="float">0.0</olock_quality_threshold>
 	<!-- the following two used stageOffsetControl-->
 	<is_locked_buffer_length type="int">3</is_locked_buffer_length>

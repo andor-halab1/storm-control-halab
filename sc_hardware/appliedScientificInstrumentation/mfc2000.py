@@ -46,7 +46,7 @@ class MFC2000(RS232.RS232):
         if not self.live:
             print "ASI Z Stage is not connected? Z Stage is not on?"
 
-        # self.state is dynamic, and it can be set by user
+        # self.state is dynamic, and it can be set by user.
         self.state = self.read_State()
         if self.state != 'I':
             self.idle()
@@ -58,17 +58,16 @@ class MFC2000(RS232.RS232):
             print "ASI Z stage is already in the idle state."
 
         '''
-        # self.err is dynamic, but it cannot be set by user
+        # self.err is dynamic, but it cannot be set by user.
         self.err = self.read_Err()
-        # self.os is static, but it can be set by user
+        # self.os is static, but it can be set by user.
         self.os = self.read_Offset()
-        # self.gn is static, but it can be set by user
+        # self.gn is static, but it can be set by user.
         self.gn = self.read_Gain()
-        # self.lr is static, but it can be set by user
+        # self.lr is static, but it can be set by user.
         self.lr = self.read_LockRange()
         
-        # self.z is dynamic, but it cannot be directly set by user. Any change in self.z
-        # should be conducted through changing self.os.
+        # self.z is dynamic, and it can be set by user.
         self.z = self.position()
         '''
         
@@ -252,7 +251,7 @@ class MFC2000(RS232.RS232):
         if self.live:
             Z = z * self.um_to_unit
             self.commWithResp("Move Z=" + str(Z))
-        self.z = self.position()
+        #self.z = self.position()
         '''
 
     ## goRelative
@@ -261,13 +260,10 @@ class MFC2000(RS232.RS232):
     # @param y Amount to move the stage in y in um.
     #
     def goRelative(self, z):
-        pass
-        '''
         if self.live:
             Z = z * self.um_to_unit
             self.commWithResp("Movrel Z=" + str(Z))
-        self.z = self.position()
-        '''
+        #self.z = self.position()
 
     ## jog
     #

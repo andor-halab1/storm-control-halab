@@ -774,6 +774,15 @@ class StageCrispThread(QtCore.QThread):
         new_z = self.stage_z + dz
         self.moveStageAbs(new_z)
 
+    ## moveStageRelative
+    #
+    # Just for MFC2000.
+    #
+    # @param dz The amount to move the stage from its current position.
+    #
+    def moveStageRelative(self, dz):
+        self.controller.goRelative(-dz)
+
     ## newZCenter
     #
     # @param z_center The value to use as the zero or center point of the piezo stage.
@@ -947,7 +956,7 @@ class StageCrispThread(QtCore.QThread):
         self.qpd_mutex.unlock()
         
         self.controller_mutex.lock()
-        self.controller.set_Offset(self.controller_offset + delta_os)
+        self.controller.set_Offset(self.controller_offset + target)
         self.msleep(5)
         self.controller_mutex.unlock()
 

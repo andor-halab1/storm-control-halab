@@ -916,6 +916,121 @@ class ZScanLockModeV2(AlwaysOnLockMode):
         self.control_thread.setTarget(self.start_lock_target)
         AlwaysOnLockMode.stopLock(self)
 
+
+## CrispNoLockMode
+#
+# No focus lock for Crisp
+#
+class CrispNoLockMode(LockMode):
+
+    ## __init__
+    #
+    # @param control_thread A thread object that controls the focus lock.
+    # @param parameters A parameters object.
+    # @param parent (Optional) The PyQt parent of this object.
+    #
+    def __init__(self, control_thread, parameters, parent):
+        LockMode.__init__(self, control_thread, parameters, parent)
+        self.name = "Off"
+
+    ## handleJump
+    #
+    # Jumps the pizeo stage immediately by the distance jumpsize.
+    #
+    # @param jumpsize The distance to jump the stage.
+    #
+    def handleJump(self, jumpsize):
+        self.control_thread.moveStageRelative(jumpsize)
+
+## CrispAlwaysOnLockMode
+#
+# Lock will start during filming, or when the lock button is 
+# pressed (in which case it will always stay on)
+#
+class CrispAlwaysOnLockMode(JumpLockMode):
+
+    ## __init__
+    #
+    # @param control_thread A thread object that controls the focus lock.
+    # @param parameters A parameters object.
+    # @param parent (Optional) The PyQt parent of this object.
+    #
+    def __init__(self, control_thread, parameters, parent):
+        JumpLockMode.__init__(self, control_thread, parameters, parent)
+        self.button_locked = False
+        self.name = "Always On"
+
+    ## handleJump
+    # 
+    # Jumps the piezo stage immediately if it is not locked. Otherwise it stops the
+    # lock, jumps the piezo stage and starts the relock timer.
+    #
+    # Slightly different, so that it works for MFC2000.
+    #
+    # @param jumpsize The distance to jump the piezo stage.
+    #
+    def handleJump(self, jumpsize):
+        if self.locked:
+            self.control_thread.stopLock()
+        self.control_thread.moveStageRelative(jumpsize)
+        if self.locked:
+            self.relock_timer.start()
+            
+    ## lockButtonToggle
+    #
+    # Sets the button_locked flag and start/stops the focus lock.
+    #
+    def lockButtonToggle(self):
+        if self.button_locked:
+            self.button_locked = False
+            self.stopLock()
+        else:
+            self.startLock()
+            self.button_locked = True
+
+    ## newParameters
+    #
+    # This is a noop, not sure why this method is in this class.
+    #
+    # @param parameters A parameters object.
+    #
+    def newParameters(self, parameters):
+        pass
+
+    ## reset
+    #
+    # Turn the lock off it was turned on using the lock button.
+    #
+    def reset(self):
+        if self.button_locked:
+            self.lockButtonToggle()
+
+    ## shouldDisplayLockButton
+    #
+    # @return True
+    #
+    def shouldDisplayLockButton(self):
+        return True
+
+    ## startLock
+    #
+    # Starts the focus lock.
+    #
+    def startLock(self):
+        if not self.locked:
+            self.control_thread.startLock()
+            self.locked = True
+
+    ## stopLock
+    #
+    # Stops the focus lock.
+    #
+    def stopLock(self):
+        if self.locked and (not self.button_locked):
+            self.control_thread.stopLock()
+            self.control_thread.recenter()
+            self.locked = False
+
 ## CrispOptimalLockMode
 #
 # At the start of filming the stage is moved
@@ -938,21 +1053,41 @@ class CrispOptimalLockMode(JumpLockMode):
     #
     def __init__(self, control_thread, parameters, parent):
         JumpLockMode.__init__(self, control_thread, parameters, parent)
-        self.bracket_step = None
         self.button_locked = False
-        self.cur_z = None
-        self.counter = 0
-        self.fvalues = None
-        self.lock_target = None
-        self.mode = "None"
         self.name = "Optimal"
+        
+        self.cur_z = None
+        self.mode = "None"
+        self.scan_state = 1
+        self.counter = 0
+        self.zvalues = None
+        self.fvalues = None
+        
+        self.lock_target = None
+        
         self.quality_threshold = 0
-        self.scan_hold = None
+        self.bracket_step = None
         self.scan_step = None
         self.scan_step_offset = None
-        self.scan_state = 1
-        self.zvalues = None
+        self.scan_hold = None
 
+
+    ## handleJump
+    # 
+    # Jumps the piezo stage immediately if it is not locked. Otherwise it stops the
+    # lock, jumps the piezo stage and starts the relock timer.
+    #
+    # Slightly different, so that it works for MFC2000.
+    #
+    # @param jumpsize The distance to jump the piezo stage.
+    #
+    def handleJump(self, jumpsize):
+        if self.locked:
+            self.control_thread.stopLock()
+        self.control_thread.moveStageRelative(jumpsize)
+        if self.locked:
+            self.relock_timer.start()
+            
     ## getName
     #
     # Not sure why this method is in this class.
@@ -991,13 +1126,12 @@ class CrispOptimalLockMode(JumpLockMode):
             if frame:
                 quality = focusQuality.imageGradient(frame)
                 if (quality > self.quality_threshold):
+                    # I am not sure if I need to use mutex here.
                     self.zvalues[self.counter] = self.control_thread.controller_offset
                     self.fvalues[self.counter] = quality
-                    self.counter += 1
                     if ((self.counter % self.scan_hold) == 0):
-                        print "stage offset:" + str(self.control_thread.controller_offset)
+                        print "stage offset:" + str(self.zvalues[self.counter])
                         print "image quality:" + str(quality)
-                        print "stage z position:" + str(self.control_thread.controller_z)
                         print "\n"
                         
                         if (self.scan_state == 1): # Scan up
@@ -1015,41 +1149,19 @@ class CrispOptimalLockMode(JumpLockMode):
                         else: # Scan back to zero
                             if (self.cur_z >= 0.0):
                                 self.mode = "None"
-                                n = self.counter - 1
+                                n = self.counter
                                 
-                                # Fit offset data to a*x*x + b*x + c.
-                                #m0 = numpy.concatenate((numpy.ones(n),
-                                #                        self.zvalues[0:n],
-                                #                        self.zvalues[0:n] * self.zvalues[0:n]))
-                                #m0 = numpy.reshape(m0, (3, n))
-                                #m1 = numpy.dot(numpy.linalg.inv(numpy.dot(m0, numpy.transpose(m0))), m0)
-                                #v0 = numpy.dot(m1, self.fvalues[0:n])
-                                #optimum = -v0[1]/(2.0 * v0[2])
-
-                                # Fit offset data to a 1D gaussian (lorentzian would be better?)
                                 zvalues = self.zvalues[0:n]
                                 fvalues = self.fvalues[0:n]
-                                '''
-                                fitfunc = lambda p, x: p[0] + p[1] * numpy.exp(- (x - p[2]) * (x - p[2]) * p[3])
-                                errfunc = lambda p: fitfunc(p, zvalues) - fvalues
-                                p0 = [numpy.min(fvalues),
-                                      numpy.max(fvalues) - numpy.min(fvalues),
-                                      zvalues[numpy.argmax(fvalues)],
-                                      9.0] # empirically determined width parameter
-                                p1, success = scipy.optimize.leastsq(errfunc, p0[:])
-                                if success == 1:
-                                    optimum = p1[2]
-                                else:
-                                    print "Fit for optimal lock failed."
-                                    # hope that this is close enough
-                                    optimum = zvalues[numpy.argmax(fvalues)]
-                                '''
+
                                 optimum = zvalues[numpy.argmax(fvalues)]
                                 print "Optimal Target:", optimum
                                 self.control_thread.setCrispOffset(optimum-self.control_thread.controller_offset)
                             else:
                                 self.cur_z += self.scan_step
                                 self.control_thread.setCrispOffset(self.scan_step_offset)
+                    
+                    self.counter += 1
 
     ## newParameters
     #
@@ -1064,7 +1176,6 @@ class CrispOptimalLockMode(JumpLockMode):
         self.scan_step = 0.001 * parameters.get("olock_scan_step")
         self.scan_step_offset = self.scan_step * 1000 * 0.4
         self.scan_hold = parameters.get("olock_scan_hold")
-        #self.scan_hold = 20
 
     ## shouldDisplayLockButton
     #
@@ -1103,7 +1214,7 @@ class CrispOptimalLockMode(JumpLockMode):
 # 3-step calibration for Crisp system.
 #
 #
-class CrispCalibrationLockMode(JumpLockMode):
+class CrispCalibrationLockMode(LockMode):
 
     ## __init__
     #
@@ -1112,9 +1223,18 @@ class CrispCalibrationLockMode(JumpLockMode):
     # @param parent (Optional) The PyQt parent of this object.
     #
     def __init__(self, control_thread, parameters, parent):
-        JumpLockMode.__init__(self, control_thread, parameters, parent)
+        LockMode.__init__(self, control_thread, parameters, parent)
         self.name = "Calibrate"
 
+    ## handleJump
+    #
+    # Jumps the pizeo stage immediately by the distance jumpsize.
+    #
+    # @param jumpsize The distance to jump the stage.
+    #
+    def handleJump(self, jumpsize):
+        self.control_thread.moveStageRelative(jumpsize)
+        
     def calibration1(self):
         self.control_thread.IoG_Cal()
 
@@ -1129,6 +1249,7 @@ class CrispCalibrationLockMode(JumpLockMode):
 
     def calibration5(self):
         self.control_thread.getReady()
+
 
 #
 # The MIT License

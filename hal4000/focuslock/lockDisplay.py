@@ -759,10 +759,10 @@ class LockDisplayCrisp(QtGui.QWidget):
         self.z2000 = 0.0
         
         # Lock modes
-        self.lock_modes = [lockModes.NoLockMode(control_thread,
+        self.lock_modes = [lockModes.CrispNoLockMode(control_thread,
                                                 parameters,
                                                 self),
-                           lockModes.AlwaysOnLockMode(control_thread,
+                           lockModes.CrispAlwaysOnLockMode(control_thread,
                                                       parameters,
                                                       self),
                            lockModes.CrispOptimalLockMode(control_thread,
@@ -827,7 +827,7 @@ class LockDisplayCrisp(QtGui.QWidget):
         if (self.current_mode == self.lock_modes[which_mode]):
             return False
         else:
-            self.current_mode.stopLock()
+            self.current_mode.stopLock() # It may be redundant.
             self.current_mode.reset()
             self.current_mode = self.lock_modes[which_mode]
             return True
