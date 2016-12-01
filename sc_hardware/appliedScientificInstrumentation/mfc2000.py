@@ -71,7 +71,7 @@ class MFC2000(RS232.RS232):
         self.z = self.position()
         '''
         
-        self.verbose()
+        #self.verbose()
     
     # built-in function in MFC2000 controller
     #

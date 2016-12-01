@@ -73,10 +73,22 @@ movie_node_conversion = {"delay" : gf("delay", [int]),
 #
 def movieNodeToDict(movie_node):
     dict = {}
+    # flag shows if focus_scan is enabled.
+    flag = 0
     for field in movie_node_conversion.keys():
         value = movie_node_conversion[field](movie_node)
         if value is not None:
             dict[field] = value
+            # Search for check_focus\focus_scan.
+            if field == "check_focus":
+                for node in value:
+                    if node.tag == "focus_scan":
+                        flag = 1
+    # Add enough length to movie, so that a full focus scan can be completed.
+    # It is just for MFC2000.
+    if flag == 1:
+        dict["length"] = dict["length"]+2500
+    
     return dict
 
 #
