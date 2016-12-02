@@ -234,6 +234,13 @@ class Window(QtGui.QMainWindow):
             instance = a_class(module.get("parameters", False), parameters, self)
             instance.hal_type = module.get("hal_type")
             instance.hal_gui = module.get("hal_gui")
+
+            # As another part of the quick fix.
+            if instance.hal_type == "focuslock":
+                self.fl_instance = instance
+            if instance.hal_type == "stage":
+                self.s_instance = instance
+                
             if module.get("hal_gui"):
                 add_separator = True
                 a_action = QtGui.QAction(self.tr(module.get("menu_item")), self)
@@ -653,6 +660,8 @@ class Window(QtGui.QMainWindow):
     #
     # This is called when there are new frames from the camera.
     #
+    # This is something terible to do. But as for now, it is a quick fix for us.
+    #
     # @param frames A list of frame objects.
     #
     def newFrames(self, frames):
@@ -662,6 +671,9 @@ class Window(QtGui.QMainWindow):
 
             for module in self.modules:
                 module.newFrame(frame, self.filming)
+
+        # Start the quick fix.
+        self.s_instance.offset = self.fl_instance.getLockTarget()
 
     ## newParameters
     #

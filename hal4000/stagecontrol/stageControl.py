@@ -627,6 +627,7 @@ class HaStageControl(QtGui.QDialog, halModule.HalModule):
         self.stage_x = 0
         self.stage_y = 0
         self.stage_z = 0
+        self.offset = 0
         self.tcp_message = False
         self.translator = Translator()
 
@@ -669,7 +670,6 @@ class HaStageControl(QtGui.QDialog, halModule.HalModule):
 
         self.ui.addButton.clicked.connect(self.handleAdd)
         self.ui.deleteButton.clicked.connect(self.handleDelete)
-        self.ui.offsetsaveCheckBox.clicked.connect(self.handleSaveOffset)
         self.ui.clearButton.clicked.connect(self.handleClear)
         self.ui.goButton.clicked.connect(self.handleGo)
         self.ui.homeButton.clicked.connect(self.handleHome)
@@ -751,12 +751,14 @@ class HaStageControl(QtGui.QDialog, halModule.HalModule):
     #
     # Add the current stage position to the saved positions combo box.
     #
+    # Also add offset.
+    #
     # @param bool Dummy parameter.
     #
     @hdebug.debug
     def handleAdd(self, bool):
-        self.ui.saveComboBox.addItem("{0:.1f}, {1:.1f}".format(self.stage_x, self.stage_y),
-                                     [self.stage_x, self.stage_y])
+        self.ui.saveComboBox.addItem("{0:.1f}, {1:.1f}, {2:.1f}".format(self.stage_x, self.stage_y, self.offset),
+                                     [self.stage_x, self.stage_y, self.offset])
         self.ui.saveComboBox.setCurrentIndex(self.ui.saveComboBox.count()-1)
 
     ## handleDelete
@@ -769,18 +771,15 @@ class HaStageControl(QtGui.QDialog, halModule.HalModule):
     def handleDelete(self, bool):
         self.ui.saveComboBox.removeItem(self.ui.saveComboBox.currentIndex())
 
-    ## handleSaveOffset
+    ## shouldSaveOffset
     #
     # Save offset along as the xy positions.
     #
     # @param bool Dummy parameter.
     #
     @hdebug.debug
-    def handleSaveOffset(self, bool):
-        if self.ui.offsetsaveCheckBox.isChecked():
-            print "hello"
-        else:
-            print "bye"
+    def shouldSaveOffset(self, bool):
+        return self.ui.offsetsaveCheckBox.isChecked()
 
     ## handleClear
     #
@@ -887,6 +886,8 @@ class HaStageControl(QtGui.QDialog, halModule.HalModule):
     #
     # Load a positions file into the saved position combo box.
     #
+    # Also load offset.
+    #
     # @param bool Dummy parameter.
     #
     @hdebug.debug
@@ -901,9 +902,13 @@ class HaStageControl(QtGui.QDialog, halModule.HalModule):
             while 1:
                 line = fp.readline()
                 if not line: break
-                [x, y] = map(float, line.split(","))
-                self.ui.saveComboBox.addItem("{0:.1f}, {1:.1f}".format(x, y),
-                                             [x, y])
+                temp = map(float, line.split(","))
+                if len(temp) == 2:
+                    self.ui.saveComboBox.addItem("{0:.1f}, {1:.1f}".format(temp[0], temp[1]),
+                                                 [temp[0], temp[1]])
+                else:
+                    self.ui.saveComboBox.addItem("{0:.1f}, {1:.1f}, {2:.1f}".format(temp[0], temp[1], temp[2]),
+                                                 [temp[0], temp[1], temp[2]])
             self.ui.saveComboBox.setCurrentIndex(self.ui.saveComboBox.count()-1)
 
     ## handleMoveTimer
@@ -952,6 +957,8 @@ class HaStageControl(QtGui.QDialog, halModule.HalModule):
     #
     # Save the positions in the positions combo box into a file.
     #
+    # Also save offset.
+    #
     # @param bool Dummy parameter.
     #
     @hdebug.debug
@@ -963,8 +970,18 @@ class HaStageControl(QtGui.QDialog, halModule.HalModule):
         if positions_filename and (self.ui.saveComboBox.count() > 0):
             fp = open(positions_filename, "w")
             for i in range(self.ui.saveComboBox.count()):
-                [x, y] = self.ui.saveComboBox.itemData(i).toList()
-                fp.write("{0:.2f}, {1:.2f}\r\n".format(x.toDouble()[0], y.toDouble()[0]))
+                temp = self.ui.saveComboBox.itemData(i).toList()
+                if self.shouldSaveOffset(None) and (len(temp) == 3):
+                    x = temp[0]
+                    y = temp[1]
+                    offset = temp[2]
+                    fp.write("{0:.2f}, {1:.2f}, {2:.2f}\r\n".format(x.toDouble()[0],
+                                                                    y.toDouble()[0],
+                                                                    offset.toDouble()[0]))
+                else:
+                    x = temp[0]
+                    y = temp[1]
+                    fp.write("{0:.2f}, {1:.2f}\r\n".format(x.toDouble()[0], y.toDouble()[0]))
             fp.close()
 
     ## handleSaveIndexChange
