@@ -22,13 +22,13 @@ import stagecontrol.stageControl as stageControl
 # Stage control dialog specialized for Storm4
 # with RS232 Marzhauser motorized stage.
 #
-class AStageControl(stageControl.StageControl):
+class AStageControl(stageControl.HaStageControl):
     def __init__(self, hardware, parameters, parent = None):
         self.stage = stageThread.QStageThread(ludl.Ludl("COM6", wait_time = 0.01),
                                               move_update_freq = 200,
                                               pos_update_freq = 200)
         self.stage.start(QtCore.QThread.NormalPriority)
-        stageControl.StageControl.__init__(self, 
+        stageControl.HaStageControl.__init__(self, 
                                            parameters,
                                            parent)
 
