@@ -993,7 +993,7 @@ class HaStageControl(QtGui.QDialog, halModule.HalModule):
     def handleSaveIndexChange(self, index):
         data = self.ui.saveComboBox.itemData(index).toList()
         if data:
-            [xvar, yvar] = data
+            [xvar, yvar] = [data[0], data[1]]
             self.ui.xmoveDoubleSpinBox.setValue(xvar.toDouble()[0])
             self.ui.ymoveDoubleSpinBox.setValue(yvar.toDouble()[0])
 
