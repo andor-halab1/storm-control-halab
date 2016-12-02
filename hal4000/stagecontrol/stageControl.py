@@ -668,6 +668,8 @@ class HaStageControl(QtGui.QDialog, halModule.HalModule):
             self.ui.okButton.clicked.connect(self.handleQuit)
 
         self.ui.addButton.clicked.connect(self.handleAdd)
+        self.ui.deleteButton.clicked.connect(self.handleDelete)
+        self.ui.offsetsaveCheckBox.clicked.connect(self.handleSaveOffset)
         self.ui.clearButton.clicked.connect(self.handleClear)
         self.ui.goButton.clicked.connect(self.handleGo)
         self.ui.homeButton.clicked.connect(self.handleHome)
@@ -756,6 +758,29 @@ class HaStageControl(QtGui.QDialog, halModule.HalModule):
         self.ui.saveComboBox.addItem("{0:.1f}, {1:.1f}".format(self.stage_x, self.stage_y),
                                      [self.stage_x, self.stage_y])
         self.ui.saveComboBox.setCurrentIndex(self.ui.saveComboBox.count()-1)
+
+    ## handleDelete
+    #
+    # Delete the current stage position from the saved positions combo box.
+    #
+    # @param bool Dummy parameter.
+    #
+    @hdebug.debug
+    def handleDelete(self, bool):
+        self.ui.saveComboBox.removeItem(self.ui.saveComboBox.currentIndex())
+
+    ## handleSaveOffset
+    #
+    # Save offset along as the xy positions.
+    #
+    # @param bool Dummy parameter.
+    #
+    @hdebug.debug
+    def handleSaveOffset(self, bool):
+        if self.ui.offsetsaveCheckBox.isChecked():
+            print "hello"
+        else:
+            print "bye"
 
     ## handleClear
     #
