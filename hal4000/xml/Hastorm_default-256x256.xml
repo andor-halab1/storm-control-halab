@@ -7,13 +7,13 @@
   <!-- camera settings -->
   <camera1>
     <emccd_gain type="int">200</emccd_gain>
-    <x_start type="int">1</x_start>
-    <x_end type="int">512</x_end>
-    <y_start type="int">1</y_start>
-    <y_end type="int">512</y_end>
+    <x_start type="int">40</x_start>
+    <x_end type="int">295</x_end>
+    <y_start type="int">60</y_start>
+    <y_end type="int">315</y_end>
     <x_bin type="int">1</x_bin>
     <y_bin type="int">1</y_bin>
-    <exposure_time type="float">0.1</exposure_time>
+    <exposure_time type="float">0.05</exposure_time>
     <frame_transfer_mode type="int">1</frame_transfer_mode>
     <temperature type="int">-70</temperature>
 
@@ -57,7 +57,7 @@
     <auto_increment type="int">1</auto_increment>
     <want_bell type="int">1</want_bell>
     <auto_shutters type="int">0</auto_shutters>
-    <filetype type="string">.dax</filetype>
+    <filetype type="string">.tif</filetype>
   </film>
 
   <!-- illumination settings -->
@@ -100,11 +100,11 @@
     <cal_range type="float">600</cal_range>
     <cal_step_size type="float">10</cal_step_size>
     <cal_frames_to_pause type="int">2</cal_frames_to_pause>
-    <zscan_start type="float">0.9</zscan_start>
-    <zscan_step type="float">0.01</zscan_step>
+    <zscan_start type="float">50.0</zscan_start>
+    <zscan_step type="float">0.1</zscan_step>
     <zscan_frames_to_pause type="int">100</zscan_frames_to_pause>
-    <zscan_stop type="float">1.1</zscan_stop>
-    <zscan_focus_lock type="int">1</zscan_focus_lock>
+    <zscan_stop type="float">51.0</zscan_stop>
+    <zscan_focus_lock type="int">0</zscan_focus_lock>
     <olock_bracket_step type="int">500</olock_bracket_step>
     <olock_scan_step type="int">10</olock_scan_step>
     <olock_scan_hold type="int">10</olock_scan_hold>

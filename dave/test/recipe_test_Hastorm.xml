@@ -4,10 +4,13 @@
 <command_sequence>
   <loop name = "Movie Loop" increment = "name">	
 	<item name = "Movie 1"></item>
+	<item name = "Movie 2"></item>
   </loop>
+  <!--
   <loop name = "Movie Loop" increment = "name">	
 	<item name = "Movie 2"></item>
   </loop>
+  -->
 </command_sequence>
 
 <item name = "Movie 1">
@@ -30,7 +33,7 @@
 	<parameters>Hastorm_movie_parameter_568</parameters>
 	<lock_target>910.0</lock_target>
 	<check_focus>
-		<num_focus_checks>5</num_focus_checks>
+	  <num_focus_checks>5</num_focus_checks>
 	</check_focus>
 	<overwrite>True</overwrite>
     <variable_entry name = "Movie Loop"></variable_entry>

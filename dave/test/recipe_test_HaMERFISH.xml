@@ -7,28 +7,30 @@
 	<valve_protocol>Wash</valve_protocol>
     <valve_protocol>Image</valve_protocol>
     <loop name = "Movie Loop" increment = "name">	
-	  <!--<item name = "Movie 2"></item>-->
-      <item name = "Movie 3"></item>
+	  <item name = "Movie 1"></item>
+      <item name = "Movie 2"></item>
     </loop>
     <valve_protocol>Photobleach</valve_protocol>
 	<loop name = "Movie Loop" increment = "name">	
-	  <item name = "Movie 4"></item>
+	  <item name = "Movie 3"></item>
     </loop>
   </loop>
   <!--<valve_protocol>Nucleus Stain</valve_protocol>
   <loop name = "Movie Loop" increment = "name">	
- 	<item name = "Movie 1"></item>
+ 	<item name = "Movie 4"></item>
   </loop>-->
 </command_sequence>
 
 <item name = "Movie 1">
   <movie>
-    <name increment = "Yes">405</name>
-    <length>100</length>
-	<parameters>HaMERFISH_movie_parameter_405</parameters>
-	<overwrite>True</overwrite>
+    <name increment = "Yes">647</name>
+    <length>20</length>
+	<parameters>HaMERFISH_movie_parameter_647</parameters>
 	<check_focus>
+	  <num_focus_checks>5</num_focus_checks>
+	  <!--<focus_scan></focus_scan>-->
 	</check_focus>
+	<overwrite>True</overwrite>
     <variable_entry name = "Movie Loop"></variable_entry>
   </movie>
 </item>
@@ -36,36 +38,39 @@
 <item name = "Movie 2">
   <movie>
     <name increment = "Yes">568</name>
-    <length>100</length>
+    <length>20</length>
 	<parameters>HaMERFISH_movie_parameter_568</parameters>
-	<overwrite>True</overwrite>
+	<lock_target>910.0</lock_target>
 	<check_focus>
+	  <num_focus_checks>5</num_focus_checks>
 	</check_focus>
+	<overwrite>True</overwrite>
     <variable_entry name = "Movie Loop"></variable_entry>
   </movie>
 </item>
 
 <item name = "Movie 3">
   <movie>
-    <name increment = "Yes">647</name>
-    <length>20</length>
+    <name increment = "Yes">bleach</name>
+    <length>100</length>
 	<parameters>HaMERFISH_movie_parameter_647</parameters>
-	<overwrite>True</overwrite>
 	<check_focus>
-	  <!--<focus_scan></focus_scan>-->
+	  <num_focus_checks>5</num_focus_checks>
 	</check_focus>
+	<overwrite>True</overwrite>
     <variable_entry name = "Movie Loop"></variable_entry>
   </movie>
 </item>
 
 <item name = "Movie 4">
   <movie>
-    <name increment = "Yes">bleach</name>
-    <length>100</length>
-	<parameters>HaMERFISH_movie_parameter_647</parameters>
-	<overwrite>True</overwrite>
+    <name increment = "Yes">405</name>
+    <length>20</length>
+	<parameters>HaMERFISH_movie_parameter_405</parameters>
 	<check_focus>
+	  <num_focus_checks>5</num_focus_checks>
 	</check_focus>
+	<overwrite>True</overwrite>
     <variable_entry name = "Movie Loop"></variable_entry>
   </movie>
 </item>
