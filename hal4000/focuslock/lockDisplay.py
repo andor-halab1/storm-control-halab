@@ -757,8 +757,8 @@ class LockDisplayCrisp(QtGui.QWidget):
         self.gn = -5000.00
         self.lr = 0.032
         self.z2000 = 0.0
-        # delta offset vaule
-        self.delta_os = 0.0
+        # target offset vaule
+        self.target_os = 0.0
         
         # Lock modes
         self.lock_modes = [lockModes.CrispNoLockMode(control_thread,
@@ -1089,7 +1089,7 @@ class LockDisplayCrisp(QtGui.QWidget):
     #
     @hdebug.debug
     def shouldEnableCrispButton34(self):
-        return (self.current_mode != self.lock_modes[0])
+        return ((self.current_mode != self.lock_modes[0]) and self.amLocked() != True)
 
     ## startLock
     #
@@ -1159,7 +1159,7 @@ class LockDisplayCrisp(QtGui.QWidget):
 
     def handleCalButton4(self):
         if self.shouldEnableCrispButton34():
-            self.current_mode.calibration4(self.delta_os)
+            self.current_mode.calibration4(self.target_os)
 
     def handleCalButton5(self):
         if self.shouldEnableCrispButton():
@@ -1171,7 +1171,7 @@ class LockDisplayCrisp(QtGui.QWidget):
     #
     @hdebug.debug
     def handleOffsetSpinBox(self, os):
-        self.delta_os = os - self.os
+        self.target_os = os
 
     ## handleSetLockTarget
     #
@@ -1181,7 +1181,7 @@ class LockDisplayCrisp(QtGui.QWidget):
     #
     @hdebug.debug
     def handleSetLockTarget(self, target):
-        self.control_thread.setTarget(target/self.scale)
+        self.current_mode.setLockTarget(target/self.scale)
         
     ## toggleCrispButtonEnable
     #
