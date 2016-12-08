@@ -942,15 +942,6 @@ class CrispNoLockMode(LockMode):
     def handleJump(self, jumpsize):
         self.control_thread.moveStageRelative(jumpsize)
 
-    ## setLockTarget
-    #
-    # Sets the focus lock target to the desired value.
-    #
-    # @param target The desired lock target.
-    #
-    def setLockTarget(self, target):
-        self.control_thread.setTarget(target)
-
 ## CrispAlwaysOnLockMode
 #
 # Lock will start during filming, or when the lock button is 
@@ -1040,12 +1031,6 @@ class CrispAlwaysOnLockMode(JumpLockMode):
             self.control_thread.recenter()
             self.locked = False
 
-    def calibration3(self):
-        self.control_thread.gain_Cal()
-
-    def calibration4(self, os):
-        self.control_thread.setTarget(os)
-
 ## CrispOptimalLockMode
 #
 # At the start of filming the stage is moved
@@ -1068,6 +1053,7 @@ class CrispOptimalLockMode(JumpLockMode):
     #
     def __init__(self, control_thread, parameters, parent):
         JumpLockMode.__init__(self, control_thread, parameters, parent)
+        self.button_locked = False
         self.name = "Optimal"
         
         self.cur_z = None
@@ -1190,6 +1176,20 @@ class CrispOptimalLockMode(JumpLockMode):
         self.scan_step = 0.001 * parameters.get("olock_scan_step")
         self.scan_step_offset = self.scan_step * 1000 * 0.4
         self.scan_hold = parameters.get("olock_scan_hold")
+
+    ## shouldDisplayLockButton
+    #
+    # @return True
+    #
+    def shouldDisplayLockButton(self):
+        return False
+    
+    ## shouldDisplayLockLabel
+    #
+    # @return True/False if a label should be displayed for this mode.
+    #
+    def shouldDisplayLockLabel(self):
+        return self.amLocked()
     
     ## startLock
     #
@@ -1208,12 +1208,6 @@ class CrispOptimalLockMode(JumpLockMode):
         if self.locked:
             self.control_thread.stopLock()
             self.locked = False
-
-    def calibration3(self):
-        self.control_thread.gain_Cal()
-
-    def calibration4(self, os):
-        self.control_thread.setTarget(os)
 
 ## CrispCalibrationLockMode
 #
@@ -1240,15 +1234,6 @@ class CrispCalibrationLockMode(LockMode):
     #
     def handleJump(self, jumpsize):
         self.control_thread.moveStageRelative(jumpsize)
-
-    ## setLockTarget
-    #
-    # Sets the focus lock target to the desired value.
-    #
-    # @param target The desired lock target.
-    #
-    def setLockTarget(self, target):
-        self.control_thread.setTarget(target)
         
     def calibration1(self):
         self.control_thread.IoG_Cal()
@@ -1259,8 +1244,8 @@ class CrispCalibrationLockMode(LockMode):
     def calibration3(self):
         self.control_thread.gain_Cal()
 
-    def calibration4(self, os):
-        self.control_thread.setTarget(os)
+    def calibration4(self, delta_os = 0.0):
+        self.control_thread.setCrispOffset(delta_os)
 
     def calibration5(self):
         self.control_thread.getReady()

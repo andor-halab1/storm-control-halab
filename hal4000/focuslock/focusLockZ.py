@@ -881,16 +881,6 @@ class FocusLockZCrisp(FocusLockZ):
                 else: # No scan, just return error
                     self.tcp_message.addResponse("focus_status", focus_status)
                     self.tcpComplete.emit(self.tcp_message)
-	
-	## handleSetLockTarget
-    #
-    # Handle lock target setting requests that come via hal-4000.
-    #
-    # @param target The desired lock target.
-    #
-    @hdebug.debug
-    def handleSetLockTarget(self, target):
-        self.lock_display1.handleSetLockTarget(target)
 
         
 #

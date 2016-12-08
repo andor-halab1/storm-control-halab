@@ -292,10 +292,6 @@ class Window(QtGui.QMainWindow):
         # other signals
         self.parameters_box.settingsToggled.connect(self.toggleSettings)
 
-        # stage signals
-        # As another part of the quick fix.
-        self.s_instance.updateCrispOffset.connect(self.updateCrispOffset)
-
         #
         # Load GUI settings
         #
@@ -680,11 +676,6 @@ class Window(QtGui.QMainWindow):
         if hasattr(self.s_instance, 'offset'):
             self.s_instance.offset = self.fl_instance.getLockTarget()
 
-    # As another part of the quick fix.
-    #
-    def updateCrispOffset(self, os):
-        self.fl_instance.handleSetLockTarget(os)
-    
     ## newParameters
     #
     # This is called after new parameters are selected. It changes the
