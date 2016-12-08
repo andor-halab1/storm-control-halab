@@ -999,7 +999,7 @@ class HaStageControl(QtGui.QDialog, halModule.HalModule):
             self.ui.ymoveDoubleSpinBox.setValue(yvar.toDouble()[0])
         if len(data) == 3:
             zvar = data[2]
-            self.updateCrispOffset.emit(zvar.toDouble()[0])
+            #self.updateCrispOffset.emit(zvar.toDouble()[0])
 
     ## jog
     #
