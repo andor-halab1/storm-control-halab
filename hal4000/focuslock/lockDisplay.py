@@ -1181,7 +1181,7 @@ class LockDisplayCrisp(QtGui.QWidget):
     #
     @hdebug.debug
     def handleSetLockTarget(self, target):
-        self.control_thread.setLockTarget(target/self.scale)
+        self.control_thread.setTarget(target/self.scale)
         
     ## toggleCrispButtonEnable
     #
@@ -1202,7 +1202,7 @@ class LockDisplayCrisp(QtGui.QWidget):
     # @param show True/False show/hide the lock button.
     #
     @hdebug.debug
-    def toggleCrispButtonEnable(self, show):
+    def toggleCrispButton34Enable(self, show):
         self.ui.calButton3.setEnabled(show)
         self.ui.calButton4.setEnabled(show)
 
