@@ -607,6 +607,7 @@ class StageControl(QtGui.QDialog, halModule.HalModule):
 #
 class HaStageControl(QtGui.QDialog, halModule.HalModule):
     tcpComplete = QtCore.pyqtSignal(object)
+    updateCrispOffset = QtCore.pyqtSignal(float)
 
     ## __init__
     #
@@ -996,6 +997,9 @@ class HaStageControl(QtGui.QDialog, halModule.HalModule):
             [xvar, yvar] = [data[0], data[1]]
             self.ui.xmoveDoubleSpinBox.setValue(xvar.toDouble()[0])
             self.ui.ymoveDoubleSpinBox.setValue(yvar.toDouble()[0])
+        if len(data) == 3:
+            zvar = data[2]
+            self.updateCrispOffset.emit(zvar.toDouble()[0])
 
     ## jog
     #
@@ -1089,9 +1093,18 @@ class HaStageControl(QtGui.QDialog, halModule.HalModule):
     #
     @hdebug.debug
     def zero(self, bool):
-        if self.stage:
-            self.stage.zero()
-        self.handleUpdatePosition(0, 0, 0)
+        mBox = QtGui.QMessageBox(parent = self)
+        mBox.setWindowTitle("Zero?")
+        mBox.setText("Are you sure to reset home position?")
+        mBox.setStandardButtons(QtGui.QMessageBox.No |
+                                QtGui.QMessageBox.Yes)
+        mBox.setIcon(QtGui.QMessageBox.Warning)
+        mBox.setDefaultButton(QtGui.QMessageBox.No)
+        button_ID = mBox.exec_()
+        if button_ID == QtGui.QMessageBox.Yes:
+            if self.stage:
+                self.stage.zero()
+            self.handleUpdatePosition(0, 0, 0)
 
 #
 # The MIT License
