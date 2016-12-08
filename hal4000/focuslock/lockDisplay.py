@@ -791,6 +791,7 @@ class LockDisplayCrisp(QtGui.QWidget):
             self.ui.irSlider.hide()
 
         self.toggleCrispButtonEnable(self.shouldEnableCrispButton())
+        self.toggleCrispButton34Enable(self.shouldEnableCrispButton34())
 
         # additional buttons for Crisp calibration
         self.ui.calButton1.clicked.connect(self.handleCalButton1)
@@ -843,6 +844,7 @@ class LockDisplayCrisp(QtGui.QWidget):
             self.current_mode.reset()
             self.current_mode = self.lock_modes[which_mode]
             self.toggleCrispButtonEnable(self.shouldEnableCrispButton())
+            self.toggleCrispButton34Enable(self.shouldEnableCrispButton34())
             return True
 
     ## controlUpdate
@@ -1081,6 +1083,14 @@ class LockDisplayCrisp(QtGui.QWidget):
     def shouldEnableCrispButton(self):
         return (self.current_mode == self.lock_modes[3])
 
+    ## shouldEnableCrispButton34
+    #
+    # @return True/False depending on whether the off mode is selected. This is for MFC2000.
+    #
+    @hdebug.debug
+    def shouldEnableCrispButton34(self):
+        return (self.current_mode != self.lock_modes[0])
+
     ## startLock
     #
     # Start the focus lock. The filename parameter is ignored.
@@ -1144,11 +1154,11 @@ class LockDisplayCrisp(QtGui.QWidget):
             self.current_mode.calibration2()
 
     def handleCalButton3(self):
-        if self.shouldEnableCrispButton():
+        if self.shouldEnableCrispButton34():
             self.current_mode.calibration3()
 
     def handleCalButton4(self):
-        if self.shouldEnableCrispButton():
+        if self.shouldEnableCrispButton34():
             self.current_mode.calibration4(self.delta_os)
 
     def handleCalButton5(self):
@@ -1160,12 +1170,22 @@ class LockDisplayCrisp(QtGui.QWidget):
     # Handles the offset spin box.
     #
     @hdebug.debug
-    def handleOffsetSpinBox(self, delta_os):
-        self.delta_os = delta_os
+    def handleOffsetSpinBox(self, os):
+        self.delta_os = os - self.os
 
+    ## handleSetLockTarget
+    #
+    # Handle lock target setting requests that come via hal-4000.
+    #
+    # @param target The desired lock target.
+    #
+    @hdebug.debug
+    def handleSetLockTarget(self, target):
+        self.control_thread.setLockTarget(target/self.scale)
+        
     ## toggleCrispButtonEnable
     #
-    # Show/hide the Crisp Calibrate buttons depending on the show parameter.
+    # Show/hide the Crisp Calibrate buttons 125 depending on the show parameter.
     #
     # @param show True/False show/hide the lock button.
     #
@@ -1173,9 +1193,18 @@ class LockDisplayCrisp(QtGui.QWidget):
     def toggleCrispButtonEnable(self, show):
         self.ui.calButton1.setEnabled(show)
         self.ui.calButton2.setEnabled(show)
+        self.ui.calButton5.setEnabled(show)
+
+    ## toggleCrispButtonEnable34
+    #
+    # Show/hide the Crisp Calibrate buttons 34 depending on the show parameter.
+    #
+    # @param show True/False show/hide the lock button.
+    #
+    @hdebug.debug
+    def toggleCrispButtonEnable(self, show):
         self.ui.calButton3.setEnabled(show)
         self.ui.calButton4.setEnabled(show)
-        self.ui.calButton5.setEnabled(show)
 
 
 #

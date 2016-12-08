@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<recipe>
+
+<command_sequence>
+	<valve_protocol>Wash-wash</valve_protocol>
+    <valve_protocol>Image-wash</valve_protocol>
+    <valve_protocol>Photobleach-wash</valve_protocol>
+	<valve_protocol>Hybridize 6-wash</valve_protocol>
+    <valve_protocol>Hybridize 7-wash</valve_protocol>
+    <valve_protocol>Hybridize 8-wash</valve_protocol>
+    <valve_protocol>Hybridize 9-wash</valve_protocol>
+    <valve_protocol>Hybridize 10-wash</valve_protocol>
+    <!--
+    <value><valve_protocol>Hybridize 11</valve_protocol></value>
+    <value><valve_protocol>Hybridize 12</valve_protocol></value>
+    <value><valve_protocol>Hybridize 13</valve_protocol></value>
+    <value><valve_protocol>Hybridize 14</valve_protocol></value>
+    <value><valve_protocol>Hybridize 15</valve_protocol></value>
+    <value><valve_protocol>Hybridize 16</valve_protocol></value>
+    -->
+ </command_sequence>
+
+</recipe>

@@ -1031,6 +1031,12 @@ class CrispAlwaysOnLockMode(JumpLockMode):
             self.control_thread.recenter()
             self.locked = False
 
+    def calibration3(self):
+        self.control_thread.gain_Cal()
+
+    def calibration4(self, delta_os = 0.0):
+        self.control_thread.setCrispOffset(delta_os)
+
 ## CrispOptimalLockMode
 #
 # At the start of filming the stage is moved
@@ -1208,6 +1214,12 @@ class CrispOptimalLockMode(JumpLockMode):
         if self.locked:
             self.control_thread.stopLock()
             self.locked = False
+
+    def calibration3(self):
+        self.control_thread.gain_Cal()
+
+    def calibration4(self, delta_os = 0.0):
+        self.control_thread.setCrispOffset(delta_os)
 
 ## CrispCalibrationLockMode
 #
