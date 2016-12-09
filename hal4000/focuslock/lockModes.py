@@ -1188,7 +1188,8 @@ class CrispOptimalLockMode(JumpLockMode):
         self.qpd_zcenter = parameters.get("qpd_zcenter")
         self.bracket_step = 0.001 * parameters.get("olock_bracket_step")
         self.scan_step = 0.001 * parameters.get("olock_scan_step")
-        self.scan_step_offset = self.scan_step * 1000 * 0.4
+        # This conversion factor needs to be calibrated more accurately.
+        self.scan_step_offset = self.scan_step * 1000 * 0.52
         self.scan_hold = parameters.get("olock_scan_hold")
     
     ## startLock

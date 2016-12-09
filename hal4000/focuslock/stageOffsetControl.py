@@ -957,11 +957,11 @@ class StageCrispThread(QtCore.QThread):
         
         self.controller_mutex.lock()
         self.controller.set_Offset(target)
-        self.msleep(5)
+        self.msleep(2)
         self.controller_mutex.unlock()
 
     def setCrispOffset(self, delta_os = 0.0):
-        self.setTarget(self.controller_offset + delta_os)        
+        self.setTarget(self.controller_offset + delta_os)
     
     ## startLock
     #
@@ -982,7 +982,7 @@ class StageCrispThread(QtCore.QThread):
 
         self.controller_mutex.lock()
         self.controller.getFocus()
-        self.msleep(5)
+        self.msleep(2)
         self.controller_mutex.unlock()
 
     ## stopLock
@@ -1003,7 +1003,7 @@ class StageCrispThread(QtCore.QThread):
 
         self.controller_mutex.lock()
         self.controller.getRelax()
-        self.msleep(5)
+        self.msleep(2)
         self.controller_mutex.unlock()
 
     ## stopThread
@@ -1027,31 +1027,31 @@ class StageCrispThread(QtCore.QThread):
     def IoG_Cal(self):
         self.controller_mutex.lock()
         self.controller.IoG_Cal()
-        self.msleep(5)
+        self.msleep(2)
         self.controller_mutex.unlock()
 
     def dither(self):
         self.controller_mutex.lock()
         self.controller.dither()
-        self.msleep(5)
+        self.msleep(2)
         self.controller_mutex.unlock()
 
     def gain_Cal(self):
         self.controller_mutex.lock()
         self.controller.gain_Cal()
-        self.msleep(5)
+        self.msleep(2)
         self.controller_mutex.unlock()
 
     def getReady(self):
         self.controller_mutex.lock()
         self.controller.getReady()
-        self.msleep(5)
+        self.msleep(2)
         self.controller_mutex.unlock()
         
     def idle(self):
         self.controller_mutex.lock()
         self.controller.idle()
-        self.msleep(5)
+        self.msleep(2)
         self.controller_mutex.unlock()
 
 
