@@ -78,42 +78,42 @@
   <kilroy_protocols>
      <protocol name = "Wash-wash">
 		<valve duration = "1">Flow Washing Buffer</valve>
-        <pump duration = "180">Normal Flow</pump>
+        <pump duration = "240">Normal Flow</pump>
 		<pump duration = "0">Stop Flow</pump>
      </protocol>
 	 <protocol name = "Image-wash">
 		<valve duration = "1">Flow Imaging Buffer</valve>
-        <pump duration = "180">Normal Flow</pump>
+        <pump duration = "240">Normal Flow</pump>
 		<pump duration = "0">Stop Flow</pump>
      </protocol>
 	 <protocol name = "Photobleach-wash">
 		<valve duration = "1">Flow Photobleaching Buffer</valve>
-        <pump duration = "180">Normal Flow</pump>
+        <pump duration = "240">Normal Flow</pump>
 		<pump duration = "0">Stop Flow</pump>
      </protocol>
 	 <protocol name = "Hybridize 6-wash">
 		<valve duration = "1">Set Hyb 6</valve>
-        <pump duration = "180">Normal Flow</pump>
+        <pump duration = "240">Normal Flow</pump>
 		<pump duration = "0">Stop Flow</pump>
      </protocol>
 	 <protocol name = "Hybridize 7-wash">
 		<valve duration = "1">Set Hyb 7</valve>
-        <pump duration = "180">Normal Flow</pump>
+        <pump duration = "240">Normal Flow</pump>
 		<pump duration = "0">Stop Flow</pump>
      </protocol>
 	 <protocol name = "Hybridize 8-wash">
 		<valve duration = "1">Set Hyb 8</valve>
-        <pump duration = "180">Normal Flow</pump>
+        <pump duration = "240">Normal Flow</pump>
 		<pump duration = "0">Stop Flow</pump>
      </protocol>
 	 <protocol name = "Hybridize 9-wash">
 		<valve duration = "1">Set Hyb 9</valve>
-        <pump duration = "180">Normal Flow</pump>
+        <pump duration = "240">Normal Flow</pump>
 		<pump duration = "0">Stop Flow</pump>
      </protocol>
 	 <protocol name = "Hybridize 10-wash">
 		<valve duration = "1">Set Hyb 10</valve>
-        <pump duration = "180">Normal Flow</pump>
+        <pump duration = "240">Normal Flow</pump>
 		<pump duration = "0">Stop Flow</pump>
      </protocol>
 	 

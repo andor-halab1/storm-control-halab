@@ -40,7 +40,7 @@
     <name increment = "Yes">568</name>
     <length>20</length>
 	<parameters>HaMERFISH_movie_parameter_568</parameters>
-	<lock_target>1170.0</lock_target>
+	<lock_target>962.0</lock_target>
 	<check_focus>
 	  <num_focus_checks>5</num_focus_checks>
 	</check_focus>
