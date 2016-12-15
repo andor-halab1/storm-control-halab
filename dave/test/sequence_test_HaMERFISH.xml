@@ -4,34 +4,16 @@
 
   <branch name="Valve Loop">
     <DAValveProtocol>Hybridize 6</DAValveProtocol>
-    <DAValveProtocol>Wash</DAValveProtocol>
-    <DAValveProtocol>Image</DAValveProtocol>
+    <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
+    <DAValveProtocol>Flow Imaging Buffer</DAValveProtocol>
     <branch name="Movie Loop">
-      <branch name="647_00_0">
-        <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_00_0</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
       <branch name="568_00_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -41,16 +23,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_00_0</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_00_1">
+      <branch name="647_00_0">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -58,19 +43,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_00_1</name>
-          <length type="int">20</length>
+          <name type="str">647_00_0</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_00_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -80,16 +65,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_00_1</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_00_2">
+      <branch name="647_00_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -97,19 +85,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_00_2</name>
-          <length type="int">20</length>
+          <name type="str">647_00_1</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_00_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -119,16 +107,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_00_2</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_00_3">
+      <branch name="647_00_2">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -136,19 +127,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_00_3</name>
-          <length type="int">20</length>
+          <name type="str">647_00_2</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_00_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -158,57 +149,18 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_00_3</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_00_4">
+      <branch name="647_00_3">
         <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_00_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_00_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_00_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_00_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
+          <lock_target type="float">971.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -217,83 +169,23 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_00_5</name>
-          <length type="int">20</length>
+          <name type="str">647_00_3</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_00_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_00_5</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_00_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_00_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_00_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_00_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
     </branch>
-    <DAValveProtocol>Photobleach</DAValveProtocol>
+    <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_00_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -309,9 +201,12 @@
       </branch>
       <branch name="bleach_00_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -327,9 +222,12 @@
       </branch>
       <branch name="bleach_00_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -345,9 +243,12 @@
       </branch>
       <branch name="bleach_00_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">971.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -361,96 +262,18 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="bleach_00_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_00_4</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_00_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_00_5</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_00_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_00_6</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
     </branch>
     <DAValveProtocol>Hybridize 7</DAValveProtocol>
-    <DAValveProtocol>Wash</DAValveProtocol>
-    <DAValveProtocol>Image</DAValveProtocol>
+    <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
+    <DAValveProtocol>Flow Imaging Buffer</DAValveProtocol>
     <branch name="Movie Loop">
-      <branch name="647_01_0">
-        <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_01_0</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
       <branch name="568_01_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -460,16 +283,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_01_0</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_01_1">
+      <branch name="647_01_0">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -477,19 +303,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_01_1</name>
-          <length type="int">20</length>
+          <name type="str">647_01_0</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_01_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -499,16 +325,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_01_1</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_01_2">
+      <branch name="647_01_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -516,19 +345,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_01_2</name>
-          <length type="int">20</length>
+          <name type="str">647_01_1</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_01_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -538,16 +367,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_01_2</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_01_3">
+      <branch name="647_01_2">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -555,19 +387,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_01_3</name>
-          <length type="int">20</length>
+          <name type="str">647_01_2</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_01_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -577,57 +409,18 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_01_3</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_01_4">
+      <branch name="647_01_3">
         <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_01_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_01_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_01_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_01_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
+          <lock_target type="float">971.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -636,83 +429,23 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_01_5</name>
-          <length type="int">20</length>
+          <name type="str">647_01_3</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_01_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_01_5</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_01_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_01_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_01_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_01_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
     </branch>
-    <DAValveProtocol>Photobleach</DAValveProtocol>
+    <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_01_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -728,9 +461,12 @@
       </branch>
       <branch name="bleach_01_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -746,9 +482,12 @@
       </branch>
       <branch name="bleach_01_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -764,9 +503,12 @@
       </branch>
       <branch name="bleach_01_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">971.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -780,96 +522,18 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="bleach_01_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_01_4</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_01_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_01_5</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_01_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_01_6</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
     </branch>
     <DAValveProtocol>Hybridize 8</DAValveProtocol>
-    <DAValveProtocol>Wash</DAValveProtocol>
-    <DAValveProtocol>Image</DAValveProtocol>
+    <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
+    <DAValveProtocol>Flow Imaging Buffer</DAValveProtocol>
     <branch name="Movie Loop">
-      <branch name="647_02_0">
-        <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_02_0</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
       <branch name="568_02_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -879,16 +543,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_02_0</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_02_1">
+      <branch name="647_02_0">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -896,19 +563,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_02_1</name>
-          <length type="int">20</length>
+          <name type="str">647_02_0</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_02_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -918,16 +585,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_02_1</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_02_2">
+      <branch name="647_02_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -935,19 +605,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_02_2</name>
-          <length type="int">20</length>
+          <name type="str">647_02_1</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_02_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -957,16 +627,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_02_2</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_02_3">
+      <branch name="647_02_2">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -974,19 +647,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_02_3</name>
-          <length type="int">20</length>
+          <name type="str">647_02_2</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_02_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -996,57 +669,18 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_02_3</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_02_4">
+      <branch name="647_02_3">
         <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_02_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_02_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_02_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_02_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
+          <lock_target type="float">971.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1055,83 +689,23 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_02_5</name>
-          <length type="int">20</length>
+          <name type="str">647_02_3</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_02_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_02_5</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_02_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_02_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_02_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_02_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
     </branch>
-    <DAValveProtocol>Photobleach</DAValveProtocol>
+    <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_02_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -1147,9 +721,12 @@
       </branch>
       <branch name="bleach_02_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -1165,9 +742,12 @@
       </branch>
       <branch name="bleach_02_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -1183,9 +763,12 @@
       </branch>
       <branch name="bleach_02_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">971.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -1199,96 +782,18 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="bleach_02_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_02_4</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_02_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_02_5</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_02_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_02_6</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
     </branch>
     <DAValveProtocol>Hybridize 9</DAValveProtocol>
-    <DAValveProtocol>Wash</DAValveProtocol>
-    <DAValveProtocol>Image</DAValveProtocol>
+    <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
+    <DAValveProtocol>Flow Imaging Buffer</DAValveProtocol>
     <branch name="Movie Loop">
-      <branch name="647_03_0">
-        <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_03_0</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
       <branch name="568_03_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1298,16 +803,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_03_0</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_03_1">
+      <branch name="647_03_0">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -1315,19 +823,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_03_1</name>
-          <length type="int">20</length>
+          <name type="str">647_03_0</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_03_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1337,16 +845,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_03_1</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_03_2">
+      <branch name="647_03_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -1354,19 +865,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_03_2</name>
-          <length type="int">20</length>
+          <name type="str">647_03_1</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_03_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1376,16 +887,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_03_2</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_03_3">
+      <branch name="647_03_2">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -1393,19 +907,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_03_3</name>
-          <length type="int">20</length>
+          <name type="str">647_03_2</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_03_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1415,57 +929,18 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_03_3</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_03_4">
+      <branch name="647_03_3">
         <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_03_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_03_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_03_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_03_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
+          <lock_target type="float">971.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1474,83 +949,23 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_03_5</name>
-          <length type="int">20</length>
+          <name type="str">647_03_3</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_03_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_03_5</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_03_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_03_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_03_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_03_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
     </branch>
-    <DAValveProtocol>Photobleach</DAValveProtocol>
+    <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_03_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -1566,9 +981,12 @@
       </branch>
       <branch name="bleach_03_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -1584,9 +1002,12 @@
       </branch>
       <branch name="bleach_03_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -1602,9 +1023,12 @@
       </branch>
       <branch name="bleach_03_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">971.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -1618,96 +1042,18 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="bleach_03_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_03_4</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_03_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_03_5</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_03_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_03_6</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
     </branch>
     <DAValveProtocol>Hybridize 10</DAValveProtocol>
-    <DAValveProtocol>Wash</DAValveProtocol>
-    <DAValveProtocol>Image</DAValveProtocol>
+    <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
+    <DAValveProtocol>Flow Imaging Buffer</DAValveProtocol>
     <branch name="Movie Loop">
-      <branch name="647_04_0">
-        <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_04_0</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
       <branch name="568_04_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1717,16 +1063,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_04_0</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_04_1">
+      <branch name="647_04_0">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -1734,19 +1083,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_04_1</name>
-          <length type="int">20</length>
+          <name type="str">647_04_0</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_04_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1756,16 +1105,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_04_1</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_04_2">
+      <branch name="647_04_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -1773,19 +1125,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_04_2</name>
-          <length type="int">20</length>
+          <name type="str">647_04_1</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_04_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1795,16 +1147,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_04_2</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_04_3">
+      <branch name="647_04_2">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -1812,19 +1167,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_04_3</name>
-          <length type="int">20</length>
+          <name type="str">647_04_2</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_04_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1834,57 +1189,18 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_04_3</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_04_4">
+      <branch name="647_04_3">
         <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_04_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_04_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_04_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_04_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
+          <lock_target type="float">971.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1893,83 +1209,23 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_04_5</name>
-          <length type="int">20</length>
+          <name type="str">647_04_3</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_04_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_04_5</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_04_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_04_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_04_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_04_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
     </branch>
-    <DAValveProtocol>Photobleach</DAValveProtocol>
+    <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_04_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -1985,9 +1241,12 @@
       </branch>
       <branch name="bleach_04_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2003,9 +1262,12 @@
       </branch>
       <branch name="bleach_04_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2021,9 +1283,12 @@
       </branch>
       <branch name="bleach_04_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">971.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2037,96 +1302,18 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="bleach_04_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_04_4</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_04_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_04_5</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_04_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_04_6</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
     </branch>
     <DAValveProtocol>Hybridize 11</DAValveProtocol>
-    <DAValveProtocol>Wash</DAValveProtocol>
-    <DAValveProtocol>Image</DAValveProtocol>
+    <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
+    <DAValveProtocol>Flow Imaging Buffer</DAValveProtocol>
     <branch name="Movie Loop">
-      <branch name="647_05_0">
-        <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_05_0</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
       <branch name="568_05_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2136,16 +1323,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_05_0</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_05_1">
+      <branch name="647_05_0">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2153,19 +1343,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_05_1</name>
-          <length type="int">20</length>
+          <name type="str">647_05_0</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_05_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2175,16 +1365,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_05_1</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_05_2">
+      <branch name="647_05_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2192,19 +1385,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_05_2</name>
-          <length type="int">20</length>
+          <name type="str">647_05_1</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_05_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2214,16 +1407,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_05_2</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_05_3">
+      <branch name="647_05_2">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2231,19 +1427,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_05_3</name>
-          <length type="int">20</length>
+          <name type="str">647_05_2</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_05_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2253,57 +1449,18 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_05_3</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_05_4">
+      <branch name="647_05_3">
         <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_05_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_05_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_05_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_05_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
+          <lock_target type="float">971.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2312,83 +1469,23 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_05_5</name>
-          <length type="int">20</length>
+          <name type="str">647_05_3</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_05_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_05_5</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_05_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_05_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_05_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_05_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
     </branch>
-    <DAValveProtocol>Photobleach</DAValveProtocol>
+    <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_05_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2404,9 +1501,12 @@
       </branch>
       <branch name="bleach_05_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2422,9 +1522,12 @@
       </branch>
       <branch name="bleach_05_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2440,9 +1543,12 @@
       </branch>
       <branch name="bleach_05_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">971.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2456,96 +1562,18 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="bleach_05_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_05_4</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_05_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_05_5</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_05_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_05_6</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
     </branch>
     <DAValveProtocol>Hybridize 12</DAValveProtocol>
-    <DAValveProtocol>Wash</DAValveProtocol>
-    <DAValveProtocol>Image</DAValveProtocol>
+    <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
+    <DAValveProtocol>Flow Imaging Buffer</DAValveProtocol>
     <branch name="Movie Loop">
-      <branch name="647_06_0">
-        <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_06_0</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
       <branch name="568_06_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2555,16 +1583,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_06_0</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_06_1">
+      <branch name="647_06_0">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2572,19 +1603,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_06_1</name>
-          <length type="int">20</length>
+          <name type="str">647_06_0</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_06_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2594,16 +1625,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_06_1</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_06_2">
+      <branch name="647_06_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2611,19 +1645,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_06_2</name>
-          <length type="int">20</length>
+          <name type="str">647_06_1</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_06_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2633,16 +1667,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_06_2</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_06_3">
+      <branch name="647_06_2">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2650,19 +1687,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_06_3</name>
-          <length type="int">20</length>
+          <name type="str">647_06_2</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_06_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2672,57 +1709,18 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_06_3</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_06_4">
+      <branch name="647_06_3">
         <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_06_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_06_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_06_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_06_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
+          <lock_target type="float">971.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2731,83 +1729,23 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_06_5</name>
-          <length type="int">20</length>
+          <name type="str">647_06_3</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_06_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_06_5</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_06_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_06_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_06_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_06_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
     </branch>
-    <DAValveProtocol>Photobleach</DAValveProtocol>
+    <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_06_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2823,9 +1761,12 @@
       </branch>
       <branch name="bleach_06_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2841,9 +1782,12 @@
       </branch>
       <branch name="bleach_06_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2859,9 +1803,12 @@
       </branch>
       <branch name="bleach_06_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">971.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2875,96 +1822,18 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="bleach_06_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_06_4</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_06_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_06_5</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_06_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_06_6</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
     </branch>
     <DAValveProtocol>Hybridize 13</DAValveProtocol>
-    <DAValveProtocol>Wash</DAValveProtocol>
-    <DAValveProtocol>Image</DAValveProtocol>
+    <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
+    <DAValveProtocol>Flow Imaging Buffer</DAValveProtocol>
     <branch name="Movie Loop">
-      <branch name="647_07_0">
-        <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_07_0</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
       <branch name="568_07_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2974,16 +1843,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_07_0</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_07_1">
+      <branch name="647_07_0">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -2991,19 +1863,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_07_1</name>
-          <length type="int">20</length>
+          <name type="str">647_07_0</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_07_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3013,16 +1885,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_07_1</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_07_2">
+      <branch name="647_07_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -3030,19 +1905,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_07_2</name>
-          <length type="int">20</length>
+          <name type="str">647_07_1</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_07_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3052,16 +1927,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_07_2</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_07_3">
+      <branch name="647_07_2">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -3069,19 +1947,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_07_3</name>
-          <length type="int">20</length>
+          <name type="str">647_07_2</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_07_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3091,57 +1969,18 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_07_3</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_07_4">
+      <branch name="647_07_3">
         <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_07_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_07_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_07_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_07_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
+          <lock_target type="float">971.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3150,83 +1989,23 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_07_5</name>
-          <length type="int">20</length>
+          <name type="str">647_07_3</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_07_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_07_5</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_07_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_07_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_07_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_07_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
     </branch>
-    <DAValveProtocol>Photobleach</DAValveProtocol>
+    <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_07_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -3242,9 +2021,12 @@
       </branch>
       <branch name="bleach_07_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -3260,9 +2042,12 @@
       </branch>
       <branch name="bleach_07_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -3278,9 +2063,12 @@
       </branch>
       <branch name="bleach_07_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">971.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -3294,96 +2082,18 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="bleach_07_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_07_4</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_07_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_07_5</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_07_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_07_6</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
     </branch>
     <DAValveProtocol>Hybridize 14</DAValveProtocol>
-    <DAValveProtocol>Wash</DAValveProtocol>
-    <DAValveProtocol>Image</DAValveProtocol>
+    <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
+    <DAValveProtocol>Flow Imaging Buffer</DAValveProtocol>
     <branch name="Movie Loop">
-      <branch name="647_08_0">
-        <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_08_0</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
       <branch name="568_08_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3393,16 +2103,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_08_0</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_08_1">
+      <branch name="647_08_0">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -3410,19 +2123,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_08_1</name>
-          <length type="int">20</length>
+          <name type="str">647_08_0</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_08_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3432,16 +2145,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_08_1</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_08_2">
+      <branch name="647_08_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -3449,19 +2165,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_08_2</name>
-          <length type="int">20</length>
+          <name type="str">647_08_1</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_08_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3471,16 +2187,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_08_2</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_08_3">
+      <branch name="647_08_2">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -3488,19 +2207,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_08_3</name>
-          <length type="int">20</length>
+          <name type="str">647_08_2</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_08_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3510,57 +2229,18 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_08_3</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_08_4">
+      <branch name="647_08_3">
         <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_08_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_08_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_08_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_08_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
+          <lock_target type="float">971.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3569,83 +2249,23 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_08_5</name>
-          <length type="int">20</length>
+          <name type="str">647_08_3</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_08_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_08_5</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_08_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_08_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_08_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_08_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
     </branch>
-    <DAValveProtocol>Photobleach</DAValveProtocol>
+    <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_08_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -3661,9 +2281,12 @@
       </branch>
       <branch name="bleach_08_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -3679,9 +2302,12 @@
       </branch>
       <branch name="bleach_08_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -3697,9 +2323,12 @@
       </branch>
       <branch name="bleach_08_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">971.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -3713,96 +2342,18 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="bleach_08_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_08_4</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_08_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_08_5</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_08_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_08_6</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
     </branch>
     <DAValveProtocol>Hybridize 15</DAValveProtocol>
-    <DAValveProtocol>Wash</DAValveProtocol>
-    <DAValveProtocol>Image</DAValveProtocol>
+    <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
+    <DAValveProtocol>Flow Imaging Buffer</DAValveProtocol>
     <branch name="Movie Loop">
-      <branch name="647_09_0">
-        <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_09_0</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
       <branch name="568_09_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3812,16 +2363,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_09_0</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_09_1">
+      <branch name="647_09_0">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -3829,19 +2383,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_09_1</name>
-          <length type="int">20</length>
+          <name type="str">647_09_0</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_09_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3851,16 +2405,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_09_1</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_09_2">
+      <branch name="647_09_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -3868,19 +2425,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_09_2</name>
-          <length type="int">20</length>
+          <name type="str">647_09_1</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_09_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3890,16 +2447,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_09_2</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_09_3">
+      <branch name="647_09_2">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -3907,19 +2467,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_09_3</name>
-          <length type="int">20</length>
+          <name type="str">647_09_2</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_09_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3929,57 +2489,18 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_09_3</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_09_4">
+      <branch name="647_09_3">
         <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_09_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_09_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_09_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_09_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
+          <lock_target type="float">971.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3988,83 +2509,23 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_09_5</name>
-          <length type="int">20</length>
+          <name type="str">647_09_3</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_09_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_09_5</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_09_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_09_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_09_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_09_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
     </branch>
-    <DAValveProtocol>Photobleach</DAValveProtocol>
+    <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_09_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -4080,9 +2541,12 @@
       </branch>
       <branch name="bleach_09_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -4098,9 +2562,12 @@
       </branch>
       <branch name="bleach_09_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -4116,9 +2583,12 @@
       </branch>
       <branch name="bleach_09_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">971.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -4132,96 +2602,18 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="bleach_09_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_09_4</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_09_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_09_5</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="bleach_09_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">bleach_09_6</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
     </branch>
     <DAValveProtocol>Hybridize 16</DAValveProtocol>
-    <DAValveProtocol>Wash</DAValveProtocol>
-    <DAValveProtocol>Image</DAValveProtocol>
+    <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
+    <DAValveProtocol>Flow Imaging Buffer</DAValveProtocol>
     <branch name="Movie Loop">
-      <branch name="647_10_0">
-        <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_10_0</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
       <branch name="568_10_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -4231,16 +2623,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_10_0</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_10_1">
+      <branch name="647_10_0">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -4248,19 +2643,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_10_1</name>
-          <length type="int">20</length>
+          <name type="str">647_10_0</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_10_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -4270,16 +2665,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_10_1</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_10_2">
+      <branch name="647_10_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -4287,19 +2685,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_10_2</name>
-          <length type="int">20</length>
+          <name type="str">647_10_1</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_10_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -4309,16 +2707,19 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_10_2</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_10_3">
+      <branch name="647_10_2">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -4326,19 +2727,19 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_10_3</name>
-          <length type="int">20</length>
+          <name type="str">647_10_2</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
       <branch name="568_10_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -4348,57 +2749,18 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">568_10_3</name>
-          <length type="int">20</length>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="647_10_4">
+      <branch name="647_10_3">
         <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
-        </DAMoveStage>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_10_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_10_4">
-        <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_10_4</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_10_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
+          <lock_target type="float">971.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -4407,83 +2769,23 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">647_10_5</name>
-          <length type="int">20</length>
+          <name type="str">647_10_3</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_10_5">
-        <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_10_5</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="647_10_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">647_10_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
-          <overwrite type="bool">True</overwrite>
-        </DATakeMovie>
-      </branch>
-      <branch name="568_10_6">
-        <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
-        </DAMoveStage>
-        <DASetFocusLockTarget>
-          <lock_target type="float">910.0</lock_target>
-        </DASetFocusLockTarget>
-        <DACheckFocus>
-          <num_focus_checks>5</num_focus_checks>
-        </DACheckFocus>
-        <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
-        </DASetParameters>
-        <DATakeMovie>
-          <name type="str">568_10_6</name>
-          <length type="int">20</length>
-          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
     </branch>
-    <DAValveProtocol>Photobleach</DAValveProtocol>
+    <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_10_0">
         <DAMoveStage>
-          <stage_x type="float">140.4</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -4499,9 +2801,12 @@
       </branch>
       <branch name="bleach_10_1">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">95.2</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -4517,9 +2822,12 @@
       </branch>
       <branch name="bleach_10_2">
         <DAMoveStage>
-          <stage_x type="float">-231.8</stage_x>
-          <stage_y type="float">156.2</stage_y>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -4535,9 +2843,12 @@
       </branch>
       <branch name="bleach_10_3">
         <DAMoveStage>
-          <stage_x type="float">-200.2</stage_x>
-          <stage_y type="float">156.6</stage_y>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">971.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
@@ -4551,31 +2862,39 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="bleach_10_4">
+    </branch>
+    <DAValveProtocol>Hybridize 5</DAValveProtocol>
+    <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
+    <DAValveProtocol>Flow Imaging Buffer</DAValveProtocol>
+    <branch name="Movie Loop">
+      <branch name="568_11_0">
         <DAMoveStage>
-          <stage_x type="float">-151.8</stage_x>
-          <stage_y type="float">107.8</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1099.0</lock_target>
+        </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
         </DACheckFocus>
         <DASetParameters>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">bleach_10_4</name>
-          <length type="int">100</length>
-          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <name type="str">568_11_0</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="bleach_10_5">
+      <branch name="647_11_0">
         <DAMoveStage>
-          <stage_x type="float">-274.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">1013.0</lock_target>
+          <lock_target type="float">886.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -4584,19 +2903,40 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">bleach_10_5</name>
-          <length type="int">100</length>
+          <name type="str">647_11_0</name>
+          <length type="int">1</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
-      <branch name="bleach_10_6">
+      <branch name="568_11_1">
         <DAMoveStage>
-          <stage_x type="float">-324.8</stage_x>
-          <stage_y type="float">111.4</stage_y>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">901.0</lock_target>
+          <lock_target type="float">1099.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">568_11_1</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="647_11_1">
+        <DAMoveStage>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -4605,7 +2945,178 @@
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
         </DASetParameters>
         <DATakeMovie>
-          <name type="str">bleach_10_6</name>
+          <name type="str">647_11_1</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="568_11_2">
+        <DAMoveStage>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1099.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">568_11_2</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="647_11_2">
+        <DAMoveStage>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">647_11_2</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="568_11_3">
+        <DAMoveStage>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1099.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">568_11_3</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="647_11_3">
+        <DAMoveStage>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">971.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">647_11_3</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+    </branch>
+    <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
+    <branch name="Movie Loop">
+      <branch name="bleach_11_0">
+        <DAMoveStage>
+          <stage_x type="float">3362.6</stage_x>
+          <stage_y type="float">-1159.4</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">886.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">bleach_11_0</name>
+          <length type="int">100</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="bleach_11_1">
+        <DAMoveStage>
+          <stage_x type="float">2637.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">914.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">bleach_11_1</name>
+          <length type="int">100</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="bleach_11_2">
+        <DAMoveStage>
+          <stage_x type="float">2507.6</stage_x>
+          <stage_y type="float">-941.2</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">788.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">bleach_11_2</name>
+          <length type="int">100</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="bleach_11_3">
+        <DAMoveStage>
+          <stage_x type="float">2599.2</stage_x>
+          <stage_y type="float">-897.2</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">971.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">bleach_11_3</name>
           <length type="int">100</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>

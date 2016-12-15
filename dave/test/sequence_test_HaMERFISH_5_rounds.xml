@@ -5,7 +5,7 @@
   <branch name="Valve Loop">
     <DAValveProtocol>Hybridize 7</DAValveProtocol>
     <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
-    <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
+    <DAValveProtocol>Flow Imaging Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="568_0_0">
         <DAMoveStage>
@@ -265,7 +265,7 @@
     </branch>
     <DAValveProtocol>Hybridize 8</DAValveProtocol>
     <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
-    <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
+    <DAValveProtocol>Flow Imaging Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="568_1_0">
         <DAMoveStage>
@@ -525,7 +525,7 @@
     </branch>
     <DAValveProtocol>Hybridize 9</DAValveProtocol>
     <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
-    <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
+    <DAValveProtocol>Flow Imaging Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="568_2_0">
         <DAMoveStage>
@@ -785,7 +785,7 @@
     </branch>
     <DAValveProtocol>Hybridize 10</DAValveProtocol>
     <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
-    <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
+    <DAValveProtocol>Flow Imaging Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="568_3_0">
         <DAMoveStage>
