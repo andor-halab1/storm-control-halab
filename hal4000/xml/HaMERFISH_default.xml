@@ -13,7 +13,7 @@
     <y_end type="int">295</y_end>
     <x_bin type="int">1</x_bin>
     <y_bin type="int">1</y_bin>
-    <exposure_time type="float">0.03</exposure_time>
+    <exposure_time type="float">0.15</exposure_time>
     <frame_transfer_mode type="int">1</frame_transfer_mode>
     <temperature type="int">-70</temperature>
 
@@ -51,7 +51,7 @@
     <filename type="string">movie</filename>
     <!--  <acq_mode type="string">run_till_abort</acq_mode> -->
     <acq_mode type="string">fixed_length</acq_mode>
-    <frames type="int">20</frames>
+    <frames type="int">1</frames>
     <logfile type="string">D:\Data\logs\image_log.txt</logfile>
     <extensions type="string-array">,A647,Cy5,A568,Cy3,A405,YFP,GFP,BF</extensions>
     <auto_increment type="int">1</auto_increment>
@@ -79,12 +79,12 @@
 
   <!-- stage settings -->
   <stage>
-    <small_step_size type="float">10.0</small_step_size>
-    <large_step_size type="float">50.0</large_step_size>
+    <small_step_size type="float">50.0</small_step_size>
+    <large_step_size type="float">200.0</large_step_size>
     <x_sign type="int">1</x_sign>
     <y_sign type="int">-1</y_sign>
     <flip_axis type="int">0</flip_axis>
-    <stage_speed type="float">25</stage_speed>
+    <stage_speed type="float">50</stage_speed>
   </stage>
 
   <!-- focus lock settings -->
@@ -113,7 +113,7 @@
     <!-- parameter used in CrispOptimalLockMode -->
     <olock_bracket_step type="int">500</olock_bracket_step>
 	<!-- parameter used in CrispOptimalLockMode -->
-    <olock_scan_step type="int">10</olock_scan_step>
+    <olock_scan_step type="int">50</olock_scan_step>
 	<!-- parameter used in CrispOptimalLockMode -->
     <olock_scan_hold type="int">10</olock_scan_hold>
 	<!-- parameter used in CrispOptimalLockMode -->
@@ -127,9 +127,9 @@
   <spotcounter>
     <have_spot_counter type="int">1</have_spot_counter>
     <cell_size type="int">32</cell_size>
-    <threshold type="int">250</threshold>
+    <threshold type="int">200</threshold>
     <min_spots type="int">0</min_spots>
-    <max_spots type="int">500</max_spots>
+    <max_spots type="int">100</max_spots>
     <scale_bar_len type="float">1000</scale_bar_len>
     <nm_per_pixel type="float">160</nm_per_pixel>
   </spotcounter>
