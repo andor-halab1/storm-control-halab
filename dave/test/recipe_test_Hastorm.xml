@@ -4,15 +4,16 @@
 <command_sequence>
 	<loop name = "Valve Loop">
 	  <variable_entry name = "Valve Loop"></variable_entry>
+	  <valve_protocol>Flow Washing Buffer</valve_protocol>
+      <valve_protocol>Flow Imaging Buffer</valve_protocol>
 	  <loop name = "Movie Loop" increment = "name">	
 		<item name = "Movie 1"></item>
 		<item name = "Movie 2"></item>
 	  </loop>
-	  <!--
+	  <valve_protocol>Flow Photobleaching Buffer</valve_protocol>
 	  <loop name = "Movie Loop" increment = "name">	
-		<item name = "Movie 2"></item>
+		<item name = "Movie 3"></item>
 	  </loop>
-	  -->
 	</loop>
 </command_sequence>
 
@@ -21,7 +22,7 @@
     <name increment = "Yes">568</name>
     <length>1</length>
 	<parameters>Hastorm_movie_parameter_568</parameters>
-	<lock_target>619.0</lock_target>
+	<lock_target>951.0</lock_target>
 	<check_focus>
 	  <num_focus_checks>5</num_focus_checks>
 	</check_focus>
@@ -44,12 +45,31 @@
   </movie>
 </item>
 
+<item name = "Movie 3">
+  <movie>
+    <name increment = "Yes">bleach</name>
+    <length>100</length>
+	<parameters>Hastorm_movie_parameter_647</parameters>
+	<check_focus>
+	  <num_focus_checks>5</num_focus_checks>
+	</check_focus>
+	<overwrite>True</overwrite>
+    <variable_entry name = "Movie Loop"></variable_entry>
+  </movie>
+</item>
+
 <loop_variable name = "Valve Loop">
   <value><valve_protocol>Hybridize 6-wash</valve_protocol></value>
   <value><valve_protocol>Hybridize 7-wash</valve_protocol></value>
   <value><valve_protocol>Hybridize 8-wash</valve_protocol></value>
   <value><valve_protocol>Hybridize 9-wash</valve_protocol></value>
   <value><valve_protocol>Hybridize 10-wash</valve_protocol></value>
+  <value><valve_protocol>Hybridize 6-wash</valve_protocol></value>
+  <value><valve_protocol>Hybridize 7-wash</valve_protocol></value>
+  <value><valve_protocol>Hybridize 8-wash</valve_protocol></value>
+  <value><valve_protocol>Hybridize 9-wash</valve_protocol></value>
+  <value><valve_protocol>Hybridize 10-wash</valve_protocol></value>
+  <!--
   <value><valve_protocol>Hybridize 11-wash</valve_protocol></value>
   <value><valve_protocol>Hybridize 12-wash</valve_protocol></value>
   <value><valve_protocol>Hybridize 13-wash</valve_protocol></value>
@@ -57,6 +77,7 @@
   <value><valve_protocol>Hybridize 15-wash</valve_protocol></value>
   <value><valve_protocol>Hybridize 16-wash</valve_protocol></value>
   <value><valve_protocol>Hybridize 5-wash</valve_protocol></value>
+  -->
 </loop_variable>
 
 <loop_variable name = "Movie Loop">
