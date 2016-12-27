@@ -86,11 +86,15 @@ def movieNodeToDict(movie_node):
                 for node in value:
                     if node.tag == "focus_scan":
                         flag = 1
+    '''
     # Add enough length to movie, so that a full focus scan can be completed.
     # It is just for MFC2000.
     if flag == 1:
         dict["length"] = dict["length"]+2500
-
+    '''
+    if flag == 1:
+        print "focus scan will be performed"
+        
     return dict
 
 #

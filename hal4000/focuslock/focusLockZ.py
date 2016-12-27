@@ -25,6 +25,8 @@ import qtWidgets.qtAppIcon as qtAppIcon
 
 import halLib.halModule as halModule
 
+import time
+
 # Debugging
 import sc_library.hdebug as hdebug
 
@@ -872,17 +874,38 @@ class FocusLockZCrisp(FocusLockZ):
                     # Send scan command
                     self.tcpHandleFindSum(min_sum) # message is returned by handleFoundSum
 
+                    '''
                     # To put the system into the CrispOptimalLockMode.
                     # Be careful. Doing this will change the offset (target).
                     if not self.buttons[2].isChecked():
                         self.buttons[2].setChecked(True)
                         self.handleRadioButtons(True)
+                    '''
+                    # To put the system into the CrispCalibrationLockMode.
+                    if not self.buttons[3].isChecked():
+                        self.buttons[3].setChecked(True)
+                        self.handleRadioButtons(True)
+                    time.sleep(1)
+
+                    # Try to perform Log-Amp Cal.
+                    self.lock_display1.handleCalButton1()
+                    time.sleep(2)
+
+                    # Try to set Gain and Offset.
+                    self.lock_display1.handleCalButton3()
+                    time.sleep(2)
+
+                    # To put the system back into the CrispAlwaysOnLockMode.
+                    if not self.buttons[1].isChecked():
+                        self.buttons[1].setChecked(True)
+                        self.handleRadioButtons(True)
+                    time.sleep(1)
                     
                 else: # No scan, just return error
                     self.tcp_message.addResponse("focus_status", focus_status)
                     self.tcpComplete.emit(self.tcp_message)
-	
-	## handleSetLockTarget
+                    
+    ## handleSetLockTarget
     #
     # Handle lock target setting requests that come via hal-4000.
     #

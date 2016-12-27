@@ -790,7 +790,16 @@ class HaStageControl(QtGui.QDialog, halModule.HalModule):
     #
     @hdebug.debug
     def handleClear(self, bool):
-        self.ui.saveComboBox.clear()
+        mBox = QtGui.QMessageBox(parent = self)
+        mBox.setWindowTitle("Clear?")
+        mBox.setText("Are you sure to clear all positions?")
+        mBox.setStandardButtons(QtGui.QMessageBox.No |
+                                QtGui.QMessageBox.Yes)
+        mBox.setIcon(QtGui.QMessageBox.Warning)
+        mBox.setDefaultButton(QtGui.QMessageBox.No)
+        button_ID = mBox.exec_()
+        if button_ID == QtGui.QMessageBox.Yes:
+            self.ui.saveComboBox.clear()
 
     ## handleCommMessage
     #
