@@ -871,9 +871,6 @@ class FocusLockZCrisp(FocusLockZ):
                     if min_sum is None: # Not provided. Use default for parameters.
                         min_sum = self.parameters.get("qpd_sum_min", 50)
 
-                    # Send scan command
-                    self.tcpHandleFindSum(min_sum) # message is returned by handleFoundSum
-
                     '''
                     # To put the system into the CrispOptimalLockMode.
                     # Be careful. Doing this will change the offset (target).
@@ -881,25 +878,41 @@ class FocusLockZCrisp(FocusLockZ):
                         self.buttons[2].setChecked(True)
                         self.handleRadioButtons(True)
                     '''
+                    time.sleep(1)
                     # To put the system into the CrispCalibrationLockMode.
                     if not self.buttons[3].isChecked():
                         self.buttons[3].setChecked(True)
                         self.handleRadioButtons(True)
+                        print "Changed focus mode to Calibration"
                     time.sleep(1)
 
                     # Try to perform Log-Amp Cal.
                     self.lock_display1.handleCalButton1()
-                    time.sleep(2)
+                    print "Performed Log-Amp Cal"
+                    time.sleep(5)
 
-                    # Try to set Gain and Offset.
-                    self.lock_display1.handleCalButton3()
-                    time.sleep(2)
+                    # Try to get Crisp ready.
+                    self.lock_display1.handleCalButton5()
+                    print "Got Crisp ready"
+                    time.sleep(1)
 
                     # To put the system back into the CrispAlwaysOnLockMode.
                     if not self.buttons[1].isChecked():
                         self.buttons[1].setChecked(True)
                         self.handleRadioButtons(True)
-                    time.sleep(1)
+                        print "Changed focus mode to Always On"
+                    
+                    # Try to lock and get the focus status.
+                    self.lock_display1.startLock(None)
+                    focus_status = self.lock_display1.getFocusStatus()
+                    self.lock_display1.stopLock()
+
+                    if focus_status:
+                        # Send scan command
+                        self.tcpHandleFindSum(min_sum) # message is returned by handleFoundSum
+                    else:
+                        self.tcp_message.addResponse("focus_status", focus_status)
+                        self.tcpComplete.emit(self.tcp_message)
                     
                 else: # No scan, just return error
                     self.tcp_message.addResponse("focus_status", focus_status)

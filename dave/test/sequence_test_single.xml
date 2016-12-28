@@ -5,14 +5,14 @@
   <branch name="Movie Loop">
     <branch name="568_0">
       <DAMoveStage>
-        <stage_x type="float">0.0</stage_x>
-        <stage_y type="float">0.0</stage_y>
+        <stage_x type="float">181.2</stage_x>
+        <stage_y type="float">80.0</stage_y>
       </DAMoveStage>
       <DASetFocusLockTarget>
-        <lock_target type="float">951.0</lock_target>
+        <lock_target type="float">1145.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
-        <num_focus_checks>0</num_focus_checks>
+        <num_focus_checks>5</num_focus_checks>
       </DACheckFocus>
       <DASetParameters>
         <parameters type="str">Hastorm_movie_parameter_568</parameters>
@@ -26,11 +26,11 @@
     </branch>
     <branch name="647_0">
       <DAMoveStage>
-        <stage_x type="float">0.0</stage_x>
-        <stage_y type="float">0.0</stage_y>
+        <stage_x type="float">181.2</stage_x>
+        <stage_y type="float">80.0</stage_y>
       </DAMoveStage>
       <DASetFocusLockTarget>
-        <lock_target type="float">966.0</lock_target>
+        <lock_target type="float">997.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
         <num_focus_checks>0</num_focus_checks>
@@ -41,6 +41,49 @@
       </DASetParameters>
       <DATakeMovie>
         <name type="str">647_0</name>
+        <length type="int">20</length>
+        <parameters type="str">Hastorm_movie_parameter_647</parameters>
+        <overwrite type="bool">True</overwrite>
+      </DATakeMovie>
+    </branch>
+    <branch name="568_1">
+      <DAMoveStage>
+        <stage_x type="float">78.6</stage_x>
+        <stage_y type="float">80.0</stage_y>
+      </DAMoveStage>
+      <DASetFocusLockTarget>
+        <lock_target type="float">1145.0</lock_target>
+      </DASetFocusLockTarget>
+      <DACheckFocus>
+        <num_focus_checks>5</num_focus_checks>
+      </DACheckFocus>
+      <DASetParameters>
+        <parameters type="str">Hastorm_movie_parameter_568</parameters>
+      </DASetParameters>
+      <DATakeMovie>
+        <name type="str">568_1</name>
+        <length type="int">1</length>
+        <parameters type="str">Hastorm_movie_parameter_568</parameters>
+        <overwrite type="bool">True</overwrite>
+      </DATakeMovie>
+    </branch>
+    <branch name="647_1">
+      <DAMoveStage>
+        <stage_x type="float">78.6</stage_x>
+        <stage_y type="float">80.0</stage_y>
+      </DAMoveStage>
+      <DASetFocusLockTarget>
+        <lock_target type="float">1471.0</lock_target>
+      </DASetFocusLockTarget>
+      <DACheckFocus>
+        <num_focus_checks>0</num_focus_checks>
+        <focus_scan/>
+      </DACheckFocus>
+      <DASetParameters>
+        <parameters type="str">Hastorm_movie_parameter_647</parameters>
+      </DASetParameters>
+      <DATakeMovie>
+        <name type="str">647_1</name>
         <length type="int">20</length>
         <parameters type="str">Hastorm_movie_parameter_647</parameters>
         <overwrite type="bool">True</overwrite>

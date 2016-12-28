@@ -792,7 +792,7 @@ class HaStageControl(QtGui.QDialog, halModule.HalModule):
     def handleClear(self, bool):
         mBox = QtGui.QMessageBox(parent = self)
         mBox.setWindowTitle("Clear?")
-        mBox.setText("Are you sure to clear all positions?")
+        mBox.setText("Do you want to clear all current positions?")
         mBox.setStandardButtons(QtGui.QMessageBox.No |
                                 QtGui.QMessageBox.Yes)
         mBox.setIcon(QtGui.QMessageBox.Warning)
