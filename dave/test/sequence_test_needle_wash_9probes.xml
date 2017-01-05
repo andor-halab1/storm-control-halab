@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<sequence>
+  
+
+  <DAValveProtocol>Wash-wash</DAValveProtocol>
+  <DAValveProtocol>Image-wash</DAValveProtocol>
+  <DAValveProtocol>Photobleach-wash</DAValveProtocol>
+  <DAValveProtocol>Hybridize 6-wash</DAValveProtocol>
+  <DAValveProtocol>Hybridize 7-wash</DAValveProtocol>
+  <DAValveProtocol>Hybridize 8-wash</DAValveProtocol>
+  <DAValveProtocol>Hybridize 11-wash</DAValveProtocol>
+  <DAValveProtocol>Hybridize 12-wash</DAValveProtocol>
+  <DAValveProtocol>Hybridize 13-wash</DAValveProtocol>
+  <DAValveProtocol>Hybridize 14-wash</DAValveProtocol>
+  <DAValveProtocol>Hybridize 15-wash</DAValveProtocol>
+  <DAValveProtocol>Hybridize 16-wash</DAValveProtocol>
+</sequence>

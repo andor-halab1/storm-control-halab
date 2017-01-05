@@ -15,7 +15,7 @@
 	<color>255,0,255</color>
   </event>
   <event>
-    <channel>1</channel>
+    <channel>2</channel>
 	<power>1.0</power>
     <on>1.0</on>
     <off>4.0</off>
