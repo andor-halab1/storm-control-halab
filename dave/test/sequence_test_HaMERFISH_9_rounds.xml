@@ -9,11 +9,11 @@
     <branch name="Movie Loop">
       <branch name="568_0_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -31,11 +31,11 @@
       </branch>
       <branch name="647_0_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">841.0</lock_target>
+          <lock_target type="float">1253.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -53,11 +53,11 @@
       </branch>
       <branch name="568_0_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -75,11 +75,11 @@
       </branch>
       <branch name="647_0_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">514.0</lock_target>
+          <lock_target type="float">1279.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -97,11 +97,11 @@
       </branch>
       <branch name="568_0_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -119,11 +119,11 @@
       </branch>
       <branch name="647_0_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">945.0</lock_target>
+          <lock_target type="float">1215.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -141,11 +141,11 @@
       </branch>
       <branch name="568_0_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -163,11 +163,11 @@
       </branch>
       <branch name="647_0_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">741.0</lock_target>
+          <lock_target type="float">1189.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -185,11 +185,11 @@
       </branch>
       <branch name="568_0_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -207,11 +207,11 @@
       </branch>
       <branch name="647_0_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">843.0</lock_target>
+          <lock_target type="float">1260.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -229,11 +229,11 @@
       </branch>
       <branch name="568_0_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -251,11 +251,11 @@
       </branch>
       <branch name="647_0_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">755.0</lock_target>
+          <lock_target type="float">1186.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -271,16 +271,60 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
+      <branch name="568_0_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">568_0_6</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="647_0_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">647_0_6</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
     </branch>
     <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_0_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">841.0</lock_target>
+          <lock_target type="float">1253.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -298,11 +342,11 @@
       </branch>
       <branch name="bleach_0_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">514.0</lock_target>
+          <lock_target type="float">1279.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -320,11 +364,11 @@
       </branch>
       <branch name="bleach_0_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">945.0</lock_target>
+          <lock_target type="float">1215.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -342,11 +386,11 @@
       </branch>
       <branch name="bleach_0_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">741.0</lock_target>
+          <lock_target type="float">1189.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -364,11 +408,11 @@
       </branch>
       <branch name="bleach_0_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">843.0</lock_target>
+          <lock_target type="float">1260.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -386,11 +430,11 @@
       </branch>
       <branch name="bleach_0_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">755.0</lock_target>
+          <lock_target type="float">1186.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -406,6 +450,28 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
+      <branch name="bleach_0_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">bleach_0_6</name>
+          <length type="int">100</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
     </branch>
     <DAValveProtocol>Hybridize 8</DAValveProtocol>
     <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
@@ -413,11 +479,11 @@
     <branch name="Movie Loop">
       <branch name="568_1_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -435,11 +501,11 @@
       </branch>
       <branch name="647_1_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">841.0</lock_target>
+          <lock_target type="float">1253.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -457,11 +523,11 @@
       </branch>
       <branch name="568_1_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -479,11 +545,11 @@
       </branch>
       <branch name="647_1_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">514.0</lock_target>
+          <lock_target type="float">1279.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -501,11 +567,11 @@
       </branch>
       <branch name="568_1_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -523,11 +589,11 @@
       </branch>
       <branch name="647_1_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">945.0</lock_target>
+          <lock_target type="float">1215.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -545,11 +611,11 @@
       </branch>
       <branch name="568_1_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -567,11 +633,11 @@
       </branch>
       <branch name="647_1_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">741.0</lock_target>
+          <lock_target type="float">1189.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -589,11 +655,11 @@
       </branch>
       <branch name="568_1_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -611,11 +677,11 @@
       </branch>
       <branch name="647_1_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">843.0</lock_target>
+          <lock_target type="float">1260.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -633,11 +699,11 @@
       </branch>
       <branch name="568_1_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -655,11 +721,11 @@
       </branch>
       <branch name="647_1_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">755.0</lock_target>
+          <lock_target type="float">1186.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -675,16 +741,60 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
+      <branch name="568_1_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">568_1_6</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="647_1_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">647_1_6</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
     </branch>
     <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_1_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">841.0</lock_target>
+          <lock_target type="float">1253.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -702,11 +812,11 @@
       </branch>
       <branch name="bleach_1_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">514.0</lock_target>
+          <lock_target type="float">1279.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -724,11 +834,11 @@
       </branch>
       <branch name="bleach_1_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">945.0</lock_target>
+          <lock_target type="float">1215.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -746,11 +856,11 @@
       </branch>
       <branch name="bleach_1_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">741.0</lock_target>
+          <lock_target type="float">1189.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -768,11 +878,11 @@
       </branch>
       <branch name="bleach_1_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">843.0</lock_target>
+          <lock_target type="float">1260.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -790,11 +900,11 @@
       </branch>
       <branch name="bleach_1_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">755.0</lock_target>
+          <lock_target type="float">1186.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -810,6 +920,28 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
+      <branch name="bleach_1_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">bleach_1_6</name>
+          <length type="int">100</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
     </branch>
     <DAValveProtocol>Hybridize 11</DAValveProtocol>
     <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
@@ -817,11 +949,11 @@
     <branch name="Movie Loop">
       <branch name="568_2_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -839,11 +971,11 @@
       </branch>
       <branch name="647_2_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">841.0</lock_target>
+          <lock_target type="float">1253.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -861,11 +993,11 @@
       </branch>
       <branch name="568_2_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -883,11 +1015,11 @@
       </branch>
       <branch name="647_2_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">514.0</lock_target>
+          <lock_target type="float">1279.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -905,11 +1037,11 @@
       </branch>
       <branch name="568_2_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -927,11 +1059,11 @@
       </branch>
       <branch name="647_2_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">945.0</lock_target>
+          <lock_target type="float">1215.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -949,11 +1081,11 @@
       </branch>
       <branch name="568_2_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -971,11 +1103,11 @@
       </branch>
       <branch name="647_2_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">741.0</lock_target>
+          <lock_target type="float">1189.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -993,11 +1125,11 @@
       </branch>
       <branch name="568_2_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1015,11 +1147,11 @@
       </branch>
       <branch name="647_2_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">843.0</lock_target>
+          <lock_target type="float">1260.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1037,11 +1169,11 @@
       </branch>
       <branch name="568_2_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1059,11 +1191,11 @@
       </branch>
       <branch name="647_2_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">755.0</lock_target>
+          <lock_target type="float">1186.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1079,16 +1211,60 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
+      <branch name="568_2_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">568_2_6</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="647_2_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">647_2_6</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
     </branch>
     <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_2_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">841.0</lock_target>
+          <lock_target type="float">1253.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1106,11 +1282,11 @@
       </branch>
       <branch name="bleach_2_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">514.0</lock_target>
+          <lock_target type="float">1279.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1128,11 +1304,11 @@
       </branch>
       <branch name="bleach_2_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">945.0</lock_target>
+          <lock_target type="float">1215.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1150,11 +1326,11 @@
       </branch>
       <branch name="bleach_2_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">741.0</lock_target>
+          <lock_target type="float">1189.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1172,11 +1348,11 @@
       </branch>
       <branch name="bleach_2_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">843.0</lock_target>
+          <lock_target type="float">1260.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1194,11 +1370,11 @@
       </branch>
       <branch name="bleach_2_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">755.0</lock_target>
+          <lock_target type="float">1186.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1214,6 +1390,28 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
+      <branch name="bleach_2_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">bleach_2_6</name>
+          <length type="int">100</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
     </branch>
     <DAValveProtocol>Hybridize 12</DAValveProtocol>
     <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
@@ -1221,11 +1419,11 @@
     <branch name="Movie Loop">
       <branch name="568_3_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1243,11 +1441,11 @@
       </branch>
       <branch name="647_3_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">841.0</lock_target>
+          <lock_target type="float">1253.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1265,11 +1463,11 @@
       </branch>
       <branch name="568_3_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1287,11 +1485,11 @@
       </branch>
       <branch name="647_3_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">514.0</lock_target>
+          <lock_target type="float">1279.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1309,11 +1507,11 @@
       </branch>
       <branch name="568_3_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1331,11 +1529,11 @@
       </branch>
       <branch name="647_3_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">945.0</lock_target>
+          <lock_target type="float">1215.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1353,11 +1551,11 @@
       </branch>
       <branch name="568_3_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1375,11 +1573,11 @@
       </branch>
       <branch name="647_3_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">741.0</lock_target>
+          <lock_target type="float">1189.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1397,11 +1595,11 @@
       </branch>
       <branch name="568_3_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1419,11 +1617,11 @@
       </branch>
       <branch name="647_3_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">843.0</lock_target>
+          <lock_target type="float">1260.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1441,11 +1639,11 @@
       </branch>
       <branch name="568_3_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1463,11 +1661,11 @@
       </branch>
       <branch name="647_3_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">755.0</lock_target>
+          <lock_target type="float">1186.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1483,16 +1681,60 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
+      <branch name="568_3_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">568_3_6</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="647_3_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">647_3_6</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
     </branch>
     <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_3_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">841.0</lock_target>
+          <lock_target type="float">1253.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1510,11 +1752,11 @@
       </branch>
       <branch name="bleach_3_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">514.0</lock_target>
+          <lock_target type="float">1279.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1532,11 +1774,11 @@
       </branch>
       <branch name="bleach_3_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">945.0</lock_target>
+          <lock_target type="float">1215.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1554,11 +1796,11 @@
       </branch>
       <branch name="bleach_3_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">741.0</lock_target>
+          <lock_target type="float">1189.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1576,11 +1818,11 @@
       </branch>
       <branch name="bleach_3_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">843.0</lock_target>
+          <lock_target type="float">1260.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1598,11 +1840,11 @@
       </branch>
       <branch name="bleach_3_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">755.0</lock_target>
+          <lock_target type="float">1186.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1618,6 +1860,28 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
+      <branch name="bleach_3_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">bleach_3_6</name>
+          <length type="int">100</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
     </branch>
     <DAValveProtocol>Hybridize 13</DAValveProtocol>
     <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
@@ -1625,11 +1889,11 @@
     <branch name="Movie Loop">
       <branch name="568_4_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1647,11 +1911,11 @@
       </branch>
       <branch name="647_4_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">841.0</lock_target>
+          <lock_target type="float">1253.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1669,11 +1933,11 @@
       </branch>
       <branch name="568_4_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1691,11 +1955,11 @@
       </branch>
       <branch name="647_4_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">514.0</lock_target>
+          <lock_target type="float">1279.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1713,11 +1977,11 @@
       </branch>
       <branch name="568_4_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1735,11 +1999,11 @@
       </branch>
       <branch name="647_4_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">945.0</lock_target>
+          <lock_target type="float">1215.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1757,11 +2021,11 @@
       </branch>
       <branch name="568_4_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1779,11 +2043,11 @@
       </branch>
       <branch name="647_4_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">741.0</lock_target>
+          <lock_target type="float">1189.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1801,11 +2065,11 @@
       </branch>
       <branch name="568_4_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1823,11 +2087,11 @@
       </branch>
       <branch name="647_4_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">843.0</lock_target>
+          <lock_target type="float">1260.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1845,11 +2109,11 @@
       </branch>
       <branch name="568_4_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1867,11 +2131,11 @@
       </branch>
       <branch name="647_4_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">755.0</lock_target>
+          <lock_target type="float">1186.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1887,16 +2151,60 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
+      <branch name="568_4_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">568_4_6</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="647_4_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">647_4_6</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
     </branch>
     <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_4_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">841.0</lock_target>
+          <lock_target type="float">1253.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1914,11 +2222,11 @@
       </branch>
       <branch name="bleach_4_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">514.0</lock_target>
+          <lock_target type="float">1279.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1936,11 +2244,11 @@
       </branch>
       <branch name="bleach_4_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">945.0</lock_target>
+          <lock_target type="float">1215.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1958,11 +2266,11 @@
       </branch>
       <branch name="bleach_4_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">741.0</lock_target>
+          <lock_target type="float">1189.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -1980,11 +2288,11 @@
       </branch>
       <branch name="bleach_4_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">843.0</lock_target>
+          <lock_target type="float">1260.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2002,11 +2310,11 @@
       </branch>
       <branch name="bleach_4_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">755.0</lock_target>
+          <lock_target type="float">1186.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2022,6 +2330,28 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
+      <branch name="bleach_4_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">bleach_4_6</name>
+          <length type="int">100</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
     </branch>
     <DAValveProtocol>Hybridize 14</DAValveProtocol>
     <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
@@ -2029,11 +2359,11 @@
     <branch name="Movie Loop">
       <branch name="568_5_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2051,11 +2381,11 @@
       </branch>
       <branch name="647_5_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">841.0</lock_target>
+          <lock_target type="float">1253.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2073,11 +2403,11 @@
       </branch>
       <branch name="568_5_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2095,11 +2425,11 @@
       </branch>
       <branch name="647_5_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">514.0</lock_target>
+          <lock_target type="float">1279.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2117,11 +2447,11 @@
       </branch>
       <branch name="568_5_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2139,11 +2469,11 @@
       </branch>
       <branch name="647_5_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">945.0</lock_target>
+          <lock_target type="float">1215.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2161,11 +2491,11 @@
       </branch>
       <branch name="568_5_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2183,11 +2513,11 @@
       </branch>
       <branch name="647_5_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">741.0</lock_target>
+          <lock_target type="float">1189.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2205,11 +2535,11 @@
       </branch>
       <branch name="568_5_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2227,11 +2557,11 @@
       </branch>
       <branch name="647_5_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">843.0</lock_target>
+          <lock_target type="float">1260.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2249,11 +2579,11 @@
       </branch>
       <branch name="568_5_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2271,11 +2601,11 @@
       </branch>
       <branch name="647_5_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">755.0</lock_target>
+          <lock_target type="float">1186.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2291,16 +2621,60 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
+      <branch name="568_5_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">568_5_6</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="647_5_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">647_5_6</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
     </branch>
     <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_5_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">841.0</lock_target>
+          <lock_target type="float">1253.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2318,11 +2692,11 @@
       </branch>
       <branch name="bleach_5_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">514.0</lock_target>
+          <lock_target type="float">1279.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2340,11 +2714,11 @@
       </branch>
       <branch name="bleach_5_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">945.0</lock_target>
+          <lock_target type="float">1215.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2362,11 +2736,11 @@
       </branch>
       <branch name="bleach_5_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">741.0</lock_target>
+          <lock_target type="float">1189.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2384,11 +2758,11 @@
       </branch>
       <branch name="bleach_5_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">843.0</lock_target>
+          <lock_target type="float">1260.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2406,11 +2780,11 @@
       </branch>
       <branch name="bleach_5_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">755.0</lock_target>
+          <lock_target type="float">1186.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2426,6 +2800,28 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
+      <branch name="bleach_5_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">bleach_5_6</name>
+          <length type="int">100</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
     </branch>
     <DAValveProtocol>Hybridize 15</DAValveProtocol>
     <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
@@ -2433,11 +2829,11 @@
     <branch name="Movie Loop">
       <branch name="568_6_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2455,11 +2851,11 @@
       </branch>
       <branch name="647_6_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">841.0</lock_target>
+          <lock_target type="float">1253.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2477,11 +2873,11 @@
       </branch>
       <branch name="568_6_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2499,11 +2895,11 @@
       </branch>
       <branch name="647_6_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">514.0</lock_target>
+          <lock_target type="float">1279.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2521,11 +2917,11 @@
       </branch>
       <branch name="568_6_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2543,11 +2939,11 @@
       </branch>
       <branch name="647_6_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">945.0</lock_target>
+          <lock_target type="float">1215.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2565,11 +2961,11 @@
       </branch>
       <branch name="568_6_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2587,11 +2983,11 @@
       </branch>
       <branch name="647_6_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">741.0</lock_target>
+          <lock_target type="float">1189.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2609,11 +3005,11 @@
       </branch>
       <branch name="568_6_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2631,11 +3027,11 @@
       </branch>
       <branch name="647_6_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">843.0</lock_target>
+          <lock_target type="float">1260.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2653,11 +3049,11 @@
       </branch>
       <branch name="568_6_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2675,11 +3071,11 @@
       </branch>
       <branch name="647_6_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">755.0</lock_target>
+          <lock_target type="float">1186.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2695,16 +3091,60 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
+      <branch name="568_6_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">568_6_6</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="647_6_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">647_6_6</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
     </branch>
     <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_6_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">841.0</lock_target>
+          <lock_target type="float">1253.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2722,11 +3162,11 @@
       </branch>
       <branch name="bleach_6_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">514.0</lock_target>
+          <lock_target type="float">1279.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2744,11 +3184,11 @@
       </branch>
       <branch name="bleach_6_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">945.0</lock_target>
+          <lock_target type="float">1215.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2766,11 +3206,11 @@
       </branch>
       <branch name="bleach_6_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">741.0</lock_target>
+          <lock_target type="float">1189.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2788,11 +3228,11 @@
       </branch>
       <branch name="bleach_6_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">843.0</lock_target>
+          <lock_target type="float">1260.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2810,11 +3250,11 @@
       </branch>
       <branch name="bleach_6_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">755.0</lock_target>
+          <lock_target type="float">1186.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2830,6 +3270,28 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
+      <branch name="bleach_6_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">bleach_6_6</name>
+          <length type="int">100</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
     </branch>
     <DAValveProtocol>Hybridize 16</DAValveProtocol>
     <DAValveProtocol>Flow Washing Buffer</DAValveProtocol>
@@ -2837,11 +3299,11 @@
     <branch name="Movie Loop">
       <branch name="568_7_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2859,11 +3321,11 @@
       </branch>
       <branch name="647_7_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">841.0</lock_target>
+          <lock_target type="float">1253.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2881,11 +3343,11 @@
       </branch>
       <branch name="568_7_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2903,11 +3365,11 @@
       </branch>
       <branch name="647_7_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">514.0</lock_target>
+          <lock_target type="float">1279.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2925,11 +3387,11 @@
       </branch>
       <branch name="568_7_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2947,11 +3409,11 @@
       </branch>
       <branch name="647_7_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">945.0</lock_target>
+          <lock_target type="float">1215.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2969,11 +3431,11 @@
       </branch>
       <branch name="568_7_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -2991,11 +3453,11 @@
       </branch>
       <branch name="647_7_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">741.0</lock_target>
+          <lock_target type="float">1189.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3013,11 +3475,11 @@
       </branch>
       <branch name="568_7_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3035,11 +3497,11 @@
       </branch>
       <branch name="647_7_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">843.0</lock_target>
+          <lock_target type="float">1260.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3057,11 +3519,11 @@
       </branch>
       <branch name="568_7_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">904.0</lock_target>
+          <lock_target type="float">1268.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3079,11 +3541,11 @@
       </branch>
       <branch name="647_7_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">755.0</lock_target>
+          <lock_target type="float">1186.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3099,16 +3561,60 @@
           <overwrite type="bool">True</overwrite>
         </DATakeMovie>
       </branch>
+      <branch name="568_7_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">568_7_6</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_568</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="647_7_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">647_7_6</name>
+          <length type="int">1</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
     </branch>
     <DAValveProtocol>Flow Photobleaching Buffer</DAValveProtocol>
     <branch name="Movie Loop">
       <branch name="bleach_7_0">
         <DAMoveStage>
-          <stage_x type="float">-2250.8</stage_x>
-          <stage_y type="float">-7315.2</stage_y>
+          <stage_x type="float">-140.2</stage_x>
+          <stage_y type="float">-432.0</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">841.0</lock_target>
+          <lock_target type="float">1253.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3126,11 +3632,11 @@
       </branch>
       <branch name="bleach_7_1">
         <DAMoveStage>
-          <stage_x type="float">-2281.6</stage_x>
-          <stage_y type="float">-7459.8</stage_y>
+          <stage_x type="float">-195.2</stage_x>
+          <stage_y type="float">-411.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">514.0</lock_target>
+          <lock_target type="float">1279.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3148,11 +3654,11 @@
       </branch>
       <branch name="bleach_7_2">
         <DAMoveStage>
-          <stage_x type="float">-2019.4</stage_x>
-          <stage_y type="float">-7628.4</stage_y>
+          <stage_x type="float">-379.8</stage_x>
+          <stage_y type="float">-430.8</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">945.0</lock_target>
+          <lock_target type="float">1215.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3170,11 +3676,11 @@
       </branch>
       <branch name="bleach_7_3">
         <DAMoveStage>
-          <stage_x type="float">-2168.4</stage_x>
-          <stage_y type="float">-7672.8</stage_y>
+          <stage_x type="float">-631.0</stage_x>
+          <stage_y type="float">-446.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">741.0</lock_target>
+          <lock_target type="float">1189.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3192,11 +3698,11 @@
       </branch>
       <branch name="bleach_7_4">
         <DAMoveStage>
-          <stage_x type="float">17.2</stage_x>
-          <stage_y type="float">-7747.2</stage_y>
+          <stage_x type="float">-692.8</stage_x>
+          <stage_y type="float">-425.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">843.0</lock_target>
+          <lock_target type="float">1260.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3214,11 +3720,11 @@
       </branch>
       <branch name="bleach_7_5">
         <DAMoveStage>
-          <stage_x type="float">-323.0</stage_x>
-          <stage_y type="float">-7516.6</stage_y>
+          <stage_x type="float">-675.4</stage_x>
+          <stage_y type="float">-360.6</stage_y>
         </DAMoveStage>
         <DASetFocusLockTarget>
-          <lock_target type="float">755.0</lock_target>
+          <lock_target type="float">1186.0</lock_target>
         </DASetFocusLockTarget>
         <DACheckFocus>
           <num_focus_checks>5</num_focus_checks>
@@ -3229,6 +3735,28 @@
         </DASetParameters>
         <DATakeMovie>
           <name type="str">bleach_7_5</name>
+          <length type="int">100</length>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+          <overwrite type="bool">True</overwrite>
+        </DATakeMovie>
+      </branch>
+      <branch name="bleach_7_6">
+        <DAMoveStage>
+          <stage_x type="float">-250.6</stage_x>
+          <stage_y type="float">40.0</stage_y>
+        </DAMoveStage>
+        <DASetFocusLockTarget>
+          <lock_target type="float">1268.0</lock_target>
+        </DASetFocusLockTarget>
+        <DACheckFocus>
+          <num_focus_checks>5</num_focus_checks>
+          <focus_scan/>
+        </DACheckFocus>
+        <DASetParameters>
+          <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
+        </DASetParameters>
+        <DATakeMovie>
+          <name type="str">bleach_7_6</name>
           <length type="int">100</length>
           <parameters type="str">HaMERFISH_movie_parameter_647</parameters>
           <overwrite type="bool">True</overwrite>

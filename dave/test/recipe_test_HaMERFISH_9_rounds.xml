@@ -26,7 +26,7 @@
     <name increment = "Yes">568</name>
     <length>1</length>
 	<parameters>HaMERFISH_movie_parameter_568</parameters>
-	<lock_target>904.0</lock_target>
+	<lock_target>1268.0</lock_target>
 	<check_focus>
 	  <num_focus_checks>5</num_focus_checks>
 	  <focus_scan></focus_scan>
