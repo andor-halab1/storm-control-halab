@@ -141,7 +141,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.filenameEdit)
         self.indexSpinBox = QtGui.QSpinBox(self.filmGroupBox)
         self.indexSpinBox.setMaximumSize(QtCore.QSize(55, 16777215))
-        self.indexSpinBox.setMinimum(1)
+        self.indexSpinBox.setMinimum(0)
         self.indexSpinBox.setMaximum(9999)
         self.indexSpinBox.setObjectName(_fromUtf8("indexSpinBox"))
         self.horizontalLayout.addWidget(self.indexSpinBox)
