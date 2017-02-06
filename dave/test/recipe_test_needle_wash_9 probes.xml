@@ -5,7 +5,7 @@
 	<valve_protocol>Wash-wash</valve_protocol>
     <valve_protocol>Image-wash</valve_protocol>
     <valve_protocol>Photobleach-wash</valve_protocol>
-	<valve_protocol>Hybridize 6-wash</valve_protocol>
+	<valve_protocol>Hybridize 16-wash</valve_protocol>
     <valve_protocol>Hybridize 7-wash</valve_protocol>
     <valve_protocol>Hybridize 8-wash</valve_protocol>
 	<!--
@@ -18,7 +18,7 @@
 	<valve_protocol>Hybridize 13-wash</valve_protocol>
 	<valve_protocol>Hybridize 14-wash</valve_protocol>
 	<valve_protocol>Hybridize 15-wash</valve_protocol>
-	<valve_protocol>Hybridize 16-wash</valve_protocol>
+	<valve_protocol>Hybridize 6-wash</valve_protocol>
 
 
  </command_sequence>

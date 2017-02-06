@@ -7,10 +7,10 @@
   <!-- camera settings -->
   <camera1>
     <emccd_gain type="int">200</emccd_gain>
-    <x_start type="int">40</x_start>
-    <x_end type="int">295</x_end>
-    <y_start type="int">60</y_start>
-    <y_end type="int">315</y_end>
+    <x_start type="int">60</x_start>
+    <x_end type="int">315</x_end>
+    <y_start type="int">40</y_start>
+    <y_end type="int">295</y_end>
     <x_bin type="int">1</x_bin>
     <y_bin type="int">1</y_bin>
     <exposure_time type="float">0.05</exposure_time>
