@@ -751,6 +751,7 @@ class LockDisplayCrisp(QtGui.QWidget):
         self.stage_z = 0
         self.is_locked = False
         # general, for MFC2000
+        self.SNR = 0.0
         self.state = 'I'
         self.err = 0.0
         self.os = 0.0
@@ -878,8 +879,9 @@ class LockDisplayCrisp(QtGui.QWidget):
     # @param lr The current lock range of MFC2000.
     # @param z2000 The current z of MFC2000.
     #
-    def controllerUpdate(self, state, err, os, gn, lr, z2000):
+    def controllerUpdate(self, SNR, state, err, os, gn, lr, z2000):
         # These are saved so that they can be recorded when we are filming
+        self.SNR = SNR
         self.state = state
         self.err = err
         self.os = os
@@ -888,6 +890,7 @@ class LockDisplayCrisp(QtGui.QWidget):
         self.z2000 = z2000
 
         # Update UI information display.
+        self.ui.logampText.setText("%.1f" % self.SNR)
         self.ui.errText.setText("%.1f" % self.err)
         self.ui.gainText.setText("%.1f" % self.gn)
         self.ui.offsetText.setText("%.1f" % self.os)

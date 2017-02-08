@@ -84,6 +84,18 @@ class MFC2000(RS232.RS232):
     def curve(self):
         self.commWithResp("LK F=97")
     '''
+
+    # built-in function in MFC2000 controller
+    #
+    def read_SNR(self):
+        if self.live:
+            try:
+                self.SNR = float(self.commWithResp("EXTRA Y?"))
+            except:
+                hdebug.logText("  Warning: Bad SNR from ASI Z stage.")
+            return self.SNR
+        else:
+            return 0.0
     
     # built-in function in MFC2000 controller
     #
@@ -305,6 +317,8 @@ class MFC2000(RS232.RS232):
 
 if __name__ == "__main__":
     stage = MFC2000("COM5")
+    SNR = stage.read_SNR()
+    print SNR
     state = stage.read_State()
     print state
     err = stage.read_Err()

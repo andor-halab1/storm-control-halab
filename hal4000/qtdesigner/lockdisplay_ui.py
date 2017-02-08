@@ -137,13 +137,13 @@ class Ui_Form_Crisp(object):
 
         self.tempText = QtGui.QLabel(self.statusBox)
         self.tempText.setGeometry(QtCore.QRect(10, 25, 270, 24))
-        self.tempText.setText(_fromUtf8("SNR and derr are currently displayed on MFC LCD"))
+        self.tempText.setText(_fromUtf8("dither err is currently displayed on MFC LCD"))
         self.tempText.setAlignment(QtCore.Qt.AlignLeft)
         self.tempText.setObjectName(_fromUtf8("tempText"))
 
         self.logampText = QtGui.QLabel(self.statusBox)
         self.logampText.setGeometry(QtCore.QRect(171, 55, 100, 24))
-        self.logampText.setText(_fromUtf8("SNR: see MFC LCD"))
+        self.logampText.setText(_fromUtf8(""))
         self.logampText.setAlignment(QtCore.Qt.AlignLeft)
         self.logampText.setObjectName(_fromUtf8("logampText"))
         self.derrText = QtGui.QLabel(self.statusBox)

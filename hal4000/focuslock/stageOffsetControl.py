@@ -622,7 +622,7 @@ class StageCamThread(StageQPDThread):
 #
 class StageCrispThread(QtCore.QThread):
     controlUpdate = QtCore.pyqtSignal(float, float, float, float, bool)
-    controllerUpdate = QtCore.pyqtSignal(str, float, float, float, float, float)
+    controllerUpdate = QtCore.pyqtSignal(float, str, float, float, float, float, float)
     foundSum = QtCore.pyqtSignal(float)
     lockStatusRequest = QtCore.pyqtSignal(bool)
     recenteredPiezo = QtCore.pyqtSignal()
@@ -677,6 +677,7 @@ class StageCrispThread(QtCore.QThread):
         # Added for MFC2000 controller
         self.controller = controller
         self.controller_mutex = QtCore.QMutex()
+        self.controller_SNR = self.controller.read_SNR()
         self.controller_state = self.controller.read_State()
         self.controller_err = self.controller.read_Err()
         self.controller_offset = self.controller.read_Offset()
@@ -836,13 +837,15 @@ class StageCrispThread(QtCore.QThread):
         while(self.running):
 
             self.controller_mutex.lock()
+            self.controller_SNR = self.controller.read_SNR()
             self.controller_state = self.controller.read_State()
             self.controller_err = self.controller.read_Err()
             self.controller_offset = self.controller.read_Offset()
             self.controller_gain = self.controller.read_Gain()
             self.controller_lockrange = self.controller.read_LockRange()
             self.controller_z = self.controller.position()
-            self.controllerUpdate.emit(self.controller_state,
+            self.controllerUpdate.emit(self.controller_SNR,
+                                       self.controller_state,
                                        self.controller_err,
                                        self.controller_offset,
                                        self.controller_gain,
