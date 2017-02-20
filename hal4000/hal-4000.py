@@ -294,7 +294,10 @@ class Window(QtGui.QMainWindow):
 
         # stage signals
         # As another part of the quick fix.
-        self.s_instance.updateCrispOffset.connect(self.updateCrispOffset)
+        try:
+            self.s_instance.updateCrispOffset.connect(self.updateCrispOffset)
+        except:
+            print('Do not use Crisp-only features.');
 
         #
         # Load GUI settings
@@ -683,7 +686,10 @@ class Window(QtGui.QMainWindow):
     # As another part of the quick fix.
     #
     def updateCrispOffset(self, os):
-        self.fl_instance.handleSetLockTarget(os)
+        try:
+            self.fl_instance.handleSetLockTarget(os)
+        except:
+            print('It is not a Crisp setup!')
     
     ## newParameters
     #
