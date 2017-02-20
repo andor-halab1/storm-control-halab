@@ -146,7 +146,6 @@
   -->
 
   <!-- steve settings -->
-  <!--
   <mosaic>
     <objective type="string">obj1</objective>
     <flip_horizontal type="int">0</flip_horizontal>
@@ -157,6 +156,5 @@
     <obj3 type="string">4x,4.0,0.0,0.0</obj3>
     <pixels_to_um type="float">0.160</pixels_to_um>
   </mosaic>
-  -->
 
 </settings>

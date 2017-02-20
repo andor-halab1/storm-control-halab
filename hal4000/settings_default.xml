@@ -3,5 +3,5 @@
   <!--use this one for STORM experiments and comment the other out-->
   <!--<setup_name type="string">Hastorm</setup_name>-->
   <!--use this one for MERFISH experiments and comment the other out-->
-  <setup_name type="string">none</setup_name>
+  <setup_name type="string">HaNikon</setup_name>
 </settings>

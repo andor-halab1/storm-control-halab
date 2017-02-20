@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
+
 <hardware>
 
-  <!-- Define the camera. -->
-  <camera>
-    <module type="string">classicSingleCamera</module>
-    <parameters>
-      <control type="string">andorCameraControl</control>
-      <display type="string">andorCameraWidget</display>
-    </parameters>
-  </camera>
+  <!-- The UI mode, this is either "single" (window) or "detached" -->
+  <ui_mode type="string">single</ui_mode>
+  <!-- <ui_mode type="string">detached</ui_mode> -->
+
+  <!-- Camera control. -->
+  <control>
+    <module_name type="string">andorCameraControl</module_name>
+  </control>
+
+  <!-- Camera display. -->
+  <display>
+    <module_name type="string">cameraWidgets</module_name>
+    <class_name type="string">PyCameraWidget</class_name>
+  </display>
 
   <!-- Define the other modules to use for this setup. -->
   <modules>
 
-    <!-- The focus lock -->
+	<!-- Feed viewers -->
+    <feedviewers>
+      <class_name type="string">FeedViewers</class_name>
+      <menu_item type="string">New Viewer</menu_item>
+	  <module_name type="string">display.feedViewer</module_name>
+    </feedviewers>
+	
+	<!-- The focus lock -->
     <!--
     <focuslock>
       <class_name type="string">AFocusLockZ</class_name>
@@ -35,6 +49,7 @@
 	-->
 
     <!-- Control of miscellaneous hardware. -->
+	<!--
     <misc_control>
       <class_name type="string">AMiscControl</class_name>
       <menu_item type="string">Misc. Control</menu_item>
@@ -49,11 +64,13 @@
     </spotcounter>
 
     <!-- Motorized XY stage -->
+	<!--
     <stage>
       <class_name type="string">AStageControl</class_name>
       <menu_item type="string">Stage Control</menu_item>
       <module_name type="string">stagecontrol.HaNikon1StageControl</module_name>
     </stage>
+	-->
 
     <!-- Remote control of HAL via TCP/IP -->
     <tcpip>

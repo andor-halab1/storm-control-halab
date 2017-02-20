@@ -46,12 +46,12 @@
   <!-- film settings -->
   <film>
     <want_big_endian type="int">0</want_big_endian>
-    <directory type="string">D:\Data\</directory>
+    <directory type="string">C:\Data\</directory>
     <filename type="string">STORM_0</filename>
     <!--  <acq_mode type="string">run_till_abort</acq_mode> -->
     <acq_mode type="string">fixed_length</acq_mode>
     <frames type="int">1</frames>
-    <logfile type="string">D:\Data\logs\image_log.txt</logfile>
+    <logfile type="string">C:\Data\logs\image_log.txt</logfile>
     <extensions type="string-array">,A647,Cy5,A568,Cy3,A405,YFP,GFP,BF,c1,c2</extensions>
     <auto_increment type="int">1</auto_increment>
     <want_bell type="int">1</want_bell>
@@ -111,5 +111,17 @@
     <filter_position type="int">0</filter_position>
     <bf_shutter type="boolean">False</bf_shutter>
   </misc>
+  
+  <!-- steve settings -->
+  <mosaic>
+    <objective type="string">obj1</objective>
+    <flip_horizontal type="int">0</flip_horizontal>
+    <flip_vertical type="int">0</flip_vertical>
+    <transpose type="int">1</transpose>
+    <obj1 type="string">100x,100.0,0.0,0.0</obj1>
+    <obj2 type="string">10x,10.0,0.0,0.0</obj2>
+    <obj3 type="string">4x,4.0,0.0,0.0</obj3>
+    <pixels_to_um type="float">0.160</pixels_to_um>
+  </mosaic>
 
 </settings>
