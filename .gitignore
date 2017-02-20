@@ -59,3 +59,6 @@ proguard/
 
 # Metadata
 .metadata
+
+# The setup-specific setting file
+.xml
