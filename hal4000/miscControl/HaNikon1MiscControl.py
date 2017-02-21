@@ -55,6 +55,7 @@ class AMiscControl(miscControl.MiscControl):
             filter.clicked.connect(self.handleFilter)
         self.filters[self.tie_misc.getFilterWheel()].click()
 
+        '''
         # setup light
         self.lights = [self.ui.light1Button,
                         self.ui.light2Button,
@@ -63,6 +64,7 @@ class AMiscControl(miscControl.MiscControl):
         for light in self.lights:
             light.clicked.connect(self.handleLight)
         self.tie_misc.initialization()
+        '''
 
         self.newParameters(self.parameters)
 
@@ -90,6 +92,7 @@ class AMiscControl(miscControl.MiscControl):
             else:
                 filter.setStyleSheet("QPushButton { color: black}")
 
+    '''
     @hdebug.debug
     def handleLight(self, bool):
         for i, light in enumerate(self.lights):
@@ -98,6 +101,7 @@ class AMiscControl(miscControl.MiscControl):
                 self.parameters.set("light", i)
             else:
                 pass
+    '''
 
     @hdebug.debug
     def newParameters(self, parameters):

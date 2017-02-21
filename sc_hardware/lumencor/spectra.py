@@ -10,6 +10,7 @@
 import imp
 imp.load_source("setPath", "C:\\storm-control-halab\\sc_library\\setPath.py")
 
+import sc_hardware.baseClasses.illuminationHardware as illuminationHardware
 import sc_hardware.serial.RS232 as RS232
 import time
 
@@ -50,24 +51,39 @@ class Spectra(RS232.RS232):
     def getStatus(self):
         return True
 
+    def initialization(self):
+        print("Spectra initialized")
+        self._command("\x57\x02\xFF\x50");
+        self._command("\x57\x03\xAB\x50");
+        self._command("\x4F\x7F\x50");
+
     ## setLight
     #
     # @param state The color of light.
     #
     def setLight(self, color):
         if color == 0: # Violet
-            print("Violet on")
-            self._command("53180301F80050");
-            self._command("4F7750");
+            self._command("\x4F\x77\x50");
         if color == 1: # Green
-            self._command("53180304F80050");
-            self._command("4F7D50");
+            self._command("\x4F\x7D\x50");
         if color == 2: # Red
-            self._command("53180308F80050");
-            self._command("4F7E50");
+            self._command("\x4F\x7E\x50");
         if color == 3: # Teal
-            self._command("531A0302F80050");
-            self._command("4F3F50");
+            self._command("\x4F\x3F\x50");
+
+    def setAmp(self, color, amp):
+        if color == 0: # Violet
+            self._command("\x53\x18\x03\x01\xF8\x00\x50");
+        if color == 1: # Green
+            self._command("\x53\x18\x03\x04\xF8\x00\x50");
+        if color == 2: # Red
+            self._command("\x53\x18\x03\x08\xF8\x00\x50");
+        if color == 3: # Teal
+            self._command("\x53\x1A\x03\x02\xF8\x00\x50");
+
+    def readTemp(self):
+        temp = self._command("\x53\x91\x02\x50");
+        return temp
 
 
 #
@@ -78,6 +94,10 @@ if __name__ == "__main__":
     lights = Spectra("COM6")
     
     lights.setLight(0)
+    temp = lights.readTemp()
+    print temp
+
+    lights._command("\x4F\x7F\x50");
 
 #
 # The MIT License
