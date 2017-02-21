@@ -62,7 +62,7 @@ class AMiscControl(miscControl.MiscControl):
                         self.ui.light4Button,]
         for light in self.lights:
             light.clicked.connect(self.handleLight)
-        self.lights[self.tie_misc.getLight()].click()
+        self.tie_misc.initialization()
 
         self.newParameters(self.parameters)
 
