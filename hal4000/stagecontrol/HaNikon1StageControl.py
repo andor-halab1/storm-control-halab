@@ -22,11 +22,11 @@ import stagecontrol.stageControl as stageControl
 # Stage control dialog specialized for Prism2
 # with marzhauser motorized stage.
 #
-class AStageControl(stageControl.StageControl):
+class AStageControl(stageControl.HaStageControl):
     def __init__(self, hardware, parameters, parent = None):
         self.stage = stageThread.QStageThread(tiEStage.TiEStage())
         self.stage.start(QtCore.QThread.NormalPriority)
-        stageControl.StageControl.__init__(self, 
+        stageControl.HaStageControl.__init__(self, 
                                            parameters,
                                            parent)
 

@@ -66,14 +66,19 @@
     </spotcounter>
 
     <!-- Motorized XY stage -->
-	<!--
     <stage>
       <class_name type="string">AStageControl</class_name>
       <menu_item type="string">Stage Control</menu_item>
-      <module_name type="string">stagecontrol.noneStageControl</module_name>
+      <module_name type="string">stagecontrol.HaNikon1StageControl</module_name>
     </stage>
-	-->
-
+	
+	<!-- Control of miscellaneous hardware. -->
+    <misc_control>
+      <class_name type="string">AMiscControl</class_name>
+      <menu_item type="string">Misc. Control</menu_item>
+      <module_name type="string">miscControl.HaNikon1MiscControl</module_name>
+    </misc_control>
+	
     <!-- Remote control of HAL via TCP/IP -->
     <tcpip>
       <class_name type="string">HalTCPControl</class_name>

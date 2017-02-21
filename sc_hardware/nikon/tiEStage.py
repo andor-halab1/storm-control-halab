@@ -2,18 +2,18 @@
 #
 ## @file
 #
-# Nikon TiU stage communication (using Micro-Manager).
+# Nikon TiE stage communication (using Micro-Manager).
 #
 # Hazen 4/15
 #
 
 import MMCorePy
 
-## TiUStage
+## TiEStage
 #
-# Encapsulates control of a Nikon TiU stage.
+# Encapsulates control of a Nikon TiE stage.
 #
-class TiUStage(object):
+class TiEStage(object):
 
     ## __init__
     #

@@ -21,6 +21,12 @@ for elt in sys.path:
 # Add the new storm-control directory.
 sys.path.append(sc_directory)
 
+# Add path for micro-manager
+try:
+    sys.path.append("C:/Program Files/Micro-Manager-1.4")
+except:
+    pass
+
 #
 # The MIT License
 #

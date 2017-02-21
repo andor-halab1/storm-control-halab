@@ -8,9 +8,9 @@
   <camera1>
     <emccd_gain type="int">150</emccd_gain>
     <x_start type="int">1</x_start>
-    <x_end type="int">256</x_end>
+    <x_end type="int">1024</x_end>
     <y_start type="int">1</y_start>
-    <y_end type="int">256</y_end>
+    <y_end type="int">1024</y_end>
     <x_bin type="int">1</x_bin>
     <y_bin type="int">1</y_bin>
     <exposure_time type="float">0.15</exposure_time>
@@ -18,7 +18,7 @@
     <temperature type="int">-70</temperature>
 
     <!-- less common camera settings -->
-    <preampgain type="float">1.0</preampgain>
+    <preampgain type="float">2.0</preampgain>
     <hsspeed type="float">10.0</hsspeed>
     <vsspeed type="float">3.3</vsspeed>
     <kinetic_cycle_time type="float">0.0</kinetic_cycle_time>
@@ -43,16 +43,18 @@
     <scalemin type="int">100</scalemin>
     <sync type="int">0</sync>
   </camera1>
+  
+  
 
   <!-- film settings -->
   <film>
     <want_big_endian type="int">0</want_big_endian>
-    <directory type="string">D:\Data\</directory>
+    <directory type="string">E:\Data\</directory>
     <filename type="string">STORM_0</filename>
     <!--  <acq_mode type="string">run_till_abort</acq_mode> -->
     <acq_mode type="string">fixed_length</acq_mode>
     <frames type="int">1</frames>
-    <logfile type="string">D:\Data\logs\image_log.txt</logfile>
+    <logfile type="string">E:\Data\logs\image_log.txt</logfile>
     <extensions type="string-array">,A647,Cy5,A568,Cy3,A405,YFP,GFP,BF,c1,c2</extensions>
     <auto_increment type="int">1</auto_increment>
     <want_bell type="int">1</want_bell>
@@ -61,21 +63,6 @@
   </film>
 
   <!-- illumination settings -->
-  <illumination>
-    <shutters type="string">shutters_default.xml</shutters>
-    <default_power channel="0">1.0</default_power>
-    <default_power channel="1">1.0</default_power>
-    <default_power channel="2">1.0</default_power>
-	<default_power channel="3">1.0</default_power>
-    <button channel="0" power="1.0">Max</button>
-    <button channel="0" power="0.1">Low</button>
-    <button channel="1" power="1.0">Max</button>
-    <button channel="1" power="0.1">Low</button>
-    <button channel="2" power="1.0">Max</button>
-    <button channel="2" power="0.1">Low</button>
-	<button channel="3" power="1.0">Max</button>
-    <button channel="3" power="0.1">Low</button>
-  </illumination>
 
   <!-- stage settings -->
   <stage>
@@ -88,62 +75,23 @@
   </stage>
 
   <!-- focus lock settings -->
-  <focuslock>
-    <!-- default lock mode -->
-    <qpd_mode type="int">0</qpd_mode>
-	<!-- the center position of the piezo -->
-    <qpd_zcenter type="float">50.0</qpd_zcenter>
-	<!-- conversion factor used in setting focus target -->
-    <qpd_scale type="float">1.0</qpd_scale>
-    <qpd_sum_max type="int">1500</qpd_sum_max>
-	
-    <cal_deadtime type="int">20</cal_deadtime>
-    <cal_range type="float">600</cal_range>
-    <cal_step_size type="float">10</cal_step_size>
-    <cal_frames_to_pause type="int">2</cal_frames_to_pause>
-    <zscan_start type="float">50.0</zscan_start>
-    <zscan_step type="float">0.1</zscan_step>
-    <zscan_frames_to_pause type="int">100</zscan_frames_to_pause>
-    <zscan_stop type="float">51.0</zscan_stop>
-    <zscan_focus_lock type="int">0</zscan_focus_lock>
-	
-	<!-- default jump size -->
-	<!-- <lockt_step type="float">0.02</lockt_step> -->
-	
-    <!-- parameter used in CrispOptimalLockMode -->
-    <olock_bracket_step type="int">500</olock_bracket_step>
-	<!-- parameter used in CrispOptimalLockMode -->
-    <olock_scan_step type="int">50</olock_scan_step>
-	<!-- parameter used in CrispOptimalLockMode -->
-    <olock_scan_hold type="int">10</olock_scan_hold>
-	<!-- parameter used in CrispOptimalLockMode -->
-    <olock_quality_threshold type="float">0.0</olock_quality_threshold>
-	<!-- the following two used stageOffsetControl-->
-	<is_locked_buffer_length type="int">3</is_locked_buffer_length>
-    <is_locked_offset_thresh type="float">0.1</is_locked_offset_thresh>
-  </focuslock>
-
+  
   <!-- spot counter -->
   <spotcounter>
     <have_spot_counter type="int">1</have_spot_counter>
     <cell_size type="int">32</cell_size>
-    <threshold type="int">200</threshold>
+    <threshold type="int">250</threshold>
     <min_spots type="int">0</min_spots>
-    <max_spots type="int">100</max_spots>
+    <max_spots type="int">500</max_spots>
     <scale_bar_len type="float">1000</scale_bar_len>
-    <nm_per_pixel type="float">160</nm_per_pixel>
+    <nm_per_pixel type="float">144</nm_per_pixel>
   </spotcounter>
 
-  <!-- power progression settings -->
-  <!--
-  <progressions>
-    <have_progressions type="int">1</have_progressions>
-    <use_progressions type="int">0</use_progressions>
-    <pstart_value type="float">0.1</pstart_value>
-    <pinc_value type="float">0.01</pinc_value>
-    <pframe_value type="int">1000</pframe_value>
-  </progressions>
-  -->
+  <!-- misc control -->
+  <misc>
+    <filter_names type="string-array">1,2,3,4,5,6</filter_names>
+    <filter_position type="int">0</filter_position>
+  </misc>
 
   <!-- steve settings -->
   <mosaic>
@@ -151,8 +99,8 @@
     <flip_horizontal type="int">0</flip_horizontal>
     <flip_vertical type="int">0</flip_vertical>
     <transpose type="int">1</transpose>
-    <obj1 type="string">100x,100.0,0.0,0.0</obj1>
-    <pixels_to_um type="float">0.160</pixels_to_um>
+    <obj1 type="string">60x,100.0,0.0,0.0</obj1>
+    <pixels_to_um type="float">0.144</pixels_to_um>
   </mosaic>
 
 </settings>
