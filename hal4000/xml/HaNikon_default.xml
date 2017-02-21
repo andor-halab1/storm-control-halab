@@ -18,7 +18,7 @@
     <temperature type="int">-70</temperature>
 
     <!-- less common camera settings -->
-    <preampgain type="float">1.0</preampgain>
+    <preampgain type="float">2.0</preampgain>
     <hsspeed type="float">10.0</hsspeed>
     <vsspeed type="float">3.3</vsspeed>
     <kinetic_cycle_time type="float">0.0</kinetic_cycle_time>
