@@ -21,6 +21,14 @@ class TiEMisc(object):
         self.mmc = MMCorePy.CMMCore()
         self.mmc.loadDevice('TIScope', 'NikonTI', 'TIScope')
         self.mmc.loadDevice('TIFilterBlock1', 'NikonTI', 'TIFilterBlock1')
+        # self.mmc.loadDevice('Spectra', 'LumencorSpectra', 'Spectra')
+        self.mmc.loadDevice('Spectra', 'SerialManager', 'COM6');
+        self.mmc.setProperty('Spectra', 'StopBits', '1');
+        self.mmc.setProperty('Spectra', 'Parity', 'None');
+        self.mmc.setProperty('Spectra', 'Handshaking', 'Off');
+        self.mmc.setProperty('Spectra', 'DelayBetweenCharsMs', '0.0000');
+        self.mmc.setProperty('Spectra', 'BaudRate', '9600');
+        self.mmc.setProperty('Spectra', 'AnswerTimeout', '500.0000');
         self.mmc.initializeAllDevices()
 
     ## getFilterWheel
@@ -36,3 +44,18 @@ class TiEMisc(object):
     #
     def setFilterWheel(self, state):
         self.mmc.setProperty('TIFilterBlock1', 'State', str(state))
+
+    ## getLight
+    #
+    # @return Current light.
+    #
+    def getLight(self):
+        return int(0)
+
+    ## setLight
+    #
+    # @param state The color of light.
+    #
+    def setLight(self, color):
+        pass
+    
