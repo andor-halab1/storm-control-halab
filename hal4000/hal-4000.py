@@ -681,6 +681,7 @@ class Window(QtGui.QMainWindow):
 
         # Start the quick fix.
         if hasattr(self.s_instance, 'offset'):
+            print('hello')
             self.s_instance.offset = self.fl_instance.getLockTarget()
 
     # As another part of the quick fix.

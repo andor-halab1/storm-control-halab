@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- modified from none -->
 <hardware>
 
   <!-- The UI mode, this is either "single" (window) or "detached" -->
