@@ -680,9 +680,11 @@ class Window(QtGui.QMainWindow):
                 module.newFrame(frame, self.filming)
 
         # Start the quick fix.
-        if hasattr(self.s_instance, 'offset'):
-            print('hello')
-            self.s_instance.offset = self.fl_instance.getLockTarget()
+        try:
+            if hasattr(self.s_instance, 'offset'):
+                self.s_instance.offset = self.fl_instance.getLockTarget()
+        except:
+            pass
 
     # As another part of the quick fix.
     #
