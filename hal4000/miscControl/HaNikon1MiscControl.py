@@ -19,6 +19,7 @@ import qtdesigner.HaNikon1_misc_ui as miscControlsUi
 
 # Nikon TiU hardware control.
 import sc_hardware.nikon.tiEMisc as tiEMisc
+import sc_hardware.lumencor.spectra as spectra
 
 
 #
@@ -30,6 +31,7 @@ class AMiscControl(miscControl.MiscControl):
         miscControl.MiscControl.__init__(self, parameters, parent)
 
         self.tie_misc = tiEMisc.TiEMisc()
+        self.spectra = spectra.Spectra("COM6")
 
         # UI setup
         self.ui = miscControlsUi.Ui_Dialog()
@@ -55,16 +57,19 @@ class AMiscControl(miscControl.MiscControl):
             filter.clicked.connect(self.handleFilter)
         self.filters[self.tie_misc.getFilterWheel()].click()
 
-        '''
         # setup light
         self.lights = [self.ui.light1Button,
                         self.ui.light2Button,
                         self.ui.light3Button,
-                        self.ui.light4Button,]
+                        self.ui.light4Button,
+                        self.ui.light5Button,]
         for light in self.lights:
             light.clicked.connect(self.handleLight)
-        self.tie_misc.initialization()
-        '''
+
+        self.ui.light1SpinBox.valueChanged.connect(self.handlelight1SpinBox)
+        self.ui.light2SpinBox.valueChanged.connect(self.handlelight2SpinBox)
+        self.ui.light3SpinBox.valueChanged.connect(self.handlelight3SpinBox)
+        self.ui.light4SpinBox.valueChanged.connect(self.handlelight4SpinBox)
 
         self.newParameters(self.parameters)
 
@@ -92,16 +97,34 @@ class AMiscControl(miscControl.MiscControl):
             else:
                 filter.setStyleSheet("QPushButton { color: black}")
 
-    '''
     @hdebug.debug
     def handleLight(self, bool):
         for i, light in enumerate(self.lights):
             if light.isChecked():
-                self.tie_misc.setLight(i)
+                self.spectra.setLight(i)
                 self.parameters.set("light", i)
             else:
                 pass
-    '''
+
+    @hdebug.debug
+    def handlelight1SpinBox(self, amp):
+        self.spectra.setAmp(1, amp)
+        self.parameters.set("light-amp", amp)
+
+    @hdebug.debug
+    def handlelight2SpinBox(self, amp):
+        self.spectra.setAmp(2, amp)
+        self.parameters.set("light-amp", amp)
+
+    @hdebug.debug
+    def handlelight3SpinBox(self, amp):
+        self.spectra.setAmp(3, amp)
+        self.parameters.set("light-amp", amp)
+
+    @hdebug.debug
+    def handlelight4SpinBox(self, amp):
+        self.spectra.setAmp(4, amp)
+        self.parameters.set("light-amp", amp)
 
     @hdebug.debug
     def newParameters(self, parameters):

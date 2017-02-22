@@ -10,10 +10,9 @@
 import imp
 imp.load_source("setPath", "C:\\storm-control-halab\\sc_library\\setPath.py")
 
-import sc_hardware.baseClasses.illuminationHardware as illuminationHardware
 import sc_hardware.serial.RS232 as RS232
 import time
-
+import math
 
 ## Spectra
 #
@@ -32,6 +31,8 @@ class Spectra(RS232.RS232):
         
         # RS232 stuff
         RS232.RS232.__init__(self, port, timeout, baudrate, "\r", wait_time)
+
+        self.initialization()
 
     ## _command
     #
@@ -70,16 +71,25 @@ class Spectra(RS232.RS232):
             self._command("\x4F\x7E\x50");
         if color == 3: # Teal
             self._command("\x4F\x3F\x50");
+        if color == 4: # turn off all
+            self._command("\x4F\x7F\x50");
 
     def setAmp(self, color, amp):
+        temp = int(math.ceil(amp/100.0*255.0))
+        temp = hex(temp)
+        if len(temp) == 4:
+            temp = temp[2:3]
+        else:
+            temp = "0"+temp[2]
+        
         if color == 0: # Violet
             self._command("\x53\x18\x03\x01\xF8\x00\x50");
         if color == 1: # Green
             self._command("\x53\x18\x03\x04\xF8\x00\x50");
         if color == 2: # Red
-            self._command("\x53\x18\x03\x08\xF8\x00\x50");
+            self._command("53180308F"+temp+"050");
         if color == 3: # Teal
-            self._command("\x53\x1A\x03\x02\xF8\x00\x50");
+            self._command("531A0302F"+temp+"050");
 
     def readTemp(self):
         temp = self._command("\x53\x91\x02\x50");
@@ -96,6 +106,18 @@ if __name__ == "__main__":
     lights.setLight(0)
     temp = lights.readTemp()
     print temp
+
+    lights.setAmp(0,1)
+    lights.setAmp(0,100)
+
+    lights._command("\x53\x18\x03\x01\xF0\x00\x50")
+    lights._command("\x53\x18\x03\x01\xFf\xf0\x50")
+    lights._command("\x53\x18\x03\x01\xF0\x00\x50")
+    lights._command("\x53\x18\x03\x01\xFf\xf0\x50")
+    lights._command("\x53\x18\x03\x01\xF0\x00\x50")
+    lights._command("\x53\x18\x03\x01\xFf\xf0\x50")
+    lights._command("\x53\x18\x03\x01\xF0\x00\x50")
+    lights._command("\x53\x18\x03\x01\xFf\xf0\x50")
 
     lights._command("\x4F\x7F\x50");
 
