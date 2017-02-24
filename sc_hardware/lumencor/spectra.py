@@ -75,6 +75,8 @@ class Spectra(RS232.RS232):
             self._command("\x4F\x7F\x50");
 
     def setAmp(self, color, amp):
+        pass
+    '''
         temp = int(math.ceil(amp/100.0*255.0))
         temp = hex(temp)
         if len(temp) == 4:
@@ -90,6 +92,7 @@ class Spectra(RS232.RS232):
             self._command("53180308F"+temp+"050");
         if color == 3: # Teal
             self._command("531A0302F"+temp+"050");
+    '''
 
     def readTemp(self):
         temp = self._command("\x53\x91\x02\x50");

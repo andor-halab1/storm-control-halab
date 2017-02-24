@@ -65,6 +65,7 @@ class AMiscControl(miscControl.MiscControl):
                         self.ui.light5Button,]
         for light in self.lights:
             light.clicked.connect(self.handleLight)
+        self.lights[4].click()
 
         self.ui.light1SpinBox.valueChanged.connect(self.handlelight1SpinBox)
         self.ui.light2SpinBox.valueChanged.connect(self.handlelight2SpinBox)
