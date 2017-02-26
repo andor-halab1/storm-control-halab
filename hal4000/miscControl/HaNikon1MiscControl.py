@@ -71,12 +71,8 @@ class AMiscControl(miscControl.MiscControl):
                           self.ui.light2SpinBox,
                           self.ui.light3SpinBox,
                           self.ui.light4SpinBox]
-##        for amp in self.lightAmps:
-##            amp.valueChanged.connect(self.spectra.setAmp(1, amp))
-        self.ui.light1SpinBox.valueChanged.connect(self.handlelight1SpinBox)
-        self.ui.light2SpinBox.valueChanged.connect(self.handlelight2SpinBox)
-        self.ui.light3SpinBox.valueChanged.connect(self.handlelight3SpinBox)
-        self.ui.light4SpinBox.valueChanged.connect(self.handlelight4SpinBox)
+        for lightAmp in self.lightAmps:
+            lightAmp.valueChanged.connect(self.handlelightSpinBox)
 
         self.newParameters(self.parameters)
 
@@ -114,24 +110,14 @@ class AMiscControl(miscControl.MiscControl):
                 pass
 
     @hdebug.debug
-    def handlelight1SpinBox(self, amp):
-        self.spectra.setAmp(1, amp)
-        self.parameters.set("light-amp", amp)
-
-    @hdebug.debug
-    def handlelight2SpinBox(self, amp):
-        self.spectra.setAmp(2, amp)
-        self.parameters.set("light-amp", amp)
-
-    @hdebug.debug
-    def handlelight3SpinBox(self, amp):
-        self.spectra.setAmp(3, amp)
-        self.parameters.set("light-amp", amp)
-
-    @hdebug.debug
-    def handlelight4SpinBox(self, amp):
-        self.spectra.setAmp(4, amp)
-        self.parameters.set("light-amp", amp)
+    def handlelightSpinBox(self, bool):
+        for i, lightAmp in enumerate(self.lightAmps):
+            if lightAmp.valueChanged():
+                amp = lightAmp.getValue()
+                self.spectra.setAmp(i, amp)
+                self.parameters.set("light-amp", amp)
+            else:
+                pass
 
     @hdebug.debug
     def newParameters(self, parameters):
@@ -143,6 +129,7 @@ class AMiscControl(miscControl.MiscControl):
                 self.filters[i].setText(names[i])
         self.filters[self.parameters.get("misc.filter_position")].click()
         self.lights[self.parameters.get("misc.light")].click()
+        self.spectra.setAmp(self.parameters.get("misc.light"), self.parameters.get("misc.light-amp"))
 
 #
 # The MIT License
