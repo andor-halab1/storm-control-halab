@@ -86,13 +86,16 @@ class Spectra(RS232.RS232):
         
         if color == 0: # Violet
             cmd = "\\x53\\x18\\x03\\x01"+temp1+temp2+"\\x50"
+            self._command(cmd.decode('string_escape'));
         if color == 1: # Green
             cmd = "\\x53\\x18\\x03\\x04"+temp1+temp2+"\\x50"
+            self._command(cmd.decode('string_escape'));
         if color == 2: # Red
             cmd = "\\x53\\x18\\x03\\x08"+temp1+temp2+"\\x50"
+            self._command(cmd.decode('string_escape'));
         if color == 3: # Teal
             cmd = "\\x53\\x1A\\x03\\x02"+temp1+temp2+"\\x50"
-        self._command(cmd.decode('string_escape'));
+            self._command(cmd.decode('string_escape'));
 
     def readTemp(self):
         temp = self._command("\x53\x91\x02\x50");
