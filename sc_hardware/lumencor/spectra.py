@@ -75,24 +75,24 @@ class Spectra(RS232.RS232):
             self._command("\x4F\x7F\x50");
 
     def setAmp(self, color, amp):
-        pass
-    '''
         temp = int(math.ceil(amp/100.0*255.0))
         temp = hex(temp)
         if len(temp) == 4:
-            temp = temp[2:3]
+            temp1 = '\\xF'+temp[2]
+            temp2 = '\\x'+temp[3]+'0'
         else:
-            temp = "0"+temp[2]
+            temp1 = '\\xF0'
+            temp2 = '\\x'+temp[2]+'0'
         
         if color == 0: # Violet
-            self._command("\x53\x18\x03\x01\xF8\x00\x50");
+            cmd = "\\x53\\x18\\x03\\x01"+temp1+temp2+"\\x50"
         if color == 1: # Green
-            self._command("\x53\x18\x03\x04\xF8\x00\x50");
+            cmd = "\\x53\\x18\\x03\\x04"+temp1+temp2+"\\x50"
         if color == 2: # Red
-            self._command("53180308F"+temp+"050");
+            cmd = "\\x53\\x18\\x03\\x08"+temp1+temp2+"\\x50"
         if color == 3: # Teal
-            self._command("531A0302F"+temp+"050");
-    '''
+            cmd = "\\x53\\x1A\\x03\\x02"+temp1+temp2+"\\x50"
+        self._command(cmd.decode('string_escape'));
 
     def readTemp(self):
         temp = self._command("\x53\x91\x02\x50");
@@ -112,15 +112,28 @@ if __name__ == "__main__":
 
     lights.setAmp(0,1)
     lights.setAmp(0,100)
-
-    lights._command("\x53\x18\x03\x01\xF0\x00\x50")
-    lights._command("\x53\x18\x03\x01\xFf\xf0\x50")
-    lights._command("\x53\x18\x03\x01\xF0\x00\x50")
-    lights._command("\x53\x18\x03\x01\xFf\xf0\x50")
-    lights._command("\x53\x18\x03\x01\xF0\x00\x50")
-    lights._command("\x53\x18\x03\x01\xFf\xf0\x50")
-    lights._command("\x53\x18\x03\x01\xF0\x00\x50")
-    lights._command("\x53\x18\x03\x01\xFf\xf0\x50")
+    lights.setAmp(0,1)
+    lights.setAmp(0,100)
+    lights.setAmp(0,1)
+    lights.setAmp(0,100)
+    lights.setAmp(0,1)
+    lights.setAmp(0,100)
+##    cmd1 = "\\x53\\x18\\x03\\x01\\xF0\\x00\\x50"
+##    cmd2 = "\\x53\\x18\\x03\\x01\\xFf\\xf0\\x50"
+##    lights._command(cmd1.decode('string_escape'))
+##    lights._command(cmd2.decode('string_escape'))
+##    lights._command(cmd1.decode('string_escape'))
+##    lights._command(cmd2.decode('string_escape'))
+##    lights._command(cmd1.decode('string_escape'))
+##    lights._command(cmd2.decode('string_escape'))
+##    lights._command(cmd1.decode('string_escape'))
+##    lights._command(cmd2.decode('string_escape'))
+##    lights._command("\x53\x18\x03\x01\xF0\x00\x50")
+##    lights._command("\x53\x18\x03\x01\xFf\xf0\x50")
+##    lights._command("\x53\x18\x03\x01\xF0\x00\x50")
+##    lights._command("\x53\x18\x03\x01\xFf\xf0\x50")
+##    lights._command("\x53\x18\x03\x01\xF0\x00\x50")
+##    lights._command("\x53\x18\x03\x01\xFf\xf0\x50")
 
     lights._command("\x4F\x7F\x50");
 

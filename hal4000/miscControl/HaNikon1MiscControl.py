@@ -62,11 +62,17 @@ class AMiscControl(miscControl.MiscControl):
                         self.ui.light2Button,
                         self.ui.light3Button,
                         self.ui.light4Button,
-                        self.ui.light5Button,]
+                        self.ui.light5Button]
         for light in self.lights:
             light.clicked.connect(self.handleLight)
         self.lights[4].click()
 
+        self.lightAmps = [self.ui.light1SpinBox,
+                          self.ui.light2SpinBox,
+                          self.ui.light3SpinBox,
+                          self.ui.light4SpinBox]
+##        for amp in self.lightAmps:
+##            amp.valueChanged.connect(self.spectra.setAmp(1, amp))
         self.ui.light1SpinBox.valueChanged.connect(self.handlelight1SpinBox)
         self.ui.light2SpinBox.valueChanged.connect(self.handlelight2SpinBox)
         self.ui.light3SpinBox.valueChanged.connect(self.handlelight3SpinBox)
@@ -135,7 +141,8 @@ class AMiscControl(miscControl.MiscControl):
         if (len(names) == 6):
             for i in range(6):
                 self.filters[i].setText(names[i])
-        self.filters[self.parameters.get("misc.filter_position")].click()            
+        self.filters[self.parameters.get("misc.filter_position")].click()
+        self.lights[self.parameters.get("misc.light")].click()
 
 #
 # The MIT License
