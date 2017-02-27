@@ -71,11 +71,11 @@ class Spectra(RS232.RS232):
             self._command("\x4F\x7E\x50");
         if color == 3: # Teal
             self._command("\x4F\x3F\x50");
-        if color == 4: # turn off all
+        if color == 4: # turn all off
             self._command("\x4F\x7F\x50");
 
     def setAmp(self, color, amp):
-        temp = int(math.ceil(amp/100.0*255.0))
+        temp = int(math.ceil((100-amp)/100.0*255.0))
         temp = hex(temp)
         if len(temp) == 4:
             temp1 = '\\xF'+temp[2]
@@ -86,15 +86,13 @@ class Spectra(RS232.RS232):
         
         if color == 0: # Violet
             cmd = "\\x53\\x18\\x03\\x01"+temp1+temp2+"\\x50"
-            self._command(cmd.decode('string_escape'));
         if color == 1: # Green
             cmd = "\\x53\\x18\\x03\\x04"+temp1+temp2+"\\x50"
-            self._command(cmd.decode('string_escape'));
         if color == 2: # Red
             cmd = "\\x53\\x18\\x03\\x08"+temp1+temp2+"\\x50"
-            self._command(cmd.decode('string_escape'));
         if color == 3: # Teal
             cmd = "\\x53\\x1A\\x03\\x02"+temp1+temp2+"\\x50"
+        if color != 4: # not all off
             self._command(cmd.decode('string_escape'));
 
     def readTemp(self):
@@ -109,18 +107,34 @@ class Spectra(RS232.RS232):
 if __name__ == "__main__":
     lights = Spectra("COM6")
     
-    lights.setLight(0)
-    temp = lights.readTemp()
-    print temp
+    
+##    temp = lights.readTemp()
+##    print temp
+##    lights.setLight(4)
 
-    lights.setAmp(0,1)
-    lights.setAmp(0,100)
-    lights.setAmp(0,1)
-    lights.setAmp(0,100)
-    lights.setAmp(0,1)
-    lights.setAmp(0,100)
-    lights.setAmp(0,1)
-    lights.setAmp(0,100)
+    lights.setAmp(2,0)
+    lights.setLight(2)
+    lights._command("\x4F\x7F\x50");
+##    lights.setAmp(2,10)
+    lights.setAmp(2,20)
+    lights.setLight(2)
+    lights._command("\x4F\x7F\x50");
+##    lights.setAmp(2,30)
+##    lights.setAmp(2,40)
+    lights.setAmp(2,80)
+    lights.setLight(2)
+    lights._command("\x4F\x7F\x50");
+##    lights.setAmp(2,60)
+##    lights.setAmp(2,70)
+    lights.setAmp(2,100)
+    lights.setLight(2)
+    lights._command("\x4F\x7F\x50");
+##    lights.setAmp(2,80)
+##    lights.setAmp(2,90)
+##    lights.setAmp(2,100)
+##    lights.setLight(2)
+##    lights._command("\x4F\x7F\x50");
+##    lights.setAmp(2,1)
 ##    cmd1 = "\\x53\\x18\\x03\\x01\\xF0\\x00\\x50"
 ##    cmd2 = "\\x53\\x18\\x03\\x01\\xFf\\xf0\\x50"
 ##    lights._command(cmd1.decode('string_escape'))
@@ -138,7 +152,7 @@ if __name__ == "__main__":
 ##    lights._command("\x53\x18\x03\x01\xF0\x00\x50")
 ##    lights._command("\x53\x18\x03\x01\xFf\xf0\x50")
 
-    lights._command("\x4F\x7F\x50");
+    
 
 #
 # The MIT License
