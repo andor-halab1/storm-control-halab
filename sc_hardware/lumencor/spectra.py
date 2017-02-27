@@ -2,7 +2,7 @@
 #
 ## @file
 #
-# Spectra stage communication.
+# Spectra communication.
 #
 # Hazen 02/14
 #
@@ -52,6 +52,9 @@ class Spectra(RS232.RS232):
     def getStatus(self):
         return True
 
+    ## readTemp
+    #
+    #
     def initialization(self):
         print("Spectra initialized")
         self._command("\x57\x02\xFF\x50");
@@ -60,7 +63,7 @@ class Spectra(RS232.RS232):
 
     ## setLight
     #
-    # @param state The color of light.
+    # @param color The color of light.
     #
     def setLight(self, color):
         if color == 0: # Violet
@@ -74,6 +77,11 @@ class Spectra(RS232.RS232):
         if color == 4: # turn all off
             self._command("\x4F\x7F\x50");
 
+    ## setAmp
+    #
+    # @param color The color of light.
+    # @param amp The intensity of light.
+    #
     def setAmp(self, color, amp):
         temp = int(math.ceil((100-amp)/100.0*255.0))
         temp = hex(temp)
@@ -95,6 +103,9 @@ class Spectra(RS232.RS232):
         if color != 4: # not all off
             self._command(cmd.decode('string_escape'));
 
+    ## readTemp
+    #
+    #
     def readTemp(self):
         temp = self._command("\x53\x91\x02\x50");
         return temp
