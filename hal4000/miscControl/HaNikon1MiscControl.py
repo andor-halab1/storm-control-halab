@@ -46,7 +46,7 @@ class AMiscControl(miscControl.MiscControl):
             self.ui.okButton.setText("Quit")
             self.ui.okButton.clicked.connect(self.handleQuit)
 
-        # setup filter wheel
+        # setup dichroic filter wheel
         self.filters = [self.ui.filter1Button,
                         self.ui.filter2Button,
                         self.ui.filter3Button,
@@ -57,7 +57,17 @@ class AMiscControl(miscControl.MiscControl):
             filter.clicked.connect(self.handleFilter)
         self.filters[self.tie_misc.getFilterWheel()].click()
 
-        # setup light
+        # setup emission filter wheel
+        self.efilters = [self.ui.efilter1Button,
+                        self.ui.efilter2Button,
+                        self.ui.efilter3Button,
+                        self.ui.efilter4Button,
+                        self.ui.efilter5Button]
+        for efilter in self.efilters:
+            efilter.clicked.connect(self.handleEFilter)
+        self.efilters[4].click()
+
+        # setup light control
         self.lights = [self.ui.light1Button,
                         self.ui.light2Button,
                         self.ui.light3Button,
@@ -108,6 +118,15 @@ class AMiscControl(miscControl.MiscControl):
                 filter.setStyleSheet("QPushButton { color: black}")
 
     @hdebug.debug
+    def handleEFilter(self, bool):
+        for i, efilter in enumerate(self.efilters):
+            if efilter.isChecked():
+                efilter.setStyleSheet("QPushButton { color: red}")
+                self.parameters.set("efilter_position", i)
+            else:
+                efilter.setStyleSheet("QPushButton { color: black}")
+
+    @hdebug.debug
     def handleLight(self, bool):
         for i, light in enumerate(self.lights):
             if light.isChecked():
@@ -145,10 +164,12 @@ class AMiscControl(miscControl.MiscControl):
             for i in range(6):
                 self.filters[i].setText(names[i])
         self.filters[self.parameters.get("misc.filter_position")].click()
+        self.efilters[self.parameters.get("misc.efilter_position")].click()
+        
         self.lights[self.parameters.get("misc.light")].click()
         if self.parameters.get("misc.light") != 4:
             self.lightAmps[self.parameters.get("misc.light")].setValue(self.parameters.get("misc.light-amp"))
-##        self.spectra.setAmp(self.parameters.get("misc.light"), self.parameters.get("misc.light-amp"))
+
 
 #
 # The MIT License

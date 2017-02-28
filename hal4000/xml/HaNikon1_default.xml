@@ -80,7 +80,7 @@
   <spotcounter>
     <have_spot_counter type="int">1</have_spot_counter>
     <cell_size type="int">32</cell_size>
-    <threshold type="int">250</threshold>
+    <threshold type="int">500</threshold>
     <min_spots type="int">0</min_spots>
     <max_spots type="int">500</max_spots>
     <scale_bar_len type="float">1000</scale_bar_len>
@@ -91,6 +91,7 @@
   <misc>
     <filter_names type="string-array">1,Analyzer,Penta,4,5,6</filter_names>
     <filter_position type="int">2</filter_position>
+	<efilter_position type="int">4</efilter_position>
 	<light type="int">4</light>
 	<light-amp type="int">50</light-amp>
   </misc>
