@@ -124,9 +124,9 @@
   <misc>
     <filter_names type="string-array">1,Analyzer,Penta,4,5,6</filter_names>
     <filter_position type="int">2</filter_position>
-	<efilter_position type="int">4</efilter_position>
-	<light type="int">4</light>
-	<light-amp type="int">50</light-amp>
+	<efilter_position type="int">1</efilter_position>
+	<light type="int">1</light>
+	<light-amp type="int">5</light-amp>
   </misc>
 
   <!-- steve settings -->

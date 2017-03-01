@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<recipe>
+
+<command_sequence>
+  <loop name = "Movie Loop" increment = "name">	
+    <item name = "Movie 1"></item>
+    <item name = "Movie 2"></item>
+    <item name = "Movie 3"></item>
+  </loop>
+</command_sequence>
+
+<item name = "Movie 1">
+  <movie>
+    <name increment = "Yes">647</name>
+    <length>1</length>
+	<parameters>HaNikon1_647</parameters>
+	<check_focus>
+	  <num_focus_checks>5</num_focus_checks>
+	  <focus_scan></focus_scan>
+	</check_focus>
+	<overwrite>True</overwrite>
+    <variable_entry name = "Movie Loop"></variable_entry>
+  </movie>
+</item>
+
+<item name = "Movie 2">
+  <movie>
+    <name increment = "Yes">568</name>
+    <length>1</length>
+	<parameters>HaNikon1_568</parameters>
+	<lock_target>150.0</lock_target>
+	<check_focus>
+	  <num_focus_checks>5</num_focus_checks>
+	</check_focus>
+	<overwrite>True</overwrite>
+    <variable_entry name = "Movie Loop"></variable_entry>
+  </movie>
+</item>
+
+<item name = "Movie 3">
+  <movie>
+    <name increment = "Yes">405</name>
+    <length>1</length>
+	<parameters>HaNikon1_405</parameters>
+	<lock_target>170.0</lock_target>
+	<check_focus>
+	  <num_focus_checks>5</num_focus_checks>
+	</check_focus>
+	<overwrite>True</overwrite>
+    <variable_entry name = "Movie Loop"></variable_entry>
+  </movie>
+</item>
+
+<loop_variable name = "Movie Loop">
+  <file_path></file_path>
+</loop_variable>
+
+</recipe>
