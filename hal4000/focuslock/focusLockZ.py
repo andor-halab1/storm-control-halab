@@ -953,7 +953,7 @@ class FocusLockZNikon(FocusLockZ):
         self.ui = focuslockUi.Ui_Dialog_Nikon()
         self.ui.setupUi(self)
 
-        # Add Crisp lock display.
+        # Add TiEFocus lock display.
         self.lock_display1 = lockDisplay.LockDisplayNikon(parameters.get("focuslock"),
                                                         control_thread, 
                                                         ir_laser, 
@@ -961,6 +961,15 @@ class FocusLockZNikon(FocusLockZ):
         self.lock_display1.foundOptimal.connect(self.handleFoundOptimal)
         self.lock_display1.foundSum.connect(self.handleFoundSum)
         self.lock_display1.recenteredPiezo.connect(self.handleRecenteredPiezo)
+
+        # To scan Z stage
+        self.focus_scan_timer = QtCore.QTimer()
+        self.focus_scan_timer.setSingleShot(True)
+        self.focus_scan_timer.timeout.connect(self.focusScan)
+        self.bracket_step = self.parameters.get("olock_bracket_step", 25)
+        self.scan_step = self.parameters.get("olock_scan_step", 5)
+        self.cur_z = 0
+        self.scan_state = 1
 
         FocusLockZ.configureUI(self)
 
@@ -979,11 +988,11 @@ class FocusLockZNikon(FocusLockZ):
             self.buttons[1].setChecked(True)
             self.handleRadioButtons(True)
             
-        # Try to lock and get the focus status.
-        self.lock_display1.startLock(None)
-        time.sleep(1)
-        focus_status = self.lock_display1.getFocusStatus()
-        self.lock_display1.stopLock()
+        # Get the focus status.
+        if self.lock_display1.state == 'Locking':
+            focus_status = True
+        else:
+            focus_status = False
 
         if focus_status: # Return message if focus is found
             self.tcp_message.addResponse("focus_status", focus_status)
@@ -997,45 +1006,52 @@ class FocusLockZNikon(FocusLockZ):
             else: # Focus not found after the specified number of checks
                 print "Scanning for the focus"            
                 self.focusScan()
-                
-                # Try to lock and get the focus status.
-                self.lock_display1.startLock(None)
-                time.sleep(1)
-                focus_status = self.lock_display1.getFocusStatus()
-                self.lock_display1.stopLock()
+
+    def focusScan(self):
+        print self.lock_display1.state
+        running = True
+        
+        if self.lock_display1.state != 'Locking':
+            # I am not sure if I need to use mutex here.
+            if (self.scan_state == 1): # Scan up
+                if (self.cur_z >= self.bracket_step):
+                    self.scan_state = 2
+                else:
+                    self.cur_z += self.scan_step
+                    self.jump(self.scan_step)
+            elif (self.scan_state == 2): # Scan back down
+                if (self.cur_z <= -self.bracket_step):
+                    self.scan_state = 3
+                else:
+                    self.cur_z -= self.scan_step
+                    self.jump(-self.scan_step)
+            else: # Scan back to zero
+                if (self.cur_z >= 0.0):
+                    running = False
+                else:
+                    self.cur_z += self.scan_step
+                    self.jump(self.scan_step)
+            if running:
+                self.focus_scan_timer.start(500)
+            else:
+                # Get the focus status.
+                if self.lock_display1.state == 'Locking':
+                    focus_status = True
+                else:
+                    focus_status = False
 
                 self.tcp_message.addResponse("focus_status", focus_status)
                 self.tcpComplete.emit(self.tcp_message)
+        else:
+            # Get the focus status.
+            if self.lock_display1.state == 'Locking':
+                focus_status = True
+            else:
+                focus_status = False
 
-    def focusScan(self):
-        bracket_step = self.parameters.get("olock_bracket_step", 25)
-        scan_step = self.parameters.get("olock_scan_step", 5)
-        cur_z = 0
-        scan_state = 1
-        focus_status = 'Failing'
-        
-        while focus_status != 'Locking':
-            # I am not sure if I need to use mutex here.
-            if (scan_state == 1): # Scan up
-                if (cur_z >= bracket_step):
-                    scan_state = 2
-                else:
-                    cur_z += scan_step
-                    self.jump(scan_step)
-            elif (scan_state == 2): # Scan back down
-                if (cur_z <= -bracket_step):
-                    scan_state = 3
-                else:
-                    cur_z -= scan_step
-                    self.jump(-scan_step)
-            else: # Scan back to zero
-                if (cur_z >= 0.0):
-                    break
-                else:
-                    cur_z += scan_step
-                    self.jump(scan_step)
-            time.sleep(1)
-            focus_status = self.lock_display1.state
+            self.tcp_message.addResponse("focus_status", focus_status)
+            self.tcpComplete.emit(self.tcp_message)
+            
                     
     ## handleSetLockTarget
     #

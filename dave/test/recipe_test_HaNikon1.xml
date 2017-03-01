@@ -3,7 +3,8 @@
 
 <command_sequence>
   <loop name = "Movie Loop" increment = "name">	
-    <item name = "Movie 1"></item>
+    <item name = "Movie 2"></item>
+	<item name = "Movie 3"></item>
   </loop>
 </command_sequence>
 
@@ -25,7 +26,6 @@
     <name increment = "Yes">568</name>
     <length>1</length>
 	<parameters>HaNikon1_568</parameters>
-	<lock_target>150.0</lock_target>
 	<check_focus>
 	  <num_focus_checks>5</num_focus_checks>
 	</check_focus>
@@ -39,7 +39,6 @@
     <name increment = "Yes">405</name>
     <length>1</length>
 	<parameters>HaNikon1_405</parameters>
-	<lock_target>170.0</lock_target>
 	<check_focus>
 	  <num_focus_checks>5</num_focus_checks>
 	</check_focus>

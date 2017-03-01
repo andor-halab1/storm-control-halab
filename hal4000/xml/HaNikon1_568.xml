@@ -15,7 +15,7 @@
     <y_bin type="int">1</y_bin>
     <exposure_time type="float">0.15</exposure_time>
     <frame_transfer_mode type="int">1</frame_transfer_mode>
-    <temperature type="int">-70</temperature>
+    <temperature type="int">-80</temperature>
 
     <!-- less common camera settings -->
     <preampgain type="float">2.0</preampgain>
@@ -126,7 +126,7 @@
     <filter_position type="int">2</filter_position>
 	<efilter_position type="int">1</efilter_position>
 	<light type="int">1</light>
-	<light-amp type="int">5</light-amp>
+	<light-amp type="int">7</light-amp>
   </misc>
 
   <!-- steve settings -->
