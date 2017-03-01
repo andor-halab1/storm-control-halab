@@ -294,10 +294,7 @@ class Window(QtGui.QMainWindow):
 
         # stage signals
         # As another part of the quick fix.
-        try:
-            self.s_instance.updateCrispOffset.connect(self.updateCrispOffset)
-        except:
-            print('Do not use Crisp-only features.');
+        self.s_instance.updateCrispOffset.connect(self.updateCrispOffset)
 
         #
         # Load GUI settings
@@ -680,19 +677,13 @@ class Window(QtGui.QMainWindow):
                 module.newFrame(frame, self.filming)
 
         # Start the quick fix.
-        try:
-            if hasattr(self.s_instance, 'offset'):
-                self.s_instance.offset = self.fl_instance.getLockTarget()
-        except:
-            pass
+        if hasattr(self.s_instance, 'offset'):
+            self.s_instance.offset = self.fl_instance.getLockTarget()
 
     # As another part of the quick fix.
     #
     def updateCrispOffset(self, os):
-        try:
-            self.fl_instance.handleSetLockTarget(os)
-        except:
-            print('It is not a Crisp setup!')
+        self.fl_instance.handleSetLockTarget(os)
     
     ## newParameters
     #

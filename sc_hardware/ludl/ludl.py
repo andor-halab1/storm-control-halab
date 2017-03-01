@@ -8,7 +8,7 @@
 #
 
 import imp
-imp.load_source("setPath", "C:\\storm-control-halab\\sc_library\\setPath.py")
+imp.load_source("setPath", "C:\\STORM_controller\\storm-control-halab\\sc_library\\setPath.py")
 
 import sc_hardware.serial.RS232 as RS232
 import time

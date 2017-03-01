@@ -240,8 +240,7 @@ class AndorCamera:
         number = c_int()
         andorCheck(andor.GetNumberPreAmpGains(byref(number)), "GetNumberPreAmpGains")
         self._props_["PreAmpGains"] = range(number.value)
-        # It seems pre-amp gain of 4x is not available at full frame. Frank 02/20/2017
-        for i in range(number.value-1):
+        for i in range(number.value):
             index = c_int(i)
             gain = c_float()
             andorCheck(andor.GetPreAmpGain(index, byref(gain)), "GetPreAmpGain")
@@ -285,7 +284,7 @@ class AndorCamera:
     def closeShutter(self):
         setCurrentCamera(self.camera_handle)
         self._abortIfAcquiring_()
-        status = andor.SetShutter(0, 2, 0, 0)
+        status = andor.SetShutter(0, 1, 0, 0)
         if status != drv_success:
             print "SetShutter (closed) failed: ", status
 
@@ -624,7 +623,7 @@ class AndorCamera:
     def openShutter(self):
         setCurrentCamera(self.camera_handle)
         self._abortIfAcquiring_()
-        status = andor.SetShutter(0, 1, 0, 0)
+        status = andor.SetShutter(0, 2, 0, 0)
         if status != drv_success:
             print "SetShutter (open) failed: ", status
 
