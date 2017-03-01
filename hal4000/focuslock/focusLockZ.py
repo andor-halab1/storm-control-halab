@@ -974,6 +974,11 @@ class FocusLockZNikon(FocusLockZ):
     #
     @hdebug.debug
     def tcpPollFocusStatus(self):
+        # To put the system into the NikonAlwaysOnLockMode.
+        if not self.buttons[1].isChecked():
+            self.buttons[1].setChecked(True)
+            self.handleRadioButtons(True)
+            
         # Try to lock and get the focus status.
         self.lock_display1.startLock(None)
         focus_status = self.lock_display1.getFocusStatus()
@@ -1016,8 +1021,8 @@ class FocusLockZNikon(FocusLockZ):
                     self.tcpComplete.emit(self.tcp_message)
 
     def focusScan(self):
-        self.bracket_step = parameters.get("olock_bracket_step")
-        self.scan_step = parameters.get("olock_scan_step")
+        self.bracket_step = 25 #self.parameters.get("olock_bracket_step")
+        self.scan_step = 5 #self.parameters.get("olock_scan_step")
         self.cur_z = 0
         self.scan_state = 1
         focus_status = 'Failing'
@@ -1029,21 +1034,22 @@ class FocusLockZNikon(FocusLockZ):
                     self.scan_state = 2
                 else:
                     self.cur_z += self.scan_step
-                    self.control_thread.moveStageRelative(self.scan_step)
+                    self.jump(self.scan_step)
             elif (self.scan_state == 2): # Scan back down
                 if (self.cur_z <= -self.bracket_step):
                     self.scan_state = 3
                 else:
                     self.cur_z -= self.scan_step
-                    self.control_thread.moveStageRelative(-self.scan_step)
+                    self.jump(-self.scan_step)
             else: # Scan back to zero
                 if (self.cur_z >= 0.0):
                     break
                 else:
                     self.cur_z += self.scan_step
-                    self.control_thread.moveStageRelative(self.scan_step)
+                    self.jump(self.scan_step)
             time.sleep(1)
-            focus_status = self.lock_display1.state()
+            focus_status = self.lock_display1.state
+            print focus_status
                     
     ## handleSetLockTarget
     #

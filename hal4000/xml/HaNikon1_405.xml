@@ -96,8 +96,8 @@
     <zscan_focus_lock type="int">0</zscan_focus_lock>
 	-->
 	
-	<!-- default jump size -->
-	<!-- <lockt_step type="float">0.02</lockt_step> -->
+	<!-- default jump size when using mouse wheel-->
+	<lockt_step type="float">0.02</lockt_step>
 	
     <olock_bracket_step type="int">25</olock_bracket_step>
     <olock_scan_step type="int">5</olock_scan_step>
