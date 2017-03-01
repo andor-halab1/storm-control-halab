@@ -1266,6 +1266,138 @@ class CrispCalibrationLockMode(LockMode):
     def calibration5(self):
         self.control_thread.getReady()
 
+## NikonNoLockMode
+#
+# No focus lock for Nikon
+#
+class NikonNoLockMode(LockMode):
+
+    ## __init__
+    #
+    # @param control_thread A thread object that controls the focus lock.
+    # @param parameters A parameters object.
+    # @param parent (Optional) The PyQt parent of this object.
+    #
+    def __init__(self, control_thread, parameters, parent):
+        LockMode.__init__(self, control_thread, parameters, parent)
+        self.name = "Off"
+
+    ## handleJump
+    #
+    # Jumps the pizeo stage immediately by the distance jumpsize.
+    #
+    # @param jumpsize The distance to jump the stage.
+    #
+    def handleJump(self, jumpsize):
+        self.control_thread.moveStageRelative(jumpsize)
+
+    ## setLockTarget
+    #
+    # Sets the focus lock target to the desired value.
+    #
+    # @param target The desired lock target.
+    #
+    def setLockTarget(self, target):
+        self.control_thread.setTarget(target)
+
+    def button1(self, os):
+        self.setLockTarget(os)
+
+## NikonAlwaysOnLockMode
+#
+# Lock will start during filming, or when the lock button is 
+# pressed (in which case it will always stay on)
+#
+class NikonAlwaysOnLockMode(JumpLockMode):
+
+    ## __init__
+    #
+    # @param control_thread A thread object that controls the focus lock.
+    # @param parameters A parameters object.
+    # @param parent (Optional) The PyQt parent of this object.
+    #
+    def __init__(self, control_thread, parameters, parent):
+        JumpLockMode.__init__(self, control_thread, parameters, parent)
+        self.button_locked = False
+        self.name = "Always On"
+
+    ## handleJump
+    # 
+    # Jumps the piezo stage immediately if it is not locked. Otherwise it stops the
+    # lock, jumps the piezo stage and starts the relock timer. But it is not
+    # necessary. So we did not do it.
+    #
+    # Slightly different, so that it works for TiEFocus.
+    #
+    # @param jumpsize The distance to jump the piezo stage.
+    #
+    def handleJump(self, jumpsize):
+##        if self.locked:
+##            self.stopLock()
+##        self.control_thread.moveStageRelative(jumpsize)
+##        if not self.locked:
+##            self.relock_timer.start()
+        if not self.locked:
+            self.control_thread.moveStageRelative(jumpsize)
+
+    ## lockButtonToggle
+    #
+    # Sets the button_locked flag and start/stops the focus lock.
+    #
+    def lockButtonToggle(self):
+        if self.button_locked:
+            self.button_locked = False
+            self.stopLock()
+        else:
+            self.startLock()
+            self.button_locked = True
+    
+    ## newParameters
+    #
+    # This is a noop, not sure why this method is in this class.
+    #
+    # @param parameters A parameters object.
+    #
+    def newParameters(self, parameters):
+        pass
+
+    ## reset
+    #
+    # Turn the lock off it was turned on using the lock button.
+    #
+    def reset(self):
+        if self.button_locked:
+            self.lockButtonToggle()
+
+    ## shouldDisplayLockButton
+    #
+    # @return True
+    #
+    def shouldDisplayLockButton(self):
+        return True
+
+    def button1(self, os):
+        self.setLockTarget(os)
+
+    ## startLock
+    #
+    # Starts the focus lock.
+    #
+    def startLock(self):
+        if not self.locked:
+            self.control_thread.startLock()
+            self.locked = True
+
+    ## stopLock
+    #
+    # Stops the focus lock.
+    #
+    def stopLock(self):
+        if self.locked and (not self.button_locked):
+            self.control_thread.stopLock()
+            self.control_thread.recenter()
+            self.locked = False
+
 
 #
 # The MIT License

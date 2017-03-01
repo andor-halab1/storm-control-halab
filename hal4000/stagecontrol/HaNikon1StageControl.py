@@ -2,30 +2,33 @@
 #
 ## @file
 #
-# Add the storm-control directory that this module is located in to
-# sys.path, remove any default storm-control directory (if it exists).
+# Stage control for Nikon TiU
 #
-# Hazen 05/14
+# Hazen 04/15
 #
 
-import os
-import sys
+from PyQt4 import QtCore
 
-sc_directory = os.path.split(os.path.split(os.path.abspath(__file__))[0])[0]
+# stage.
+import sc_hardware.nikon.tiEStage as tiEStage
 
-# Remove the default storm-control directories (if it exists).
-for elt in sys.path:
-    if (elt.endswith("storm-control")):
-        sys.path.remove(elt)
+# stage control thread
+import stagecontrol.stageThread as stageThread
 
-# Add the new storm-control directory.
-sys.path.append(sc_directory)
+# stage control dialog.
+import stagecontrol.stageControl as stageControl
 
-# Add path for micro-manager
-try:
-    sys.path.append("C:/Program Files/Micro-Manager-1.4")
-except:
-    pass
+#
+# Stage control dialog specialized for Prism2
+# with marzhauser motorized stage.
+#
+class AStageControl(stageControl.HaStageControl):
+    def __init__(self, hardware, parameters, parent = None):
+        self.stage = stageThread.QStageThread(tiEStage.TiEStage())
+        self.stage.start(QtCore.QThread.NormalPriority)
+        stageControl.HaStageControl.__init__(self, 
+                                           parameters,
+                                           parent)
 
 #
 # The MIT License

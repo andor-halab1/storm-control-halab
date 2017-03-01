@@ -152,8 +152,6 @@
     <flip_vertical type="int">0</flip_vertical>
     <transpose type="int">1</transpose>
     <obj1 type="string">100x,100.0,0.0,0.0</obj1>
-    <obj2 type="string">10x,10.0,0.0,0.0</obj2>
-    <obj3 type="string">4x,4.0,0.0,0.0</obj3>
     <pixels_to_um type="float">0.160</pixels_to_um>
   </mosaic>
 
