@@ -995,32 +995,17 @@ class FocusLockZNikon(FocusLockZ):
             if self.accum_focus_checks < self.num_focus_checks:
                 self.focus_check_timer.start(500) # Wait one 500 ms then measure again
             else: # Focus not found after the specified number of checks
-                scan_focus = self.tcp_message.getData("focus_scan")
-                if scan_focus is True:
-                    print "Scanning for the focus"
-                    # Get minimum sum for FindSum scan
-                    min_sum = self.tcp_message.getData("min_sum")
-                    if min_sum is None: # Not provided. Use default for parameters.
-                        min_sum = self.parameters.get("qpd_sum_min", 50)
+                print "Scanning for the focus"            
+                self.focusScan()
+                
+                # Try to lock and get the focus status.
+                self.lock_display1.startLock(None)
+                time.sleep(1)
+                focus_status = self.lock_display1.getFocusStatus()
+                self.lock_display1.stopLock()
 
-                    self.focusScan()
-                    
-                    # Try to lock and get the focus status.
-                    self.lock_display1.startLock(None)
-                    time.sleep(1)
-                    focus_status = self.lock_display1.getFocusStatus()
-                    self.lock_display1.stopLock()
-
-                    if focus_status:
-                        # Send scan command
-                        self.tcpHandleFindSum(min_sum) # message is returned by handleFoundSum
-                    else:
-                        self.tcp_message.addResponse("focus_status", False)
-                        self.tcpComplete.emit(self.tcp_message)
-                    
-                else: # No scan, just return error
-                    self.tcp_message.addResponse("focus_status", focus_status)
-                    self.tcpComplete.emit(self.tcp_message)
+                self.tcp_message.addResponse("focus_status", focus_status)
+                self.tcpComplete.emit(self.tcp_message)
 
     def focusScan(self):
         bracket_step = self.parameters.get("olock_bracket_step", 25)

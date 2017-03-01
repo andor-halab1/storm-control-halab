@@ -14,7 +14,6 @@
 	<parameters>HaNikon1_647</parameters>
 	<check_focus>
 	  <num_focus_checks>5</num_focus_checks>
-	  <focus_scan></focus_scan>
 	</check_focus>
 	<overwrite>True</overwrite>
     <variable_entry name = "Movie Loop"></variable_entry>

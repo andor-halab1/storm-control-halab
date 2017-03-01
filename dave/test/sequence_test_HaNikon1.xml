@@ -13,7 +13,6 @@
       </DASetFocusLockTarget>
       <DACheckFocus>
         <num_focus_checks>5</num_focus_checks>
-        <focus_scan/>
       </DACheckFocus>
       <DASetParameters>
         <parameters type="str">HaNikon1_647</parameters>
@@ -35,7 +34,6 @@
       </DASetFocusLockTarget>
       <DACheckFocus>
         <num_focus_checks>5</num_focus_checks>
-        <focus_scan/>
       </DACheckFocus>
       <DASetParameters>
         <parameters type="str">HaNikon1_647</parameters>
