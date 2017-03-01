@@ -99,14 +99,11 @@
 	<!-- default jump size -->
 	<!-- <lockt_step type="float">0.02</lockt_step> -->
 	
-    <!-- parameter used in CrispOptimalLockMode -->
-    <!-- <olock_bracket_step type="int">500</olock_bracket_step> -->
-	<!-- parameter used in CrispOptimalLockMode -->
-    <!-- <olock_scan_step type="int">50</olock_scan_step> -->
-	<!-- parameter used in CrispOptimalLockMode -->
+    <olock_bracket_step type="int">25</olock_bracket_step>
+    <olock_scan_step type="int">2.5</olock_scan_step>
     <!-- <olock_scan_hold type="int">10</olock_scan_hold> -->
-	<!-- parameter used in CrispOptimalLockMode -->
     <!-- <olock_quality_threshold type="float">0.0</olock_quality_threshold> -->
+	
 	<!-- the following two used stageOffsetControl-->
 	<is_locked_buffer_length type="int">3</is_locked_buffer_length>
     <is_locked_offset_thresh type="float">0.1</is_locked_offset_thresh>

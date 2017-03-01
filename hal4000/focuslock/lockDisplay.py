@@ -1253,7 +1253,6 @@ class LockDisplayNikon(QtGui.QWidget):
         self.is_locked = False
         # general, for TiEFocus
         self.state = 'Off'
-        self.err = 0.0 # dumb parameter
         self.os = 0.0
         self.z2000 = 0.0
         # target offset vaule
@@ -1352,14 +1351,11 @@ class LockDisplayNikon(QtGui.QWidget):
 
     ## controllerUpdate
     #
-    # Handles the controllerUpdate signal from the focus MFC2000 control thread.
+    # Handles the controllerUpdate signal from the focus TiEFocus control thread.
     #
-    # @param state The current state of MFC2000.
-    # @param err The current err of MFC2000.
-    # @param os The current offset (target) of MFC2000.
-    # @param gn The current gain of MFC2000.
-    # @param lr The current lock range of MFC2000.
-    # @param z2000 The current z of MFC2000.
+    # @param state The current state of TiEFocus.
+    # @param os The current offset (target) of TiEFocus.
+    # @param z2000 The current z of TiEFocus.
     #
     def controllerUpdate(self, state, os, z2000):
         # These are saved so that they can be recorded when we are filming
@@ -1395,7 +1391,7 @@ class LockDisplayNikon(QtGui.QWidget):
 
     ## getLockTarget
     #
-    # Use information from MFC2000.
+    # Use information from TiEFocus.
     #
     # @return The current lock target.
     #
@@ -1420,7 +1416,7 @@ class LockDisplayNikon(QtGui.QWidget):
     # @return [offset, power, stage]
     #
     def getOffsetPowerStage(self):
-        return [self.err, self.os, self.z2000]
+        return [self.os, self.power, self.z2000]
 
     ## handleAdjustStage
     #

@@ -996,6 +996,8 @@ class FocusLockZNikon(FocusLockZ):
                     min_sum = self.tcp_message.getData("min_sum")
                     if min_sum is None: # Not provided. Use default for parameters.
                         min_sum = self.parameters.get("qpd_sum_min", 50)
+
+                    self.focusScan()
                     
                     # Try to lock and get the focus status.
                     self.lock_display1.startLock(None)
@@ -1012,6 +1014,36 @@ class FocusLockZNikon(FocusLockZ):
                 else: # No scan, just return error
                     self.tcp_message.addResponse("focus_status", focus_status)
                     self.tcpComplete.emit(self.tcp_message)
+
+    def focusScan(self):
+        self.bracket_step = parameters.get("olock_bracket_step")
+        self.scan_step = parameters.get("olock_scan_step")
+        self.cur_z = 0
+        self.scan_state = 1
+        focus_status = 'Failing'
+        
+        while focus_status != 'Locking':
+            # I am not sure if I need to use mutex here.
+            if (self.scan_state == 1): # Scan up
+                if (self.cur_z >= self.bracket_step):
+                    self.scan_state = 2
+                else:
+                    self.cur_z += self.scan_step
+                    self.control_thread.moveStageRelative(self.scan_step)
+            elif (self.scan_state == 2): # Scan back down
+                if (self.cur_z <= -self.bracket_step):
+                    self.scan_state = 3
+                else:
+                    self.cur_z -= self.scan_step
+                    self.control_thread.moveStageRelative(-self.scan_step)
+            else: # Scan back to zero
+                if (self.cur_z >= 0.0):
+                    break
+                else:
+                    self.cur_z += self.scan_step
+                    self.control_thread.moveStageRelative(self.scan_step)
+            time.sleep(1)
+            focus_status = self.lock_display1.state()
                     
     ## handleSetLockTarget
     #
