@@ -1058,6 +1058,408 @@ class StageCrispThread(QtCore.QThread):
         self.controller_mutex.unlock()
 
 
+## StageNikonThread
+#
+# This is a PyQt thread for controlling TiEFocus.
+#
+class StageNikonThread(QtCore.QThread):
+    controlUpdate = QtCore.pyqtSignal(float, float, float, float, bool)
+    controllerUpdate = QtCore.pyqtSignal(str, float, float)
+    foundSum = QtCore.pyqtSignal(float)
+    lockStatusRequest = QtCore.pyqtSignal(bool)
+    recenteredPiezo = QtCore.pyqtSignal()
+
+    ## __init__
+    #
+    # @param controller A TiEFocus control object
+    # @param qpd A QPD like object.
+    # @param stage A piezo stage control object.
+    # @param lock_fn A function to use in the focus feedback correction loop.
+    # @param min_sum The sum below which QPD signal will be considered to have been lost.
+    # @param z_center The center position of the piezo.
+    # @param buffer_length The length of the buffers to determine focus lock/performance.
+    # @param offset_thresh The minimum difference between the lock and offset to be considered locked.
+    # @param slow_stage (Optional) True/False is communication with the piezo stage slow.
+    # @param parent (Optional) The PyQt parent of this object.
+    #
+    @hdebug.debug
+    def __init__(self, controller, qpd, stage, lock_fn, min_sum, z_center, buffer_length, offset_thresh, slow_stage = False, parent = None):
+        QtCore.QThread.__init__(self, parent)
+        self.qpd = qpd
+        self.stage = stage
+        self.lock_fn = lock_fn
+        self.sum_min = min_sum
+
+        self.count = 0
+        self.debug = 1
+        self.find_sum = False
+        self.locked = 0
+        self.max_pos = 0
+        self.max_sum = 0
+        self.offset = 0
+        self.qpd_mutex = QtCore.QMutex()
+        self.running = 1
+        self.slow_stage = slow_stage
+        self.stage_mutex = QtCore.QMutex()
+
+        self.stage_z = z_center - 1.0
+        self.sum = 0
+        self.target = None
+        self.unacknowledged = 1
+        self.z_center = z_center
+
+        self.requested_sum = 0
+
+        self.buffer_length = buffer_length
+        self.offset_thresh = offset_thresh
+        self.sum_thresh = self.sum_min
+        self.is_locked_buffer = deque([False]*self.buffer_length)
+        self.is_locked = False
+
+        # Added for TiEFocus controller
+        self.controller = controller
+        self.controller_mutex = QtCore.QMutex()
+        self.controller_state = self.controller.read_State()
+        self.controller_offset = self.controller.read_Offset()
+        self.controller_z = self.controller.position()
+        self.counter = 0
+        
+        # center the stage
+        # self.newZCenter(z_center)
+
+    ## cleanUp
+    #
+    # Shutdown the QPD and the piezo stage. Also shutdown the TiEFocus controller.
+    #
+    @hdebug.debug
+    def cleanUp(self):
+        self.qpd.shutDown()
+        self.stage.shutDown()
+        self.controller.shutDown()
+
+    ## getLockTarget
+    #
+    # @return The current focus lock target
+    #
+    @hdebug.debug
+    def getLockTarget(self):
+        if self.qpd_mutex.tryLock(1000):
+            target = self.target
+            self.qpd_mutex.unlock()
+            return target
+        else:
+            print "QPD/Camera are frozen?"
+            return "failed"
+
+    ## getOffset
+    #
+    # @return The current focus lock value.
+    #
+    @hdebug.debug
+    def getOffset(self):
+        self.qpd_mutex.lock()
+        temp = self.offset
+        self.qpd_mutex.unlock()
+        return temp
+
+    ## getFocusStatus()
+    #tryLock(1000)
+    # @return The status of the focus lock
+    #
+    @hdebug.debug
+    def getFocusStatus(self):
+        if self.qpd_mutex.tryLock(1000):
+            is_locked = self.is_locked
+            self.qpd_mutex.unlock()
+            return is_locked
+        else:
+            print "QPD/Camera are frozen?"
+            return "failed"
+
+    ## findSumSignal
+    #
+    # If sum signal is below a threshold start the sum signal search,
+    # otherwise emit the foundSum signal.
+    #
+    @hdebug.debug
+    def findSumSignal(self, min_sum):
+        if (self.sum < min_sum):  ## Hack
+            self.requested_sum = min_sum
+            self.qpd_mutex.lock()
+            self.find_sum = True
+            self.max_sum = 0
+            self.max_pos = 0
+            self.moveStageAbs(0)
+            self.resetBuffer()
+            self.qpd_mutex.unlock()
+        else:
+            self.foundSum.emit(self.sum)
+
+    ## moveStageAbs
+    #
+    # @param new_z The desired stage z position.
+    #
+    def moveStageAbs(self, new_z):
+        self.stage_mutex.lock()
+        if new_z != self.stage_z:
+            self.stage_z = new_z
+            self.stage.zMoveTo(self.stage_z)
+        self.stage_mutex.unlock()
+
+    ## moveStageRel
+    #
+    # @param dz The amount to move the stage from its current position.
+    #
+    def moveStageRel(self, dz):
+        new_z = self.stage_z + dz
+        self.moveStageAbs(new_z)
+
+    ## moveStageRelative
+    #
+    # Just for TiEFocus.
+    #
+    # @param dz The amount to move the stage from its current position.
+    #
+    def moveStageRelative(self, dz):
+        self.controller.goRelative(dz)
+
+    ## newZCenter
+    #
+    # @param z_center The value to use as the zero or center point of the piezo stage.
+    #
+    def newZCenter(self, z_center):
+        self.z_center = z_center
+
+    ## qpdScan
+    #
+    # Get a reading from the QPD.
+    #
+    # @return [sum signal, x offset, y offset]
+    #
+    def qpdScan(self):
+        return self.qpd.qpdScan()
+
+    ## recenter
+    #
+    # Move the piezo stage back to it's zero position.
+    #
+    def recenter(self):
+        self.moveStageAbs(self.z_center)
+
+    ## recenterPiezo
+    #
+    # Emits the recenteredPiezo signal.
+    #
+    def recenterPiezo(self):
+        #self.emit(QtCore.SIGNAL("recenteredPiezo()"))
+        self.recenteredPiezo.emit()
+
+    ## resetBuffertryLock(1000)
+    #
+    # Resets the focus lock buffer.
+    #
+    def resetBuffer(self):
+        self.is_locked_buffer = deque([False]*self.buffer_length)
+        self.is_locked = False
+
+    ## run
+    #
+    # This function is modified to accommodate TiEFocus.
+    #
+    # Get the current power and offsets from the QPD. Scan for
+    # sum signal if we are in find.sum mode and emit the
+    # foundSum signal if the sum signal has been found. Otherwise,
+    # if the lock is on, adjust the stage position based on
+    # the offsets & the lock function.
+    #
+    def run(self):
+        while(self.running):
+            self.counter = self.counter+1
+            if self.counter == 10:
+                self.controller_mutex.lock()
+                self.controller_state = self.controller.read_State()
+                self.controller_offset = self.controller.read_Offset()
+                self.controller_z = self.controller.position()
+                self.controllerUpdate.emit(self.controller_state,
+                                           self.controller_offset,
+                                           self.controller_z)
+                self.controller_mutex.unlock()
+                self.counter = 0
+            
+            [power, x_offset, y_offset] = self.qpdScan()
+
+            self.qpd_mutex.lock()
+            self.sum = power
+
+            if (power > 0):
+                self.offset = x_offset / power
+            self.unacknowledged = 0
+
+            # scan for sum signal.
+            if self.find_sum:
+                if (power > self.max_sum):
+                    self.max_sum = power
+                    self.max_pos = self.stage_z
+                if (self.max_sum > self.requested_sum) and (power < (0.5 * self.max_sum)):
+                    self.moveStageAbs(self.max_pos)
+                    self.find_sum = False
+                    self.foundSum.emit(self.max_sum)
+                else:
+                    if (self.stage_z >= (2 * self.z_center)):
+                        if (self.max_sum > 0):
+                            self.moveStageAbs(self.max_pos)
+                        else:
+                            self.moveStageAbs(self.z_center)
+                        self.find_sum = False
+                        self.foundSum.emit(self.max_sum)
+                    else:
+                        self.moveStageRel(1.0)
+
+            # update position, if locked.
+            else:
+                if self.locked and (power > self.sum_min):
+                    if self.slow_stage:
+                        self.count += 1
+                        if (self.count > 2):
+                            self.count = 0
+                            self.moveStageRel(self.lock_fn(self.offset - self.target))
+                    else:
+                        self.moveStageRel(self.lock_fn(self.offset - self.target))
+
+                    # Set buffer and determined lock status
+                    is_locked_now = (abs(self.offset - self.target) < self.offset_thresh) and (power > self.sum_thresh)
+                    self.is_locked_buffer.popleft()
+                    self.is_locked_buffer.append(is_locked_now)
+                    self.is_locked = (self.is_locked_buffer.count(True) == self.buffer_length) # 3/4: Kludge to account for periodic jumps in camera based focus lock
+                    
+            #self.emit(QtCore.SIGNAL("controlUpdate(float, float, float, float)"), x_offset, y_offset, power, self.stage_z)
+            self.controlUpdate.emit(x_offset, y_offset, power, self.stage_z, self.is_locked)
+            self.qpd_mutex.unlock()
+            self.msleep(5)
+
+    ## setBufferLength
+    #
+    # @param buffer_length The length of the is_locked buffer.
+    #
+    def setBufferLength(self, buffer_length):
+        self.qpd_mutex.lock()
+        self.buffer_length = buffer_length
+        self.resetBuffer()
+        self.qpd_mutex.unlock()
+
+    ## setOffsetThreshold
+    #
+    # @param offset_thresh The minimum distance to the lock target to be considered 'in focus'.
+    #
+    def setOffsetThreshold(self, offset_thresh):
+        self.qpd_mutex.lock()
+        self.offset_thresh = offset_thresh
+        self.resetBuffer()
+        self.qpd_mutex.unlock()
+
+    ## setStage
+    #
+    # @param stage A piezo stage like object.
+    #
+    def setStage(self, stage):
+        self.qpd_mutex.lock()
+        self.stage = stage
+        self.qpd_mutex.unlock()
+
+    ## setSumThreshold
+    #
+    # @param sum_thresh The minimum sum value to consider the focus locked.
+    #
+    def setSumThreshold(self, sum_thresh):
+        self.qpd_mutex.lock()
+        self.sum_thresh = sum_thresh
+        self.resetBuffer()
+        self.qpd_mutex.unlock()
+
+    ## setTarget
+    #
+    # This function is modified to accommodate TiEFocus.
+    #
+    # Offset in TiEFocus actually means target. Sorry for the confusing notations.
+    #
+    # @param target The focus lock target.
+    #
+    @hdebug.debug
+    def setTarget(self, target):
+        self.qpd_mutex.lock()
+        self.target = target
+        self.resetBuffer()
+        self.qpd_mutex.unlock()
+        
+        self.controller_mutex.lock()
+        self.controller.set_Offset(target)
+        self.msleep(2)
+        self.controller_mutex.unlock()
+
+    def setNikonOffset(self, delta_os = 0.0):
+        self.setTarget(self.controller_offset + delta_os)
+    
+    ## startLock
+    #
+    # This function is modified to accommodate TiEFocus.
+    #
+    # Start the focus lock.
+    #
+    @hdebug.debug
+    def startLock(self):
+        self.qpd_mutex.lock()
+        self.unacknowledged = 1
+        self.locked = 1
+        if self.target == None:
+            self.target = self.offset
+        self.qpd_mutex.unlock()
+        self.waitForAcknowledgement()
+        self.resetBuffer()
+
+        self.controller_mutex.lock()
+        self.controller.getFocus()
+        self.msleep(2)
+        self.controller_mutex.unlock()
+
+    ## stopLock
+    #
+    # This function is modified to accommodate TiEFocus.
+    #
+    # Stop the focus lock.
+    #
+    @hdebug.debug
+    def stopLock(self):
+        self.qpd_mutex.lock()
+        self.unacknowledged = 1
+        self.locked = 0
+        self.target = None
+        self.qpd_mutex.unlock()
+        self.waitForAcknowledgement()
+        self.resetBuffer()
+
+        self.controller_mutex.lock()
+        self.controller.getRelax()
+        self.msleep(2)
+        self.controller_mutex.unlock()
+
+    ## stopThread
+    #
+    # Stop the focus lock control thread.
+    #
+    @hdebug.debug
+    def stopThread(self):
+        self.running = 0
+
+    ## waitForAcknowledgement
+    #
+    # Blocks until the next iteration of the focus lock control thread.
+    #
+    @hdebug.debug
+    def waitForAcknowledgement(self):
+        while(self.unacknowledged):
+            self.msleep(20)
+
+
 #
 # The MIT License
 #

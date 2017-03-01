@@ -1210,6 +1210,425 @@ class LockDisplayCrisp(QtGui.QWidget):
         self.ui.calButton4.setEnabled(show)
 
 
+## LockDisplayNikon
+#
+# LockDisplay specialized for Nikon style offset data.
+#
+class LockDisplayNikon(QtGui.QWidget):
+    foundOptimal = QtCore.pyqtSignal(float)
+    foundSum = QtCore.pyqtSignal(float)
+    lockDisplay = QtCore.pyqtSignal(object)
+    lockStatus = QtCore.pyqtSignal(float, float)
+    recenteredPiezo = QtCore.pyqtSignal()
+
+    ## __init__
+    #
+    # Create the LockDisplay class and setup the UI.
+    #
+    # ir_laser is a class with the following methods:
+    #
+    # on(power)
+    #   Turn on the IR laser. Power is a value from 1 to 100.
+    #
+    # off()
+    #   Turn off the IR laser
+    #
+    # @param parameters A parameters object.
+    # @param control_thread A TCP control object.
+    # @param ir_laser A ir laser control object as described above.
+    # @param parent The PyQt parent of this object.
+    #
+    @hdebug.debug
+    def __init__(self, parameters, control_thread, ir_laser, parent):
+        QtGui.QWidget.__init__(self, parent)
+
+        # general
+        self.ir_laser = ir_laser
+        self.ir_power = 0
+        self.offset = 0
+        self.optimizing_sum = False
+        self.parameters = parameters
+        self.power = 0
+        self.stage_z = 0
+        self.is_locked = False
+        # general, for TiEFocus
+        self.state = 'Off'
+        self.err = 0.0 # dumb parameter
+        self.os = 0.0
+        self.z2000 = 0.0
+        # target offset vaule
+        self.target_os = 0.0
+        
+        # Lock modes
+        self.lock_modes = [lockModes.NikonNoLockMode(control_thread,
+                                                parameters,
+                                                self),
+                           lockModes.NikonAlwaysOnLockMode(control_thread,
+                                                      parameters,
+                                                      self)]
+        
+        self.current_mode = self.lock_modes[parameters.get("qpd_mode")]
+
+        # UI setup
+        self.ui = lockdisplayUi.Ui_Form_Nikon()
+        self.ui.setupUi(self)
+        if self.ir_laser:
+            if (not ir_laser.havePowerControl()):
+                self.ui.irSlider.hide()
+            # connect signals
+            self.ui.irButton.clicked.connect(self.handleIrButton)
+            self.ui.irSlider.valueChanged.connect(self.handleIrSlider)
+
+        else:
+            self.ui.irButton.hide()
+            self.ui.irSlider.hide()
+
+        self.ui.Button1.clicked.connect(self.handleButton1)
+        self.ui.offsetSpinBox.valueChanged.connect(self.handleOffsetSpinBox)
+
+        # start the qpd monitoring thread & stage control thread & TiEFocus control thread
+        self.control_thread = control_thread
+        self.control_thread.start(QtCore.QThread.NormalPriority)
+        self.control_thread.controlUpdate.connect(self.controlUpdate)
+        self.control_thread.controllerUpdate.connect(self.controllerUpdate)
+        self.control_thread.foundSum.connect(self.handleFoundSum)
+        self.control_thread.recenteredPiezo.connect(self.handleRecenteredPiezo)
+
+        # connect to the ir laser & turn it off.
+        if self.ir_laser:
+            self.ir_state = True
+            self.handleIrButton(None)
+            if self.ir_laser.havePowerControl():
+                self.ui.irSlider.setValue(parameters.get("ir_power"))
+
+        self.newParameters(parameters)
+
+    ## amLocked
+    #
+    # @return Is focus currently locked.
+    #
+    @hdebug.debug
+    def amLocked(self):
+        return self.current_mode.amLocked()
+
+    ## changeLockMode
+    #
+    # Changes the current lock mode to the new mode (if this is
+    # different from the old mode.
+    #
+    # @param which_mode A integer that is used as a index into the array of lock modes.
+    #
+    # @return True if the new mode is different from the old mode, otherwise False.
+    #
+    @hdebug.debug
+    def changeLockMode(self, which_mode):
+        if (self.current_mode == self.lock_modes[which_mode]):
+            return False
+        else:
+            self.current_mode.stopLock() # It may be redundant.
+            self.current_mode.reset()
+            self.current_mode = self.lock_modes[which_mode]
+            return True
+
+    ## controlUpdate
+    #
+    # Handles the controlUpdate signal from the focus lock control thread.
+    #
+    # @param x_offset The current x offset of the focus lock.
+    # @param y_offset The current y offset of the focus lock.
+    # @param power The current focus lock sum signal.
+    # @param stage_z The current z position of the stage.
+    #
+    def controlUpdate(self, x_offset, y_offset, power, stage_z, is_locked):
+        offset = 0
+        if (power > 10):
+            offset = x_offset / power
+
+        # These are saved so that they can be recorded when we are filming
+        self.offset = offset
+        self.power = power
+        self.stage_z = stage_z
+        self.is_locked = is_locked
+
+    ## controllerUpdate
+    #
+    # Handles the controllerUpdate signal from the focus MFC2000 control thread.
+    #
+    # @param state The current state of MFC2000.
+    # @param err The current err of MFC2000.
+    # @param os The current offset (target) of MFC2000.
+    # @param gn The current gain of MFC2000.
+    # @param lr The current lock range of MFC2000.
+    # @param z2000 The current z of MFC2000.
+    #
+    def controllerUpdate(self, state, os, z2000):
+        # These are saved so that they can be recorded when we are filming
+        self.state = state
+        self.os = os
+        self.z2000 = z2000
+
+        # Update UI information display.
+        self.ui.offsetText.setText("%.1f" % self.os)
+        self.ui.stateText.setText("%s" % self.state)
+
+    ## getFocusStatus
+    #
+    # Use information from TiEFocus.
+    #
+    # @return A boolean that determines the focus status, e.g. is the system in focus
+    #
+    def getFocusStatus(self):
+        if self.amLocked():
+            if (self.state == 'On'):
+                return True
+            else:
+                return False
+        else:
+            return False # If the focus lock is not locked, return that it is not
+
+    ## getLockModes
+    #
+    # @return A python array containing all the available lock modes.
+    #
+    def getLockModes(self):
+        return self.lock_modes
+
+    ## getLockTarget
+    #
+    # Use information from MFC2000.
+    #
+    # @return The current lock target.
+    #
+    @hdebug.debug
+    def getLockTarget(self):
+        return self.os
+
+    ## getLockedStatus
+    #
+    # self.control_thread.getLockedStatus() cannot be found.
+    #
+    # @return The current status of the focus lock.
+    #
+    @hdebug.debug
+    def getLockedStatus(self):
+        self.getFocusStatus()
+
+    ## getOffsetPowerStage
+    #
+    # Use information from TiEFocus.
+    #
+    # @return [offset, power, stage]
+    #
+    def getOffsetPowerStage(self):
+        return [self.err, self.os, self.z2000]
+
+    ## handleAdjustStage
+    #
+    # This handles when you click on the stage indicator element
+    # of the UI. It lets you move the stage up and down using
+    # the wheel button of the mouse.
+    #
+    @hdebug.debug
+    def handleAdjustStage(self, direction):
+        self.jump(float(direction)*self.parameters.get("lockt_step"))
+
+    ## handleFoundSum
+    #
+    # Handles the foundSum signal from the focus lock control thread.
+    #
+    @hdebug.debug
+    def handleFoundSum(self, sum):
+        self.foundSum.emit(sum)
+
+    ## handleIrButton
+    #
+    # Handles the IR laser button. Turns the laser on/off and
+    # updates the button accordingly.
+    #
+    # @param boolean Dummy parameter.
+    #
+    @hdebug.debug
+    def handleIrButton(self, boolean):
+        if self.ir_state:
+            self.ir_laser.off()
+            self.ir_state = False
+            self.ui.irButton.setText("IR ON")
+            self.ui.irButton.setStyleSheet("QPushButton { color: green }")
+        else:
+            self.ir_laser.on(self.ir_power)
+            self.ir_state = True
+            self.ui.irButton.setText("IR OFF")
+            self.ui.irButton.setStyleSheet("QPushButton { color: red }")
+
+    ## handleIrSlider
+    #
+    # Handles the IR laser power slider.
+    #
+    # @param value The current position of the IR slider.
+    #
+    @hdebug.debug
+    def handleIrSlider(self, value):
+        self.ir_power = value
+        if self.ir_state:
+            self.ir_laser.off()
+            self.ir_laser.on(self.ir_power)
+
+    ## handleRecenteredPiezo
+    #
+    # Handles the recentered piezo signal from the focus lock control thread.
+    #
+    @hdebug.debug
+    def handleRecenteredPiezo(self):
+        self.recenteredPiezo.emit()
+
+    ## jump
+    #
+    # Handles requests to jump the piezo stage.
+    #
+    # @param step_size The amount to move the piezo by.
+    #
+    @hdebug.debug
+    def jump(self, step_size):
+        self.current_mode.handleJump(step_size)
+
+    ## lockButtonToggle
+    #
+    # Handles toggling the lock button
+    #
+    @hdebug.debug
+    def lockButtonToggle(self):
+        self.current_mode.lockButtonToggle()
+
+    ## newFrame
+    #
+    # Handles new frame data from the camera.
+    #
+    # @param frame A frame data object.
+    #
+    def newFrame(self, frame):
+        self.current_mode.newFrame(frame, self.offset, self.power, self.stage_z)
+
+    ## newParameters
+    #
+    # Handles a change in parameters.
+    #
+    # @param parameters A parameters object.
+    #
+    @hdebug.debug
+    def newParameters(self, parameters):
+        self.parameters = parameters
+        p = parameters
+        for lock_mode in self.lock_modes:
+            lock_mode.newParameters(parameters)
+        self.control_thread.newZCenter(p.get("qpd_zcenter"))
+        if not self.current_mode.amLocked():
+            self.control_thread.recenter()
+        self.scale = p.get("qpd_scale")
+
+    ## quit
+    #
+    # Stops the focus lock control thread and cleans things up prior to shutting down.
+    #
+    @hdebug.debug
+    def quit(self):
+        self.control_thread.stopThread()
+        self.control_thread.wait()
+        self.control_thread.cleanUp()
+        if self.ir_laser:
+            self.ir_laser.off()
+
+    ## shouldDisplayLockButton
+    #
+    # @return True/False depending on whether the lock button should be shown for the current lock mode.
+    #
+    @hdebug.debug
+    def shouldDisplayLockButton(self):
+        return self.current_mode.shouldDisplayLockButton()
+
+    ## shouldDisplayLockLabel
+    #
+    # @return True/False depending on whether the lock label should be shown for the current lock mode.
+    #
+    @hdebug.debug
+    def shouldDisplayLockLabel(self):
+        return self.current_mode.shouldDisplayLockLabel()
+
+    ## startLock
+    #
+    # Start the focus lock. The filename parameter is ignored.
+    #
+    # @param filename This is not used.
+    #
+    @hdebug.debug
+    def startLock(self, filename):
+        self.current_mode.startLock()
+
+    ## stopLock
+    #
+    # Stop the focus lock.
+    #
+    @hdebug.debug
+    def stopLock(self):
+        self.current_mode.stopLock()
+
+    ## tcpHandleFindSum
+    #
+    # Tell the control thread to execute the find sum signal procedure.
+    #
+    def tcpHandleFindSum(self, min_sum):
+        self.control_thread.findSumSignal(min_sum)
+
+    ## tcpHandleOptimizeSum
+    #
+    # Adjust the laser power until the sum signal is in the range 0.5 - 0.9.
+    #
+    def tcpHandleOptimizeSum(self):
+        if self.ir_laser and self.ir_laser.havePowerControl():
+            self.optimizing_sum = True
+        else:
+            self.foundOptimal.emit(self.power)
+
+    ## tcpHandleRecenterPiezo
+    #
+    # Tell the control thread to recenter the piezo.
+    #
+    @hdebug.debug
+    def tcpHandleRecenterPiezo(self):
+        self.control_thread.recenterPiezo()
+
+    ## tcpHandleSetLockTarget
+    #
+    # Tell the control thread to set its lock target to target.
+    #
+    # @param target The desired lock target.
+    #
+    @hdebug.debug
+    def tcpHandleSetLockTarget(self, target):
+        self.current_mode.setLockTarget(target/self.scale)
+
+    ## handleOffsetSpinBox
+    #
+    # Handles the offset spin box.
+    #
+    @hdebug.debug
+    def handleOffsetSpinBox(self, os):
+        self.target_os = os
+
+    ## handleSetLockTarget
+    #
+    # Handle lock target setting requests that come via hal-4000.
+    #
+    # @param target The desired lock target.
+    #
+    @hdebug.debug
+    def handleSetLockTarget(self, target):
+        self.current_mode.setLockTarget(target/self.scale)
+
+    ## additional buttons for changing offset
+    def handleButton1(self):
+        self.current_mode.button1(self.target_os)
+
+
 #
 # The MIT License
 #

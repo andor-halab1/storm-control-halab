@@ -928,6 +928,110 @@ class FocusLockZCrisp(FocusLockZ):
     def handleSetLockTarget(self, target):
         self.lock_display1.handleSetLockTarget(target)
 
+## FocusLockZNikon
+#
+# FocusLockZ specialized for Nikon style data.
+#
+class FocusLockZNikon(FocusLockZ):
+
+    ## __init__
+    #
+    # Initialize the UI for a Crisp based focus lock.
+    #
+    # @param parameters A parameters object.
+    # @param control_thread A focus lock control thread.
+    # @param ir_laser A IR laser control object.
+    # @param parent The PyQt parent of this object.
+    #
+    @hdebug.debug
+    def __init__(self, parameters, control_thread, ir_laser, parent):
+        FocusLockZ.__init__(self, parameters, parent)
+
+        # Setup UI.
+        import qtdesigner.focuslock_ui as focuslockUi
+
+        self.ui = focuslockUi.Ui_Dialog_Nikon()
+        self.ui.setupUi(self)
+
+        # Add Crisp lock display.
+        self.lock_display1 = lockDisplay.LockDisplayNikon(parameters.get("focuslock"),
+                                                        control_thread, 
+                                                        ir_laser, 
+                                                        self.ui.lockDisplayWidget)
+        self.lock_display1.foundOptimal.connect(self.handleFoundOptimal)
+        self.lock_display1.foundSum.connect(self.handleFoundSum)
+        self.lock_display1.recenteredPiezo.connect(self.handleRecenteredPiezo)
+
+        FocusLockZ.configureUI(self)
+
+    ## tcpPollFocusStatus
+    #
+    # This is modified for TiEFocus.
+    #
+    # Check the focus lock thread to see if it registers as in focus.
+    #
+    # @return A boolean that determines if the system is in focus.
+    #
+    @hdebug.debug
+    def tcpPollFocusStatus(self):
+        # Try to lock and get the focus status.
+        self.lock_display1.startLock(None)
+        focus_status = self.lock_display1.getFocusStatus()
+        self.lock_display1.stopLock()
+
+        if focus_status: # Return message if focus is found
+            self.tcp_message.addResponse("focus_status", focus_status)
+            self.tcpComplete.emit(self.tcp_message)
+
+        else:
+            print "Focus check " + str(self.accum_focus_checks) + ": not in focus"
+            self.accum_focus_checks += 1
+            if self.accum_focus_checks < self.num_focus_checks:
+                self.focus_check_timer.start(100) # Wait one 100 ms then measure again
+            else: # Focus not found after the specified number of checks
+                scan_focus = self.tcp_message.getData("focus_scan")
+                if scan_focus is True:
+                    print "Scanning for the focus"
+                    # Get minimum sum for FindSum scan
+                    min_sum = self.tcp_message.getData("min_sum")
+                    if min_sum is None: # Not provided. Use default for parameters.
+                        min_sum = self.parameters.get("qpd_sum_min", 50)
+
+                    '''
+                    # To put the system into the CrispOptimalLockMode.
+                    # Be careful. Doing this will change the offset (target).
+                    if not self.buttons[2].isChecked():
+                        self.buttons[2].setChecked(True)
+                        self.handleRadioButtons(True)
+                    '''
+                    time.sleep(1)
+                    
+                    # Try to lock and get the focus status.
+                    self.lock_display1.startLock(None)
+                    focus_status = self.lock_display1.getFocusStatus()
+                    self.lock_display1.stopLock()
+
+                    if focus_status:
+                        # Send scan command
+                        self.tcpHandleFindSum(min_sum) # message is returned by handleFoundSum
+                    else:
+                        self.tcp_message.addResponse("focus_status", focus_status)
+                        self.tcpComplete.emit(self.tcp_message)
+                    
+                else: # No scan, just return error
+                    self.tcp_message.addResponse("focus_status", focus_status)
+                    self.tcpComplete.emit(self.tcp_message)
+                    
+    ## handleSetLockTarget
+    #
+    # Handle lock target setting requests that come via hal-4000.
+    #
+    # @param target The desired lock target.
+    #
+    @hdebug.debug
+    def handleSetLockTarget(self, target):
+        self.lock_display1.handleSetLockTarget(target)
+
         
 #
 # The MIT License

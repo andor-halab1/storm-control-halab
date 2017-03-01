@@ -38,6 +38,13 @@
       <module_name type="string">display.feedViewer</module_name>
     </feedviewers>
     
+	<!-- The focus lock -->
+    <focuslock>
+      <class_name type="string">AFocusLockZ</class_name>
+      <menu_item type="string">Focus Lock</menu_item>
+	  <module_name type="string">focuslock.HaNikon1FocusLockZ</module_name>
+    </focuslock>
+	
     <!-- The focus lock -->
 	<!--
     <focuslock>
