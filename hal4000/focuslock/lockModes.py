@@ -1301,7 +1301,7 @@ class NikonNoLockMode(LockMode):
         self.control_thread.setTarget(target)
 
     def button1(self, os):
-        self.control_thread.setTarget(os)
+        self.setLockTarget(os)
 
 ## NikonAlwaysOnLockMode
 #
@@ -1377,7 +1377,7 @@ class NikonAlwaysOnLockMode(JumpLockMode):
         return True
 
     def button1(self, os):
-        self.control_thread.setTarget(os)
+        self.setLockTarget(os)
 
     ## startLock
     #

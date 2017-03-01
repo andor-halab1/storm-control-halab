@@ -4,8 +4,6 @@
 <command_sequence>
   <loop name = "Movie Loop" increment = "name">	
     <item name = "Movie 1"></item>
-    <item name = "Movie 2"></item>
-    <item name = "Movie 3"></item>
   </loop>
 </command_sequence>
 

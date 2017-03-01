@@ -981,6 +981,7 @@ class FocusLockZNikon(FocusLockZ):
             
         # Try to lock and get the focus status.
         self.lock_display1.startLock(None)
+        time.sleep(1)
         focus_status = self.lock_display1.getFocusStatus()
         self.lock_display1.stopLock()
 
@@ -1006,6 +1007,7 @@ class FocusLockZNikon(FocusLockZ):
                     
                     # Try to lock and get the focus status.
                     self.lock_display1.startLock(None)
+                    time.sleep(1)
                     focus_status = self.lock_display1.getFocusStatus()
                     self.lock_display1.stopLock()
 
@@ -1013,7 +1015,7 @@ class FocusLockZNikon(FocusLockZ):
                         # Send scan command
                         self.tcpHandleFindSum(min_sum) # message is returned by handleFoundSum
                     else:
-                        self.tcp_message.addResponse("focus_status", focus_status)
+                        self.tcp_message.addResponse("focus_status", False)
                         self.tcpComplete.emit(self.tcp_message)
                     
                 else: # No scan, just return error
@@ -1021,35 +1023,34 @@ class FocusLockZNikon(FocusLockZ):
                     self.tcpComplete.emit(self.tcp_message)
 
     def focusScan(self):
-        self.bracket_step = 25 #self.parameters.get("olock_bracket_step")
-        self.scan_step = 5 #self.parameters.get("olock_scan_step")
-        self.cur_z = 0
-        self.scan_state = 1
+        bracket_step = self.parameters.get("olock_bracket_step", 25)
+        scan_step = self.parameters.get("olock_scan_step", 5)
+        cur_z = 0
+        scan_state = 1
         focus_status = 'Failing'
         
         while focus_status != 'Locking':
             # I am not sure if I need to use mutex here.
-            if (self.scan_state == 1): # Scan up
-                if (self.cur_z >= self.bracket_step):
-                    self.scan_state = 2
+            if (scan_state == 1): # Scan up
+                if (cur_z >= bracket_step):
+                    scan_state = 2
                 else:
-                    self.cur_z += self.scan_step
-                    self.jump(self.scan_step)
-            elif (self.scan_state == 2): # Scan back down
-                if (self.cur_z <= -self.bracket_step):
-                    self.scan_state = 3
+                    cur_z += scan_step
+                    self.jump(scan_step)
+            elif (scan_state == 2): # Scan back down
+                if (cur_z <= -bracket_step):
+                    scan_state = 3
                 else:
-                    self.cur_z -= self.scan_step
-                    self.jump(-self.scan_step)
+                    cur_z -= scan_step
+                    self.jump(-scan_step)
             else: # Scan back to zero
-                if (self.cur_z >= 0.0):
+                if (cur_z >= 0.0):
                     break
                 else:
-                    self.cur_z += self.scan_step
-                    self.jump(self.scan_step)
+                    cur_z += scan_step
+                    self.jump(scan_step)
             time.sleep(1)
             focus_status = self.lock_display1.state
-            print focus_status
                     
     ## handleSetLockTarget
     #
