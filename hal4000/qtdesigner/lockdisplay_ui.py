@@ -224,6 +224,7 @@ class Ui_Form_Nikon(object):
         self.offsetSpinBox.setMinimum(-5000.0)
         self.offsetSpinBox.setMaximum(5000.0)
         self.offsetSpinBox.setSingleStep(1)
+        self.offsetSpinBox.setDecimals(1)
         self.offsetSpinBox.setObjectName(_fromUtf8("offsetSpinBox"))
         self.Button1 = QtGui.QPushButton(self.statusBox)
         self.Button1.setGeometry(QtCore.QRect(10, 120, 65, 24))

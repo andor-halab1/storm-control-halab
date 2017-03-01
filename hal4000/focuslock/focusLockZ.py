@@ -1043,13 +1043,7 @@ class FocusLockZNikon(FocusLockZ):
                 self.tcp_message.addResponse("focus_status", focus_status)
                 self.tcpComplete.emit(self.tcp_message)
         else:
-            # Get the focus status.
-            if self.lock_display1.state == 'Locking':
-                focus_status = True
-            else:
-                focus_status = False
-
-            self.tcp_message.addResponse("focus_status", focus_status)
+            self.tcp_message.addResponse("focus_status", True)
             self.tcpComplete.emit(self.tcp_message)
             
                     

@@ -130,10 +130,11 @@ class AMiscControl(miscControl.MiscControl):
     def handleLight(self, bool):
         for i, light in enumerate(self.lights):
             if light.isChecked():
+                light.setStyleSheet("QPushButton { color: red}")
                 self.spectra.setLight(i)
                 self.parameters.set("light", i)
             else:
-                pass
+                light.setStyleSheet("QPushButton { color: black}")
 
     @hdebug.debug
     def handlelight1SpinBox(self, amp):
