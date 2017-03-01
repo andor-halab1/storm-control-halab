@@ -987,7 +987,7 @@ class FocusLockZNikon(FocusLockZ):
             print "Focus check " + str(self.accum_focus_checks) + ": not in focus"
             self.accum_focus_checks += 1
             if self.accum_focus_checks < self.num_focus_checks:
-                self.focus_check_timer.start(100) # Wait one 100 ms then measure again
+                self.focus_check_timer.start(500) # Wait one 500 ms then measure again
             else: # Focus not found after the specified number of checks
                 scan_focus = self.tcp_message.getData("focus_scan")
                 if scan_focus is True:
@@ -996,15 +996,6 @@ class FocusLockZNikon(FocusLockZ):
                     min_sum = self.tcp_message.getData("min_sum")
                     if min_sum is None: # Not provided. Use default for parameters.
                         min_sum = self.parameters.get("qpd_sum_min", 50)
-
-                    '''
-                    # To put the system into the CrispOptimalLockMode.
-                    # Be careful. Doing this will change the offset (target).
-                    if not self.buttons[2].isChecked():
-                        self.buttons[2].setChecked(True)
-                        self.handleRadioButtons(True)
-                    '''
-                    time.sleep(1)
                     
                     # Try to lock and get the focus status.
                     self.lock_display1.startLock(None)

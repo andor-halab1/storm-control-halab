@@ -214,7 +214,7 @@ class Ui_Form_Nikon(object):
         self.tempText = QtGui.QLabel(self.statusBox)
 
         self.offsetText = QtGui.QLabel(self.statusBox)
-        self.offsetText.setGeometry(QtCore.QRect(35, 50, 40, 24))
+        self.offsetText.setGeometry(QtCore.QRect(25, 50, 40, 24))
         self.offsetText.setText(_fromUtf8(""))
         self.offsetText.setAlignment(QtCore.Qt.AlignLeft)
         self.offsetText.setObjectName(_fromUtf8("offsetText"))
@@ -229,7 +229,7 @@ class Ui_Form_Nikon(object):
         self.Button1.setGeometry(QtCore.QRect(10, 120, 65, 24))
         self.Button1.setObjectName(_fromUtf8("Button1"))
         self.stateText = QtGui.QLabel(self.statusBox)
-        self.stateText.setGeometry(QtCore.QRect(35, 180, 40, 24))
+        self.stateText.setGeometry(QtCore.QRect(25, 180, 40, 24))
         self.stateText.setText(_fromUtf8(""))
         self.stateText.setAlignment(QtCore.Qt.AlignLeft)
         self.stateText.setObjectName(_fromUtf8("stateText"))

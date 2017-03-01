@@ -1324,18 +1324,21 @@ class NikonAlwaysOnLockMode(JumpLockMode):
     ## handleJump
     # 
     # Jumps the piezo stage immediately if it is not locked. Otherwise it stops the
-    # lock, jumps the piezo stage and starts the relock timer.
+    # lock, jumps the piezo stage and starts the relock timer. But it is not
+    # necessary. So we did not do it.
     #
     # Slightly different, so that it works for TiEFocus.
     #
     # @param jumpsize The distance to jump the piezo stage.
     #
     def handleJump(self, jumpsize):
-        if self.locked:
-            self.control_thread.stopLock()
-        self.control_thread.moveStageRelative(jumpsize)
-        if self.locked:
-            self.relock_timer.start()
+##        if self.locked:
+##            self.stopLock()
+##        self.control_thread.moveStageRelative(jumpsize)
+##        if not self.locked:
+##            self.relock_timer.start()
+        if not self.locked:
+            self.control_thread.moveStageRelative(jumpsize)
 
     ## lockButtonToggle
     #

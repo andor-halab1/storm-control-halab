@@ -1122,7 +1122,6 @@ class StageNikonThread(QtCore.QThread):
         self.controller_state = self.controller.read_State()
         self.controller_offset = self.controller.read_Offset()
         self.controller_z = self.controller.position()
-        self.counter = 0
         
         # center the stage
         # self.newZCenter(z_center)
@@ -1274,17 +1273,14 @@ class StageNikonThread(QtCore.QThread):
     #
     def run(self):
         while(self.running):
-            self.counter = self.counter+1
-            if self.counter == 10:
-                self.controller_mutex.lock()
-                self.controller_state = self.controller.read_State()
-                self.controller_offset = self.controller.read_Offset()
-                self.controller_z = self.controller.position()
-                self.controllerUpdate.emit(self.controller_state,
-                                           self.controller_offset,
-                                           self.controller_z)
-                self.controller_mutex.unlock()
-                self.counter = 0
+            self.controller_mutex.lock()
+            self.controller_state = self.controller.read_State()
+            self.controller_offset = self.controller.read_Offset()
+            self.controller_z = self.controller.position()
+            self.controllerUpdate.emit(self.controller_state,
+                                       self.controller_offset,
+                                       self.controller_z)
+            self.controller_mutex.unlock()
             
             [power, x_offset, y_offset] = self.qpdScan()
 

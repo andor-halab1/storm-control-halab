@@ -1379,7 +1379,7 @@ class LockDisplayNikon(QtGui.QWidget):
     #
     def getFocusStatus(self):
         if self.amLocked():
-            if (self.state == 'On'):
+            if (self.state == 'Locked'):
                 return True
             else:
                 return False

@@ -54,7 +54,7 @@ class TiEFocus(object):
     # @param Offset The Z offset.
     #
     def setZOffset(self, offset):
-        self.mmc.setAutoFocusOffset(offset)
+        self.mmc.setPosition('TIPFSOffset',offset)
 
     def set_Offset(self, offset):
         self.setZOffset(offset)
@@ -64,39 +64,60 @@ class TiEFocus(object):
     # @return [stage offset].
     #
     def offset(self):
-##        return [self.mmc.getProperty('TIPFSOffset','State')]
-        return [self.mmc.getAutoFocusOffset()]
+        return [self.mmc.getPosition('TIPFSOffset')]
 
     def read_Offset(self):
         offset = self.offset()
         return float(offset[0])
 
-    ## setZStatus
+    ## setZState
     #
-    # @param status The Z status.
+    # @param state The Z state.
     #
-    def setZStatus(self, status):
-        self.mmc.setProperty('TIPFSStatus','State',status)
+    def setZState(self, state):
+        self.mmc.setProperty('TIPFSStatus','State',state)
 
     def getFocus(self):
-        self.setZStatus('On')
+        self.setZState('On')
 
     def getRelax(self):
-        self.setZStatus('Off')
+        self.setZState('Off')
     
     ## status
     #
     # @return [stage status].
     #
     def status(self):
+        return [self.mmc.getProperty('TIPFSStatus','Status')]
+
+    ## state
+    #
+    # @return [stage state].
+    #
+    def state(self):
         return [self.mmc.getProperty('TIPFSStatus','State')]
 
     def read_State(self):
-        state = self.status()
-        return str(state[0])
+        state = self.state()
+        if str(state[0]) == 'Off':
+            status = self.status()
+            if 'Out' in str(status[0]):
+                return 'Failing'
+            elif 'Within' in str(status[0]):
+                return 'Locking'
+            else:
+                return 'Unknown'
+        elif str(state[0]) == 'On':
+            status = self.status()
+            if 'failed' in str(status[0]):
+                return 'Failed'
+            elif 'Locked' in str(status[0]):
+                return 'Locked'
+            else:
+                return 'Unknown'
 
     def shutDown(self):
-        self.setZStatus('Off')
+        self.setZState('Off')
 
 if __name__ == "__main__":
     tie_focus = TiEFocus()
@@ -104,17 +125,30 @@ if __name__ == "__main__":
 ##    tie_focus.setZPosition(500)
 ##    time.sleep(2)
 ##    print tie_focus.position()
-    print tie_focus.offset()
-    tie_focus.setZOffset(500)
-    time.sleep(2)
-    print tie_focus.offset()
+##    print tie_focus.offset()
+##    tie_focus.setZOffset(500)
+##    time.sleep(2)
+##    print tie_focus.offset()
 ##    print tie_focus.status()
 ##    tie_focus.setZStatus('Off')
 ##    time.sleep(2)
 ##    print tie_focus.status()
     print tie_focus.position()
     print tie_focus.read_Offset()
+    print tie_focus.state()
+    print tie_focus.status()
     print tie_focus.read_State()
+    print tie_focus.mmc.getPosition('TIPFSOffset')
+    '''
+    print tie_focus.mmc.setFocusDevice('TIPFSOffset')
+    print tie_focus.mmc.getFocusDevice()
+    print tie_focus.mmc.setPosition('TIPFSOffset',200)
+    time.sleep(2)
+    print tie_focus.mmc.getPosition('TIPFSOffset')
+    print tie_focus.mmc.getPosition('TIZDrive')
+    time.sleep(2)
+    print tie_focus.mmc.setPosition('TIZDrive',2039.0)
+    '''
 
 
 
