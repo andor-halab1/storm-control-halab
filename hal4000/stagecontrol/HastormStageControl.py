@@ -24,7 +24,7 @@ import stagecontrol.stageControl as stageControl
 #
 class AStageControl(stageControl.HaStageControl):
     def __init__(self, hardware, parameters, parent = None):
-        self.stage = stageThread.QStageThread(ludl.Ludl("COM6", wait_time = 0.01),
+        self.stage = stageThread.QStageThread(ludl.Ludl("COM4", wait_time = 0.01),
                                               move_update_freq = 200,
                                               pos_update_freq = 200)
         self.stage.start(QtCore.QThread.NormalPriority)
