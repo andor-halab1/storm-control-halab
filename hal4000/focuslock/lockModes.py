@@ -979,11 +979,8 @@ class CrispAlwaysOnLockMode(JumpLockMode):
     # @param jumpsize The distance to jump the piezo stage.
     #
     def handleJump(self, jumpsize):
-        if self.locked:
-            self.control_thread.stopLock()
-        self.control_thread.moveStageRelative(jumpsize)
-        if self.locked:
-            self.relock_timer.start()
+        if not self.locked:
+            self.control_thread.moveStageRelative(jumpsize)
             
     ## lockButtonToggle
     #
@@ -1096,11 +1093,8 @@ class CrispOptimalLockMode(JumpLockMode):
     # @param jumpsize The distance to jump the piezo stage.
     #
     def handleJump(self, jumpsize):
-        if self.locked:
-            self.control_thread.stopLock()
-        self.control_thread.moveStageRelative(jumpsize)
-        if self.locked:
-            self.relock_timer.start()
+        if not self.locked:
+            self.control_thread.moveStageRelative(jumpsize)
             
     ## getName
     #
