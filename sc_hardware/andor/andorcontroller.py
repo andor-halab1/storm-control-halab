@@ -285,7 +285,7 @@ class AndorCamera:
     def closeShutter(self):
         setCurrentCamera(self.camera_handle)
         self._abortIfAcquiring_()
-        status = andor.SetShutter(0, 1, 0, 0)
+        status = andor.SetShutter(0, 2, 0, 0)
         if status != drv_success:
             print "SetShutter (closed) failed: ", status
 
@@ -624,7 +624,7 @@ class AndorCamera:
     def openShutter(self):
         setCurrentCamera(self.camera_handle)
         self._abortIfAcquiring_()
-        status = andor.SetShutter(0, 2, 0, 0)
+        status = andor.SetShutter(0, 1, 0, 0)
         if status != drv_success:
             print "SetShutter (open) failed: ", status
 
