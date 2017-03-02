@@ -10,7 +10,7 @@
 import imp
 imp.load_source("setPath", "C:\\storm-control-halab\\sc_library\\setPath.py")
 
-import sc_hardware.serial.RS232 as RS232
+import serial
 import time
 import math
 
@@ -18,20 +18,20 @@ import math
 #
 # Encapsulates control of a Spectra light source.
 #
-class Lambda10B(RS232.RS232):
+class Lambda10B(serial.Serial):
 
     ## __init__
     #
-    # @param port (Optional) The RS-232 port to use, defaults to "COM2".
+    # @param port (Optional) The serial port to use, defaults to "COM4".
     # @param timeout (Optional) The time out value for communication, defaults to None.
     # @param baudrate (Optional) The communication baud rate, defaults to 9600.
     # @param wait_time How long to wait between polling events before it is decided that there is no new data available on the port, defaults to 20ms.
     #
-    def __init__(self, port, timeout = None, baudrate = 9600, wait_time = 0.02):
+    def __init__(self, port, baudrate = 9600):
         
         # RS232 stuff
-        RS232.RS232.__init__(self, port, timeout, baudrate, "\r", wait_time)
-
+        serial.Serial.__init__(self, port, baudrate)
+        
     ## _command
     #
     # @param command The command string to send.
@@ -39,9 +39,8 @@ class Lambda10B(RS232.RS232):
     # @return The response to the command.
     #
     def _command(self, command):
-        response = self.commWithResp(command)
-        if response:
-            return response.split("\r")
+        self.write(command)
+        return self.read(1)
 
     ## getStatus
     #
@@ -55,22 +54,7 @@ class Lambda10B(RS232.RS232):
     # @param pos The position of filter wheel.
     #
     def setFilter(self, pos):
-##        pos = str(bin(pos))
-##        if len(pos) == 3:
-##            temp = '000'+pos[2]
-##        elif len(pos) == 4:
-##            temp = '00'+pos[2:]
-##        elif len(pos) == 5:
-##            temp = '0'+pos[2:]
-##        elif len(pos) == 6:
-##            temp = pos[2:]
-##        else:
-##            temp = '0000'
-##        
-##        cmd = '\\b0111'+temp
-##        cmd = cmd.decode('string_escape')
-##        print cmd
-        cmd = str(16*4+pos)
+        cmd = str(16*1+pos)
         print cmd
         self._command(cmd)
 
@@ -80,9 +64,10 @@ class Lambda10B(RS232.RS232):
 # 
 
 if __name__ == "__main__":
-    filters = Lambda10B("COM4")
+    filters = Lambda10B("COM7", 9600)
     #filters.setFilter(5)
-    filters._command('\b21110001')
+    temp = filters._command('\b00110001')
+    print temp
 
 
 #
