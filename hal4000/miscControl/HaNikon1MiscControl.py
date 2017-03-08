@@ -17,8 +17,11 @@ import sc_library.hdebug as hdebug
 # UIs.
 import qtdesigner.HaNikon1_misc_ui as miscControlsUi
 
-# Nikon TiU hardware control.
+# Nikon TiE hardware control.
 import sc_hardware.nikon.tiEMisc as tiEMisc
+# Lambda10B hardware control.
+import sc_hardware.sutter.lambda10B as lambda10B
+# Spectra hardware control.
 import sc_hardware.lumencor.spectra as spectra
 
 
@@ -31,6 +34,7 @@ class AMiscControl(miscControl.MiscControl):
         miscControl.MiscControl.__init__(self, parameters, parent)
 
         self.tie_misc = tiEMisc.TiEMisc()
+        self.lambda10B = lambda10B.Lambda10B("COM4", None, 19200)
         self.spectra = spectra.Spectra("COM6")
 
         # UI setup
@@ -122,6 +126,17 @@ class AMiscControl(miscControl.MiscControl):
         for i, efilter in enumerate(self.efilters):
             if efilter.isChecked():
                 efilter.setStyleSheet("QPushButton { color: red}")
+                if i == 0:
+                    n = 2
+                if i == 1:
+                    n = 4
+                if i == 2:
+                    n = 5
+                if i == 3:
+                    n = 1
+                if i == 4:
+                    n = 0
+                self.lambda10B.setEFilter(n)
                 self.parameters.set("efilter_position", i)
             else:
                 efilter.setStyleSheet("QPushButton { color: black}")

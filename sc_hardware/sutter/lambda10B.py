@@ -10,7 +10,7 @@
 import imp
 imp.load_source("setPath", "C:\\storm-control-halab\\sc_library\\setPath.py")
 
-import serial
+import sc_hardware.serial.RS232 as RS232
 import time
 import math
 
@@ -18,7 +18,7 @@ import math
 #
 # Encapsulates control of a Spectra light source.
 #
-class Lambda10B(serial.Serial):
+class Lambda10B(RS232.RS232):
 
     ## __init__
     #
@@ -27,10 +27,10 @@ class Lambda10B(serial.Serial):
     # @param baudrate (Optional) The communication baud rate, defaults to 9600.
     # @param wait_time How long to wait between polling events before it is decided that there is no new data available on the port, defaults to 20ms.
     #
-    def __init__(self, port, baudrate = 9600):
+    def __init__(self, port, timeout = None, baudrate = 9600, wait_time = 0.02):
         
         # RS232 stuff
-        serial.Serial.__init__(self, port, baudrate)
+        RS232.RS232.__init__(self, port, timeout, baudrate, "\r", wait_time)
         
     ## _command
     #
@@ -39,8 +39,9 @@ class Lambda10B(serial.Serial):
     # @return The response to the command.
     #
     def _command(self, command):
-        self.write(command)
-        return self.read(1)
+        response = self.commWithResp(command)
+        if response:
+            return response.split("\r")
 
     ## getStatus
     #
@@ -51,11 +52,10 @@ class Lambda10B(serial.Serial):
 
     ## setFilter
     #
-    # @param pos The position of filter wheel.
+    # @param pos The position of emission filter wheel.
     #
-    def setFilter(self, pos):
-        cmd = str(16*1+pos)
-        print cmd
+    def setEFilter(self, pos):
+        cmd = chr(16+pos)
         self._command(cmd)
 
 
@@ -64,10 +64,9 @@ class Lambda10B(serial.Serial):
 # 
 
 if __name__ == "__main__":
-    filters = Lambda10B("COM7", 9600)
-    #filters.setFilter(5)
-    temp = filters._command('\b00110001')
-    print temp
+    filters = Lambda10B("COM4", None, 19200)
+    filters._command(chr(19))
+    filters.setFilter(5)
 
 
 #
