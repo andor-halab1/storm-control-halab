@@ -139,22 +139,34 @@ class AMiscControl(miscControl.MiscControl):
     @hdebug.debug
     def handlelight1SpinBox(self, amp):
         self.spectra.setAmp(0, amp)
-        self.parameters.set("light-amp", amp)
+        if self.parameters.get("misc.light") == 0:
+            self.parameters.set("misc.light-amp", amp)
+        else:
+            self.parameters.set("light-amp", amp)
 
     @hdebug.debug
     def handlelight2SpinBox(self, amp):
         self.spectra.setAmp(1, amp)
-        self.parameters.set("light-amp", amp)
+        if self.parameters.get("misc.light") == 1:
+            self.parameters.set("misc.light-amp", amp)
+        else:
+            self.parameters.set("light-amp", amp)
 
     @hdebug.debug
     def handlelight3SpinBox(self, amp):
         self.spectra.setAmp(2, amp)
-        self.parameters.set("light-amp", amp)
+        if self.parameters.get("misc.light") == 2:
+            self.parameters.set("misc.light-amp", amp)
+        else:
+            self.parameters.set("light-amp", amp)
     
     @hdebug.debug
     def handlelight4SpinBox(self, amp):
         self.spectra.setAmp(3, amp)
-        self.parameters.set("light-amp", amp)
+        if self.parameters.get("misc.light") == 3:
+            self.parameters.set("misc.light-amp", amp)
+        else:
+            self.parameters.set("light-amp", amp)
 
     @hdebug.debug
     def newParameters(self, parameters):

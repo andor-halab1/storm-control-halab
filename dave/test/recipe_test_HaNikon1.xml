@@ -3,8 +3,9 @@
 
 <command_sequence>
   <loop name = "Movie Loop" increment = "name">	
-    <item name = "Movie 2"></item>
+    <item name = "Movie 1"></item>
 	<item name = "Movie 3"></item>
+	<item name = "Movie 0"></item>
   </loop>
 </command_sequence>
 
@@ -15,6 +16,7 @@
 	<parameters>HaNikon1_647</parameters>
 	<check_focus>
 	  <num_focus_checks>5</num_focus_checks>
+	  <!-- Do not use focus scan function -->
 	</check_focus>
 	<overwrite>True</overwrite>
     <variable_entry name = "Movie Loop"></variable_entry>
@@ -26,8 +28,10 @@
     <name increment = "Yes">568</name>
     <length>1</length>
 	<parameters>HaNikon1_568</parameters>
+	<lock_target>150.0</lock_target>
 	<check_focus>
 	  <num_focus_checks>5</num_focus_checks>
+	  <!-- Do not use focus scan function -->
 	</check_focus>
 	<overwrite>True</overwrite>
     <variable_entry name = "Movie Loop"></variable_entry>
@@ -39,9 +43,20 @@
     <name increment = "Yes">405</name>
     <length>1</length>
 	<parameters>HaNikon1_405</parameters>
+	<lock_target>160.0</lock_target>
 	<check_focus>
 	  <num_focus_checks>5</num_focus_checks>
+	  <!-- Do not use focus scan function -->
 	</check_focus>
+	<overwrite>True</overwrite>
+    <variable_entry name = "Movie Loop"></variable_entry>
+  </movie>
+</item>
+
+<item name = "Movie 0">
+  <movie>
+    <name increment = "Yes">blank</name>
+	<parameters>HaNikon1_default</parameters>
 	<overwrite>True</overwrite>
     <variable_entry name = "Movie Loop"></variable_entry>
   </movie>

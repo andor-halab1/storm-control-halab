@@ -7,10 +7,10 @@
   <!-- camera settings -->
   <camera1>
     <emccd_gain type="int">150</emccd_gain>
-    <x_start type="int">1</x_start>
-    <x_end type="int">1024</x_end>
-    <y_start type="int">1</y_start>
-    <y_end type="int">1024</y_end>
+    <x_start type="int">257</x_start>
+    <x_end type="int">768</x_end>
+    <y_start type="int">257</y_start>
+    <y_end type="int">768</y_end>
     <x_bin type="int">1</x_bin>
     <y_bin type="int">1</y_bin>
     <exposure_time type="float">0.15</exposure_time>
@@ -126,7 +126,7 @@
     <filter_position type="int">2</filter_position>
 	<efilter_position type="int">2</efilter_position>
 	<light type="int">2</light>
-	<light-amp type="int">5</light-amp>
+	<light-amp type="int">70</light-amp>
   </misc>
 
   <!-- steve settings -->

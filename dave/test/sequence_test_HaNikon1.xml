@@ -3,34 +3,34 @@
   
 
   <branch name="Movie Loop">
-    <branch name="568_0">
+    <branch name="647_0">
       <DAMoveStage>
-        <stage_x type="float">-4174.2</stage_x>
-        <stage_y type="float">230.0</stage_y>
+        <stage_x type="float">-10307.2</stage_x>
+        <stage_y type="float">3835.7</stage_y>
       </DAMoveStage>
       <DASetFocusLockTarget>
-        <lock_target type="float">149.88</lock_target>
+        <lock_target type="float">152.4</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
         <num_focus_checks>5</num_focus_checks>
       </DACheckFocus>
       <DASetParameters>
-        <parameters type="str">HaNikon1_568</parameters>
+        <parameters type="str">HaNikon1_647</parameters>
       </DASetParameters>
       <DATakeMovie>
-        <name type="str">568_0</name>
+        <name type="str">647_0</name>
         <length type="int">1</length>
-        <parameters type="str">HaNikon1_568</parameters>
+        <parameters type="str">HaNikon1_647</parameters>
         <overwrite type="bool">True</overwrite>
       </DATakeMovie>
     </branch>
     <branch name="405_0">
       <DAMoveStage>
-        <stage_x type="float">-4174.2</stage_x>
-        <stage_y type="float">230.0</stage_y>
+        <stage_x type="float">-10307.2</stage_x>
+        <stage_y type="float">3835.7</stage_y>
       </DAMoveStage>
       <DASetFocusLockTarget>
-        <lock_target type="float">149.88</lock_target>
+        <lock_target type="float">160.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
         <num_focus_checks>5</num_focus_checks>
@@ -45,34 +45,46 @@
         <overwrite type="bool">True</overwrite>
       </DATakeMovie>
     </branch>
-    <branch name="568_1">
+    <branch name="blank_0">
       <DAMoveStage>
-        <stage_x type="float">-4373.9</stage_x>
-        <stage_y type="float">230.0</stage_y>
+        <stage_x type="float">-10307.2</stage_x>
+        <stage_y type="float">3835.7</stage_y>
       </DAMoveStage>
       <DASetFocusLockTarget>
-        <lock_target type="float">151.88</lock_target>
+        <lock_target type="float">152.4</lock_target>
+      </DASetFocusLockTarget>
+      <DASetParameters>
+        <parameters type="str">HaNikon1_default</parameters>
+      </DASetParameters>
+    </branch>
+    <branch name="647_1">
+      <DAMoveStage>
+        <stage_x type="float">-10749.1</stage_x>
+        <stage_y type="float">3849.9</stage_y>
+      </DAMoveStage>
+      <DASetFocusLockTarget>
+        <lock_target type="float">152.22</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
         <num_focus_checks>5</num_focus_checks>
       </DACheckFocus>
       <DASetParameters>
-        <parameters type="str">HaNikon1_568</parameters>
+        <parameters type="str">HaNikon1_647</parameters>
       </DASetParameters>
       <DATakeMovie>
-        <name type="str">568_1</name>
+        <name type="str">647_1</name>
         <length type="int">1</length>
-        <parameters type="str">HaNikon1_568</parameters>
+        <parameters type="str">HaNikon1_647</parameters>
         <overwrite type="bool">True</overwrite>
       </DATakeMovie>
     </branch>
     <branch name="405_1">
       <DAMoveStage>
-        <stage_x type="float">-4373.9</stage_x>
-        <stage_y type="float">230.0</stage_y>
+        <stage_x type="float">-10749.1</stage_x>
+        <stage_y type="float">3849.9</stage_y>
       </DAMoveStage>
       <DASetFocusLockTarget>
-        <lock_target type="float">151.88</lock_target>
+        <lock_target type="float">160.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
         <num_focus_checks>5</num_focus_checks>
@@ -87,34 +99,46 @@
         <overwrite type="bool">True</overwrite>
       </DATakeMovie>
     </branch>
-    <branch name="568_2">
+    <branch name="blank_1">
       <DAMoveStage>
-        <stage_x type="float">-4573.7</stage_x>
-        <stage_y type="float">-169.5</stage_y>
+        <stage_x type="float">-10749.1</stage_x>
+        <stage_y type="float">3849.9</stage_y>
       </DAMoveStage>
       <DASetFocusLockTarget>
-        <lock_target type="float">154.57</lock_target>
+        <lock_target type="float">152.22</lock_target>
+      </DASetFocusLockTarget>
+      <DASetParameters>
+        <parameters type="str">HaNikon1_default</parameters>
+      </DASetParameters>
+    </branch>
+    <branch name="647_2">
+      <DAMoveStage>
+        <stage_x type="float">-11176.8</stage_x>
+        <stage_y type="float">3885.5</stage_y>
+      </DAMoveStage>
+      <DASetFocusLockTarget>
+        <lock_target type="float">153.35</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
         <num_focus_checks>5</num_focus_checks>
       </DACheckFocus>
       <DASetParameters>
-        <parameters type="str">HaNikon1_568</parameters>
+        <parameters type="str">HaNikon1_647</parameters>
       </DASetParameters>
       <DATakeMovie>
-        <name type="str">568_2</name>
+        <name type="str">647_2</name>
         <length type="int">1</length>
-        <parameters type="str">HaNikon1_568</parameters>
+        <parameters type="str">HaNikon1_647</parameters>
         <overwrite type="bool">True</overwrite>
       </DATakeMovie>
     </branch>
     <branch name="405_2">
       <DAMoveStage>
-        <stage_x type="float">-4573.7</stage_x>
-        <stage_y type="float">-169.5</stage_y>
+        <stage_x type="float">-11176.8</stage_x>
+        <stage_y type="float">3885.5</stage_y>
       </DAMoveStage>
       <DASetFocusLockTarget>
-        <lock_target type="float">154.57</lock_target>
+        <lock_target type="float">160.0</lock_target>
       </DASetFocusLockTarget>
       <DACheckFocus>
         <num_focus_checks>5</num_focus_checks>
@@ -128,6 +152,126 @@
         <parameters type="str">HaNikon1_405</parameters>
         <overwrite type="bool">True</overwrite>
       </DATakeMovie>
+    </branch>
+    <branch name="blank_2">
+      <DAMoveStage>
+        <stage_x type="float">-11176.8</stage_x>
+        <stage_y type="float">3885.5</stage_y>
+      </DAMoveStage>
+      <DASetFocusLockTarget>
+        <lock_target type="float">153.35</lock_target>
+      </DASetFocusLockTarget>
+      <DASetParameters>
+        <parameters type="str">HaNikon1_default</parameters>
+      </DASetParameters>
+    </branch>
+    <branch name="647_3">
+      <DAMoveStage>
+        <stage_x type="float">-11010.3</stage_x>
+        <stage_y type="float">3853.5</stage_y>
+      </DAMoveStage>
+      <DASetFocusLockTarget>
+        <lock_target type="float">155.12</lock_target>
+      </DASetFocusLockTarget>
+      <DACheckFocus>
+        <num_focus_checks>5</num_focus_checks>
+      </DACheckFocus>
+      <DASetParameters>
+        <parameters type="str">HaNikon1_647</parameters>
+      </DASetParameters>
+      <DATakeMovie>
+        <name type="str">647_3</name>
+        <length type="int">1</length>
+        <parameters type="str">HaNikon1_647</parameters>
+        <overwrite type="bool">True</overwrite>
+      </DATakeMovie>
+    </branch>
+    <branch name="405_3">
+      <DAMoveStage>
+        <stage_x type="float">-11010.3</stage_x>
+        <stage_y type="float">3853.5</stage_y>
+      </DAMoveStage>
+      <DASetFocusLockTarget>
+        <lock_target type="float">160.0</lock_target>
+      </DASetFocusLockTarget>
+      <DACheckFocus>
+        <num_focus_checks>5</num_focus_checks>
+      </DACheckFocus>
+      <DASetParameters>
+        <parameters type="str">HaNikon1_405</parameters>
+      </DASetParameters>
+      <DATakeMovie>
+        <name type="str">405_3</name>
+        <length type="int">1</length>
+        <parameters type="str">HaNikon1_405</parameters>
+        <overwrite type="bool">True</overwrite>
+      </DATakeMovie>
+    </branch>
+    <branch name="blank_3">
+      <DAMoveStage>
+        <stage_x type="float">-11010.3</stage_x>
+        <stage_y type="float">3853.5</stage_y>
+      </DAMoveStage>
+      <DASetFocusLockTarget>
+        <lock_target type="float">155.12</lock_target>
+      </DASetFocusLockTarget>
+      <DASetParameters>
+        <parameters type="str">HaNikon1_default</parameters>
+      </DASetParameters>
+    </branch>
+    <branch name="647_4">
+      <DAMoveStage>
+        <stage_x type="float">-10822.2</stage_x>
+        <stage_y type="float">3753.9</stage_y>
+      </DAMoveStage>
+      <DASetFocusLockTarget>
+        <lock_target type="float">155.12</lock_target>
+      </DASetFocusLockTarget>
+      <DACheckFocus>
+        <num_focus_checks>5</num_focus_checks>
+      </DACheckFocus>
+      <DASetParameters>
+        <parameters type="str">HaNikon1_647</parameters>
+      </DASetParameters>
+      <DATakeMovie>
+        <name type="str">647_4</name>
+        <length type="int">1</length>
+        <parameters type="str">HaNikon1_647</parameters>
+        <overwrite type="bool">True</overwrite>
+      </DATakeMovie>
+    </branch>
+    <branch name="405_4">
+      <DAMoveStage>
+        <stage_x type="float">-10822.2</stage_x>
+        <stage_y type="float">3753.9</stage_y>
+      </DAMoveStage>
+      <DASetFocusLockTarget>
+        <lock_target type="float">160.0</lock_target>
+      </DASetFocusLockTarget>
+      <DACheckFocus>
+        <num_focus_checks>5</num_focus_checks>
+      </DACheckFocus>
+      <DASetParameters>
+        <parameters type="str">HaNikon1_405</parameters>
+      </DASetParameters>
+      <DATakeMovie>
+        <name type="str">405_4</name>
+        <length type="int">1</length>
+        <parameters type="str">HaNikon1_405</parameters>
+        <overwrite type="bool">True</overwrite>
+      </DATakeMovie>
+    </branch>
+    <branch name="blank_4">
+      <DAMoveStage>
+        <stage_x type="float">-10822.2</stage_x>
+        <stage_y type="float">3753.9</stage_y>
+      </DAMoveStage>
+      <DASetFocusLockTarget>
+        <lock_target type="float">155.12</lock_target>
+      </DASetFocusLockTarget>
+      <DASetParameters>
+        <parameters type="str">HaNikon1_default</parameters>
+      </DASetParameters>
     </branch>
   </branch>
 </sequence>
