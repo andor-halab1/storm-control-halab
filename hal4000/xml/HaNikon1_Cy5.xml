@@ -55,7 +55,7 @@
     <acq_mode type="string">fixed_length</acq_mode>
     <frames type="int">1</frames>
     <logfile type="string">E:\Data\logs\image_log.txt</logfile>
-    <extensions type="string-array">,A647,Cy5,A568,Cy3,A405,YFP,GFP,BF,c1,c2</extensions>
+    <extensions type="string-array">,Cy7,Cy5,A568,Cy3,DAPI,YFP,GFP,BF,c1,c2</extensions>
     <auto_increment type="int">1</auto_increment>
     <want_bell type="int">1</want_bell>
     <auto_shutters type="int">0</auto_shutters>

@@ -6,7 +6,7 @@
 
   <!-- camera settings -->
   <camera1>
-    <emccd_gain type="int">150</emccd_gain>
+    <emccd_gain type="int">250</emccd_gain>
     <x_start type="int">257</x_start>
     <x_end type="int">768</x_end>
     <y_start type="int">257</y_start>
@@ -55,7 +55,7 @@
     <acq_mode type="string">fixed_length</acq_mode>
     <frames type="int">1</frames>
     <logfile type="string">E:\Data\logs\image_log.txt</logfile>
-    <extensions type="string-array">,A647,Cy5,A568,Cy3,A405,YFP,GFP,BF,c1,c2</extensions>
+    <extensions type="string-array">,Cy7,Cy5,A568,Cy3,DAPI,YFP,GFP,BF,c1,c2</extensions>
     <auto_increment type="int">1</auto_increment>
     <want_bell type="int">1</want_bell>
     <auto_shutters type="int">0</auto_shutters>
@@ -124,9 +124,9 @@
   <misc>
     <filter_names type="string-array">1,Analyzer,Penta,4,5,6</filter_names>
     <filter_position type="int">2</filter_position>
-	<efilter_position type="int">1</efilter_position>
-	<light type="int">1</light>
-	<light-amp type="int">7</light-amp>
+	<efilter_position type="int">3</efilter_position>
+	<light type="int">3</light>
+	<light-amp type="int">100</light-amp>
   </misc>
 
   <!-- steve settings -->
