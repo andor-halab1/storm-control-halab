@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<illumination_settings>
+
+  <control_modules>
+    <control_module>
+      <name>daq1</name>
+      <module_name>sc_hardware.none.daq</module_name>
+      <class_name>NoneDaq</class_name>
+    </control_module>
+  </control_modules>
+  
+  <channels>
+    <channel>
+      <description>750</description>
+      <color type="rgb">200,0,0</color>
+      
+      <analog_modulation>
+		  <uses>daq1</uses>
+		  <parameters>
+		  <board>none</board>
+		  <channel type="int">0</channel>
+		  <max_voltage type="float">1.0</max_voltage>
+		  <min_voltage type="float">0.0</min_voltage>
+		  </parameters>
+      </analog_modulation>
+      
+      <digital_modulation>
+		  <uses>daq1</uses>
+		  <parameters>
+		  <board>none</board>
+		  <channel type="int">0</channel>
+		  </parameters>
+      </digital_modulation>
+	  
+    </channel>
+    
+    <channel>
+      <description>647</description>
+      <color type="rgb">255,0,0</color>
+      
+      <analog_modulation>
+		  <uses>daq1</uses>
+		  <parameters>
+		  <board>none</board>
+		  <channel type="int">1</channel>
+		  <max_voltage type="float">1.0</max_voltage>
+		  <min_voltage type="float">0.0</min_voltage>
+		  </parameters>
+      </analog_modulation>
+      
+      <digital_modulation>
+		  <uses>daq1</uses>
+		  <parameters>
+		  <board>none</board>
+		  <channel type="int">1</channel>
+		  </parameters>
+      </digital_modulation>
+	  
+    </channel>
+
+    <channel>
+      <description>568</description>
+      <color type="rgb">255,255,0</color>
+
+      <analog_modulation>
+		  <uses>daq1</uses>
+		  <parameters>
+		  <board>none</board>
+		  <channel type="int">2</channel>
+		  <max_voltage type="float">1.0</max_voltage>
+		  <min_voltage type="float">0.0</min_voltage>
+		  </parameters>
+      </analog_modulation>
+      
+      <digital_modulation>
+		  <uses>daq1</uses>
+		  <parameters>
+		  <board>none</board>
+		  <channel type="int">2</channel>
+		  </parameters>
+      </digital_modulation>
+	  
+    </channel>
+
+    <channel>
+      <description>532</description>
+      <color type="rgb">0,255,0</color>
+
+      <analog_modulation>
+		  <uses>daq1</uses>
+		  <parameters>
+		  <board>none</board>
+		  <channel type="int">3</channel>
+		  <max_voltage type="float">1.0</max_voltage>
+		  <min_voltage type="float">0.0</min_voltage>
+		  </parameters>
+      </analog_modulation>
+      
+      <digital_modulation>
+		  <uses>daq1</uses>
+		  <parameters>
+		  <board>none</board>
+		  <channel type="int">3</channel>
+		  </parameters>
+      </digital_modulation>
+	  
+    </channel>
+
+    <channel>
+      <description>488</description>
+      <color type="rgb">0,100,255</color>
+      
+      <analog_modulation>
+		  <uses>daq1</uses>
+		  <parameters>
+		  <board>none</board>
+		  <channel type="int">4</channel>
+		  <max_voltage type="float">1.0</max_voltage>
+		  <min_voltage type="float">0.0</min_voltage>
+		  </parameters>
+      </analog_modulation>
+      
+      <digital_modulation>
+		  <uses>daq1</uses>
+		  <parameters>
+		  <board>none</board>
+		  <channel type="int">4</channel>
+		  </parameters>
+      </digital_modulation>
+	  
+    </channel>
+
+    <channel>
+      <description>405</description>
+      <color type="rgb">255,0,255</color>
+      
+      <analog_modulation>
+		  <uses>daq1</uses>
+		  <parameters>
+		  <board>none</board>
+		  <channel type="int">5</channel>
+		  <max_voltage type="float">1.0</max_voltage>
+		  <min_voltage type="float">0.0</min_voltage>
+		  </parameters>
+      </analog_modulation>
+      
+      <digital_modulation>
+		  <uses>daq1</uses>
+		  <parameters>
+		  <board>none</board>
+		  <channel type="int">5</channel>
+		  </parameters>
+      </digital_modulation>
+	  
+    </channel>
+
+  </channels>
+
+</illumination_settings>

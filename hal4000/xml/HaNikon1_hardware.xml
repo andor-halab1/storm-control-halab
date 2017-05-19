@@ -51,16 +51,18 @@
       <menu_item type="string">Illumination</menu_item>
       <module_name type="string">illumination.illuminationControl</module_name>
       <parameters>
-	    <settings_xml type="string">none_illumination_settings.xml</settings_xml>
+	    <settings_xml type="string">HaNikon1_illumination_settings.xml</settings_xml>
       </parameters>
     </illumination>
-    
+	
+    <!--
     <spotcounter>
       <class_name type="string">SingleSpotCounter</class_name>
       <menu_item type="string">Spot Counter</menu_item>
       <module_name type="string">spotCounter</module_name>
     </spotcounter>
-
+	-->
+	
     <!-- Motorized XY stage -->
     <stage>
       <class_name type="string">AStageControl</class_name>

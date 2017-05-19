@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--750-0-(200,0,0)-->
+<!--647-1-(255,0,0)-->
+<!--568-2-(255,255,0)-->
+<!--532-3-(0,255,0)-->
+<!--488-4-(0,100,255)-->
+<!--405-5-(255,0,255)-->
+<repeat>
+
+  <oversampling>100</oversampling>
+  <frames>10</frames>
+  <event>
+    <channel>1</channel>
+	<power>1.0</power>
+    <on>0.0</on>
+    <off>10.0</off>
+	<color>255,0,0</color>
+  </event>
+  
+</repeat>
