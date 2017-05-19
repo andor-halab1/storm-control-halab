@@ -133,9 +133,9 @@ class AMiscControl(miscControl.MiscControl):
                 if i == 2:
                     n = 5
                 if i == 3:
-                    n = 1
+                    n = 6
                 if i == 4:
-                    n = 0
+                    n = 1
                 self.lambda10B.setEFilter(n)
                 self.parameters.set("efilter_position", i)
             else:

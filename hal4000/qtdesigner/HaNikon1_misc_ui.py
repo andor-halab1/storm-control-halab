@@ -210,8 +210,8 @@ class Ui_Dialog(object):
         self.efilter1Button.setText(_translate("Dialog", "DAPI", None))
         self.efilter2Button.setText(_translate("Dialog", "Cy3", None))
         self.efilter3Button.setText(_translate("Dialog", "Cy5", None))
-        self.efilter4Button.setText(_translate("Dialog", "Empty", None))
-        self.efilter5Button.setText(_translate("Dialog", "Close", None))
+        self.efilter4Button.setText(_translate("Dialog", "Cy7", None))
+        self.efilter5Button.setText(_translate("Dialog", "Empty", None))
         
         self.okButton.setText(_translate("Dialog", "Ok", None))
 
