@@ -46,16 +46,14 @@
     </focuslock>
 
     <!-- Illumination (lasers, shutters, etc) control -->
-	<!--
     <illumination>
       <class_name type="string">IlluminationControl</class_name>
       <menu_item type="string">Illumination</menu_item>
       <module_name type="string">illumination.illuminationControl</module_name>
       <parameters>
-	<settings_xml type="string">none_illumination_settings.xml</settings_xml>
+	    <settings_xml type="string">none_illumination_settings.xml</settings_xml>
       </parameters>
     </illumination>
-	-->
     
     <spotcounter>
       <class_name type="string">SingleSpotCounter</class_name>
